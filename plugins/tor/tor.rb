@@ -1,5 +1,5 @@
-  module AresMUSH
-    module Tor
+module AresMUSH
+  module Tor
 
    def self.plugin_dir
      File.dirname(__FILE__)
@@ -20,5 +20,5 @@
    def self.get_web_request_handler(request)
      nil
    end
-
- end
+  end
+end
