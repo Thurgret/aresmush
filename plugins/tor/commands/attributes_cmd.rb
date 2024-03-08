@@ -1,7 +1,7 @@
 module AresMUSH    
     module Tor
       
-        class SkillsCmd
+        class AttributesCmd
         
             include CommandHandler
     
@@ -9,10 +9,10 @@ module AresMUSH
             def handle
         
                 # Get the hash of attributes out of the configuration
-                skills = Global.read_config("tor", "skills")
+                attrs = Global.read_config("tor", "attributes")
           
                 # Sort the hash and then convert it to a list of the form "Name Description"
-                list = skills.sort_by { |a| a['name']}
+                list = attrs.sort_by { |a| a['name']}
                   .map { |a| "%xh#{a['name'].ljust(15)}%xn #{a['desc']}"}
                       
          
