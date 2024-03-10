@@ -20,6 +20,13 @@ module AresMUSH
         end
 
 
+        def self.is_valid_attribute_name?(name)
+            return false if !name
+            names = Global.read_config('tor', 'attributes').map { |a| a['name'].downcase }
+            names.include?(name.downcase)
+        end
+
+
         
         def self.can_manage_abilities?(actor)      
             return false if !actor
