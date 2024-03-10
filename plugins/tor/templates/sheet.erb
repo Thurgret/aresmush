@@ -1,18 +1,15 @@
 %lh
 <%= t('tor.sheet_title', :name => char.name) %>
 
-
 <%= line_with_text t('tor.attributes_title') -%>
 <% attrs.each do |a| -%>
-%xh<%= left("#{a.name}:", 15) %>%xn <%= a.rating %>
 <%= a -%>
 <% end %>
 
-
-<%= line_with_text t('tor.skills_title') %>
-<% skills.each do |s| %>
-%xh<%= left("#{s.name}:", 15) %>%xn <%= s.rating %>
+<%= line_with_text t('tor.skills_title') -%>
+<% skills.each do |s| -%>
 <%= s -%>
 <% end %>
+
 
 %lf

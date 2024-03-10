@@ -7,25 +7,27 @@ module AresMUSH
           @char = char
           super File.dirname(__FILE__) + "/sheet.erb"
         end
-    
-        def attrs
-          @char.tor_attributes.to_a.sort_by { |a| a.name }
-        end
-        
+
+
         def format_two_per_line(list)
           list.to_a.sort_by { |a| a.name }
             .each_with_index
               .map do |a, i| 
                 linebreak = i % 2 == 0 ? "\n" : ""
                 title = left("#{ a.name }:", 15)
-                step = left(a.rating, 20)
-                "#{linebreak}%xh#{title}%xn #{step}"
+                rating = left(a.rating, 20)
+                "#{linebreak}%xh#{title}%xn #{rating}"
           end
         end
         
-
         def skills
-          @char.tor_skills.to_a.sort_by { |a| a.name }
+          format_two_per_line @char.tor_skills
+        end
+
+
+
+        def attrs
+          format_two_per_line @char.tor_attributes
         end
         
       end
