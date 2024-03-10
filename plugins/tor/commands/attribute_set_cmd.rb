@@ -13,7 +13,7 @@ module AresMUSH
             self.target_name = titlecase_arg(args.arg1)
             self.attribute_name = titlecase_arg(args.arg2)
             self.rating = integer_arg(args.arg3)
-        else
+          else
             args = cmd.parse_args(ArgParser.arg1_equals_arg2)
             self.target_name = enactor_name
             self.attribute_name = titlecase_arg(args.arg1)
@@ -57,6 +57,7 @@ module AresMUSH
         
         end
     end
+  end
 end
 end
   
