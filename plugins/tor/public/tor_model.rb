@@ -61,7 +61,7 @@ module AresMUSH
         
         attribute :name
         attribute :desc
-        attribute :rating :type => DataType::Integer
+        attribute :rating, :type => DataType::Integer
         reference :character, "AresMUSH::Character"
         index :name
         
@@ -74,7 +74,7 @@ module AresMUSH
         
         attribute :name
         attribute :desc
-        attribute :rating :type => DataType::Integer
+        attribute :rating, :type => DataType::Integer
         reference :character, "AresMUSH::Character"
         index :name
         
