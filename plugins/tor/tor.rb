@@ -1,14 +1,18 @@
 module AresMUSH
-  module Tor
+   module Tor
 
-   def self.plugin_dir
-     File.dirname(__FILE__)
-   end
+   
+    def self.plugin_dir
+      File.dirname(__FILE__)
+  
+    end
 
    def self.shortcuts
      Global.read_config("tor", "shortcuts")
    end
 
+   
+   
    def self.get_cmd_handler(client, cmd, enactor)
     case cmd.root
     when "attribute"
@@ -27,10 +31,15 @@ module AresMUSH
       return SheetCmd
     when "roll"
       return RollCmd
-    return nil
-   end
+    end
 
+     
+    return nil
    
+    
+    end
+
+
    def self.get_event_handler(event_name)
      nil
    end
