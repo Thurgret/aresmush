@@ -12,14 +12,6 @@ module AresMUSH
           format_two_per_line @char.tor_attributes
         end
         
-        def assets
-          format_two_per_line @char.cortex_assets
-        end
-        
-        def complications
-          format_two_per_line @char.cortex_complications
-        end
-        
         def format_two_per_line(list)
           list.to_a.sort_by { |a| a.name }
             .each_with_index
@@ -31,8 +23,9 @@ module AresMUSH
           end
         end
         
+        
         def skills
-          @char.cortex_skills.to_a.sort_by { |a| a.name }
+          @char.tor_skills.to_a.sort_by { |a| a.name }
         end
         
       end
