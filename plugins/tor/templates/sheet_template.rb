@@ -18,12 +18,12 @@ module AresMUSH
               .map do |a, i| 
                 linebreak = i % 2 == 0 ? "\n" : ""
                 title = left("#{ a.name }:", 15)
-                step = left(a.die_step, 20)
+                step = left(a.rating, 20)
                 "#{linebreak}%xh#{title}%xn #{step}"
           end
         end
         
-        
+
         def skills
           @char.tor_skills.to_a.sort_by { |a| a.name }
         end
