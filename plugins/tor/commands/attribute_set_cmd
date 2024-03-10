@@ -28,8 +28,8 @@ module AresMUSH
           return nil
         end
         
-        def check_valid_skill
-          return t('tor.invalid_attribute_name') if !Tor.is_valid_attribute_name?(self.skill_name)
+        def check_valid_attribute
+          return t('tor.invalid_attribute_name') if !Tor.is_valid_attribute_name?(self.attribute_name)
           return nil
         end
         
@@ -46,13 +46,13 @@ module AresMUSH
         
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            skill = Tor.find_skill(model, self.skill_name)
+            attrs = Tor.find_attribute(model, self.attribute_name)
                        
-            if (skill)
-              skill.update(rating: self.rating)
+            if (attrs)
+              attrs.update(rating: self.rating)
             end
            
-            client.emit_success t('tor.skill_set')
+            client.emit_success t('tor.attribute_set')
           end
         end
       end
