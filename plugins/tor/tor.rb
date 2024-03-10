@@ -33,7 +33,7 @@ module AresMUSH
       return RollCmd
     end
 
-     
+    
     return nil
    
     
