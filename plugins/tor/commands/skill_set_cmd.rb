@@ -1,5 +1,5 @@
 module AresMUSH    
-    module Cortex
+    module Tor
       class SkillSetCmd
         include CommandHandler
         

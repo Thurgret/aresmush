@@ -1,5 +1,5 @@
 module AresMUSH    
-    module Cortex
+    module Tor
       class SheetTemplate < ErbTemplateRenderer
         attr_accessor :char
     
