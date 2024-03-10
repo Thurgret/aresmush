@@ -9,7 +9,7 @@ module AresMUSH
         end
     
         def attrs
-          format_two_per_line @char.tor_attributes
+          @char.tor_attributes.to_a.sort_by { |a| a.name }
         end
         
         def format_two_per_line(list)
