@@ -17,7 +17,7 @@ module AresMUSH
       
       def check_modifier
         return nil if self.modifier.blank?
-        return t('tor.invalid_difficulty') if !modifier.is_a Integer
+        return t('tor.invalid_difficulty') if !modifier.is_a? Integer
         return nil
       end
       
