@@ -15,7 +15,7 @@ module AresMUSH
 
         def self.is_valid_skill_name?(name)
             return false if !name
-            Global.read_config('tor', 'skills').map { |a| a['name'].downcase }
+            names = Global.read_config('tor', 'skills').map { |a| a['name'].downcase }
             names.include?(name.downcase)
         end
 
