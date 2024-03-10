@@ -25,8 +25,7 @@ module AresMUSH
         end
         
         def check_valid_rating
-          return nil if self.rating < 0 || self.rating > 6
-          return t('tor.invalid_rating') if !Tor.is_valid_rating(self.rating)
+          return t('tor.invalid_rating') if !Tor.is_valid_rating?(self.rating)
           return nil
         end
         
