@@ -2,4 +2,8 @@
 en:
     cortex:
         attributes_title: "Attributes"
-        skill_set: "Skill set!"
+        skills_title: "Skills"
+        skill_set: "Skill set."
+        invalid_rating: "Skills must be between 0 and 6."
+        invalid_skill_name: "That is not a skill name."
+        sheet_title: "Character Sheet for %{name}"

@@ -10,7 +10,24 @@ module AresMUSH
    end
 
    def self.get_cmd_handler(client, cmd, enactor)
-     nil
+    case cmd.root
+    when "attribute"
+      if (cmd.switch_is?("set"))
+        return AttributeSetCmd
+      else
+        return AttributesCmd
+      end
+    when "skill"
+      if (cmd.switch_is?("set"))
+        return SkillSetCmd
+      else
+        return SkillsCmd
+      end
+    when "sheet"
+      return SheetCmd
+    when "roll"
+      return RollCmd
+    return nil
    end
 
    def self.get_event_handler(event_name)

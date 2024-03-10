@@ -25,48 +25,36 @@ module AresMUSH
         end
         
         def check_valid_rating
-          return nil if self.rating == 0 || self.rating > 6
-          return t('tor.invalid_rating') if !Cortex.is_valid_die_step?(self.die_step)
-          return t('cortex.general_skill_step_limit') if ![ 'd2', 'd4', 'd6' ].include?(self.die_step)
+          return nil if self.rating < 0 || self.rating > 6
+          return t('tor.invalid_rating') if !Tor.is_valid_rating(self.rating)
           return nil
         end
         
         def check_valid_skill
-          return t('cortex.invalid_skill_name') if !Cortex.is_valid_skill_name?(self.skill_name)
+          return t('tor.invalid_skill_name') if !Tor.is_valid_skill_name?(self.skill_name)
           return nil
         end
         
         def check_can_set
           return nil if enactor_name == self.target_name
-          return nil if Cortex.can_manage_abilities?(enactor)
+          return nil if Tor.can_manage_abilities?(enactor)
           return t('dispatcher.not_allowed')
         end     
         
         def check_chargen_locked
-          return nil if Cortex.can_manage_abilities?(enactor)
+          return nil if Tor.can_manage_abilities?(enactor)
           Chargen.check_chargen_locked(enactor)
         end
         
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            skill = Cortex.find_skill(model, self.skill_name)
-            
-            if (skill && self.die_step == '0')
-              skill.delete
-              client.emit_success t('cortex.ability_removed')
-              return
-            end
-            
+            skill = Tor.find_skill(model, self.skill_name)
+                       
             if (skill)
-              skill.update(die_step: self.die_step)
-              if (self.die_step != 'd6')
-                skill.update(specialties: {})
-              end
-            else
-              CortexSkill.create(name: self.skill_name, die_step: self.die_step, character: model)
+              skill.update(rating: self.rating)
             end
            
-            client.emit_success t('cortex.ability_set')
+            client.emit_success t('tor.skill_set')
           end
         end
       end
