@@ -9,7 +9,7 @@ module AresMUSH
         
         
         collection :tor_attributes, "AresMUSH::TorAttributes"
-        collection :tor_skills, "AresMUSH::TorSkill"
+        collection :tor_skills, "AresMUSH::TorSkills"
         ##collection :tor_tn, "AresMUSH::TorTN"
         ##collection :tor_virtues, "AresMUSH::TorVirtues"
         ##collection :tor_rewards, "AresMUSH::TorRewards"
