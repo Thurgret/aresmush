@@ -4,6 +4,7 @@ en:
         attributes_title: "Attributes"
         skills_title: "Skills"
         skill_set: "Skill set."
+        attribute_set: "Attribute set."
         invalid_rating: "Skills must be between 0 and 6."
         invalid_skill_name: "That is not a skill name."
         invalid_attribute_name: "That is not an attribute name."
