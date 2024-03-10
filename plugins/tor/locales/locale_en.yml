@@ -7,3 +7,4 @@ en:
         invalid_rating: "Skills must be between 0 and 6."
         invalid_skill_name: "That is not a skill name."
         sheet_title: "Character Sheet for %{name}"
+        
