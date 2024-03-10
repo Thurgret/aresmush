@@ -51,6 +51,8 @@ module AresMUSH
                        
             if (attrs)
               attrs.update(rating: self.rating)
+            else
+               TorAttributes.create(name: self.attribute_name, rating: self.rating, character: model)
             end
            
             client.emit_success t('tor.attribute_set')

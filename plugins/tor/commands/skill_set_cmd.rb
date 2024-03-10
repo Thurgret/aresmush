@@ -51,6 +51,8 @@ module AresMUSH
                        
             if (skill)
               skill.update(rating: self.rating)
+            else
+              TorSkills.create(name: self.skill_name, rating: self.rating, character: model)
            
             end
            
