@@ -51,9 +51,11 @@ module AresMUSH
                        
             if (skill)
               skill.update(rating: self.rating)
+           
             end
            
             client.emit_success t('tor.skill_set')
+         
           end
         end
       end

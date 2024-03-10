@@ -40,6 +40,12 @@ module AresMUSH
             model.tor_skills.select { |a| a.name.downcase == name_downcase }.first
         end
 
+
+        def self.find_attribute(model, attribute_name)
+            name_downcase = attribute_name.downcase
+            model.tor_attributes.select { |a| a.name.downcase == name_downcase }.first
+        end
+
   
 
     end
