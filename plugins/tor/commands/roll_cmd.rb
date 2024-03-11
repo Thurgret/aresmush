@@ -25,7 +25,7 @@ module AresMUSH
 
       def check_favoured
         return nil if self.favoured.blank?
-        return t('tor.invalid_favoured') if (modifier != "f" || modifier != "i")
+        return t('tor.invalid_favoured') if (modifier != "F" || modifier != "I")
         return nil
       end
       
