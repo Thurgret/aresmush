@@ -27,11 +27,7 @@ module AresMUSH
         if (!results)
           client.emit_failure t('tor.invalid_skill')
           return
-        end
-
-
-      
-      
+        end 
      
         if (results.successful == true)
           if (results.gandalf_rune)
@@ -43,19 +39,19 @@ module AresMUSH
           end
         end
           
+       
         if (results.successful == false)
             if (results.eye_of_mordor)
               message = t('tor.eye_of_mordor_failure', :dice => results.dice(' '), :roll => self.roll_str, :char => enactor_name )
             else
               message = t('tor.roll_failure', :dice => results.dice(' '), :feat_die => results.feat_die(' '),  :roll => self.roll_str, :char => enactor_name )
             end
+          
           end
-        end
 
-       
-      
         Rooms.emit_ooc_to_room enactor_room, message          
                 
+     
       end
     end
   end
