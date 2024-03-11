@@ -69,11 +69,11 @@ module AresMUSH
             results.dice = dice.sort.reverse
 
             if !favoured
-                feat_dice.first = Tor.roll_feat_die
+                feat_dice[0] = Tor.roll_feat_die
             elsif (favoured == "F")
-                feat_dice.first = Tor.roll_feat_die
-                feat_dice.last = Tor.roll_feat_die
-                if feat_dice.first < feat_dice.last
+                feat_dice[0] = Tor.roll_feat_die
+                feat_dice[1] = Tor.roll_feat_die
+                if feat_dice[0] < feat_dice[1]
                     feat_dice = feat_dice.reverse
                 end
             end
