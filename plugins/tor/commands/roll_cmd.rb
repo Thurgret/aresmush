@@ -8,7 +8,6 @@ module AresMUSH
       def parse_args
          return if !cmd.args
          self.roll_str = trim_arg(cmd.args.before(/([-\d]+)/))
-         self.modifier = trim_arg(cmd.args.after.(/([-\d]+)/))
       end
       
       def required_args
@@ -16,6 +15,7 @@ module AresMUSH
       end
       
       def check_modifier
+        self.modifier = trim_arg(cmd.args.after.(/([-\d]+)/))
         return nil if self.modifier.blank?
         return t('tor.invalid_difficulty') if (modifier == 0)
         return nil
