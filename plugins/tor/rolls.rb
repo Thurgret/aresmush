@@ -27,7 +27,7 @@ module AresMUSH
             sections.each do |s|
                 s = s.strip.titlecase.gsub("+", "")
                 next if s.blank?
-                if (s =~ /([-\d]+)m/i)
+                if (s =~ /([-\d]+)/i)
                     params.modifier = $1.to_i
                 else
                     config = Tor.find_skill_config(s)
