@@ -10,7 +10,10 @@ en:
         invalid_attribute_name: "That is not an attribute name."
         sheet_title: "Character Sheet for %{name}"
         invalid_difficulty: "Modifier must be a number."
-        eye_of_mordor: "You rolled an Eye of Mordor!"
-        roll_successful: "Your dice roll succeeded."
-        roll_failure: "Your dice roll failed."
-        
+
+
+        roll_successful: "%{char} rolls %{roll} and is successful. (%{dice}) and %{feat_die}"
+        roll_failure: "%{char} rolls %{roll} and fails. (%{dice}) and %{feat_die}"
+        gandalf_rune: "%{char} rolls %{roll} and is automatically successful, with a Gandalf rune! (%{dice}) and %{feat_die}"
+        eye_of_mordor_success: "%{char} rolls %{roll} and is successful, despite rolling the Eye of Mordor! (%{dice}) and %{feat_die}"
+        eye_of_mordor_failure: "%{char} rolls %{roll}, rolls the Eye of Mordor, and fails! (%{dice}) and %{feat_die}"
