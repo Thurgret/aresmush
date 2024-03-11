@@ -141,9 +141,15 @@ module AresMUSH
 
             
 
-            if (first == 'Rune' || second = 'Rune')
+            if (first == 'Rune')
+                results.feat_die = first
+                results.second_feat_die = second
                 return 'Rune'
-                elsif (first == 'Eye' && second != 'Eye')
+            elsif (second == 'Rune')
+                results.feat_die = second
+                results.second_feat_die = first
+                return second
+            elsif (first == 'Eye' && second != 'Eye')
                     results.feat_die = second
                     results.second_feat_die = first
                     return second
@@ -159,7 +165,6 @@ module AresMUSH
                     results.feat_die = second
                     results.second_feat_die = first
                     return second
-                end
             end
         end
 
@@ -169,6 +174,7 @@ module AresMUSH
 
     
    
+    
     end
 end
 
