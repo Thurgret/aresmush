@@ -80,7 +80,7 @@ module AresMUSH
                 results.successful = true
             end 
 
-            result.degrees = degrees
+            results.degrees = degrees
 
 
                
