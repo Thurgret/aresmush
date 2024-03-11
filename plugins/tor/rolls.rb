@@ -12,7 +12,7 @@ module AresMUSH
 
 
         class TorRollResults
-            attr_accessor :success, :failure
+            attr_accessor :success, :eye_of_mordor, :gandalf_rune, :degrees
         end
 
 
@@ -51,34 +51,38 @@ module AresMUSH
 
             target_number = 20 - related_attribute_rating(char, params.skill)
             current_number = 0
+            degrees = 0
 
             dice.each do |result|
                 if Integer? (result)
                     current_number += result
                 elsif
-                    result == 'Rune'
+                    result == 'Success'
+                    degrees += 1
                     current_number += 6
                 end
             end
 
+            results = TorRollResults.new
+       
+
             if feat_die == 'Eye'
-                message = t('tor.eye_of_mordor' )
+                results.eye_of_mordor = true
             elsif feat_die == 'Rune'
+                results.successful = true
                 message = t('tor.gandalf_rune')
             else
                 current_number += feat_die
-
             end
 
             if current_number >= target_number
-                message = t('roll.successful')
-                else
-                    message = t('roll.failure')
-                end
+                results.successful = true
+            end 
 
-            end
+            result.degrees = degrees
 
-            Rooms.emit_ooc_to_room enactor_room, message                     
+
+               
         end
 
 
