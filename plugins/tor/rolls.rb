@@ -23,30 +23,35 @@ module AresMUSH
 
         def self.parse_roll_string(roll_str)
             params = TorRollParams.new
-            sections = roll_str.split(/([\+-]\d+\w)/)
-            sections.each do |s|
-                s = s.strip.titlecase.gsub("+", "")
-                next if s.blank?
-                if (s =~ /([-\d]+)/i)
-                    params.modifier = $1.to_i
-                else
-                    config = Tor.find_skill_config(s)
-                    return nil if !config
-                    params.skill = s
-                end
-            end
+            #sections = roll_str.split(/([\+-]\d+\w)/)
+            #sections.each do |s|
+             #   s = s.strip.titlecase.gsub("+", "")
+              #  next if s.blank?
+               # if (s =~ /([-\d]+)/i)
+                #    params.modifier = $1.to_i
+                #else
+                 #   config = Tor.find_skill_config(s)
+                  #  return nil if !config
+                   # params.skill = s
+                #end
+            #end
+
+
             return params  
         end
 
 
             
            
-        def self.roll_skill(char, roll_str)
-            params = Tor.parse_roll_string(roll_str)
-            return nil if !params
+        def self.roll_skill(char, skill_name, modifier)
+            #params = Tor.parse_roll_string(roll_str)
+
+
+            return nil if !roll_str
+
 
             dice = []
-            skill_dice = Tor.find_skill_dice(char, params.skill) + params.modifier
+            skill_dice = Tor.find_skill_dice(char, skill_name) + params.modifier
 
             results = TorRollResults.new
 
@@ -57,7 +62,7 @@ module AresMUSH
             results.dice = dice
             feat_die = Tor.roll_feat_die
 
-            target_number = 20 - related_attribute_rating(char, params.skill)
+            target_number = 20 - related_attribute_rating(char, skill_name)
             current_number = 0
             degrees = 0
 

@@ -23,7 +23,7 @@ module AresMUSH
       end
       
       def handle
-        results = Tor.roll_skill(enactor, self.roll_str)
+        results = Tor.roll_skill(enactor, self.roll_str, self.modifier)
         
         if (!results)
           client.emit_failure t('tor.invalid_skill')
