@@ -57,7 +57,6 @@ module AresMUSH
 
 
             dice = []
-            feat_dice = []
             skill_dice = Tor.find_skill_dice(char, skill_name) + modifier
 
             results = TorRollResults.new
@@ -66,7 +65,7 @@ module AresMUSH
             skill_dice.times.each do |d|
                 dice << Tor.roll_success_die
             end
-            results.dice = dice
+            results.dice = dice.sort.reverse
 
             if !favoured
                 feat_dice << Tor.roll_feat_die
@@ -77,6 +76,8 @@ module AresMUSH
                     f = feat_dice[0]
                     feat_dice[0] = feat_dice[1]
                     feat_dice[1] = f
+                    results.feat_dice[0] = feat_dice[0]
+                    results.feat_dice[1] = feat_dice[1]
                 end
             end
 
@@ -106,7 +107,7 @@ module AresMUSH
                 results.gandalf_rune = true
             else
                 current_number += feat_dice[0]
-                results.feat_die = feat_dice[0]
+                results.feat_dice[0] = feat_dice[0]
             end
 
             if current_number >= target_number
