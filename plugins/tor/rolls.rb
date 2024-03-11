@@ -78,10 +78,7 @@ module AresMUSH
 
             end
 
-            Rooms.emit_ooc_to_room enactor_room, message               
-
-
-
+            Rooms.emit_ooc_to_room enactor_room, message                     
         end
 
 
@@ -109,7 +106,9 @@ module AresMUSH
 
 
 
+    
     end
+end
 end
 
   
