@@ -12,7 +12,7 @@ module AresMUSH
 
 
         class TorRollResults
-            attr_accessor :success :failure
+            attr_accessor :success, :failure
         end
 
 
