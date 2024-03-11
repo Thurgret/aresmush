@@ -104,7 +104,7 @@ module AresMUSH
                 results.gandalf_rune = true
             else
                 current_number += feat_dice.first
-                results.feat_dice.first = feat_dice.first
+                results.feat_dice[0] = feat_dice.first
             end
 
             if current_number >= target_number
