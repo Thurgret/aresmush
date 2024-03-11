@@ -44,7 +44,7 @@ module AresMUSH
             if (results.eye_of_mordor)
               message = t('tor.eye_of_mordor_failure', :dice => results.dice.join(" "), :roll => self.roll_str, :char => enactor_name )
             else
-              message = t('tor.roll_failure', :dice => :dice => results.dice.join(" "), :feat_die => results.feat_die(' '),  :roll => self.roll_str, :char => enactor_name )
+              message = t('tor.roll_failure', :dice => results.dice.join(" "), :feat_die => results.feat_die(' '),  :roll => self.roll_str, :char => enactor_name )
             end
           
           end
