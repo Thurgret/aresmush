@@ -54,7 +54,7 @@ module AresMUSH
             degrees = 0
 
             dice.each do |result|
-                if Integer? (result)
+                if result.is_a? Integer
                     current_number += result
                 elsif
                     result == 'Success'
