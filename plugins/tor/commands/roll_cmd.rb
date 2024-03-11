@@ -30,7 +30,7 @@ module AresMUSH
         end
 
 
-        if results.successful?
+        if results.successful
           message = t('roll.successful')
         else
           message = t('roll.failure')
