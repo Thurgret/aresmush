@@ -87,7 +87,6 @@ module AresMUSH
             elsif feat_die == 'Rune'
                 results.successful = true
                 results.gandalf_rune = true
-                message = t('tor.gandalf_rune')
             else
                 current_number += feat_die
                 results.feat_die = feat_die
