@@ -46,6 +46,24 @@ module AresMUSH
             model.tor_attributes.select { |a| a.name.downcase == name_downcase }.first
         end
 
+        def self.find_skill_config(name)
+            return nil if !name
+            types = Global.read_config('tor', 'skills')
+            types.select { |a| a['name'].downcase == name.downcase }.first  
+        end 
+
+
+        def self.skill_rating(char, skill_name)
+            skill = Tor.find_skill(char, skill_name)
+            skill ? skill.rating : 0
+        end
+
+
+        def self.attribute_rating(char, attribute_name)
+            attrs = Tor.find_attribute(char, attribute_name)
+            attrs ? attrs.rating : 0
+        end
+
   
 
     end

@@ -10,4 +10,7 @@ en:
         invalid_attribute_name: "That is not an attribute name."
         sheet_title: "Character Sheet for %{name}"
         invalid_difficulty: "Modifier must be a number."
+        eye_of_mordor: "You rolled an Eye of Mordor!"
+        roll_successful: "Your dice roll succeeded."
+        roll_failure: "Your dice roll failed."
         
