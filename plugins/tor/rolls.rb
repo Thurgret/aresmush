@@ -3,7 +3,7 @@ module AresMUSH
         class TorRollParams
             attr_accessor :modifier
 
-            def initialise
+            def initialize
                 self.modifier = 0
                 self.skill = nil
             end
