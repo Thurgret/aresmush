@@ -76,6 +76,7 @@ module AresMUSH
                     f = feat_dice[0]
                     feat_dice[0] = feat_dice[1]
                     feat_dice[1] = f
+                end
             end
 
 
