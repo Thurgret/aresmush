@@ -88,7 +88,7 @@ module AresMUSH
 
         def self.find_skill_dice(char, skill)
             skill_rating = Tor.skill_rating(char, skill)
-            attribute_rating = Tor.linked_attribute_rating(char, skill)
+            attribute_rating = Tor.related_attribute_rating(char, skill)
         end
 
 
