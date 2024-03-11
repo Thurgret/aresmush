@@ -49,6 +49,7 @@ module AresMUSH
 
 
             return nil if !skill_name
+            return nil if !Tor.find_skill(skill_name)
 
             if !modifier
                 modifier = 0
@@ -70,11 +71,13 @@ module AresMUSH
 
             if !favoured
                 feat_dice[0] = Tor.roll_feat_die
+                results.feat_dice = feat_dice
             elsif (favoured == "F")
                 feat_dice[0] = Tor.roll_feat_die
                 feat_dice[1] = Tor.roll_feat_die
                 if feat_dice[0] < feat_dice[1]
                     feat_dice = feat_dice.reverse
+                    results.feat_dice = feat_dice
                 end
             end
 
@@ -128,7 +131,7 @@ module AresMUSH
 
         def self.related_attribute_rating(char, skill)
             skill_config = Tor.find_skill_config(skill)
-            return 0 if !skill_config
+            return nil if !skill_config
             Tor.attribute_rating(char, skill_config['linked_attribute'])
         end
 
