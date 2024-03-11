@@ -80,6 +80,7 @@ module AresMUSH
 
        
             results.target_number = target_number
+            results.successful = false
 
             if feat_die == 'Eye'
                 results.eye_of_mordor = true
@@ -94,8 +95,6 @@ module AresMUSH
 
             if current_number >= target_number
                 results.successful = true
-            else
-                results.successful = false
             end 
 
             results.degrees = degrees
