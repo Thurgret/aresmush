@@ -7,8 +7,8 @@ module AresMUSH
   
       def parse_args
          return if !cmd.args
-         self.roll_str = trim_arg(cmd.args.before("/"))
-         self.modifier = trim_arg(cmd.args.after("/")).to_i
+         self.roll_str = trim_arg(cmd.args.before(/([-\d]+)/))
+         self.modifier = trim_arg(cmd.args.after.(/([-\d]+)/))
       end
       
       def required_args
