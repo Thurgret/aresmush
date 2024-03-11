@@ -39,9 +39,11 @@ module AresMUSH
      
         if (results.successful == true)
           if (results.gandalf_rune)
-            message = t('tor.gandalf_rune', :dice => results.dice.join(" "), :roll => self.roll_str, :char => enactor_name, :TN => results.target_number.to_s )
+            message = t('tor.gandalf_rune', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+             :roll => self.roll_str, :char => enactor_name, :TN => results.target_number.to_s )
           elsif (results.eye_of_mordor)
-            message = t('tor.roll_eye_of_mordor_success', :dice => results.dice.join(" "), :roll => self.roll_str, :char => enactor_name, :TN => results.target_number.to_s )
+            message = t('tor.roll_eye_of_mordor_success', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+             :roll => self.roll_str, :char => enactor_name, :TN => results.target_number.to_s )
           else
             message = t('tor.roll_successful', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :roll => self.roll_str, 
             :char => enactor_name, :TN => results.target_number.to_s )
@@ -51,7 +53,8 @@ module AresMUSH
        
         if (results.successful == false)
             if (results.eye_of_mordor)
-              message = t('tor.eye_of_mordor_failure', :dice => results.dice.join(" "), :roll => self.roll_str, :char => enactor_name, :TN => results.target_number.to_s )
+              message = t('tor.eye_of_mordor_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), 
+              :roll => self.roll_str, :char => enactor_name, :TN => results.target_number.to_s )
             else
               message = t('tor.roll_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),  :roll => self.roll_str, :char => enactor_name,
               :TN => results.target_number.to_s )
