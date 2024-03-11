@@ -16,7 +16,7 @@ module AresMUSH
 
             def initialize
                 dice = []
-                feat_dice = [0, 0]
+                feat_dice = []
             end
 
         end
@@ -69,16 +69,12 @@ module AresMUSH
             results.dice = dice.sort.reverse
 
             if !favoured
-                feat_dice << Tor.roll_feat_die
+                feat_dice.first = Tor.roll_feat_die
             elsif (favoured == "F")
-                feat_dice[0] = Tor.roll_feat_die
-                feat_dice[1] = Tor.roll_feat_die
-                if feat_dice[0] < feat_dice[1]
-                    f = feat_dice[0]
-                    feat_dice[0] = feat_dice[1]
-                    feat_dice[1] = f
-                    results.feat_dice[0] = feat_dice[0]
-                    results.feat_dice[1] = feat_dice[1]
+                feat_dice.first = Tor.roll_feat_die
+                feat_dice.last = Tor.roll_feat_die
+                if feat_dice.first < feat_dice.last
+                    feat_dice = feat_dice.reverse
                 end
             end
 
@@ -101,14 +97,14 @@ module AresMUSH
             results.target_number = target_number
             results.successful = false
 
-            if feat_dice[0] == 0
+            if feat_dice.first == 0
                 results.eye_of_mordor = true
-            elsif feat_dice[0] == 11
+            elsif feat_dice.first == 11
                 results.successful = true
                 results.gandalf_rune = true
             else
-                current_number += feat_dice[0]
-                results.feat_dice[0] = feat_dice[0]
+                current_number += feat_dice.first
+                results.feat_dice.first = feat_dice.first
             end
 
             if current_number >= target_number
