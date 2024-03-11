@@ -12,7 +12,7 @@ module AresMUSH
 
 
         class TorRollResults
-            attr_accessor :success, :eye_of_mordor, :gandalf_rune, :degrees
+            attr_accessor :successful, :eye_of_mordor, :gandalf_rune, :degrees
         end
 
 
