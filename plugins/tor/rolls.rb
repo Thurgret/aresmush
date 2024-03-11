@@ -47,7 +47,7 @@ module AresMUSH
             #params = Tor.parse_roll_string(roll_str)
 
 
-            return nil if !roll_str
+            return nil if !skill_name
 
 
             dice = []
