@@ -48,6 +48,7 @@ module AresMUSH
               message = t('tor.roll_failure', :dice => results.dice.join(" "), :feat_die => results.feat_die.to_s,  :roll => self.roll_str, :char => enactor_name )
             end
           
+         
           end
 
         Rooms.emit_ooc_to_room enactor_room, message          

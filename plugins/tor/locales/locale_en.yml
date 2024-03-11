@@ -14,7 +14,7 @@ en:
 
 
         roll_successful: "%{char} rolls %{roll} and is successful. The success dice were: %{dice}. The feat die was %{feat_die}"
-        roll_failure: "%{char} rolls %{roll} and fails. (%{dice}) and %{feat_die}"
+        roll_failure: "%{char} rolls %{roll} and is successful. The success dice were: %{dice}. The feat die was %{feat_die}"
         gandalf_rune: "%{char} rolls %{roll} and is automatically successful, with a Gandalf rune! (%{dice})"
         eye_of_mordor_success: "%{char} rolls %{roll} and is successful, despite rolling the Eye of Mordor! (%{dice})"
         eye_of_mordor_failure: "%{char} rolls %{roll}, rolls the Eye of Mordor, and fails! (%{dice})"

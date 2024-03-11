@@ -94,6 +94,8 @@ module AresMUSH
 
             if current_number >= target_number
                 results.successful = true
+            else
+                results.successful = false
             end 
 
             results.degrees = degrees
