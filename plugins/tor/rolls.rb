@@ -57,6 +57,7 @@ module AresMUSH
 
 
             dice = []
+            feat_dice = []
             skill_dice = Tor.find_skill_dice(char, skill_name) + modifier
 
             results = TorRollResults.new
