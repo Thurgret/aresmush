@@ -53,8 +53,8 @@ module AresMUSH
             current_number = 0
             degrees = 0
 
+
             dice.each do |result|
-                current_step = result
                 if current_step.is_a? Integer
                     current_number += result
                 elsif
@@ -101,12 +101,12 @@ module AresMUSH
 
 
         def self.roll_feat_die
-            [ [1], [2], [3], [4], [5], [6], [7], [8], [9], [10], ['Eye'], ['Rune'] ].shuffle.first
+            [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Eye', 'Rune' ].shuffle.first
         end
 
 
         def self.roll_success_die
-            [[1], [2], [3], [4], [5], ['Rune']].shuffle.first
+            [ 1, 2, 3, 4, 5, 6, 'Success' ].shuffle.first
         end
 
 
