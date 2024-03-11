@@ -11,6 +11,7 @@ en:
         sheet_title: "Character Sheet for %{name}"
         invalid_difficulty: "Modifier must be a number."
         invalid_skill: "Please enter a valid ability name to roll."
+        invalid_favoured: "Please enter the letter F if the roll is favoured or I if the roll is ill-favoured, otherwise leave the argument blank."
 
 
         roll_successful: "%{char} rolls %{roll} against a target number of %{TN} and is successful. The success dice were: %{dice}. The feat die was %{feat_die}"

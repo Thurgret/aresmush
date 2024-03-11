@@ -7,9 +7,10 @@ module AresMUSH
   
       def parse_args
          return if !cmd.args
-         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
+         args = cmd.parse_args(ArgParser.flexible_args)
          self.roll_str = titlecase_arg(args.arg1)
          self.modifier = integer_arg(args.arg2)
+         self.favoured = titlecase_arg(args.arg3)
       end
       
       def required_args
@@ -19,6 +20,12 @@ module AresMUSH
       def check_modifier
         return nil if self.modifier.blank?
         return t('tor.invalid_difficulty') if (modifier == 0)
+        return nil
+      end
+
+      def check_favoured
+        return nil if self.favoured.blank?
+        return t('tor.invalid_favoured') if (modifier != "f" || modifier != "i")
         return nil
       end
       

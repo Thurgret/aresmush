@@ -12,7 +12,7 @@ module AresMUSH
 
 
         class TorRollResults
-            attr_accessor :successful, :eye_of_mordor, :gandalf_rune, :degrees, :dice, :feat_die, :target_number, :total_number
+            attr_accessor :successful, :eye_of_mordor, :gandalf_rune, :degrees, :dice, :feat_die, :target_number, :total_number, :second_feat_die
 
             def initialize
                 dice = []
@@ -43,7 +43,7 @@ module AresMUSH
 
             
            
-        def self.roll_skill(char, skill_name, modifier)
+        def self.roll_skill(char, skill_name, modifier, favoured)
             #params = Tor.parse_roll_string(roll_str)
 
 
@@ -52,6 +52,8 @@ module AresMUSH
             if !modifier
                 modifier = 0
             end
+
+
 
             dice = []
             skill_dice = Tor.find_skill_dice(char, skill_name) + modifier
@@ -63,7 +65,14 @@ module AresMUSH
                 dice << Tor.roll_success_die
             end
             results.dice = dice
-            feat_die = Tor.roll_feat_die
+
+            if !favoured
+                feat_die = Tor.roll_feat_die
+            elsif
+                favoured == "f"
+                feat_die = Tor.roll_favoured_feat_dice
+            end
+
 
             target_number = 20 - related_attribute_rating(char, skill_name)
             current_number = 0
@@ -125,6 +134,36 @@ module AresMUSH
         def self.roll_success_die
             [ 1, 2, 3, 4, 5, 6 ].shuffle.first
         end
+
+        def self.roll_favoured_feat_dice
+            first = roll_feat_die
+            second = roll_feat_die
+
+            
+
+            if (first == 'Rune' || second = 'Rune')
+                return 'Rune'
+                elsif (first == 'Eye' && second != 'Eye')
+                    results.feat_die = second
+                    results.second_feat_die = first
+                    return second
+                elsif (second == 'Eye' && first != 'Eye')
+                    results.feat_die = first
+                    results.second_feat_die = second
+                    return first
+                elsif (first > second)
+                    results.second_feat_die = second
+                    results.feat_die = first
+                    return first
+                elsif (second > first)
+                    results.feat_die = second
+                    results.second_feat_die = first
+                    return second
+                end
+            end
+        end
+
+
 
 
 
