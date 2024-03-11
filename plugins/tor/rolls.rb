@@ -57,6 +57,7 @@ module AresMUSH
 
 
             dice = []
+            feat_dice = []
             skill_dice = Tor.find_skill_dice(char, skill_name) + modifier
 
             results = TorRollResults.new
@@ -68,7 +69,7 @@ module AresMUSH
             results.dice = dice
 
             if !favoured
-                feat_dice[] << Tor.roll_feat_die
+                feat_dice << Tor.roll_feat_die
             elsif (favoured == "F")
                 feat_dice[0] = Tor.roll_feat_die
                 feat_dice[1] = Tor.roll_feat_die
@@ -114,6 +115,7 @@ module AresMUSH
 
             results.degrees = degrees
 
+           
             return results
 
 
@@ -133,6 +135,7 @@ module AresMUSH
         end
 
 
+        
         def self.roll_feat_die
             [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ].shuffle.first
         end
