@@ -69,7 +69,7 @@ module AresMUSH
             if !favoured
                 feat_die = Tor.roll_feat_die
             elsif
-                favoured == "f"
+                favoured == "F"
                 feat_die = Tor.roll_favoured_feat_dice
             end
 
