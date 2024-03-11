@@ -44,7 +44,7 @@ module AresMUSH
             skill_dice = Tor.find_skill_dice(char, params.skill) + params.modifier
 
 
-            params.skill_dice.times.each do |d|
+            skill_dice.times.each do |d|
                 dice << Tor.roll_success_die
             end
             feat_die = Tor.roll_feat_die
