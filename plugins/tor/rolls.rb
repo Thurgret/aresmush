@@ -49,6 +49,9 @@ module AresMUSH
 
             return nil if !skill_name
 
+            if !modifier
+                modifier = 0
+            end
 
             dice = []
             skill_dice = Tor.find_skill_dice(char, skill_name) + modifier
