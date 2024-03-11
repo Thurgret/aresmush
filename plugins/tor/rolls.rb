@@ -70,7 +70,7 @@ module AresMUSH
                 feat_die = Tor.roll_feat_die
             elsif
                 favoured == "F"
-                feat_die = Tor.roll_favoured_feat_dice
+                feat_die = Tor.roll_favoured_feat_dice(results)
             end
 
 
@@ -135,7 +135,7 @@ module AresMUSH
             [ 1, 2, 3, 4, 5, 6 ].shuffle.first
         end
 
-        def self.roll_favoured_feat_dice
+        def self.roll_favoured_feat_dice(results)
             first = roll_feat_die
             second = roll_feat_die
 
