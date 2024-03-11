@@ -54,10 +54,11 @@ module AresMUSH
             degrees = 0
 
             dice.each do |result|
-                if result.is_a? Integer
+                current_step = result
+                if current_step.is_a? Integer
                     current_number += result
                 elsif
-                    result == 'Success'
+                    current_step == 'Success'
                     degrees += 1
                     current_number += 6
                 end
