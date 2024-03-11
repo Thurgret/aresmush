@@ -14,8 +14,8 @@ en:
         invalid_favoured: "Please enter the letter F if the roll is favoured or I if the roll is ill-favoured, otherwise leave the argument blank."
 
 
-        roll_successful: "%{char} rolls %{roll} against a target number of %{TN} and is successful. The success dice were: %{dice}. The feat die was %{feat_die}"
-        roll_failure: "%{char} rolls %{roll} against a target number of %{TN} and fails. The success dice were: %{dice}. The feat die was %{feat_die}"
-        gandalf_rune: "%{char} rolls %{roll} against a target number of %{TN} and is automatically successful, with a Gandalf rune! (%{dice})"
-        eye_of_mordor_success: "%{char} rolls %{roll} against a target number of %{TN} and is successful, despite rolling the Eye of Mordor! (%{dice})"
-        eye_of_mordor_failure: "%{char} rolls %{roll} against a target number of %{TN}, rolls the Eye of Mordor, and fails! (%{dice})"
+        roll_successful: "%{char} rolls %{roll} against a target number of %{TN} and is successful.  The success dice were: (%{dice}). The feat dice were: %{feat_dice}"
+        roll_failure: "%{char} rolls %{roll} against a target number of %{TN} and fails.  The success dice were: (%{dice}). The feat dice were: %{feat_dice}"
+        gandalf_rune: "%{char} rolls %{roll} against a target number of %{TN} and is automatically successful, with a Gandalf rune!  The success dice were: (%{dice}). The feat dice were: %{feat_dice}"
+        eye_of_mordor_success: "%{char} rolls %{roll} against a target number of %{TN} and is successful, despite rolling the Eye of Mordor! The success dice were: (%{dice}). The feat dice were: %{feat_dice}"
+        eye_of_mordor_failure: "%{char} rolls %{roll} against a target number of %{TN}, rolls the Eye of Mordor, and fails!  The success dice were: (%{dice}). The feat dice were: %{feat_dice}"
