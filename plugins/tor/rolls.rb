@@ -12,7 +12,7 @@ module AresMUSH
 
 
         class TorRollResults
-            attr_accessor :successful, :eye_of_mordor, :gandalf_rune, :degrees, :dice, :feat_die, :target_number, :total_number, :second_feat_die
+            attr_accessor :successful, :eye_of_mordor, :gandalf_rune, :degrees, :dice, :feat_die, :target_number, :total_number, :unused_feat_die
 
             def initialize
                 dice = []
@@ -68,8 +68,19 @@ module AresMUSH
 
             if !favoured
                 feat_die = Tor.roll_feat_die
-            elsif
-                favoured == "F"
+            elsif (favoured == "F")
+                first = Tor.roll_feat_die
+                second = Tor.roll_feat_die
+                if first > second
+                    feat_die = first
+                    results.unused_feat_die = second
+                elsif second > first
+                    feat_die = second
+                    results.unused_feat_die = first
+                end
+            end
+            
+
                 feat_die = Tor.roll_favoured_feat_dice(results)
             end
 
@@ -91,9 +102,9 @@ module AresMUSH
             results.target_number = target_number
             results.successful = false
 
-            if feat_die == 'Eye'
+            if feat_die == 0
                 results.eye_of_mordor = true
-            elsif feat_die == 'Rune'
+            elsif feat_die == 11
                 results.successful = true
                 results.gandalf_rune = true
             else
@@ -127,52 +138,14 @@ module AresMUSH
 
 
         def self.roll_feat_die
-            [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Eye', 'Rune' ].shuffle.first
+            [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ].shuffle.first
         end
 
 
         def self.roll_success_die
             [ 1, 2, 3, 4, 5, 6 ].shuffle.first
         end
-
-        def self.roll_favoured_feat_dice(results)
-            first = roll_feat_die
-            second = roll_feat_die
-
-            
-
-            if (first == 'Rune')
-                results.feat_die = first
-                results.second_feat_die = second
-                return 'Rune'
-            elsif (second == 'Rune')
-                results.feat_die = second
-                results.second_feat_die = first
-                return second
-            elsif (first == 'Eye' && second != 'Eye')
-                    results.feat_die = second
-                    results.second_feat_die = first
-                    return second
-                elsif (second == 'Eye' && first != 'Eye')
-                    results.feat_die = first
-                    results.second_feat_die = second
-                    return first
-                elsif (first > second)
-                    results.second_feat_die = second
-                    results.feat_die = first
-                    return first
-                elsif (second > first)
-                    results.feat_die = second
-                    results.second_feat_die = first
-                    return second
-            end
-        end
-
-
-
-
-
-    
+  
    
     
     end
