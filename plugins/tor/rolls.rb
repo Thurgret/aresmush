@@ -12,10 +12,11 @@ module AresMUSH
 
 
         class TorRollResults
-            attr_accessor :successful, :eye_of_mordor, :gandalf_rune, :degrees, :dice, :feat_die, :target_number, :total_number, :unused_feat_die
+            attr_accessor :successful, :eye_of_mordor, :gandalf_rune, :degrees, :dice, :feat_dice, :target_number, :total_number
 
             def initialize
                 dice = []
+                feat_dice = []
             end
 
         end
@@ -67,22 +68,16 @@ module AresMUSH
             results.dice = dice
 
             if !favoured
-                feat_die = Tor.roll_feat_die
+                feat_dice[] << Tor.roll_feat_die
             elsif (favoured == "F")
-                first = Tor.roll_feat_die
-                second = Tor.roll_feat_die
-                if first > second
-                    feat_die = first
-                    results.unused_feat_die = second
-                elsif second > first
-                    feat_die = second
-                    results.unused_feat_die = first
-                end
+                feat_dice[0] = Tor.roll_feat_die
+                feat_dice[1] = Tor.roll_feat_die
+                if feat_dice[0] < feat_dice[1]
+                    f = feat_dice[0]
+                    feat_dice[0] = feat_dice[1]
+                    feat_dice[1] = f
             end
-            
 
-                feat_die = Tor.roll_favoured_feat_dice(results)
-            end
 
 
             target_number = 20 - related_attribute_rating(char, skill_name)
@@ -102,14 +97,14 @@ module AresMUSH
             results.target_number = target_number
             results.successful = false
 
-            if feat_die == 0
+            if feat_dice[0] == 0
                 results.eye_of_mordor = true
-            elsif feat_die == 11
+            elsif feat_dice[0] == 11
                 results.successful = true
                 results.gandalf_rune = true
             else
-                current_number += feat_die
-                results.feat_die = feat_die
+                current_number += feat_dice[0]
+                results.feat_die = feat_dice[0]
             end
 
             if current_number >= target_number
