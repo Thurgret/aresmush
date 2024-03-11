@@ -82,6 +82,8 @@ module AresMUSH
 
             results.degrees = degrees
 
+            return results
+
 
                
         end
