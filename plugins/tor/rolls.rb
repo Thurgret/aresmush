@@ -21,8 +21,8 @@ module AresMUSH
         end
 
 
-        def self.parse_roll_string(roll_str)
-            params = TorRollParams.new
+        #def self.parse_roll_string(roll_str)
+         #   params = TorRollParams.new
             #sections = roll_str.split(/([\+-]\d+\w)/)
             #sections.each do |s|
              #   s = s.strip.titlecase.gsub("+", "")
@@ -37,8 +37,8 @@ module AresMUSH
             #end
 
 
-            return params  
-        end
+          #  return params  
+        #end
 
 
             
@@ -51,7 +51,7 @@ module AresMUSH
 
 
             dice = []
-            skill_dice = Tor.find_skill_dice(char, skill_name) + params.modifier
+            skill_dice = Tor.find_skill_dice(char, skill_name) + modifier
 
             results = TorRollResults.new
 
