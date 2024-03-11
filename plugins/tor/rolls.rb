@@ -28,7 +28,7 @@ module AresMUSH
                 s = s.strip.titlecase.gsub("+", "")
                 next if s.blank?
                 if (s =~ /([-\d]+)m/i)
-                    params.boost = $1.to_i
+                    params.modifier = $1.to_i
                 else
                     config = Tor.find_skill_config(s)
                     return nil if !config

@@ -8,18 +8,18 @@ module AresMUSH
       def parse_args
          return if !cmd.args
          self.roll_str = trim_arg(cmd.args)
-      #   self.modifier = trim_arg(cmd.args.after("+")).to_i
+         self.modifier = trim_arg(cmd.args.after("+")).to_i
       end
       
       def required_args
         [ self.roll_str ]
       end
       
-      #def check_modifier
-       # return nil if self.modifier.blank?
-        #return t('tor.invalid_difficulty') if (modifier == 0)
-       # return nil
-      #end
+      def check_modifier
+        return nil if self.modifier.blank?
+        return t('tor.invalid_difficulty') if (modifier == 0)
+        return nil
+      end
       
       def handle
         results = Tor.roll_skill(enactor, self.roll_str)
