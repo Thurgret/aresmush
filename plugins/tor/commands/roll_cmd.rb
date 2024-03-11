@@ -7,7 +7,7 @@ module AresMUSH
   
       def parse_args
          return if !cmd.args
-         self.roll_str = trim_arg(cmd.args)
+         self.roll_str = trim_arg(cmd.args.before("+"))
          self.modifier = trim_arg(cmd.args.after("+")).to_i
       end
       
