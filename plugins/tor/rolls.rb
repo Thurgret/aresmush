@@ -16,7 +16,7 @@ module AresMUSH
 
             def initialize
                 dice = []
-                feat_dice = []
+                feat_dice = [0, 0]
             end
 
         end
