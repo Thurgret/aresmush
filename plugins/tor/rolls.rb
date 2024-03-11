@@ -48,19 +48,19 @@ module AresMUSH
             dice = []
             skill_dice = Tor.find_skill_dice(char, params.skill) + params.modifier
 
+            results = TorRollResults.new
+
 
             skill_dice.times.each do |d|
                 dice << Tor.roll_success_die
-                
             end
+            results.dice = dice
             feat_die = Tor.roll_feat_die
 
             target_number = 20 - related_attribute_rating(char, params.skill)
             current_number = 0
             degrees = 0
 
-            results = TorRollResults.new
-            results.dice.concat(dice)
 
 
             dice.each do |result|
@@ -116,7 +116,7 @@ module AresMUSH
 
 
         def self.roll_success_die
-            [ 1, 2, 3, 4, 5, 'Success' ].shuffle.first
+            [ 1, 2, 3, 4, 5, 6 ].shuffle.first
         end
 
 
