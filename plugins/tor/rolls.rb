@@ -53,6 +53,8 @@ module AresMUSH
             current_number = 0
             degrees = 0
 
+            results = TorRollResults.new
+
 
             dice.each do |result|
                 results.numbers << result
@@ -65,7 +67,6 @@ module AresMUSH
                 end
             end
 
-            results = TorRollResults.new
        
             results.target_number = target_number
 
