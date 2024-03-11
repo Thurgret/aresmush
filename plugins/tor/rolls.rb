@@ -49,7 +49,7 @@ module AresMUSH
 
 
             return nil if !skill_name
-            return nil if !Tor.find_skill(skill_name)
+            return nil if !Tor.find_skill(char, skill_name)
 
             if !modifier
                 modifier = 0
