@@ -13,6 +13,11 @@ module AresMUSH
 
         class TorRollResults
             attr_accessor :successful, :eye_of_mordor, :gandalf_rune, :degrees, :dice, :feat_die, :target_number
+
+            def initialize
+                dice = []
+            end
+            
         end
 
 
