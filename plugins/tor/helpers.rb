@@ -49,6 +49,7 @@ module AresMUSH
         def self.find_skill_config(name)
             return nil if !name
             types = Global.read_config('tor', 'skills')
+            name_downcase = name.downcase
             types.select { |a| a['name'].downcase == name.downcase }.first  
         end 
 
