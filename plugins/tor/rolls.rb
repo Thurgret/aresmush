@@ -55,7 +55,7 @@ module AresMUSH
 
 
             dice.each do |result|
-                numbers << result
+                results.numbers << result
                 if result.is_a? Integer
                     current_number += result
                 elsif
