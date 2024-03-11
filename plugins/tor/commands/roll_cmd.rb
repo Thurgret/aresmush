@@ -33,17 +33,17 @@ module AresMUSH
       
       
      
-        if (results.successful)
+        if (results.successful == true)
           if (results.gandalf_rune)
-            message = t('tor.gandalf_rune', :dice => results.dice(' '), :roll => self.roll_str, :char => enactor_name )
+            message = t('tor.gandalf_rune', :dice => results.dice(' '), :feat_die = results.feat_die, :roll => self.roll_str, :char => enactor_name )
           elsif (results.eye_of_mordor)
-            message = t('tor.roll_eye_of_mordor_success', :dice => results.dice(' '), :roll => self.roll_str, :char => enactor_name )
-            message = t('tor.roll_successful', :dice => results.dice(' '), :roll => self.roll_str, :char => enactor_name )
-          elsif (!results.successful)
+            message = t('tor.roll_eye_of_mordor_success', :dice => results.dice(' '),  :feat_die = results.feat_die, :roll => self.roll_str, :char => enactor_name )
+            message = t('tor.roll_successful', :dice => results.dice(' '), :feat_die = results.feat_die,  :roll => self.roll_str, :char => enactor_name )
+          elsif (results.successful == false)
             if (results.eye_of_mordor)
-              message = t('tor.eye_of_mordor_failure', :dice => results.dice(' '), :roll => self.roll_str, :char => enactor_name )
+              message = t('tor.eye_of_mordor_failure', :dice => results.dice(' '), :feat_die = results.feat_die,  :roll => self.roll_str, :char => enactor_name )
             else
-              message = t('tor.roll_failure', :dice => results.dice(' '), :roll => self.roll_str, :char => enactor_name )
+              message = t('tor.roll_failure', :dice => results.dice(' '), :feat_die = results.feat_die,  :roll => self.roll_str, :char => enactor_name )
             end
           end
         end

@@ -10,6 +10,7 @@ en:
         invalid_attribute_name: "That is not an attribute name."
         sheet_title: "Character Sheet for %{name}"
         invalid_difficulty: "Modifier must be a number."
+        invalid_skill: "Please enter a valid ability name to roll."
 
 
         roll_successful: "%{char} rolls %{roll} and is successful. (%{dice}) and %{feat_die}"
