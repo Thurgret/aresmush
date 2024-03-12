@@ -83,7 +83,8 @@ module AresMUSH
 
 
 
-            target_number = 20 - related_attribute_rating(char, skill_name)
+            related_attribute = related_attribute_rating(char, skill_name)
+            target_number = 20 - related_attribute
             current_number = 0
             degrees = 0
 
