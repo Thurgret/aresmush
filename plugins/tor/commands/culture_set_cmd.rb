@@ -40,7 +40,7 @@ module AresMUSH
             cultures = model.group("Culture")
 
 
-            culture_name = cultures["name"].downcase
+            culture_name = cultures["name"].to_s
 
             Global.logger.debug culture_name
 
