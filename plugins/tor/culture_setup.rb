@@ -11,11 +11,13 @@ module AresMUSH
             culture_config = find_culture_config(name)
             return if !culture_config
 
+            skills = {}
+
             culture_config.each do |k, v|
 
                 Global.logger.debug k
                 Global.logger.debug v
-                skills[] = v["starting_skills"]
+                skills = v["starting_skills"]
                 skills.each do |skill, rating|
                     Global.logger.debug skill
                     Global.logger.debug rating
