@@ -5,17 +5,44 @@ module AresMUSH
         
         def self.culture_skills(char, culture_name)
             culture_name = find_culture(char, culture_name)
-            skills = Global.read_config('tor', 'cultures', 'starting_skills')
-            return if !skills
-            skills.each do |k, v|
-                skill = Tor.find_skill(char, k)
-                rating = Tor.skill_rating(char, v)
-                if (skill)
-                    skill.update(rating)
-                  else
-                    TorSkills.create(name: self.skill, rating: self.rating, character: char)
-                  end
+
+            #This is a profoundly bad way to do this and in the very unlikely event anyone ever looks at this, don't do this.
+         
+            athletics = Tor.find_skill(model, "athletics")
+            awareness = Tor.find_skill(model, "awareness")
+            awe = Tor.find_skill(model, "awe")
+            battle = Tor.find_skill(model, "battle")
+            courtesy = Tor.find_skill(model, "courtesy")
+            craft = Tor.find_skill(model, "craft")
+            enhearten = Tor.find_skill(model, "enhearten")
+            explore = Tor.find_skill(model, "explore")
+            healing = Tor.find_skill(model, "healing")
+            hunting = Tor.find_skill(model, "hunting")
+            insight = Tor.find_skill(model, "insight")
+            lore =Tor.find_skill(model, "lore")
+            persuade =Tor.find_skill(model, "persuade")
+            riddle = Tor.find_skill(model, "riddle")
+            scan = Tor.find_skill(model, "scan")
+            song =Tor.find_skill(model, "song")
+            stealth =Tor.find_skill(model, "stealth")
+            travel =Tor.find_skill(model, "travel")
+
+
+            if (culture_name == "Bardings")
+                athletics.update(rating: 1)
+                awe.update(rating: 1)
             end
+
+
+
+
+            
+           
         end
     end
 end
+
+
+
+
+
