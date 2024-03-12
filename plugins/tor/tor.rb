@@ -31,7 +31,7 @@ module AresMUSH
       return SheetCmd
     when "roll"
       return RollCmd
-    when "culture"
+    when "cultureskills"
       if (cmd.switch_is?("set"))
         return CultureSetCmd
       end
