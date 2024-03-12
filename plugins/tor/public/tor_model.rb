@@ -4,7 +4,7 @@ module AresMUSH
         
     
     
-        attribute :tor_culture, "AresMUSH::TorCulture"
+        collection :tor_culture, "AresMUSH::TorCulture"
         attribute :tor_calling
         
         
