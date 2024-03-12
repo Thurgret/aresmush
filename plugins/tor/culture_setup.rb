@@ -12,8 +12,8 @@ module AresMUSH
             return if !culture_config
 
             culture_config.each do |k, v|
-                puts k
-                puts v
+                Global.logger.debug k
+                Global.logger.debug v
                 culture_skills = v["starting_skills"]
                 culture_skills.each do |skill, rating|
                     puts skill
