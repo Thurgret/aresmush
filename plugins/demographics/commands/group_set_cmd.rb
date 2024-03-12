@@ -59,6 +59,12 @@ module AresMUSH
           else
             client.emit_success t('demographics.group_set', :group => self.group_name, :value => self.value)
           end
+
+          if (self.group_name.downcase == "culture")
+            Tor.culture_skills(model, self.value.downcase)
+            Tor.zero_attributes(model)
+          end
+
         end
       end
     end
