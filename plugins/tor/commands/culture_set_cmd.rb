@@ -13,18 +13,17 @@ module AresMUSH
             self.target_name = titlecase_arg(args.arg1)
             self.culture_name = titlecase_arg(args.arg2)
           else
-            args = cmd.parse_args(ArgParser.flexible_args)
             self.target_name = enactor_name
-            self.attribute_name = titlecase_arg(args.arg1)
+            self.culture_name = titlecase_arg(args.arg1)
           end
         end
         
         def required_args
-          [self.target_name, self.attribute_name]
+          [self.target_name, self.culture_name]
         end
         
         def check_valid_culture
-          return t('tor.invalid_culture_name') if !Tor.is_valid_culture_name(self.attribute_name)
+          return t('tor.invalid_culture_name') if !Tor.is_valid_culture_name(self.culture_name)
           return nil
         end
         
