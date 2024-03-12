@@ -13,10 +13,12 @@ module AresMUSH
 
 
             culture_config["starting_skills"].each do |skill, rating|
+                skill = Tor.find_skill(model, skill)
+                skill.update(rating: rating)
                 Global.logger.debug skill
                 Global.logger.debug rating
             end
-            
+
 
            # culture_config.each do |k, v|
 #
