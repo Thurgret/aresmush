@@ -39,7 +39,7 @@ module AresMUSH
           
             groups = Demographics.get_group(model)
             groups["cultures"].each do |name, desc|
-              culture_name = name.downcase
+              Global.debugger.log name
             end
 
             if !culture_name
