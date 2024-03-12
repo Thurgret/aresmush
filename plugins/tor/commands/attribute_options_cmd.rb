@@ -42,8 +42,12 @@ module AresMUSH
               return nil          
             end
 
+            
+            options = Global.read_config('tor', 'attributes_chargen')
+            name_downcase = culture_name.downcase
+            options = options.select { |a| a['name'].downcase == name.downcase }.first
 
-            options = Global.read_config('tor', 'attributes_chargen').select { |a| a['name'].downcase == culture_name }.first
+
             options["name"].each do |number, attrs, rating|
                 client.emit_success t('attribute_option', :option => number, :attrs => attrs, :rating => rating.to_s)
             end
