@@ -38,11 +38,10 @@ module AresMUSH
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
           
             cultures = model.group("cultures")
+            name = cultures["name"]
 
-            cultures.each do |name, desc|
               Global.logger.debug name
               Global.logger.debug desc
-            end
 
             if !culture_name
               client.emit_failure t('tor.invalid_culture')
