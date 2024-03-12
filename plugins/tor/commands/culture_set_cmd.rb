@@ -39,8 +39,10 @@ module AresMUSH
           
             culture_name = get_group_value(model, "cultures")
 
-            if !culture_name client.emit_failure t('tor.invalid_culture')
-
+            if !culture_name
+              client.emit_failure t('tor.invalid_culture')
+              return nil
+            end
             culture = Tor.find_culture(model, self.culture_name)
                 if (culture)
                     culture.update(name: self.culture_name)
@@ -56,6 +58,8 @@ module AresMUSH
         end
     end
 
-end
+
+  end
+
 
 end
