@@ -39,9 +39,8 @@ module AresMUSH
           
             cultures = model.group("Culture")
 
-            Global.logger.debug cultures
-              Global.logger.debug cultures["name"]
-              Global.logger.debug desc
+
+            culture_name = cultures["name"]
 
             if !culture_name
               client.emit_failure t('tor.invalid_culture')
