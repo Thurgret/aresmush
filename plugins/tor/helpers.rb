@@ -65,6 +65,7 @@ module AresMUSH
             types.select { |a| a['name'].downcase == name.downcase }.first  
         end
 
+
         def self.find_culture_config(name)
             types = Global.read_config('tor', 'cultures')
             name_downcase = name.downcase

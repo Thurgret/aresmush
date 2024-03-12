@@ -18,18 +18,16 @@ module AresMUSH
             end
 
 
-            #Zero out attributes - need to be selected again when culture is changed.
-            model.update(heart: 0)
-            model.update(wits: 0)
-            model.update(strength: 0)
-           
         end
 
         def self.zero_attributes(model)
             #Zero out attributes - need to be selected again when culture is changed.
-            model.update(heart: 0)
-            model.update(wits: 0)
-            model.update(strength: 0)          
+            strength = Tor.find_attribute(model, "strength")
+            strength.update(rating: 0)
+            heart = Tor.find_attribute(model, "heart")
+            heart.update(rating: 0)
+            wits = Tor.find_attribute(model, "wits")
+            wits.update(rating: 0)
         end  
     end
 end
