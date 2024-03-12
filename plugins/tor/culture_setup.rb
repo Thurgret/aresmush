@@ -16,8 +16,8 @@ module AresMUSH
                 Global.logger.debug v
                 culture_skills = v["starting_skills"]
                 culture_skills.each do |skill, rating|
-                    puts skill
-                    puts rating
+                    Global.logger.debug skill
+                    Global.logger.debug rating
                     skill = Tor.find_skill(model, skill)
                     skill.update(rating: rating)
                 
