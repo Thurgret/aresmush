@@ -28,7 +28,7 @@ module AresMUSH
             travel =Tor.find_skill(model, "travel")
 
 
-            if (culture_name == "Bardings")
+            if (culture_name == "bardings")
                 athletics.update(rating: 1)
                 awe.update(rating: 1)
             end
