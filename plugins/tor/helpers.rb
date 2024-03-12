@@ -83,6 +83,12 @@ module AresMUSH
             attrs ? attrs.rating : 0
         end
 
+        def self.attribute_options(culture)
+            options = Global.read_config('tor', 'attributes_chargen')
+            name_downcase = culture_name.downcase
+            options.select { |a| a['name'].downcase == name_downcase }.first
+        end
+
 
 
     end
