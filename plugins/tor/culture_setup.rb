@@ -11,7 +11,7 @@ module AresMUSH
             culture_config = find_culture_config(name)
             return if !culture_config
 
-            culture.each do |k, v|
+            culture_config.each do |k, v|
                 skill = Tor.find_skill(model, k)
                 skill.update(rating: v)
             end
