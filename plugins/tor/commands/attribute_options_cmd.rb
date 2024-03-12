@@ -48,7 +48,7 @@ module AresMUSH
 
             options = Tor.attribute_options(culture_name)
 
-            options["name"].each do |number, attrs, rating|
+            options.each do |number, attrs, rating|
                 Global.logger.debug culture_name
                 Global.logger.debug number
                 Global.logger.debug attrs
