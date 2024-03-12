@@ -39,6 +39,7 @@ module AresMUSH
           
             cultures = model.group("cultures")
 
+            Global.logger.debug cultures
               Global.logger.debug cultures["name"]
               Global.logger.debug desc
 
