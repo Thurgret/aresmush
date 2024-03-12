@@ -1,10 +1,12 @@
 module AresMUSH    
     module Tor
       class CultureSetCmd
+        
         include CommandHandler
         
         attr_accessor :target_name, :culture_name
         
+       
         def parse_args
           # Admin version
           
@@ -40,22 +42,23 @@ module AresMUSH
         end
         
         def handle
-          ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            culture = Tor.find_culture(model, self.culture_name)
-                       
-            if (culture)
-              culture.update(name: self.culture_name)
-            else
-                TorCulture.create(name: self.culture_name, character: model)
-            end
-
             ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+                culture = Tor.find_culture(model, self.culture_name)
+                if (culture)
+                    culture.update(name: self.culture_name)
+                else
+                    TorCulture.create(name: self.culture_name, character: model)
+            
+                end
+                
                 Tor.culture_skills(self.target_name, self.culture_name)
            
-            client.emit_success t('tor.culture_set')
-        
+                client.emit_success t('tor.culture_set')
+       
+            end
         end
     end
-  end
+
 end
+
 end
