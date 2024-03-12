@@ -4,7 +4,7 @@ module AresMUSH
         
         include CommandHandler
         
-        attr_accessor :target_name, :culture_name
+        attr_accessor :target_name
         
        
         def parse_args
@@ -45,14 +45,14 @@ module AresMUSH
               client.emit_failure t('tor.invalid_culture')
               return nil
             end
-            culture = Tor.find_culture(model, self.culture_name)
+            culture = Tor.find_culture(model, culture_name)
                 if (culture)
-                    culture.update(name: self.culture_name)
+                    culture.update(name: culture_name)
                 else
-                    TorCulture.create(name: self.culture_name, character: model)
+                    TorCulture.create(name: culture_name, character: model)
                 end
                 
-                Tor.culture_skills(model, self.culture_name)
+                Tor.culture_skills(model, culture_name)
            
                 client.emit_success t('tor.culture_set')
        
