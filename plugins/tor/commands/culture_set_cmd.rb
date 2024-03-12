@@ -10,25 +10,18 @@ module AresMUSH
         def parse_args
           # Admin version
           
-          if (cmd.args =~ /\//)
-            args = cmd.parse_args(ArgParser.arg1_slash_arg2)
-            self.target_name = titlecase_arg(args.arg1)
-            self.culture_name = titlecase_arg(args.arg2)
-          else
+          if (cmd.args?)
             args = cmd.args
+            self.target_name = titlecase_arg(args)
+          else
             self.target_name = enactor_name
-            self.culture_name = titlecase_arg(args)
           end
         end
         
         def required_args
-          [self.target_name, self.culture_name]
+          [self.target_name]
         end
-        
-        def check_valid_culture
-          return t('tor.invalid_culture_name') if !Tor.is_valid_culture_name?(self.culture_name)
-          return nil
-        end
+
         
         def check_can_set
           return nil if enactor_name == self.target_name
@@ -42,8 +35,13 @@ module AresMUSH
         end
         
         def handle
-            ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-                culture = Tor.find_culture(model, self.culture_name)
+          ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+          
+            culture_name = get_group_value(model, "cultures")
+
+            if !culture_name client.emit_failure t('tor.invalid_culture')
+
+            culture = Tor.find_culture(model, self.culture_name)
                 if (culture)
                     culture.update(name: self.culture_name)
                 else
