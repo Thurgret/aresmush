@@ -13,7 +13,7 @@ module AresMUSH
             self.target_name = titlecase_arg(args.arg1)
             self.culture_name = titlecase_arg(args.arg2)
           else
-            args = cmd.parse_args(ArgParser.arg1)
+            args = cmd.parse_args(ArgParser.flexible_args)
             self.target_name = enactor_name
             self.attribute_name = titlecase_arg(args.arg1)
           end
