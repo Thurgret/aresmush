@@ -5,7 +5,7 @@ module AresMUSH
         
         def self.culture_skills(model, culture_name)
             culture = find_culture(model, culture_name)
-            name = culture.name_downcase
+            name = culture.name.downcase
 
             #This is a profoundly bad way to do this and in the very unlikely event anyone ever looks at this, don't do this.
          
