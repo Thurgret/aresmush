@@ -4,7 +4,7 @@ module AresMUSH
         
     
     
-        attribute :tor_culture     
+        collection :tor_culture, "AresMUSH::TorCulture"
         attribute :tor_calling
         
         
@@ -78,6 +78,17 @@ module AresMUSH
         reference :character, "AresMUSH::Character"
         index :name
         
+    end
+
+
+    class TorCulture < Ohm::Model
+          include ObjectModel
+
+          attribute :name
+          attribute :desc
+
+          reference :character, "AresMUSH::Character"
+          index :name
     end
 
 

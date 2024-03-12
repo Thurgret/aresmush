@@ -26,6 +26,13 @@ module AresMUSH
             names.include?(name.downcase)
         end
 
+        def self.is_valid_culture_name?(name)
+            return false if !name
+            names = Global.read_config('tor', 'cultures').map { |a| a['name'].downcase }
+            names.include?(name.downcase)
+        end
+            
+
 
         
         def self.can_manage_abilities?(actor)      
@@ -46,6 +53,12 @@ module AresMUSH
             model.tor_attributes.select { |a| a.name.downcase == name_downcase }.first
         end
 
+        def self.find_culture(model, culture_name)
+            name_downcase = culture_name.downcase
+            model.tor_culture.select { |a| a.name.downcase == name_downcase }.first
+        end
+
+
         def self.find_skill_config(name)
             types = Global.read_config('tor', 'skills')
             name_downcase = name.downcase
@@ -64,7 +77,24 @@ module AresMUSH
             attrs ? attrs.rating : 0
         end
 
-  
+        def self.culture_skills(char, culture_name)
+            culture_name = Tor.find_culture(culture_name)
+            skills = Global.read_config('tor', 'cultures', 'starting_skills')
+            return if !skills
+            skills.each do |k, v|
+                skill = Tor.find_skill(char, k)
+                rating = Tor.skill_rating(char, v)
+                if (skill)
+                    skill.update(rating: self.rating)
+                  else
+                    TorSkills.create(name: self.skill_name, rating: self.rating, character: model)
+                  end
+            end
+        end
+
+
+
+
 
     end
 end
