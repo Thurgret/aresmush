@@ -32,6 +32,11 @@ module AresMUSH
     when "roll"
       return RollCmd
     end
+    when "culture"
+      if (cmd.switch_is?("set"))
+        return CultureSetCmd
+      end
+    end
 
     
     return nil

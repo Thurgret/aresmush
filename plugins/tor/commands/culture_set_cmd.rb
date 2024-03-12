@@ -1,6 +1,6 @@
 module AresMUSH    
     module Tor
-      class AttributeSetCmd
+      class CultureSetCmd
         include CommandHandler
         
         attr_accessor :target_name, :culture_name
