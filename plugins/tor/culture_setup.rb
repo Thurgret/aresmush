@@ -12,8 +12,12 @@ module AresMUSH
             return if !culture_config
 
             culture_config.each do |k, v|
+                puts k
+                puts v
                 culture_skills = v["starting_skills"]
                 culture_skills.each do |skill, rating|
+                    puts skill
+                    puts rating
                     skill = Tor.find_skill(model, skill)
                     skill.update(rating: rating)
                 
