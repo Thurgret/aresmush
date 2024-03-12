@@ -3,8 +3,8 @@ module AresMUSH
         
         
         
-        def self.culture_skills(char, culture_name)
-            culture_name = find_culture(char, culture_name)
+        def self.culture_skills(model, culture_name)
+            culture_name = find_culture(model, culture_name)
 
             #This is a profoundly bad way to do this and in the very unlikely event anyone ever looks at this, don't do this.
          
