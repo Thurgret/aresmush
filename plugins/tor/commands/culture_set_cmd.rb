@@ -44,8 +44,7 @@ module AresMUSH
             culture = Tor.find_culture(model, self.culture_name)
                        
             if (culture)
-                client.emit_success("Trying this out")
-              culture.update(name: self.culture)
+              culture.update(name: self.culture_name)
             else
                 TorCulture.create(name: self.culture_name, character: model)
             end
