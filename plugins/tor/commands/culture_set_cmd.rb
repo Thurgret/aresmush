@@ -37,7 +37,10 @@ module AresMUSH
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
           
-            culture_name = CharacterGroupsRequestHandler.get_group_value(model, "cultures")
+            groups = Demographics.get_group(model)
+            groups["cultures"].each do |name, desc|
+              culture_name = name.downcase
+            end
 
             if !culture_name
               client.emit_failure t('tor.invalid_culture')
