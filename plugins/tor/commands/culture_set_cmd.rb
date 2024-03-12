@@ -10,7 +10,7 @@ module AresMUSH
         def parse_args
           # Admin version
           
-          if (cmd.args?)
+          if (cmd.args)
             args = cmd.args
             self.target_name = titlecase_arg(args)
           else
