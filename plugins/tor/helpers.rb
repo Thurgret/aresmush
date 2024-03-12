@@ -78,7 +78,7 @@ module AresMUSH
         end
 
         def self.culture_skills(char, culture_name)
-            culture_name = Tor.find_culture(culture_name)
+            culture_name = Tor.find_culture(char, culture_name)
             skills = Global.read_config('tor', 'cultures', 'starting_skills')
             return if !skills
             skills.each do |k, v|
