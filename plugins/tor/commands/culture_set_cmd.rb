@@ -48,7 +48,6 @@ module AresMUSH
                     culture.update(name: self.culture_name)
                 else
                     TorCulture.create(name: self.culture_name, character: model)
-            
                 end
                 
                 Tor.culture_skills(model, self.culture_name)
