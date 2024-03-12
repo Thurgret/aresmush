@@ -49,9 +49,9 @@ module AresMUSH
 
 
             options["name"].each do |number, attrs, rating|
-                client.emit_success culture_name
-                client.emit_success number
-                client.emit_success attrs
+                Global.logger.debug culture_name
+                Global.logger.debug number
+                Global.logger.debug attrs
                 client.emit_success t('attribute_option', :option => number, :attrs => attrs, :rating => rating.to_s)
             end
 
