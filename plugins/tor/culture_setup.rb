@@ -11,13 +11,11 @@ module AresMUSH
             culture_config = find_culture_config(name)
             return if !culture_config
 
-            skills = culture_config.select { |a| a["starting_skills"].downcase == name }
 
-            skills.each do |skill, rating|
 
-                Global.logger.debug skill
+
+                Global.logger.debug culture_config["starting_skills"]
                 Global.logger.debug rating
-            end
 
 
 
