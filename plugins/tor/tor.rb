@@ -31,6 +31,8 @@ module AresMUSH
       return SheetCmd
     when "roll"
       return RollCmd
+    when "groups/set"
+      return CultureSetCmd
     when "culturestart"
         return CultureSetCmd
     when "attributeoptions"

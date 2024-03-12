@@ -54,12 +54,7 @@ module AresMUSH
                 Global.logger.debug attrs
                 client.emit_success t('tor.attribute_option', :option => number, :attrs => attrs, :rating => rating)
             end
-
-        
-       
-        end
-
-       
+        end       
         end
     end
 
