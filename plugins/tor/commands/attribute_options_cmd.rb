@@ -1,6 +1,6 @@
 module AresMUSH    
     module Tor
-      class CultureSetCmd
+      class AttributeOptionsCmd
         
         include CommandHandler
         
@@ -8,8 +8,7 @@ module AresMUSH
         
        
         def parse_args
-          # Admin version
-          
+          # Admin version          
           if (cmd.args)
             args = cmd.args
             self.target_name = titlecase_arg(args)
@@ -42,18 +41,11 @@ module AresMUSH
               client.emit_failure t('tor.invalid_culture')
               return nil
             end
-            culture = Tor.find_culture(model, culture_name)
-                if (culture)
-                    culture.update(name: culture_name)
-                else
-                    TorCulture.create(name: culture_name, character: model)
-                end
-                
-                Tor.culture_skills(model, culture_name)
-           
-                client.emit_success t('tor.culture_set')
-       
-            end
+
+            options = Global.read_config('tor', 'attributes_chargen').map { |a| a['culture_name'] }
+
+            client.emit_success (options)
+
         end
     end
 

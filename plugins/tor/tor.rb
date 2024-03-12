@@ -31,10 +31,10 @@ module AresMUSH
       return SheetCmd
     when "roll"
       return RollCmd
-    when "cultureskills"
-      if (cmd.switch_is?("set"))
+    when "culturestart"
         return CultureSetCmd
-      end
+    when "attributeoptions"
+      return AttributeOptionsCmd
     end
 
 
