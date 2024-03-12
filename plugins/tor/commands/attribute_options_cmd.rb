@@ -52,7 +52,7 @@ module AresMUSH
                 Global.logger.debug culture_name
                 Global.logger.debug number
                 Global.logger.debug attrs
-                client.emit_success t('tor.attribute_option', :option => number.to_s, :attrs => attrs.to_s, :rating => rating.to_s)
+                client.emit_success t('tor.attribute_option', :option => number.join(""), :attrs => attrs.join(""), :rating => rating.join(""))
             end
 
         
