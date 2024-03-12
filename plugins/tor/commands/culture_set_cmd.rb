@@ -24,7 +24,7 @@ module AresMUSH
         end
         
         def check_valid_culture
-          return t('tor.invalid_culture_name') if !Tor.is_valid_culture_name(self.culture_name)
+          return t('tor.invalid_culture_name') if !Tor.is_valid_culture_name?(self.culture_name)
           return nil
         end
         
