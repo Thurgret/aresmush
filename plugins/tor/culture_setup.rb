@@ -12,7 +12,6 @@ module AresMUSH
             return if !culture_config
 
             culture_config.each do |k, v|
-                client.emit_success(k.to_s)
                 skill = Tor.find_skill(model, k)
                 skill.update(rating: v)
             end
