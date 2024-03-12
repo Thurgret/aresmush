@@ -39,14 +39,16 @@ module AresMUSH
 
             if culture_name == nil
               client.emit_failure t('tor.invalid_culture')
-              return nil
-           
+              return nil          
             end
-        end
+
 
             options = Global.read_config('tor', 'attributes_chargen').map { |a| a[culture_name] }
 
             client.emit_success (options)
+
+        
+        end
 
        
         end

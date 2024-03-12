@@ -53,12 +53,11 @@ module AresMUSH
            
                 client.emit_success t('tor.culture_set')
        
+            
+              end
             end
+          end
+
         end
-    end
-
-
-  end
-
 
 end
