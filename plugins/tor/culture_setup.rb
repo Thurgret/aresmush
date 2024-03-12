@@ -11,21 +11,29 @@ module AresMUSH
             culture_config = find_culture_config(name)
             return if !culture_config
 
-            skills = {}
+            skills = culture_config.select { |a| a['starting_skills'].downcase == name.downcase }
 
-            culture_config.each do |k, v|
+            skills.each do |skill, rating|
 
-                Global.logger.debug k
-                Global.logger.debug v
-                skills = v["starting_skills"]
-                skills.each do |skill, rating|
-                    Global.logger.debug skill
-                    Global.logger.debug rating
-                    skill = Tor.find_skill(model, skill)
-                    #skill.update(rating: rating)
-                
-                end
+                Global.logger.debug skill
+                Global.logger.debug rating
             end
+
+
+
+           # culture_config.each do |k, v|
+#
+             #   Global.logger.debug k
+ #               Global.logger.debug v
+  #              skills = v["starting_skills"]
+   #             skills.each do |skill, rating|
+    #                Global.logger.debug skill
+     #               Global.logger.debug rating
+      #              skill = Tor.find_skill(model, skill)
+       #             #skill.update(rating: rating)
+        #        
+         #       end
+          #  end
 
 
             #This is a profoundly dumb way to do this and in the very unlikely event anyone ever looks at this, don't do this.
