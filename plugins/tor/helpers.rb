@@ -85,9 +85,9 @@ module AresMUSH
                 skill = Tor.find_skill(char, k)
                 rating = Tor.skill_rating(char, v)
                 if (skill)
-                    skill.update(rating: self.rating)
+                    skill.update(rating)
                   else
-                    TorSkills.create(name: self.skill_name, rating: self.rating, character: model)
+                    TorSkills.create(name: self.skill, rating: self.rating, character: char)
                   end
             end
         end
