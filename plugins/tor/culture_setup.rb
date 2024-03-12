@@ -15,7 +15,7 @@ module AresMUSH
 
                 Global.logger.debug k
                 Global.logger.debug v
-                skills = v["starting_skills"]
+                skills[] = v["starting_skills"]
                 skills.each do |skill, rating|
                     Global.logger.debug skill
                     Global.logger.debug rating
