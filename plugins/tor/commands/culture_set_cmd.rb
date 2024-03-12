@@ -39,25 +39,26 @@ module AresMUSH
           
             groups = Demographics.get_group(model)
             groups["cultures"].each do |name, desc|
-              Global.debugger.log name
+              Global.logger.debug name
+              Global.logger.debug desc
             end
 
             if !culture_name
               client.emit_failure t('tor.invalid_culture')
               return nil
             end
-  #          culture = Tor.find_culture(model, self.culture_name)
-   #             if (culture)
-    #                culture.update(name: self.culture_name)
-     #           else
+            culture = Tor.find_culture(model, self.culture_name)
+                if (culture)
+                    culture.update(name: self.culture_name)
+                else
                     TorCulture.create(name: self.culture_name, character: model)
-      #          end
+                end
                 
-       #         Tor.culture_skills(model, self.culture_name)
+                Tor.culture_skills(model, self.culture_name)
            
-        #        client.emit_success t('tor.culture_set')
+                client.emit_success t('tor.culture_set')
        
-         #   end
+            end
         end
     end
 
