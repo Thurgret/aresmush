@@ -44,8 +44,9 @@ module AresMUSH
 
 
             options = Global.read_config('tor', 'attributes_chargen')
-
-            client.emit_success (options['attributes_one'])
+            options[culture_name].each do |number, attrs, rating|
+                client.emit_success t('attribute_option', :option => number, :attrs => attrs, :rating => rating.to_s)
+            end
 
         
         end

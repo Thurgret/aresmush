@@ -16,6 +16,10 @@ en:
         invalid_culture_name: "Please enter a valid culture name."
 
 
+        attribute_option: "%{option}: %{attrs} %{rating}"
+
+
+
         roll_successful: "%{char} rolls %{roll} against a target number of %{TN} and is successful.  The success dice were: (%{dice}). The feat dice were: %{feat_dice}"
         roll_failure: "%{char} rolls %{roll} against a target number of %{TN} and fails.  The success dice were: (%{dice}). The feat dice were: %{feat_dice}"
         gandalf_rune: "%{char} rolls %{roll} against a target number of %{TN} and is automatically successful, with a Gandalf rune!  The success dice were: (%{dice}). The feat dice were: %{feat_dice}"
