@@ -50,6 +50,7 @@ module AresMUSH
                 end
                 
                 Tor.culture_skills(model, culture_name)
+                Tor.zero_attributes(model)
            
                 client.emit_success t('tor.culture_set')
        
