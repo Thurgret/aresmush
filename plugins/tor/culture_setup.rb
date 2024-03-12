@@ -12,14 +12,15 @@ module AresMUSH
             return if !culture_config
 
             culture_config.each do |k, v|
+
                 Global.logger.debug k
                 Global.logger.debug v
-                culture_skills = v["starting_skills"]
-                culture_skills.each do |skill, rating|
+                skills = v["starting_skills"]
+                skills.each do |skill, rating|
                     Global.logger.debug skill
                     Global.logger.debug rating
                     skill = Tor.find_skill(model, skill)
-                    skill.update(rating: rating)
+                    #skill.update(rating: rating)
                 
                 end
             end
