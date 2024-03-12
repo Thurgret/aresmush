@@ -11,7 +11,7 @@ module AresMUSH
             culture_config = find_culture_config(name)
             return if !culture_config
 
-            skills = culture_config.select { |a| a['starting_skills'].downcase == name }
+            skills = culture_config.select { |a| a["starting_skills"].downcase == name }
 
             skills.each do |skill, rating|
 
