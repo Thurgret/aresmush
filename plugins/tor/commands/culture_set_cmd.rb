@@ -37,7 +37,7 @@ module AresMUSH
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
           
-            cultures = char.group("cultures")
+            cultures = model.group("cultures")
 
             cultures.each do |name, desc|
               Global.logger.debug name
