@@ -49,7 +49,8 @@ module AresMUSH
                 TorCulture.create(name: self.culture_name, character: model)
             end
 
-            Tor.culture_skills(self.target_name, self.culture_name)
+            ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+                Tor.culture_skills(self.target_name, self.culture_name)
            
             client.emit_success t('tor.culture_set')
         
