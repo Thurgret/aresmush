@@ -63,7 +63,13 @@ module AresMUSH
             types = Global.read_config('tor', 'skills')
             name_downcase = name.downcase
             types.select { |a| a['name'].downcase == name.downcase }.first  
-        end 
+        end
+
+        def self.find_culture_config(name)
+            types = Global.read_config('tor', 'cultures')
+            name_downcase = name.downcase
+            types.select { |a| a['name'].downcase == name.downcase }.first
+        end
 
 
         def self.skill_rating(char, skill_name)
