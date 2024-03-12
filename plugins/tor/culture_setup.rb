@@ -6,12 +6,12 @@ module AresMUSH
         def self.culture_skills(model, culture_name)
             #model is a character
             culture = find_culture(model, culture_name)
-            name = culture.name.downcase
+            name = culture_name.downcase
 
             culture_config = find_culture_config(name)
             return if !culture_config
 
-            skills = culture_config.select { |a| a['starting_skills'].downcase == name.downcase }
+            skills = culture_config.select { |a| a['starting_skills'].downcase == name }
 
             skills.each do |skill, rating|
 
