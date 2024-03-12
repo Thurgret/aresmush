@@ -44,7 +44,7 @@ module AresMUSH
             end
         end
 
-            options = Global.read_config('tor', 'attributes_chargen').map { |a| a['culture_name'] }
+            options = Global.read_config('tor', 'attributes_chargen').map { |a| a[culture_name] }
 
             client.emit_success (options)
 
