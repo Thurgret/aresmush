@@ -92,8 +92,8 @@ module AresMUSH
 
         def self.is_valid_attribute_options(options)
             return false if !options
-            names = Global.read_config('tor', 'attributes_chargen').map { |a| a['name'].downcase }
-            names.include?(options.downcase)
+            numbers = ["1", "2", "3,", "4", "5", "6"].to_s
+            numbers.include?(options.downcase)
         end
 
 
