@@ -36,6 +36,7 @@ module AresMUSH
     when "attributeoptions"
       if (cmd.switch_is?("set"))
         return AttributesSelectCmd
+      end
       return AttributeOptionsCmd
     end
 
