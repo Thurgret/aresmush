@@ -3,9 +3,11 @@ en:
     tor:
         attributes_title: "Attributes"
         skills_title: "Skills"
+        tn_title: "Target Numbers"
         skill_set: "Skill set."
         attribute_set: "Attribute set."
         culture_set: "Culture set."
+        tn_set: "Target number set."
         invalid_rating: "Skills must be between 0 and 6."
         invalid_skill_name: "That is not a skill name."
         invalid_attribute_name: "That is not an attribute name."
@@ -15,6 +17,7 @@ en:
         invalid_favoured: "Please enter the letter F if the roll is favoured or I if the roll is ill-favoured, otherwise leave the argument blank."
         invalid_culture_name: "Please enter a valid culture name."
         invalid_attribute_option: "Please enter attributeoptions/set followed by a number between 1 and 6."
+
 
 
         attribute_option: "%{option}: %{attrs} %{rating}"

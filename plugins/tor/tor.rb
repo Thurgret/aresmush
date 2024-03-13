@@ -38,6 +38,10 @@ module AresMUSH
         return AttributesSelectCmd
       end
       return AttributeOptionsCmd
+    when "tn"
+      if (cmd.switch_is?("set"))
+        return TNSetCmd
+      end
     end
 
 

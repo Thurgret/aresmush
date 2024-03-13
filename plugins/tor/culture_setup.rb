@@ -33,14 +33,53 @@ module AresMUSH
             end
         end
 
+        def self.set_initial_tn(model)
+            strength = Tor.find_tn(model, "strength")
+            strength_tn = 20 - Tor.attribute_rating(model, "strength")
+            if (!strength)
+                TorTN.create(name: "strength", target_number: strength_tn, model: model)
+            else
+                strength.update(rating: strength_tn)
+            end
+            heart = Tor.find_tn(model, "heart")
+            heart_tn = 20 - Tor.attribute_rating(model, "heart")
+            if (!heart)
+                TorTN.create(name: "heart", target_number: heart_tn, model: model)
+            else
+                heart.update(rating: heart_tn)
+            end
+            wits = Tor.find_tn(model, "wits")
+            wits_tn = 20 - Tor.attribute_rating(model, "wits")
+            if (!wits)
+                TorTN.create(name: "wits", target_number: wits_tn, model: model)
+            else
+                wits.update(rating: wits_tn)
+            end
+
+
+        end
+
+
         def self.zero_attributes(model)
             #Zero out attributes - need to be selected again when culture is changed.
             strength = Tor.find_attribute(model, "strength")
-            strength.update(rating: 0)
+            if (!strength)
+                TorAttributes.create(name: "strength", rating: 0, character: model)
+            else
+                strength.update(rating: 0)
+            end
             heart = Tor.find_attribute(model, "heart")
-            heart.update(rating: 0)
-            wits = Tor.find_attribute(model, "wits")
-            wits.update(rating: 0)
+            if (!strength)
+                TorAttributes.create(name: "heart", rating: 0, character: model)
+            else
+                strength.update(rating: 0)
+            end
+            strength = Tor.find_attribute(model, "wits")
+            if (!strength)
+                TorAttributes.create(name: "wits", rating: 0, character: model)
+            else
+                strength.update(rating: 0)
+            end
         end  
     end
 end

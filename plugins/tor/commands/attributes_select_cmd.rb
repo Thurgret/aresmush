@@ -43,6 +43,7 @@ module AresMUSH
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 
             Tor.select_attributes(model, self.options)
+            Tor.set_initial_tn(model)
 
             
             client.emit_success t('tor.attribute_set')

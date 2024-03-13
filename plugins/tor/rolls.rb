@@ -83,8 +83,8 @@ module AresMUSH
 
 
 
-            related_attribute = related_attribute_rating(char, skill_name)
-            target_number = 20 - related_attribute
+            related_attribute = Tor.find_related_attribute_name(skill_name)
+            target_number = tn_rating(char, related_attribute)
             current_number = 0
             degrees = 0
 
@@ -130,11 +130,7 @@ module AresMUSH
         end
 
 
-        def self.related_attribute_rating(char, skill)
-            skill_config = Tor.find_skill_config(skill)
-            return nil if !skill_config
-            Tor.attribute_rating(char, skill_config['linked_attribute'])
-        end
+        
 
 
         

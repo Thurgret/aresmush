@@ -58,6 +58,12 @@ module AresMUSH
             model.tor_culture.select { |a| a.name.downcase == name_downcase }.first
         end
 
+        def self.find_tn(model, attribute_name)
+            name_downcase = attribute_name.downcase
+            model.tor_tn.select { |a| a.name.downcase == name_downcase }.first
+        end
+
+
 
         def self.find_skill_config(name)
             types = Global.read_config('tor', 'skills')
@@ -84,6 +90,11 @@ module AresMUSH
             attrs ? attrs.rating : 0
         end
 
+        def self.tn_rating(char, attribute_name)
+            tn = Tor.find_tn(char, attribute_name)
+            tn ? tn.targetnumber : 0
+        end
+
         def self.find_attribute_options_config(culture)
             options = Global.read_config('tor', 'attributes_chargen')
             name_downcase = culture.downcase
@@ -96,6 +107,17 @@ module AresMUSH
             numbers.include?(options.downcase)
         end
 
+        def self.find_related_attribute_name(skill)
+            skill_config = Tor.find_skill_config(skill)
+            return nil if !skill_config
+            skill_config['linked_attribute']
+        end
+
+        def self.related_attribute_rating(char, skill)
+            skill_config = Tor.find_skill_config(skill)
+            return nil if !skill_config
+            Tor.attribute_rating(char, skill_config['linked_attribute'])
+        end
 
 
 

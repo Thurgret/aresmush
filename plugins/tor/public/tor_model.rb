@@ -10,7 +10,7 @@ module AresMUSH
         
         collection :tor_attributes, "AresMUSH::TorAttributes"
         collection :tor_skills, "AresMUSH::TorSkills"
-        ##collection :tor_tn, "AresMUSH::TorTN"
+        collection :tor_tn, "AresMUSH::TorTN"
         ##collection :tor_virtues, "AresMUSH::TorVirtues"
         ##collection :tor_rewards, "AresMUSH::TorRewards"
         ##collection :tor_distinctivefeatures, "AresMUSH::TorDistinctiveFeatures"
@@ -93,16 +93,14 @@ module AresMUSH
 
 
 
-   # class TorTN < Ohm::Model
-     #   include ObjectModel
-        
-    #    attribute :name
-      #  attribute :desc
-       # attribute :targetnumber :type => DataType::Integer
-        #reference :character, "AresMUSH::Character"
-        #index :name
-        
-    #end
+   
+    class TorTN < Ohm::Model
+       include ObjectModel
+       attribute :name
+       attribute :targetnumber :type => DataType::Integer
+       reference :character, "AresMUSH::Character"
+       index :name
+      end
 
     
 
