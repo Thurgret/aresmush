@@ -92,7 +92,7 @@ module AresMUSH
 
         def self.tn_rating(char, attribute_name)
             tn = Tor.find_tn(char, attribute_name)
-            tn ? tn.targetnumber : 0
+            tn ? tn.target_number : 0
         end
 
         def self.find_attribute_options_config(culture)
