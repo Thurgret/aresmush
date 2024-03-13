@@ -52,7 +52,7 @@ module AresMUSH
             if (tn)
               tn.update(rating: self.rating)
             else
-               TorTN.create(name: self.attribute_name, targetnumber: self.rating, character: model)
+               TorTN.create(name: self.attribute_name, target_number: self.rating, character: model)
             end
            
             client.emit_success t('tor.attribute_set')

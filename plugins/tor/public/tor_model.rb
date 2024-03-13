@@ -47,7 +47,7 @@ module AresMUSH
          # self.tor_virtues, self.tor_rewards, self.tor_armour, self.tor_weapons, self.tor_shields
       
       def delete_tor_abilities
-        [ self.tor_skills, self.tor_attributes, self.tor_culture  ].each do |list|
+        [ self.tor_skills, self.tor_attributes, self.tor_culture, self.tor_tn  ].each do |list|
           list.each do |a|
             a.delete
           end
@@ -94,12 +94,17 @@ module AresMUSH
 
 
    
+    
     class TorTN < Ohm::Model
-       include ObjectModel
-       attribute :name
-       attribute :targetnumber :type => DataType::Integer
-       reference :character, "AresMUSH::Character"
-       index :name
+    
+      include ObjectModel
+      attribute :name
+      attribute :target_number, :type => DataType::Integer
+      reference :character, "AresMUSH::Character"
+      index :name
+      
+    
+    
       end
 
     
