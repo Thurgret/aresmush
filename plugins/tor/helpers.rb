@@ -84,11 +84,19 @@ module AresMUSH
             attrs ? attrs.rating : 0
         end
 
-        def self.attribute_options(culture)
+        def self.find_attribute_options_config(culture)
             options = Global.read_config('tor', 'attributes_chargen')
             name_downcase = culture.downcase
             options.select { |a| a['name'].downcase == name_downcase }.first
         end
+
+        def self.is_valid_attribute_options(options)
+            return false if !options
+            names = Global.read_config('tor', 'attributes_chargen').map { |a| a['name'].downcase }
+            names.include?(options.downcase)
+        end
+
+
 
 
 

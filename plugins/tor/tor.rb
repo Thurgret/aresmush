@@ -34,6 +34,8 @@ module AresMUSH
     when "culturestart"
         return CultureSetCmd
     when "attributeoptions"
+      if (cmd.switch_is?("set"))
+        return AttributesSelectCmd
       return AttributeOptionsCmd
     end
 

@@ -1,26 +1,32 @@
 module AresMUSH    
     module Tor
-      class AttributeOptionsCmd
-        
+      class AttributesSelectCmd
         include CommandHandler
         
-        attr_accessor :target_name
+        attr_accessor :target_name, :options
         
-       
         def parse_args
-          # Admin version          
-          if (cmd.args)
-            args = cmd.args
-            self.target_name = titlecase_arg(args)
+          # Admin version
+          
+          if (cmd.args =~ /=/)
+            args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+            self.target_name = titlecase_arg(args.arg1)
+            self.options = titlecase_arg(args.arg2)
           else
+            args = cmd.args
             self.target_name = enactor_name
+            self.options = titlecase_arg(args.arg1)
           end
         end
         
         def required_args
-          [self.target_name]
+          [self.target_name, self.options]
         end
-
+        
+        def check_valid_attribute
+          return t('tor.invalid_attribute_name') if !Tor.is_valid_attribute_options?(self.options)
+          return nil
+        end
         
         def check_can_set
           return nil if enactor_name == self.target_name
@@ -35,28 +41,15 @@ module AresMUSH
         
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            culture_name = model.group("Culture")
 
-            if culture_name == nil
-              client.emit_failure t('tor.invalid_culture')
-              return nil          
-            end
+            Tor.select_attributes(model, self.options)
 
             
-            
-
-
-            options = Tor.attribute_options(culture_name)
-
-            options.each do |number, attrs, rating|
-                client.emit_success t('tor.attribute_option', :option => number, :attrs => attrs, :rating => rating)
-            end
-        end       
+            client.emit_success t('tor.attribute_set')
+        
         end
     end
-
-
   end
-
-
 end
+end
+  

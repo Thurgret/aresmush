@@ -20,6 +20,19 @@ module AresMUSH
 
         end
 
+        def self.select_attributes(model, option)
+            culture = model.group("Culture").downcase
+            attributes = find_attribute_options_config(culture)
+
+            return if !attributes
+
+            number = option.to_i - 1
+            attributes[number].each do |attrs, rating|
+                attrs = Tor.find_attribute(model, attrs)
+                attrs.update(rating: rating)
+            end
+        end
+
         def self.zero_attributes(model)
             #Zero out attributes - need to be selected again when culture is changed.
             strength = Tor.find_attribute(model, "strength")
