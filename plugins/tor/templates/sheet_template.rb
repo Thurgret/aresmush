@@ -42,7 +42,7 @@ module AresMUSH
         end
 
         def targetnumbers
-          format_two_per_line @char.tor_tn
+          format_tn_two_per_line @char.tor_tn
         end
         
       end
