@@ -41,6 +41,7 @@ module AresMUSH
             else
                 strength.update(rating: strength_tn)
             end
+            Global.logger.debug strength_tn
             heart = Tor.find_tn(model, "heart")
             heart_tn = 20 - Tor.attribute_rating(model, "heart")
             if (!heart)
