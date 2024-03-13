@@ -36,25 +36,24 @@ module AresMUSH
         def self.set_initial_tn(model)
             strength = Tor.find_tn(model, "strength")
             strength_tn = 20 - Tor.attribute_rating(model, "strength")
-            if (!strength)
-                TorTN.create(name: "strength", target_number: strength_tn, model: model)
-            else
+            if (strength)
                 strength.update(rating: strength_tn)
+            else
+                TorTN.create(name: "strength", target_number: strength_tn, model: model)
             end
-            Global.logger.debug strength_tn
             heart = Tor.find_tn(model, "heart")
             heart_tn = 20 - Tor.attribute_rating(model, "heart")
-            if (!heart)
-                TorTN.create(name: "heart", target_number: heart_tn, model: model)
-            else
+            if (heart)
                 heart.update(rating: heart_tn)
+            else
+                TorTN.create(name: "heart", target_number: heart_tn, model: model)                
             end
             wits = Tor.find_tn(model, "wits")
             wits_tn = 20 - Tor.attribute_rating(model, "wits")
-            if (!wits)
-                TorTN.create(name: "wits", target_number: wits_tn, model: model)
-            else
+            if (wits)
                 wits.update(rating: wits_tn)
+            else
+                TorTN.create(name: "wits", target_number: wits_tn, model: model)
             end
 
 
@@ -64,22 +63,22 @@ module AresMUSH
         def self.zero_attributes(model)
             #Zero out attributes - need to be selected again when culture is changed.
             strength = Tor.find_attribute(model, "strength")
-            if (!strength)
-                TorAttributes.create(name: "strength", rating: 0, character: model)
-            else
+            if (strength)
                 strength.update(rating: 0)
+            else
+                TorAttributes.create(name: "strength", rating: 0, character: model)
             end
             heart = Tor.find_attribute(model, "heart")
-            if (!strength)
-                TorAttributes.create(name: "heart", rating: 0, character: model)
+            if (heart)
+                heart.update(rating: 0)
             else
-                strength.update(rating: 0)
+                TorAttributes.create(name: "heart", rating: 0, character: model)                
             end
-            strength = Tor.find_attribute(model, "wits")
-            if (!strength)
-                TorAttributes.create(name: "wits", rating: 0, character: model)
-            else
+            wits = Tor.find_attribute(model, "wits")
+            if (wits)
                 strength.update(rating: 0)
+            else
+                TorAttributes.create(name: "wits", rating: 0, character: model)
             end
         end  
     end
