@@ -96,7 +96,6 @@ module AresMUSH
    
     
     class TorTN < Ohm::Model
-    
       include ObjectModel
       attribute :name
       attribute :target_number, :type => DataType::Integer

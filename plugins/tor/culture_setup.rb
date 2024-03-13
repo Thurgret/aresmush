@@ -39,21 +39,21 @@ module AresMUSH
             if (strength)
                 strength.update(rating: strength_tn)
             else
-                TorTN.create(name: "strength", target_number: strength_tn, model: model)
+                TorTN.create(name: "strength", target_number: strength_tn, character: model)
             end
             heart = Tor.find_tn(model, "heart")
             heart_tn = 20 - Tor.attribute_rating(model, "heart")
             if (heart)
                 heart.update(rating: heart_tn)
             else
-                TorTN.create(name: "heart", target_number: heart_tn, model: model)                
+                TorTN.create(name: "heart", target_number: heart_tn, character: model)                
             end
             wits = Tor.find_tn(model, "wits")
             wits_tn = 20 - Tor.attribute_rating(model, "wits")
             if (wits)
                 wits.update(rating: wits_tn)
             else
-                TorTN.create(name: "wits", target_number: wits_tn, model: model)
+                TorTN.create(name: "wits", target_number: wits_tn, character: model)
             end
 
 
