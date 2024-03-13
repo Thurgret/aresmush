@@ -24,7 +24,7 @@ module AresMUSH
         end
         
         def check_valid_attribute_options
-          return t('tor.invalid_attribute_option') if !Tor.is_valid_attribute_options?(self.options)
+          return t('tor.invalid_attribute_option') if !Tor.is_valid_attribute_options(self.options)
           return nil
         end
         
