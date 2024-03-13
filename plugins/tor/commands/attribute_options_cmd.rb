@@ -46,7 +46,7 @@ module AresMUSH
             
 
 
-            options = Tor.attribute_options(culture_name)
+            options = Tor.find_attribute_options_config(culture_name)
 
             options.each do |number, attrs, rating|
                 client.emit_success t('tor.attribute_option', :option => number, :attrs => attrs, :rating => rating)
