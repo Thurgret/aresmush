@@ -26,7 +26,7 @@ module AresMUSH
 
             return if !attributes
 
-            number = option.to_i - 1
+            number = option.to_i
             attributes[number].each do |attrs, rating|
                 attrs = Tor.find_attribute(model, attrs)
                 attrs.update(rating: rating)
