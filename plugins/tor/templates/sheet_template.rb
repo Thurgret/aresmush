@@ -26,7 +26,7 @@ module AresMUSH
               .map do |a, i| 
                 linebreak = i % 2 == 0 ? "\n" : ""
                 title = left("#{ a.name }:", 15)
-                targetnumbers = left(a.target_number, 20)
+                target_number = left(a.target_number, 20)
                 "#{linebreak}%xh#{title}%xn #{target_number}"
           end
         end
