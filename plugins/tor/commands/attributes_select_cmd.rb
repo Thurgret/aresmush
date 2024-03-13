@@ -11,11 +11,11 @@ module AresMUSH
           if (cmd.args =~ /=/)
             args = cmd.parse_args(ArgParser.arg1_equals_arg2)
             self.target_name = titlecase_arg(args.arg1)
-            self.options = titlecase_arg(args.arg2)
+            self.options = titlecase_arg(args.arg2).to_s
           else
             args = cmd.args
             self.target_name = enactor_name
-            self.options = titlecase_arg(args)
+            self.options = args.to_s
           end
         end
         
@@ -23,8 +23,8 @@ module AresMUSH
           [self.target_name, self.options]
         end
         
-        def check_valid_attribute
-          return t('tor.invalid_attribute_name') if !Tor.is_valid_attribute_options?(self.options)
+        def check_valid_attribute_options
+          return t('tor.invalid_attribute_option') if !Tor.is_valid_attribute_options?(self.options)
           return nil
         end
         
