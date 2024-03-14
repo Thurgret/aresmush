@@ -47,6 +47,7 @@ module AresMUSH
 
         def attributes
           left(("Strength:" + Tor.attribute_rating(@char, "strength").to_s ), 20)
+          center(("Hearts:" + Tor.attribute_rating(@char, "heart").to_s ), 20)
           "Parry: " + @char.tor_parry.to_s
         end
         
