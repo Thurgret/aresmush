@@ -94,7 +94,7 @@ module AresMUSH
                     
                         tor_maxendurance.update(rating)
                         tor_endurance.update(rating)
-                    #end
+                    end
                     Global.logger.debug "Hope"
                     Global.logger.debug model.tor_maxhope
                 end
