@@ -6,9 +6,6 @@ module AresMUSH
         def self.culture_skills(model, culture_name)
             #model is a character
             name = culture_name.downcase
-            culture = find_culture(model, name)
-
-
             culture_config = find_culture_config(name)
             return if !culture_config
 
@@ -16,8 +13,6 @@ module AresMUSH
                 skill = Tor.find_skill(model, skill)
                 skill.update(rating: rating)
             end
-
-
         end
 
         def self.select_attributes(model, option)
@@ -57,6 +52,53 @@ module AresMUSH
             end
 
 
+        end
+
+
+        def self.set_initial_derived_stats(model)
+            culture = model.group("Culture").downcase
+            derived_stats = find_derived_stats_config(culture)
+
+            strength = attribute_rating(model, "strength")
+            heart = attribute_rating(model, "heart")
+            wits = attribute_rating(model, "wits")
+
+            return if !derived_stats
+
+
+            derived_stats[culture].each do |stat, rating|
+                if (stat.downcase == "parry")
+                    rating = rating + wits
+                    stat = Tor.find_maximum_derived_stat(model, "parry")
+                    if stat == nil
+                        tor_parry.create(rating)
+                    else
+                        tor_parry.update(rating)
+                    end
+                elsif (stat.downcase == "hope")
+                    stat = Tor.find_maximum_derived_stat(model, "hope")
+                    rating = rating + heart
+                    if stat == nil
+                        tor_maxhope.create(rating)
+                        tor_hope.create(rating)
+                    else
+                        tor_maxhope.update(rating)
+                        tor_hope.update(rating)
+                    end
+                elsif (stat.downcase == "endurance")
+                    rating = rating + strength
+                    stat = Tor.find_maximum_derived_stat(model, "endurance")
+                    if stat == nil
+                        tor_maxendurance.create(rating)
+                        tor_endurance.create(rating)
+                    else
+                        tor_maxendurance.update(rating)
+                        tor_endurance.update(rating)
+                    end
+                    Global.logger.debug "Hope"
+                    Global.logger.debug model.tor_maxhope
+                end
+            end
         end
 
 

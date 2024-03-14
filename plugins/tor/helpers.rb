@@ -63,6 +63,19 @@ module AresMUSH
             model.tor_tn.select { |a| a.name.downcase == name_downcase }.first
         end
 
+        def self.find_maximum_derived_stat(model, stat_name)
+            if (stat_name.downcase == "parry")
+                return model.tor_parry
+            end
+            if (stat_name.downcase == "endurance")
+                return model.tor_maxendurance
+            end
+            if (stat_name.downcase == "hope")
+                return model.tor_maxhope
+            end
+            return nil
+        end
+
 
 
         def self.find_skill_config(name)
@@ -97,6 +110,12 @@ module AresMUSH
 
         def self.find_attribute_options_config(culture)
             options = Global.read_config('tor', 'attributes_chargen')
+            name_downcase = culture.downcase
+            options.select { |a| a['name'].downcase == name_downcase }.first
+        end
+
+        def self.find_derived_stats_config(culture)
+            stats = Global.read_config('tor', 'derived_stats')
             name_downcase = culture.downcase
             options.select { |a| a['name'].downcase == name_downcase }.first
         end

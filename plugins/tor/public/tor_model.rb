@@ -25,16 +25,16 @@ module AresMUSH
         #attribute :tor_wisdom, :type => DataType::Integer
         #attribute :tor_valour, :type => DataType::Integer
         
-        #attribute :tor_maxhope, :type => DataType::Integer
-        #attribute :tor_hope, :type => DataType::Integer
+        attribute :tor_maxhope, :type => DataType::Integer
+        attribute :tor_hope, :type => DataType::Integer
         
         #attribute :tor_shadow, :type => DataType::Integer
         #attribute :tor_shadowscars, :type => DataType::Integer
         
-        #attribute :tor_maxendurance, :type => DataType::Integer
-        #attribute :tor_endurance, :type => DataType::Integer
+        attribute :tor_maxendurance, :type => DataType::Integer
+        attribute :tor_endurance, :type => DataType::Integer
         
-        #attribute :tor_parry, :type => DataType::Integer
+        attribute :tor_parry, :type => DataType::Integer
         
         #attribute :treasure, :type => DataType::Integer
   

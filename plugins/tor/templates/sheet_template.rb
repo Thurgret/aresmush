@@ -36,7 +36,6 @@ module AresMUSH
         end
 
 
-
         def attrs
           format_two_per_line @char.tor_attributes
         end
