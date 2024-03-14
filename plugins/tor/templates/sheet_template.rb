@@ -46,7 +46,7 @@ module AresMUSH
         end
 
         def attributes
-          firstline = left(("Strength: " + Tor.attribute_rating(@char, "strength").to_s ), 20 + "(" + Tor.tn_rating(@char, "strength") + ")") + center(("Hearts: " + Tor.attribute_rating(@char, "heart").to_s ), 20) + right(("Wits: " + Tor.attribute_rating(@char, "wits").to_s ), 20)
+          firstline = left(("Strength: " + Tor.attribute_rating(@char, "strength").to_s ), 20 + "(" + Tor.tn_rating(@char, "strength").to_s + ")") + center(("Hearts: " + Tor.attribute_rating(@char, "heart").to_s ), 20) + right(("Wits: " + Tor.attribute_rating(@char, "wits").to_s ), 20)
           "" + firstline
         end
         
