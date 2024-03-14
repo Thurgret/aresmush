@@ -46,7 +46,7 @@ module AresMUSH
         end
 
         def sheettitle
-          firstline = @char.tor_culture[:name].to_s
+          firstline = @char.group("Culture").to_s
           name = @char.name.to_s
           "" + name + " of the " + firstline
         end
