@@ -71,9 +71,9 @@ module AresMUSH
                     rating = rating + wits
                     stat = Tor.find_maximum_derived_stat(model, "parry")
                     if stat == nil
-                        tor_parry.create(rating)
+                        model.create(:tor_parry => rating)
                     else
-                        tor_parry.update(rating)
+                        model.update(:tor_parry => rating)
                     end
                 elsif (stat.downcase == "hope")
                     stat = Tor.find_maximum_derived_stat(model, "hope")
