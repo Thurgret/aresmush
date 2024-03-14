@@ -44,6 +44,7 @@ module AresMUSH
 
             Tor.select_attributes(model, self.options)
             Tor.set_initial_tn(model)
+            Tor.set_initial_derived_stats(model)
 
             
             client.emit_success t('tor.attribute_set')
