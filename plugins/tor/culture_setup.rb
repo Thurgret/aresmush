@@ -79,21 +79,21 @@ module AresMUSH
                     stat = Tor.find_maximum_derived_stat(model, "hope")
                     rating = rating + heart
                     if stat == nil
-                        model.tor_maxhope.create(rating)
-                        model.tor_hope.create(rating)
+                        model.create(:tor_maxhope => rating)
+                        model.create(:tor_hope => rating)
                     else
-                        model.tor_maxhope.update(rating)
-                        model.tor_hope.update(rating)
+                        model.update(:tor_maxhope => rating)
+                        model.update(tor_hope => rating)
                     end
                 elsif (stat.downcase == "endurance")
                     rating = rating + strength
                     stat = Tor.find_maximum_derived_stat(model, "endurance")
                     if stat == nil
-                        model.tor_maxendurance.create(rating)
-                        model.tor_endurance.create(rating)
-                    
-                        tor_maxendurance.update(rating)
-                        tor_endurance.update(rating)
+                        model.create(:tor_maxendurance => rating)
+                        model.create(:tor_endurance => rating)
+                    else
+                        model.update(:tor_maxendurance => rating)
+                        model.update(:tor_endurance => rating)
                     end
                     Global.logger.debug "Hope"
                     Global.logger.debug model.tor_maxhope
