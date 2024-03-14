@@ -117,7 +117,7 @@ module AresMUSH
         def self.find_derived_stats_config(culture)
             stats = Global.read_config('tor', 'derived_stats')
             name_downcase = culture.downcase
-            options.select { |a| a['name'].downcase == name_downcase }.first
+            stats.select { |a| a['name'].downcase == name_downcase }.first
         end
 
         def self.is_valid_attribute_options(options)
