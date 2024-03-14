@@ -46,7 +46,7 @@ module AresMUSH
         end
 
         def derived_stats
-          "Parry: " + @char.tor_parry
+          "Parry: " + @char.tor_parry.to_s
         end
         
       end
