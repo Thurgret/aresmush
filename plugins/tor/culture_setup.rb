@@ -83,7 +83,7 @@ module AresMUSH
                         model.create(:tor_hope => rating)
                     else
                         model.update(:tor_maxhope => rating)
-                        model.update(tor_hope => rating)
+                        model.update(:tor_hope => rating)
                     end
                 elsif (stat.downcase == "endurance")
                     rating = rating + strength
