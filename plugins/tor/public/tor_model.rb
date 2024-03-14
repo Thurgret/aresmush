@@ -47,7 +47,8 @@ module AresMUSH
          # self.tor_virtues, self.tor_rewards, self.tor_armour, self.tor_weapons, self.tor_shields
       
       def delete_tor_abilities
-        [ self.tor_skills, self.tor_attributes, self.tor_culture, self.tor_tn  ].each do |list|
+        [ self.tor_skills, self.tor_attributes, self.tor_culture, self.tor_tn, self.tor_maxhope, self.tor_hope, self. tor_maxendurance
+          self.tor_endurance, self.tor_parry  ].each do |list|
           list.each do |a|
             a.delete
           end

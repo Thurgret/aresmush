@@ -9,6 +9,7 @@ module AresMUSH
         end
 
 
+
         def format_two_per_line(list)
           list.to_a.sort_by { |a| a.name }
             .each_with_index
@@ -42,6 +43,10 @@ module AresMUSH
 
         def targetnumbers
           format_tn_two_per_line @char.tor_tn
+        end
+
+        def derived_stats
+          "Parry: " + @char.tor_parry
         end
         
       end
