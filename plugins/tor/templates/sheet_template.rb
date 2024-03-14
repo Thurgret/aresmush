@@ -45,6 +45,12 @@ module AresMUSH
           format_tn_two_per_line @char.tor_tn
         end
 
+        def sheettitle
+          firstline = Tor.find_culture(@char).to_s
+          name = @char.name.to_s
+          "" + name + " of the " + firstline
+        end
+
         def attributes
           firstline = left(("Strength: " + Tor.attribute_rating(@char, "strength").to_s + "(" + Tor.tn_rating(@char, "strength").to_s + ")"), 20) + center(("Heart: " + Tor.attribute_rating(@char, "heart").to_s + "(" + Tor.tn_rating(@char, "heart").to_s + ")"), 20) + right(("Wits: " + Tor.attribute_rating(@char, "wits").to_s + "(" + Tor.tn_rating(@char, "wits").to_s + ")"), 20)
           "" + firstline
