@@ -66,7 +66,7 @@ module AresMUSH
             return if !derived_stats
 
 
-            derived_stats[culture].each do |stat, rating|
+            derived_stats.each do |stat, rating|
                 if (stat.downcase == "parry")
                     rating = rating + wits
                     stat = Tor.find_maximum_derived_stat(model, "parry")
