@@ -46,7 +46,7 @@ module AresMUSH
         end
 
         def attributes
-          left("Strength:" + @char.tor_attributes["Strength"].first.to_s )
+          left("Strength:" + @char.tor_attributes["Strength"][0].to_s )
           "Parry: " + @char.tor_parry.to_s
         end
         
