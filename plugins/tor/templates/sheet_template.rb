@@ -45,7 +45,8 @@ module AresMUSH
           format_tn_two_per_line @char.tor_tn
         end
 
-        def derived_stats
+        def attributes
+          left("Strength:" + @char.tor_attributes.find(:name => "Strength") )
           "Parry: " + @char.tor_parry.to_s
         end
         
