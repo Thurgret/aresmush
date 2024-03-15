@@ -35,10 +35,10 @@ module AresMUSH
                        
            
             if (hope)
-              hope.update(:rating => self.rating)
+              hope.update(:tor_hope => self.rating)
             else
-                model.create(:tor_maxhope => rating)
-                model.create(:tor_hope => rating)
+                model.create(:tor_maxhope => self.rating)
+                model.create(:tor_hope => self.rating)
             end
            
             client.emit_success "Hope set."
