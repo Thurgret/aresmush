@@ -1,16 +1,13 @@
 %lh
 <%= sheettitle -%>
 
-%xh<%= "Attributes" -%>%xf
+%xh<%= "Attributes" -%>
+%xf
 <%= attributes -%>
 
-
-
-<%= line_with_text t('tor.tn_title') -%>
-<% targetnumbers.each do |t| -%>
-<%= t -%>
-<% end %>
-
+%xh<%= "Derived Stats" -%>
+%xf
+<%= derived_stats -%>
 
 <%= line_with_text t('tor.skills_title') -%>
 <% skills.each do |s| -%>
