@@ -3,7 +3,16 @@ module AresMUSH
         
 
         def self.initial_setup(model)
-            culture = model.tor_culture.to_s
+            culture_name = model.group("Culture")
+            
+            culture = Tor.find_culture(model, culture_name)
+                
+            if (culture)
+                culture.update(name: culture_name)
+            else
+                TorCulture.create(name: culture_name, character: model)    
+            end
+            
             Tor.culture_skills(model, culture)
             Global.logger.debug Tor.find_attribute(model, "strength")
 
