@@ -21,10 +21,10 @@ module AresMUSH
 
             return if !attributes
 
-            Global.logger.debug option
 
 
             number = option.to_i
+            Global.logger.debug number.to_s
             attributes[number].each do |attrs, rating|
                 attrs = Tor.find_attribute(model, attrs)
                 attrs.update(rating: rating)
