@@ -14,9 +14,10 @@ module AresMUSH
             end
             
             Tor.culture_skills(model, culture)
-            Global.logger.debug Tor.find_attribute(model, "strength")
+            
 
             Tor.select_attributes(model, 5.to_s)
+            Global.logger.debug Tor.attribute_rating(model, "strength")
             Tor.set_initial_derived_stats(model)
             Tor.set_valour(model, 1)
             Tor.set_wisdom(model, 1)
