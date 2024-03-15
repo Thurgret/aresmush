@@ -23,6 +23,7 @@ module AresMUSH
             Tor.set_valour(model, 3)
             Tor.set_wisdom(model, 3)
         end
+    
         
         def self.culture_skills(model, culture_name)
             #model is a character
@@ -165,7 +166,6 @@ module AresMUSH
             end
         end  
     end
-end
 end
 
 
