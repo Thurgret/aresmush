@@ -39,15 +39,16 @@ module AresMUSH
         
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            attrs = Tor.find_attribute(model, self.attribute_name)
+            hope = target_name.tor_hope
                        
-            if (attrs)
-              attrs.update(rating: self.rating)
+            if (hope)
+              hope.update(rating: self.rating)
             else
-               TorAttributes.create(name: self.attribute_name, rating: self.rating, character: model)
+                model.create(:tor_maxhope => rating)
+                model.create(:tor_hope => rating)
             end
            
-            client.emit_success t('tor.attribute_set')
+            client.emit_success "Hope set."
         
         end
     end
