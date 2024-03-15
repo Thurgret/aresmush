@@ -21,10 +21,6 @@ module AresMUSH
           return nil
         end
         
-        def check_valid_attribute
-          return t('tor.invalid_attribute_name') if !Tor.is_valid_attribute_name?(self.attribute_name)
-          return nil
-        end
         
         def check_can_set
           #return nil if enactor_name == self.target_name - this version is now admin only
