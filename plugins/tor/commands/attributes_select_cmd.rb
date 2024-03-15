@@ -42,6 +42,7 @@ module AresMUSH
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 
+            Global.logger.debug self.options
             Tor.select_attributes(model, self.options)
             Tor.set_initial_tn(model)
             Tor.set_initial_derived_stats(model)
