@@ -14,6 +14,7 @@ module AresMUSH
             self.target_name = titlecase_arg(args.args1)
             self.rating = integer_arg(args.arg2)
           else
+            args = cmd.args
             self.target_name = enactor_name
             self.rating = args.to_i
           end
