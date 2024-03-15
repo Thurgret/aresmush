@@ -32,10 +32,12 @@ module AresMUSH
           Chargen.check_chargen_locked(enactor)
         end
         
+        
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
             hope = target_name.tor_hope
                        
+           
             if (hope)
               hope.update(:rating => self.rating)
             else
@@ -55,6 +57,4 @@ module AresMUSH
 
     end
   end
-end
-
   
