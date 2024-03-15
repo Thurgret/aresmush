@@ -50,8 +50,12 @@ module AresMUSH
 
             number = option.to_i
             attributes[number].each do |attrs, rating|
-                attrs = Tor.find_attribute(model, attrs)
-                attrs.update(:rating => rating)
+                current_attribute = Tor.find_attribute(model, attrs)
+                if (current_attribute)
+                    current_attribute.update(rating: rating)
+                  else
+                     TorAttributes.create(name: attrs, rating: , character: model)
+                  end
                 Global.logger.debug "test2"
             end
         end
