@@ -24,7 +24,7 @@ module AresMUSH
 
 
             number = option.to_i
-            Global.logger.debug number.to_s
+            Global.logger.debug model.name
             attributes[number].each do |attrs, rating|
                 attrs = Tor.find_attribute(model, attrs)
                 attrs.update(rating: rating)
