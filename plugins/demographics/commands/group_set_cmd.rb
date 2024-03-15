@@ -61,6 +61,7 @@ module AresMUSH
           end
 
           if (self.group_name.downcase == "culture")
+            
             Tor.initial_setup(model)
           end
 
