@@ -24,10 +24,10 @@ module AresMUSH
 
 
             number = option.to_i
-            Global.logger.debug culture
             attributes[number].each do |attrs, rating|
                 attrs = Tor.find_attribute(model, attrs)
                 attrs.update(rating: rating)
+                Global.logger.debug rating.to_s
             end
             Tor.set_initial_derived_stats(model)
         end
