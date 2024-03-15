@@ -35,7 +35,7 @@ module AresMUSH
         
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            hope = target_name.tor_hope
+            hope = model.tor_hope
                        
            
             if (hope)
