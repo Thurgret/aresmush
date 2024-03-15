@@ -29,6 +29,7 @@ module AresMUSH
         def self.select_attributes(model, option)
             culture = model.group("Culture").downcase
             attributes = find_attribute_options_config(culture)
+            Global.logger.debug attributes
 
             return if !attributes
 
