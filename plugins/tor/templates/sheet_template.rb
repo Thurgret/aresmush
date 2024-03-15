@@ -52,7 +52,6 @@ module AresMUSH
         end
 
         def attributes
-          Global.logger.debug Tor.attribute_rating(@char, "Strength")
           firstline = left(("Strength: " + Tor.attribute_rating(@char, "strength").to_s + "(TN: " + Tor.tn_rating(@char, "strength").to_s + ")"), 20) + center(("Heart: " + Tor.attribute_rating(@char, "heart").to_s + "(TN: " + Tor.tn_rating(@char, "heart").to_s + ")"), 20) + right(("Wits: " + Tor.attribute_rating(@char, "wits").to_s + "(TN: " + Tor.tn_rating(@char, "wits").to_s + ")"), 20)
           "" + firstline + "\n"
         end

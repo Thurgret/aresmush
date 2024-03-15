@@ -6,6 +6,7 @@ module AresMUSH
             culture = model.tor_culture.to_s
             Tor.culture_skills(model, culture)
             Tor.select_attributes(model, 5.to_s)
+            Global.logger.debug Tor.find_attribute(model, "strength")
             Tor.set_initial_derived_stats(model)
             Tor.set_valour(model, 1)
             Tor.set_wisdom(model, 1)
