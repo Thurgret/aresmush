@@ -9,8 +9,8 @@ module AresMUSH
           # Admin version
         
         
-          if (cmd.args =~ /\//)
-            args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          if (cmd.args =~ "=")
+            args = cmd.parse_args(ArgParser.flexible_args)
             self.target_name = titlecase_arg(args.args1)
             self.rating = integer_arg(args.arg2)
           else
@@ -44,7 +44,7 @@ module AresMUSH
             hope = model.tor_hope
                                   
             if (hope)
-              hope.update(:tor_hope => self.rating)
+              model.update(:tor_hope => self.rating)
             else
                 model.create(:tor_maxhope => self.rating)
                 model.create(:tor_hope => self.rating)
