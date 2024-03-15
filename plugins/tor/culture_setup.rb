@@ -27,7 +27,7 @@ module AresMUSH
             number = option.to_i
             attributes[number].each do |attrs, rating|
                 attrs = Tor.find_attribute(model, attrs)
-                attrs.update(rating: rating.to_i)
+                attrs.update(:rating => rating)
             end
             Tor.set_initial_derived_stats(model)
         end
