@@ -21,8 +21,8 @@ module AresMUSH
 
             Global.logger.debug Tor.attribute_rating(model, "Strength").to_s
             Tor.set_initial_derived_stats(model)
-            Tor.set_valour(model, 1)
-            Tor.set_wisdom(model, 1)
+            Tor.set_valour(model, 3)
+            Tor.set_wisdom(model, 3)
         end
         
         def self.culture_skills(model, culture_name)
