@@ -10,7 +10,6 @@ module AresMUSH
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
           self.target_name = titlecase_arg(args.args1)
           self.rating = integer_arg(args.arg2)
-          end
         end
         
         def required_args
@@ -47,6 +46,7 @@ module AresMUSH
             client.emit_success "Hope set."
         
        
+         
           end
     
         end
@@ -54,5 +54,7 @@ module AresMUSH
       end
 
     end
+  end
+end
 
   
