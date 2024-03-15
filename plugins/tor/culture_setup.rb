@@ -119,6 +119,7 @@ module AresMUSH
 
         def self.zero_attributes(model)
             #Zero out attributes - need to be selected again when culture is changed.
+            Global.logger.debug "Zero called"
             strength = Tor.find_attribute(model, "strength")
             if (strength)
                 strength.update(rating: 0)
