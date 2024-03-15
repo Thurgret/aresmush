@@ -99,7 +99,7 @@ module AresMUSH
 
 
         def self.attribute_rating(char, attribute_name)
-            attrs = Tor.find_attribute(char, attribute_name)
+            attrs = Tor.find_attribute(char, attribute_name.downcase)
             attrs ? attrs.rating : 0
         end
 
