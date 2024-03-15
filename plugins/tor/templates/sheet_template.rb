@@ -57,7 +57,7 @@ module AresMUSH
         end
 
         def derived_stats
-          firstline = left(("Endurance: " + @char.tor_endurance + "(" + @char.tor_maxendurance + ")"), 20) + center(("Hope: " + @char.tor_hope + "(" + @char.tor_maxhope + ")"), 20) + right(("Parry: " + @char.tor_parry), 20)
+          firstline = left(("Endurance: " + @char.tor_endurance.to_s + "(" + @char.tor_maxendurance.to_s + ")"), 20) + center(("Hope: " + @char.tor_hope.to_s + "(" + @char.tor_maxhope.to_s + ")"), 20) + right(("Parry: " + @char.tor_parry.to_s), 20)
           "\n" + firstline
         end
         
