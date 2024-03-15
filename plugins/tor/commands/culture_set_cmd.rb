@@ -51,6 +51,8 @@ module AresMUSH
                 
                 Tor.culture_skills(model, culture_name)
                 Tor.zero_attributes(model)
+                Tor.set_valour(model, 1)
+                Tor.set_wisdom(model, 1)
            
                 client.emit_success t('tor.culture_set')
        

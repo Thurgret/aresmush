@@ -60,6 +60,11 @@ module AresMUSH
           firstline = left(("Endurance: " + @char.tor_endurance.to_s + "(" + @char.tor_maxendurance.to_s + ")"), 20) + center(("Hope: " + @char.tor_hope.to_s + "(" + @char.tor_maxhope.to_s + ")"), 20) + right(("Parry: " + @char.tor_parry.to_s), 20)
           "" + firstline + "\n"
         end
+
+        def wisdom_and_valour
+          firstline = left("Wisdom: " + @char.tor_wisdom.to_s) + center("Valour: " + @char.tor_valour.to_s)
+          "" + firstline + "\n"
+        end
         
       end
     end

@@ -50,8 +50,6 @@ module AresMUSH
             else
                 TorTN.create(name: "wits", target_number: wits_tn, character: model)
             end
-
-
         end
 
 
@@ -96,6 +94,22 @@ module AresMUSH
                         model.update(:tor_endurance => rating)
                     end
                 end
+            end
+        end
+
+        def self.set_valour(model, rating)
+            if (model.tor_valour == nil)
+                model.create(:tor_valour => rating)
+            else
+                model.update(:tor_valour => rating)
+            end
+        end
+
+        def self.set_wisdom(model, rating)
+            if (model.tor_wisdom == nil)
+                model.create(:tor_wisdom => rating)
+            else
+                model.update(:tor_wisdom => rating)
             end
         end
 
