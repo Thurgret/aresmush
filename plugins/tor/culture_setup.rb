@@ -17,7 +17,7 @@ module AresMUSH
             
 
             Tor.select_attributes(model, 5.to_s)
-            Global.logger.debug Tor.attribute_rating(model, "strength").to_s
+            Global.logger.debug Tor.attribute_rating(model, "Strength").to_s
             Tor.set_initial_derived_stats(model)
             Tor.set_valour(model, 1)
             Tor.set_wisdom(model, 1)
@@ -33,7 +33,6 @@ module AresMUSH
                 skill = Tor.find_skill(model, skill)
                 skill.update(rating: rating)
             end
-            Tor.select_attributes(model, "5")
         end
 
         def self.select_attributes(model, option)
