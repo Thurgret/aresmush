@@ -7,9 +7,11 @@ module AresMUSH
         
         def parse_args
           # Admin version
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-          self.target_name = titlecase_arg(args.args1)
-          self.rating = integer_arg(args.arg2)
+          if (cmd.args =~ "=")
+            args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+            self.target_name = titlecase_arg(args.args1)
+            self.rating = integer_arg(args.arg2)
+          end
         end
         
         def required_args
