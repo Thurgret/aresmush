@@ -9,7 +9,7 @@ module AresMUSH
           # Admin version
         
         
-          if (cmd.args =~ "=")
+          if (cmd.args =~ /=/)
             args = cmd.parse_args(ArgParser.flexible_args)
             self.target_name = titlecase_arg(args.args1)
             self.rating = integer_arg(args.arg2)
