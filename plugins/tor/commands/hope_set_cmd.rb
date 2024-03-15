@@ -42,7 +42,7 @@ module AresMUSH
             hope = target_name.tor_hope
                        
             if (hope)
-              hope.update(rating: self.rating)
+              hope.update(:rating => self.rating)
             else
                 model.create(:tor_maxhope => rating)
                 model.create(:tor_hope => rating)
