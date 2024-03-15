@@ -4,6 +4,7 @@ module AresMUSH
 
         def self.initial_setup(model)
             culture_name = model.group("Culture")
+            character = model
             
             culture = Tor.find_culture(model, culture_name)
                 
@@ -12,12 +13,12 @@ module AresMUSH
             else
                 TorCulture.create(name: culture_name, character: model)    
             end
-            select_attributes(model, "5")
+            Tor.select_attributes(character, "5")
             Global.logger.debug "test0"
 
 
             
-            Tor.culture_skills(model, culture)
+            Tor.culture_skills(model, culture_name)
 
             Global.logger.debug Tor.attribute_rating(model, "Strength").to_s
             Tor.set_initial_derived_stats(model)
@@ -27,6 +28,8 @@ module AresMUSH
         
         def self.culture_skills(model, culture_name)
             #model is a character
+            Global.logger.debug "skilltest"
+
             name = culture_name.downcase
             culture_config = find_culture_config(name)
             return if !culture_config
@@ -38,8 +41,9 @@ module AresMUSH
         end
 
         def self.select_attributes(model, option)
-            culture = model.group("Culture").downcase
             Global.logger.debug "test"
+
+            culture = model.group("Culture").downcase
 
             attributes = find_attribute_options_config(culture)
 
