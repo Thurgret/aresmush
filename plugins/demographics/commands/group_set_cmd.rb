@@ -61,10 +61,7 @@ module AresMUSH
           end
 
           if (self.group_name.downcase == "culture")
-            Tor.culture_skills(model, self.value.downcase)
-            Tor.select_attributes(model, 5.to_s)
-            Tor.set_valour(model, 1)
-            Tor.set_wisdom(model, 1)
+            Tor.initial_setup(model)
           end
 
         end

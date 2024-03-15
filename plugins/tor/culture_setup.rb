@@ -1,6 +1,15 @@
 module AresMUSH
     module Tor
         
+
+        def self.initial_setup(model)
+            culture = model.tor_culture.to_s
+            Tor.culture_skills(model, culture)
+            Tor.select_attributes(model, 5.to_s)
+            Tor.set_initial_derived_stats(model)
+            Tor.set_valour(model, 1)
+            Tor.set_wisdom(model, 1)
+        end
         
         def self.culture_skills(model, culture_name)
             #model is a character
@@ -28,8 +37,6 @@ module AresMUSH
                 attrs = Tor.find_attribute(model, attrs)
                 attrs.update(:rating => rating)
             end
-            Global.logger.debug Tor.attribute_rating(model, "strength")
-            Tor.set_initial_derived_stats(model)
         end
 
         def self.set_initial_tn(model)
