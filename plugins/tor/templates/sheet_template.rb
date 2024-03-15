@@ -62,7 +62,7 @@ module AresMUSH
         end
 
         def wisdom_and_valour
-          firstline = left("Wisdom: " + @char.tor_wisdom.to_s) + center("Valour: " + @char.tor_valour.to_s)
+          firstline = left(("Wisdom: " + @char.tor_wisdom.to_s), 20) + center(("Valour: " + @char.tor_valour.to_s), 20)
           "" + firstline + "\n"
         end
         
