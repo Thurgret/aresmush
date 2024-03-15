@@ -42,9 +42,8 @@ module AresMUSH
       if (cmd.switch_is?("set"))
         return TNSetCmd
       end
-    end
     when "hope"
-      if (cmd.switch_is?("set"))
+      if (cmd.switch_is?("hope"))
         return HopeSetCmd
       end
     end
