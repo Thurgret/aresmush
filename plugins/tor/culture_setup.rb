@@ -12,7 +12,7 @@ module AresMUSH
             else
                 TorCulture.create(name: culture_name, character: model)    
             end
-            Tor.select_attributes(model, "5")
+            select_attributes(model, "5")
             Global.logger.debug "test0"
 
 
