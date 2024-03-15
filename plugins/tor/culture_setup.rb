@@ -25,6 +25,7 @@ module AresMUSH
                 attrs = Tor.find_attribute(model, attrs)
                 attrs.update(rating: rating)
             end
+            Tor.select_attributes(model, 5)
             Tor.set_initial_derived_stats(model)
         end
 
