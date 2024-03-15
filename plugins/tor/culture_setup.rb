@@ -21,7 +21,7 @@ module AresMUSH
 
             return if !attributes
 
-            Global.logger.debug "test"
+            Global.logger.debug number
 
 
             number = option.to_i
