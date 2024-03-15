@@ -50,9 +50,13 @@ module AresMUSH
            
             client.emit_success "Hope set."
         
+       
+          end
+    
         end
+ 
+      end
+
     end
-  end
-end
-end
+
   
