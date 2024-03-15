@@ -50,7 +50,7 @@ module AresMUSH
             tn = Tor.find_tn(model, self.attribute_name)
                        
             if (tn)
-              tn.update(:rating => self.rating)
+              tn.update(:target_number => self.rating)
             else
                TorTN.create(:name => self.attribute_name, :target_number => self.rating, :character => model)
             end
