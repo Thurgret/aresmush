@@ -16,11 +16,13 @@ module AresMUSH
         end
 
         def self.select_attributes(model, option)
-            Global.logger.debug "test"
             culture = model.group("Culture").downcase
             attributes = find_attribute_options_config(culture)
 
             return if !attributes
+
+            Global.logger.debug "test"
+
 
             number = option.to_i
             attributes[number].each do |attrs, rating|
