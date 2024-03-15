@@ -64,7 +64,6 @@ module AresMUSH
             Tor.culture_skills(model, self.value.downcase)
             Tor.set_valour(model, 1)
             Tor.set_wisdom(model, 1)
-            Tor.select_attributes(model, "5")
           end
 
         end
