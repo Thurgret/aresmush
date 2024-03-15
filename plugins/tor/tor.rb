@@ -13,7 +13,10 @@ module AresMUSH
 
    
    
+ 
+ 
    def self.get_cmd_handler(client, cmd, enactor)
+    
     case cmd.root
     when "attribute"
       if (cmd.switch_is?("set"))
@@ -46,9 +49,9 @@ module AresMUSH
       if (cmd.switch_is?("set"))
         return HopeSetCmd
       end
-    end
+  
 
-
+    
     
     return nil
    
