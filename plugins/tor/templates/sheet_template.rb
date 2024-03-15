@@ -48,7 +48,7 @@ module AresMUSH
         def sheettitle
           firstline = @char.group("Culture").to_s
           name = @char.name.to_s
-          "#{linebreak}%xh#" + name + " of the " + firstline + "%xn"
+          "%xh" + name + " of the " + firstline + "%xn"
         end
 
         def attributes
