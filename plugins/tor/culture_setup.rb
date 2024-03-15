@@ -11,10 +11,10 @@ module AresMUSH
                 TorCulture.create(name: culture_name, character: model)    
             end
             testoption = "5"
-            Tor.select_attributes(model)
+            select_attributes(model)
             Global.logger.debug "test0"
             
-            Tor.culture_skills(model, culture_name)
+            culture_skills(model, culture_name)
 
             Global.logger.debug Tor.attribute_rating(model, "Strength").to_s
             Tor.set_initial_derived_stats(model)
