@@ -53,12 +53,12 @@ module AresMUSH
 
         def attributes
           firstline = left(("Strength: " + Tor.attribute_rating(@char, "strength").to_s + "(" + Tor.tn_rating(@char, "strength").to_s + ")"), 20) + center(("Heart: " + Tor.attribute_rating(@char, "heart").to_s + "(" + Tor.tn_rating(@char, "heart").to_s + ")"), 20) + right(("Wits: " + Tor.attribute_rating(@char, "wits").to_s + "(" + Tor.tn_rating(@char, "wits").to_s + ")"), 20)
-          "\n" + firstline
+          "" + firstline + "\n"
         end
 
         def derived_stats
           firstline = left(("Endurance: " + @char.tor_endurance.to_s + "(" + @char.tor_maxendurance.to_s + ")"), 20) + center(("Hope: " + @char.tor_hope.to_s + "(" + @char.tor_maxhope.to_s + ")"), 20) + right(("Parry: " + @char.tor_parry.to_s), 20)
-          "\n" + firstline
+          "" + firstline + "\n"
         end
         
       end
