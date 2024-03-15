@@ -1,7 +1,5 @@
 module AresMUSH
     module Tor
-    Class TorCultureSetup
-    attr_accessor :model
 
         def self.initial_setup(model)
             culture_name = model.group("Culture")            
@@ -165,6 +163,7 @@ module AresMUSH
                 TorAttributes.create(name: "wits", rating: 0, character: model)
             end
         end  
+  
     end
 end
 
