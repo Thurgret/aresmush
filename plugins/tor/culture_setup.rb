@@ -12,6 +12,7 @@ module AresMUSH
                 skill = Tor.find_skill(model, skill)
                 skill.update(rating: rating)
             end
+            Tor.zero_attributes(model)
             Tor.select_attributes(model, "5")
         end
 
@@ -27,7 +28,6 @@ module AresMUSH
             attributes[number].each do |attrs, rating|
                 attrs = Tor.find_attribute(model, attrs)
                 attrs.update(rating: rating)
-                Global.logger.debug rating.to_s
             end
             Tor.set_initial_derived_stats(model)
         end
