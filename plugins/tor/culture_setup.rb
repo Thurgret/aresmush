@@ -16,7 +16,7 @@ module AresMUSH
             Tor.culture_skills(model, culture)
             
 
-            Tor.select_attributes(model, 5.to_s)
+            Tor.select_attributes(model, "5")
             Global.logger.debug Tor.attribute_rating(model, "Strength").to_s
             Tor.set_initial_derived_stats(model)
             Tor.set_valour(model, 1)
@@ -48,7 +48,7 @@ module AresMUSH
             attributes[number].each do |attrs, rating|
                 attrs = Tor.find_attribute(model, attrs)
                 attrs.update(:rating => rating)
-                Global.logger.debug attrs
+                Global.logger.debug "test2"
             end
         end
 
