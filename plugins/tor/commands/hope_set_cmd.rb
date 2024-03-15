@@ -16,11 +16,7 @@ module AresMUSH
           [self.target_name, self.rating]
         end
         
-        def check_valid_rating
-          return nil
-        end
-        
-        
+                
         def check_can_set
           #return nil if enactor_name == self.target_name - this version is now admin only
           return nil if Tor.can_manage_abilities?(enactor)

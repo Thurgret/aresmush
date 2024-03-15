@@ -50,17 +50,19 @@ module AresMUSH
         return HopeSetCmd
       end
   
-
+    end
     
     
     return nil
    
     
-    end
+      
+  end
 
 
-   def self.get_event_handler(event_name)
-     nil
+ 
+    def self.get_event_handler(event_name)
+      nil
    end
 
    def self.get_web_request_handler(request)
