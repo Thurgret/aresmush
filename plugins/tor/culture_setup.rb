@@ -48,6 +48,7 @@ module AresMUSH
             attributes[number].each do |attrs, rating|
                 attrs = Tor.find_attribute(model, attrs)
                 attrs.update(:rating => rating)
+                Global.logger.debug attrs
             end
         end
 
