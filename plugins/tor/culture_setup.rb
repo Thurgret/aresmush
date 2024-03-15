@@ -2,7 +2,6 @@ module AresMUSH
     module Tor
         
         
-        
         def self.culture_skills(model, culture_name)
             #model is a character
             name = culture_name.downcase
@@ -26,6 +25,7 @@ module AresMUSH
                 attrs = Tor.find_attribute(model, attrs)
                 attrs.update(rating: rating)
             end
+            Tor.set_initial_derived_stats(model)
         end
 
         def self.set_initial_tn(model)
