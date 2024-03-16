@@ -49,7 +49,8 @@ module AresMUSH
 
 
             return nil if !skill_name
-            return nil if !Tor.find_skill(char, skill_name)
+
+            return nil if (!Tor.find_skill(char, skill_name) && skill_name.downcase != "valour" && skill_name.downcase != "wisdom"))
 
             if !modifier
                 modifier = 0
@@ -59,7 +60,17 @@ module AresMUSH
 
             dice = []
             feat_dice = []
-            skill_dice = Tor.find_skill_dice(char, skill_name) + modifier
+            if (Tor.find_skill(char, skill_name))
+                skill_dice = Tor.find_skill_dice(char, skill_name) + modifier
+                related_attribute = Tor.find_related_attribute_name(skill_name)
+                target_number = tn_rating(char, related_attribute)        
+            elsif (skill_name == "wisdom")
+                skill_dice = char.tor_wisdom + modifier
+                target_number = tn_rating(char, "Wits")        
+            elsif (skill_name == "valour")
+                skill_dice = char.tor_wisdom + modifier
+                target_number = tn_rating(char, "Heart")
+            end
 
             results = TorRollResults.new
 
@@ -90,8 +101,7 @@ module AresMUSH
 
 
 
-            related_attribute = Tor.find_related_attribute_name(skill_name)
-            target_number = tn_rating(char, related_attribute)
+                
             current_number = 0
             degrees = 0
 
