@@ -65,6 +65,17 @@ module AresMUSH
           firstline = left(("Wisdom: " + @char.tor_wisdom.to_s), 20) + center(("Valour: " + @char.tor_valour.to_s), 20)
           "" + firstline + "\n"
         end
+
+        def virtues
+
+        
+          list.to_a.sort_by { |a| a.name }.each_with_index.map do |a, i| 
+                linebreak = i % 1 == 0 ? "\n" : ""
+                title = left("#{ a.name }:", 15)
+                "#{linebreak}%xh#{title}%xn"
+          end
+        end
+
         
       end
     end
