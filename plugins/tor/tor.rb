@@ -49,6 +49,10 @@ module AresMUSH
       if (cmd.switch_is?("set"))
         return HopeSetCmd
       end
+    when "endurance"
+      if (cmd.switch_is?("set"))
+        return EnduranceSetCmd
+      end
   
     end
     
