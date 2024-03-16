@@ -13,6 +13,7 @@ module AresMUSH
                 TorCulture.create(name: culture_name, character: model)    
             end
             Tor.select_attributes(model, "5")
+            Tor.set_initial_tn(model)
             
             Tor.set_valour(model, 1)
             Tor.set_wisdom(model, 1)
@@ -52,10 +53,9 @@ module AresMUSH
                 current_attribute = Tor.find_attribute(model, attrs)
                 if (current_attribute)
                     current_attribute.update(rating: rating)
-                  else
-                     TorAttributes.create(name: attrs, rating: , character: model)
-                  end
-                Global.logger.debug "test2"
+                else
+                    TorAttributes.create(name: attrs, rating: rating, character: model)
+                end
             end
         end
 
