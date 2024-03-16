@@ -22,7 +22,7 @@ module AresMUSH
           [self.target_name, self.virtue_name]
         end
         
-        def check_valid_skill
+        def check_valid_virtue
           return t('tor.invalid_virtue') if !Tor.is_valid_virtue_name?(self.virtue_name)
           return nil
         end
