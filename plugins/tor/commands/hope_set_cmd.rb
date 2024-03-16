@@ -11,14 +11,14 @@ module AresMUSH
         
           if (cmd.args =~ /\//)
             args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_optional_arg3)
-            self.target_name = titlecase_arg(args.arg1)
+            self.target_name = titlecase_arg(args.arg2)
             self.rating = integer_arg(args.arg2)
-            self.maxhope_rating = integer_arg(args.args3)
+            self.maxhope_rating = integer_arg(args.arg3)
           else
             args = cmd.parse_args(ArgParser.arg1_equals_arg2)
             self.target_name = titlecase_arg(args.arg1)
-            self.rating = integer_arg(args.args2)
-            self.maxhope_rating = 1
+            self.rating = integer_arg(args.arg2)
+            self.maxhope_rating = nil
           end
         
         end
@@ -42,7 +42,7 @@ module AresMUSH
         
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            if (maxhope_rating == 1)
+            if (maxhope_rating == nil)
               self.maxhope_rating = model.tor_maxhope
             end
                                   
