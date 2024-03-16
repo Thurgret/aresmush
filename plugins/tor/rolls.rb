@@ -84,7 +84,6 @@ module AresMUSH
                 if feat_dice[0] > feat_dice[1]
                     feat_dice = feat_dice.reverse
                 end
-            end
 
                 results.feat_dice = feat_dice
             end
