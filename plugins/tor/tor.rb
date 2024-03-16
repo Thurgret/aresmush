@@ -53,6 +53,10 @@ module AresMUSH
       if (cmd.switch_is?("set"))
         return EnduranceSetCmd
       end
+    when "virtue"
+      if (cmd.switch_is?("set"))
+        return VirtueSetCmd
+      end
   
     end
     

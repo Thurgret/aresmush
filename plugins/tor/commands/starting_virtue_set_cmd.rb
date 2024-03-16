@@ -1,6 +1,6 @@
 module AresMUSH    
     module Tor
-      class StartingVirtueSetCmd
+      class VirtueSetCmd
         include CommandHandler
         
         attr_accessor :target_name, :virtue_name
