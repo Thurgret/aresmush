@@ -64,11 +64,11 @@ module AresMUSH
                 skill_dice = Tor.find_skill_dice(char, skill_name) + modifier
                 related_attribute = Tor.find_related_attribute_name(skill_name)
                 target_number = tn_rating(char, related_attribute)        
-            elsif (skill_name == "wisdom")
-                skill_dice = char.tor_wisdom + modifier
+            elsif (skill_name.downcase == "wisdom")
+                skill_dice = char.tor_wisdom.to_i + modifier
                 target_number = tn_rating(char, "Wits")        
-            elsif (skill_name == "valour")
-                skill_dice = char.tor_wisdom + modifier
+            elsif (skill_name.downcase == "valour")
+                skill_dice = char.tor_valour.to_i + modifier
                 target_number = tn_rating(char, "Heart")
             end
 
