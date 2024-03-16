@@ -14,12 +14,13 @@ module AresMUSH
             select_attributes(model)
             Global.logger.debug "test0"
             
+            set_valour(model, 3)
+            set_wisdom(model, 3)
             culture_skills(model, culture_name)
 
             Global.logger.debug Tor.attribute_rating(model, "Strength").to_s
             Tor.set_initial_derived_stats(model)
-            Tor.set_valour(model, 3)
-            Tor.set_wisdom(model, 3)
+            
         end
     
         

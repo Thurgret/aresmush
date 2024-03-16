@@ -42,7 +42,7 @@ module AresMUSH
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 
-            Tor.select_attributes(model, "3")
+            Tor.select_attributes(model, self.rating)
             Tor.set_initial_tn(model)
             Tor.set_initial_derived_stats(model)
 
