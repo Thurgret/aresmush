@@ -17,7 +17,7 @@ module AresMUSH
           else
             args = cmd.parse_args(ArgParser.arg1_equals_arg2)
             self.target_name = titlecase_arg(args.arg1)
-            self.rating = args.arg1
+            self.rating = integer_arg(args.args2)
           end
         
         end
