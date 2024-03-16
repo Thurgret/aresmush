@@ -69,7 +69,7 @@ module AresMUSH
         def virtues
 
         
-          list.to_a.sort_by { |a| a.name }.each_with_index.map do |a, i| 
+          @char.tor_virtues.to_a.sort_by { |a| a.name }.each_with_index.map do |a, i| 
                 linebreak = i % 1 == 0 ? "\n" : ""
                 title = left("#{ a.name }:", 15)
                 "#{linebreak}%xh#{title}%xn"
