@@ -77,8 +77,9 @@ module AresMUSH
                 feat_dice[1] = Tor.roll_feat_die
                 if feat_dice[0] < feat_dice[1]
                     feat_dice = feat_dice.reverse
-                elsif (favoured == "I")
-                    feat_dice[0] = Tor.roll_feat_die
+                end
+            elsif (favoured == "I")   
+                feat_dice[0] = Tor.roll_feat_die
                     feat_dice[1] = Tor.roll_feat_die
                 if feat_dice[0] > feat_dice[1]
                     feat_dice = feat_dice.reverse
