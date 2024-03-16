@@ -24,7 +24,7 @@ module AresMUSH
         
         def check_valid_virtue
             ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-                return t('tor.invalid_virtue') if !Tor.is_valid_virtue_name?(self.virtue_name, model.group("Culture").downcase)
+                return t('tor.invalid_virtue') if !Tor.is_valid_virtue_for_culture?(self.virtue_name, model.group("Culture").downcase)
                 return nil
             end
         end
