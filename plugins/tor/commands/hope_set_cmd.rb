@@ -3,20 +3,21 @@ module AresMUSH
       class HopeSetCmd
         include CommandHandler
         
-        attr_accessor :target_name, :rating
+        attr_accessor :target_name, :rating, :maxhope_rating
         
         def parse_args
           # Admin version
         
         
-          if (cmd.args =~ /=/)
-            args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          if (cmd.args =~ /\//)
+            args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_optional_arg3)
             self.target_name = titlecase_arg(args.arg1)
             self.rating = integer_arg(args.arg2)
+            self.maxhope_rating = integer_arg(args.args3)
           else
-            args = cmd.args
-            self.target_name = enactor_name
-            self.rating = args.to_i
+            args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+            self.target_name = titlecase_arg(args.arg1)
+            self.rating = args.arg1
           end
         
         end
@@ -40,7 +41,9 @@ module AresMUSH
         
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            Global.logger.debug "Something here"
+            if (maxhope_rating == nil)
+              maxhope_rating = model.tor_maxhope
+            end
                                   
             if (model.tor_hope)
               model.update(:tor_hope => self.rating)
