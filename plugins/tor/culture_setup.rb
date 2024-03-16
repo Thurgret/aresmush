@@ -12,7 +12,7 @@ module AresMUSH
             else
                 TorCulture.create(name: culture_name, character: model)    
             end
-            Tor.select_attributes(model)
+            Tor.select_attributes(model, "5")
             
             Tor.set_valour(model, 1)
             Tor.set_wisdom(model, 1)
