@@ -46,15 +46,15 @@ module AresMUSH
               self.maxendurance_rating = model.tor_maxhope
             end
                                   
-            if (model.tor_hope)
+            if (model.tor_endurance)
               model.update(:tor_endurance => self.rating)
-              model.update(:tor_maxendurance => self.maxhope_rating)
+              model.update(:tor_maxendurance => self.maxendurance_rating)
             else
-                model.create(:tor_maxendurance => self.maxhope_rating)
+                model.create(:tor_maxendurance => self.maxendurance_rating)
                 model.create(:tor_endurance => self.rating)
             end
            
-            client.emit_success "Hope set."
+            client.emit_success "Endurance set."
         
        
          
