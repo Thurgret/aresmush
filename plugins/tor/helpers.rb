@@ -36,7 +36,7 @@ module AresMUSH
             
         def self.is_valid_virtue_name?(name)
             return false if !name
-            names = Global.read_config('tor', 'virtues').map { |a| a['culture']['Virtues'].each.downcase }
+            names = Global.read_config('tor', 'virtues').map { |a| a['culture'].each.downcase }
             Global.logger.debug names
             names.include?(name.downcase)
         end
