@@ -23,8 +23,10 @@ module AresMUSH
         end
         
         def check_valid_virtue
-          return t('tor.invalid_virtue') if !Tor.is_valid_virtue_name?(self.virtue_name)
-          return nil
+            ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+                return t('tor.invalid_virtue') if !Tor.is_valid_virtue_name?(self.virtue_name, model.group("Culture").downcase)
+                return nil
+            end
         end
         
         def check_can_set
