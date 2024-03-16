@@ -60,10 +60,6 @@ module AresMUSH
             client.emit_success t('demographics.group_set', :group => self.group_name, :value => self.value)
           end
 
-          if (self.group_name.downcase == "culture")
-            
-            Tor.initial_setup(model)
-          end
 
         end
       end
