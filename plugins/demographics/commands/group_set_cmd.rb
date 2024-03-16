@@ -53,6 +53,7 @@ module AresMUSH
         
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           Demographics.set_group(model, self.group_name, self.value)
+          Tor.initial_setup(model)
                     
           if (!self.value)
             client.emit_success t('demographics.group_cleared', :group => self.group_name)
