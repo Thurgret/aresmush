@@ -32,6 +32,11 @@ module AresMUSH
             names.include?(name.downcase)
         end
             
+        def self.is_valid_virtue_name?(name)
+            return false if !name
+            names = Global.read_config('tor', 'virtues').map { |a| a['name'].downcase }
+            names.include?(name.downcase)
+        end
 
 
         
@@ -45,6 +50,11 @@ module AresMUSH
         def self.find_skill(model, skill_name)
             name_downcase = skill_name.downcase
             model.tor_skills.select { |a| a.name.downcase == name_downcase }.first
+        end
+
+        def self.find_virtue(model, virtue_name)
+            name_downcase = virtue_name.downcase
+            model.tor_virtues.select { |a| a.name.downcase == name_downcase }.first
         end
 
 

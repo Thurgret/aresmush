@@ -35,7 +35,7 @@ module AresMUSH
         end
         
         def check_can_set
-          return nil if enactor_name == self.target_name
+          ##return nil if enactor_name == self.target_name - now admin only
           return nil if Tor.can_manage_abilities?(enactor)
           return t('dispatcher.not_allowed')
         end     

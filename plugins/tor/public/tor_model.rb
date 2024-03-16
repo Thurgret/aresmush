@@ -37,6 +37,7 @@ module AresMUSH
         attribute :tor_parry, :type => DataType::Integer
         
         #attribute :treasure, :type => DataType::Integer
+        #attribute :treasure_carried, :type => DataType::Integer
   
   
         before_delete :delete_tor_abilities
@@ -48,7 +49,7 @@ module AresMUSH
       
       def delete_tor_abilities
         [ self.tor_skills, self.tor_attributes, self.tor_culture, self.tor_tn, self.tor_maxhope, self.tor_hope, self. tor_maxendurance,
-          self.tor_endurance, self.tor_parry  ].each do |list|
+          self.tor_endurance, self.tor_parry, self.tor_virtues  ].each do |list|
           list.each do |a|
             a.delete
           end
@@ -110,15 +111,15 @@ module AresMUSH
     
 
 
- #   class TorVirtues < Ohm::Model
- #       include ObjectModel
-  #      
-   #     attribute :name
-    #    attribute :desc
-     #   reference :character, "AresMUSH::Character"
-     #   index :name
+   class TorVirtues < Ohm::Model
+        include ObjectModel
         
-   # end
+        attribute :name
+        attribute :desc
+        reference :character, "AresMUSH::Character"
+        index :name
+        
+    end
 
 
 
