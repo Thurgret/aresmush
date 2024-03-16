@@ -4,6 +4,8 @@ module AresMUSH
         def self.initial_setup(model)
             culture_name = model.group("Culture")            
             culture = Tor.find_culture(model, culture_name)
+
+            Global.logger.debug "" + model.group("Culture").downcase
                 
             if (culture)
                 culture.update(name: culture_name)
@@ -12,7 +14,6 @@ module AresMUSH
             end
             testoption = "5"
             select_attributes(model)
-            Global.logger.debug "test0"
             
             set_valour(model, 3)
             set_wisdom(model, 3)
