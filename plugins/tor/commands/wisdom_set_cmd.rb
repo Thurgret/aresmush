@@ -39,8 +39,8 @@ module AresMUSH
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
                                
-              model.update(:tor_wisdom => self.rating)
-                        
+
+            Tor.set_wisdom(model, rating)
             client.emit_success "Wisdom set."      
          
           end
