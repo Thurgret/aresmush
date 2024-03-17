@@ -17,6 +17,8 @@ module AresMUSH
             self.target_name = enactor_name
             self.firstproficiency = titlecase_arg(args.arg1)
             self.secondproficiency = titlecase_arg(args.arg2)
+            Global.logger.debug firstproficiency
+            Global.logger.debug secondproficiency
           end
         end
         
