@@ -14,7 +14,7 @@ module AresMUSH
           else
             args = cmd.args
             self.target_name = enactor_name
-            self.virtue_name = titlecase_arg(args1)
+            self.virtue_name = titlecase(args)
           end
         end
         
