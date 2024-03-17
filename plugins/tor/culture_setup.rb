@@ -146,6 +146,22 @@ module AresMUSH
             end
         end
 
+        def self.set_combat_proficiency(model, rating, proficiency)
+            if (proficiency == "Axes")
+                model.update(:tor_axes_proficiency => rating)
+            end
+            if (proficiency == "Bows")
+                model.update(:tor_bows_proficiency => rating)
+            end
+            if (proficiency == "Spears")
+                model.update(:tor_spears_proficiency => rating)
+            end
+            if (proficiency == "Swords")
+                model.update(:tor_swords_proficiency => rating)
+            end
+        end
+
+
         def self.add_shadow(model, rating)
             newrating = model.tor_shadow + rating
             model.update(:tor_shadow => newrating)
