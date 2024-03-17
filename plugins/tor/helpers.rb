@@ -16,8 +16,6 @@ module AresMUSH
         def self.is_valid_skill_name?(name)
             return false if !name
             names = Global.read_config('tor', 'skills').map { |a| a['name'].downcase }
-            Global.logger.debug names
-
             names.include?(name.downcase)
         end
 
@@ -37,7 +35,6 @@ module AresMUSH
         def self.is_valid_virtue_name?(name)
             return false if !name
             names = Global.read_config('tor', 'virtues').map { |a| a['name'].downcase }
-            Global.logger.debug names
             names.include?(name.downcase)
         end
 
