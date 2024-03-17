@@ -174,7 +174,7 @@ module AresMUSH
             else
                 virtue_config = Tor.find_virtue_config(virtue_name)
                 virtue_culture = virtue_config["culture"]
-                if (virtue_culture.downcase != model.group("Culture").downcase && virtue_culture != "Everyone")
+                if (virtue_culture.downcase != model.group("Culture").downcase && virtue_culture.downcase != "everyone")
                    return nil
                 end
                 if (virtue_name.downcase == "confidence")
