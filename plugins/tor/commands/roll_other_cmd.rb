@@ -7,11 +7,12 @@ module AresMUSH
     
         def parse_args
            return if !cmd.args
-           args = cmd.parse_args(ArgParser.flexible_args)
-           self.character_name = titlecase_arg(args.arg1)
-           self.roll_str = titlecase_arg(args.arg2)
-           self.modifier = integer_arg(args.arg3)
-           self.favoured = titlecase_arg(args.arg4)
+           firstargs = trim_arg(cmd.args.before("="))
+           self.character_name = trim_arg(firstargs.before("/"))
+           self.roll_str = trim_arg(firstargs.after("/"))
+           secondargs = trim_arg(cmd.args.after("="))          
+           self.modifier = integer_arg(secondargs.before("/"))
+           self.favoured = titlecase_arg(secondargs.after("/"))
         end
         
         def required_args
