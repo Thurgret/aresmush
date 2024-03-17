@@ -26,10 +26,13 @@ module AresMUSH
         end
         
         def check_valid_proficiency
-            if (["Axes", "Bows", "Spears", "Swords"].exclude?(self.firstproficiency) || ["Axes", "Bows", "Spears", "Swords"].exclude?(self.secondproficiency))
+            if (["Axes", "Bows", "Spears", "Swords"].include?(self.firstproficiency) || ["Axes", "Bows", "Spears", "Swords"].include?(self.secondproficiency))
+                return nil    
+            
+            else
                 return t('tor.invalid_proficiency_name')
+            
             end
-            return nil
         end
         
         def check_can_set
@@ -41,7 +44,7 @@ module AresMUSH
             culture_name = model.group("Culture").downcase
             proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
             
-            if (proficiency_config.exclude?(self.firstproficiency))
+            if (proficiency_config.include?(self.firstproficiency) == false)
                    return t('tor.proficiency_not_available')
             end
             if (firstproficiency == secondproficiency)
