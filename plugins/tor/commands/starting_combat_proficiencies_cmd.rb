@@ -18,7 +18,13 @@ module AresMUSH
                   # Use the standard bordered list template to show the list with a title above it.
                   client.emit list
       
+               
                 end
+                
             end
+            
         end
+       
     end
+    
+end
