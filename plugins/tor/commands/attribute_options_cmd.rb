@@ -42,10 +42,6 @@ module AresMUSH
               return nil          
             end
 
-            
-            
-
-
             options = Tor.find_attribute_options_config(culture_name)
 
             options.each do |number, attrs, rating|
@@ -54,8 +50,6 @@ module AresMUSH
         end       
         end
     end
-
-
   end
 
 

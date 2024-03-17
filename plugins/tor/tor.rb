@@ -65,6 +65,11 @@ module AresMUSH
       if (cmd.switch_is?("set"))
         return WisdomSetCmd
       end
+    when "startingcombatproficiencies"
+      if (cmd.switch_is?("set"))
+      else
+        return StartingCombatProficienciesCmd
+      end
   
     end
     
