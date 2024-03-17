@@ -178,6 +178,7 @@ module AresMUSH
                 elsif (virtue_name.downcase == "nimbleness")
                     rating = model.tor_parry + 1
                     model.update(:tor_parry => rating)
+               
                 end
                 virtue.delete
             else
@@ -213,7 +214,10 @@ module AresMUSH
             elsif (virtue_name.downcase == "nimbleness")
                 rating = model.tor_parry + 1
                 model.update(:tor_parry => rating)
+            
             end
+
+        end
   
     end
 end
