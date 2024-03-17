@@ -32,7 +32,7 @@ module AresMUSH
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
             virtue_config = Tor.find_virtue_config(self.virtue_name)
             virtue_culture = virtue_config["culture"]
-            if (virtue_culture.downcase != "everyone" && !Tor.can_manage_abilities?(enactor))
+            if (virtue_culture.downcase != "everyone")
                    return t('tor.invalid_virtue')
             end
                
