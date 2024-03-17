@@ -163,7 +163,7 @@ module AresMUSH
             end
         end  
 
-        def self.virtue_set(model, virtue_name, desc)
+        def self.virtue_set(model, virtue_name)
             virtue = Tor.find_virtue(model, virtue_name)
             if (virtue)
                 virtue.delete
