@@ -214,6 +214,10 @@ module AresMUSH
                 model.update(:tor_hope => rating)
                 virtue.delete
             end
+            virtue = Tor.find_virtue(model, "dour-handed")
+            if (virtue)
+                virtue.delete
+            end
             virtue = Tor.find_virtue(model, "hardiness")
             if (virtue)
                 rating = model.tor_maxendurance - 2
@@ -221,11 +225,19 @@ module AresMUSH
                 model.update(:tor_endurance => rating)
                 virtue.delete
             end
+            virtue = Tor.find_virtue (model, "mastery")
+            if (virtue)
+                virtue.delete
+            end
             virtue = Tor.find_virtue(model, "nimbleness")
             if (virtue)
 
                 rating = model.tor_parry + 1
                 model.update(:tor_parry => rating)
+                virtue.delete
+            end
+            virtue = Tor.find_virtue(model, "prowess")
+            if (virtue)
                 virtue.delete
             end
             
