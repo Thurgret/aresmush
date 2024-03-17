@@ -32,7 +32,8 @@ module AresMUSH
         
         def check_can_set
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            proficiency_config = Tor.find_combat_proficiencies_config(model)
+            culture_name = model.group("Culture").downcase
+            proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
             if (!proficiency_config.include?(self.firstproficiency))
                    return t('tor.proficiency_not_available')
             end
