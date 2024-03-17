@@ -162,6 +162,18 @@ module AresMUSH
                 TorAttributes.create(name: "wits", rating: 0, character: model)
             end
         end  
+
+        def self.virtue_set(model, virtue_name, desc)
+            virtue = Tor.find_virtue(model, virtue_name)
+            if (virtue)
+                virtue.delete
+            else
+                virtue_config = Tor.find_virtue_config(name)
+                virtue_desc = virtue_config['desc']
+                TorVirtues.create(name: virtue_name, desc: virtue_desc, character: model)
+            end
+        end
+
   
     end
 end

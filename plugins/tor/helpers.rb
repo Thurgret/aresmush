@@ -104,6 +104,12 @@ module AresMUSH
             types.select { |a| a['name'].downcase == name.downcase }.first
         end
 
+        def self.find_virtue_config(name)
+            types = Global.read_config('tor', 'virtues')
+            name_downcase = name.downcase
+            types.select { |a| a['name'].downcase == name.downcase }.first
+        end
+
 
         def self.skill_rating(char, skill_name)
             skill = Tor.find_skill(char, skill_name)

@@ -68,7 +68,7 @@ module AresMUSH
 
         def virtues        
           @char.tor_virtues.to_a.sort_by { |a| a.name }.each_with_index.map do |a| 
-            "" + a.name + "\n"
+            "" + a.name + ": " + a.desc + "\n"
           end
         end
 

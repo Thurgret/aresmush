@@ -42,13 +42,9 @@ module AresMUSH
         
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            virtue = Tor.find_virtue(model, self.virtue_name)
+            Tor.virtue_set(model, self.virtue_name)
                        
-            if (virtue)
-              virtue.delete
-            else
-              TorVirtues.create(name: self.virtue_name, character: model)
-            end
+            
            
             client.emit_success t('tor.virtue_set')
          
