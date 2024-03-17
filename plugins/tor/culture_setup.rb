@@ -225,7 +225,7 @@ module AresMUSH
                 model.update(:tor_endurance => rating)
                 virtue.delete
             end
-            virtue = Tor.find_virtue (model, "mastery")
+            virtue = Tor.find_virtue(model, "mastery")
             if (virtue)
                 virtue.delete
             end
