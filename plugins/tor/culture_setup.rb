@@ -12,6 +12,7 @@ module AresMUSH
             else
                 TorCulture.create(name: culture_name, character: model)    
             end
+            Tor.remove_starting_virtues(model)
             Tor.select_attributes(model, "5")            
             Tor.set_valour(model, 1)
             Tor.set_wisdom(model, 1)
@@ -37,6 +38,7 @@ module AresMUSH
         def self.select_attributes(model, option)
             Global.logger.debug "test"
 
+            Tor.remove_starting_virtues(model)
             culture = model.group("Culture").downcase
 
             attributes = find_attribute_options_config(culture)
@@ -170,6 +172,12 @@ module AresMUSH
                 if (virtue_name.downcase == "confidence")
                     rating = model.tor_maxhope - 2
                     model.update(:tor_maxhope => rating)
+                elsif (virtue_name.downcase == "hardiness")
+                    rating = model.tor_maxendurance - 2
+                    model.update(:tor_maxendurance => rating)    
+                elsif (virtue_name.downcase == "nimbleness")
+                    rating = model.tor_parry + 1
+                    model.update(:tor_parry => rating)
                 end
                 virtue.delete
             else
@@ -181,12 +189,31 @@ module AresMUSH
                 if (virtue_name.downcase == "confidence")
                     rating = model.tor_maxhope + 2
                     model.update(:tor_maxhope => rating)
+                elsif (virtue_name.downcase == "hardiness")
+                    rating = model.tor_maxendurance + 2
+                    model.update(:tor_maxendurance => rating)
+                elsif (virtue_name.downcase == "nimbleness")
+                    rating = model.tor_parry - 1
+                    model.update(:tor_parry => rating)
                 end
                 virtue_desc = virtue_config["desc"]
                 TorVirtues.create(name: virtue_name, desc: virtue_desc, character: model)
             end
         end
 
+        def self.remove_starting_virtues(model)
+            virtue = Tor.find_virtue(model, "confidence")
+            if (virtue)
+                rating = model.tor_maxhope - 2
+                model.update(:tor_maxhope => rating)
+                virtue.delete
+            elsif (virtue_name.downcase == "hardiness")
+                rating = model.tor_maxendurance - 2
+                model.update(:tor_maxendurance => rating)    
+            elsif (virtue_name.downcase == "nimbleness")
+                rating = model.tor_parry + 1
+                model.update(:tor_parry => rating)
+            end
   
     end
 end
