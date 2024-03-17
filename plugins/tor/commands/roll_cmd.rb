@@ -3,7 +3,7 @@ module AresMUSH
     class RollCmd
       include CommandHandler
       
-      attr_accessor :roll_str, :modifier, :favoured, :other_character
+      attr_accessor :roll_str, :modifier, :favoured
   
       def parse_args
          return if !cmd.args
@@ -11,7 +11,6 @@ module AresMUSH
          self.roll_str = titlecase_arg(args.arg1)
          self.modifier = integer_arg(args.arg2)
          self.favoured = titlecase_arg(args.arg3)
-         self.other_character = titlecase_arg(args.args4)
       end
       
       def required_args
@@ -30,13 +29,7 @@ module AresMUSH
       end
       
       def handle
-        if (other_character)
-          ClassTargetFinder.with_a_character(self.other_character, client, enactor) do |model|
-            results = Tor.roll_skill(model, self.roll_str, self.modifier, self.favoured)
-          end
-        else
-          results = Tor.roll_skill(enactor, self.roll_str, self.modifier, self.favoured)
-        end
+        results = Tor.roll_skill(enactor, self.roll_str, self.modifier, self.favoured)
         
         if (!results)
           client.emit_failure t('tor.invalid_skill')
