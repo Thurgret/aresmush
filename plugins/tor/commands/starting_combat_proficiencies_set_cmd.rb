@@ -25,7 +25,7 @@ module AresMUSH
         end
         
         def check_valid_proficiency
-            if !["Axes", "Bows", "Spears", "Swords"].include? self.firstproficiency || !["Axes", "Bows", "Spears", "Swords"].include? self.secondproficiency
+            if (!["Axes", "Bows", "Spears", "Swords"].include?(self.firstproficiency) || !["Axes", "Bows", "Spears", "Swords"].include?(self.secondproficiency))
                 return t('tor.invalid_combat_proficiency')
             return nil
         end
