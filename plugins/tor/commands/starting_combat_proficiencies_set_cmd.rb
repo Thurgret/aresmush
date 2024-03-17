@@ -64,7 +64,9 @@ module AresMUSH
         end
         
         def handle
-          ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+          
+          
+            ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 
 
             Tor.set_combat_proficiency(model, firstproficiency, 2)
@@ -72,6 +74,7 @@ module AresMUSH
             
             client.emit_success t('tor.virtue_set')
           
+        
         end
          
          
@@ -79,5 +82,6 @@ module AresMUSH
        
 end
       
+end
 end
 end
