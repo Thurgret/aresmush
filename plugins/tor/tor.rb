@@ -33,7 +33,11 @@ module AresMUSH
     when "sheet"
       return SheetCmd
     when "roll"
-      return RollCmd
+      if (cmd.switch_is?("other"))
+        return RollOtherCmd
+      else
+        return RollCmd
+      end
     when "culturestart"
         return CultureSetCmd
     when "attributeoptions"
