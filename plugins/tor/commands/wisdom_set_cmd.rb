@@ -15,7 +15,7 @@ module AresMUSH
         
           self.rating = integer_arg(args.arg2)
         
-          end
+        
         
         end
         
