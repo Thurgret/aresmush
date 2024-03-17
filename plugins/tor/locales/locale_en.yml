@@ -19,7 +19,7 @@ en:
         invalid_culture_name: "Please enter a valid culture name."
         invalid_attribute_option: "Please enter attributeoptions/set followed by a number between 1 and 6."
         invalid_virtue: "Please enter a valid virtue name."
-
+        invalid_virtue_not_for_everyone: "Please enter a valid virtue name which is available to everyone. Culture-specific virtues cannot be chosen at character creation."
 
 
 
