@@ -167,7 +167,7 @@ module AresMUSH
             virtue = Tor.find_virtue(model, virtue_name)
             if (virtue)
                 if (virtue_name.downcase == "confidence")
-                    rating = tor_maxhope - 2
+                    rating = model.tor_maxhope - 2
                     model.tor_maxhope.update(rating)
                 end
                 virtue.delete
@@ -181,7 +181,7 @@ module AresMUSH
                     model.tor_maxhope = model.tor_maxhope + 2
                 end
                 virtue_desc = virtue_config["desc"]
-                TorVirtues.create(name: virtue_name, desc: virtue_desc, character: model)
+                TorVirtues.create(name: titlecase(virtue_name), desc: virtue_desc, character: model)
             end
         end
 
