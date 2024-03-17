@@ -169,6 +169,10 @@ module AresMUSH
                 virtue.delete
             else
                 virtue_config = Tor.find_virtue_config(virtue_name)
+                virtue_culture = virtue_config["culture"]
+                if (virtue_culture.downcase != model.groups("Culture").downcase && virtue_culture != "Everyone")
+                   return nil
+                end
                 virtue_desc = virtue_config["desc"]
                 TorVirtues.create(name: virtue_name, desc: virtue_desc, character: model)
             end
