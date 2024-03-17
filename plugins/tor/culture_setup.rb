@@ -16,6 +16,10 @@ module AresMUSH
             Tor.select_attributes(model, "5")            
             Tor.set_valour(model, 1)
             Tor.set_wisdom(model, 1)
+            Tor.set_shadow(model, 0)
+            Tor.set_shadowscars(model, 0)
+            Tor.set_adventure_points(model, 0)
+            Tor.set_skill_points(model, 0)
             Tor.culture_skills(model, culture_name)
             Tor.set_initial_derived_stats(model)
         end
@@ -140,6 +144,34 @@ module AresMUSH
             else
                 model.update(:tor_wisdom => rating)
             end
+        end
+
+        def self.add_shadow(model, rating)
+            newrating = model.tor_shadow + rating
+            model.update(:tor_shadow => newrating)
+            totalrating = model.tor_shadowtotal + rating
+            model.update(:tor_shadow => totalrating)
+        end
+
+        def self.add_shadowscars(model, rating)
+            newrating = model.tor_shadowscars + rating
+            model.update(:tor_shadowscars => newrating)
+            totalrating = model.tor_shadowtotal + rating
+            model.update(:tor_shadowtotal => totalrating)
+        end
+
+        def self.add_adventure_points(model, rating)
+            newrating = model.tor_adventure_points + rating
+            model.update(:tor_adventure_points => newrating)
+            lifetimeadjustment = model.tor_lifetime_adventure_points + rating
+            model.update(:tor_lifetime_adventure_points => lifetimeadjustment)
+        end
+
+        def self.add_skill_points(model, rating)
+            newrating = model.tor_skill_points + rating
+            model.update(:tor_skill_points => newrating)
+            lifetimeadjustment = model.tor_lifetime_skill_points + rating
+            model.update(:tor_lifetime_skill_points => lifetimeadjustment)
         end
 
 

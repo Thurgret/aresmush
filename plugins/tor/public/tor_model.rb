@@ -19,8 +19,11 @@ module AresMUSH
         ##collection :tor_weapons, "AresMUSH::TorWeapons"
         #collection :tor_shields, "AresMUSH::TorShields"
         
-        #attribute :tor_adventure_points, :type => DataType::Integer
-        #attribute :tor_skill_points, :type => DataType::Integer
+        attribute :tor_adventure_points, :type => DataType::Integer
+        attribute :tor_skill_points, :type => DataType::Integer
+
+        attribute :tor_lifetime_adventure_points, :type => DataType::Integer
+        attribute :tor_lifetime_skill_points, :type => DataType::Integer
         
         attribute :tor_wisdom, :type => DataType::Integer
         attribute :tor_valour, :type => DataType::Integer
@@ -28,8 +31,9 @@ module AresMUSH
         attribute :tor_maxhope, :type => DataType::Integer
         attribute :tor_hope, :type => DataType::Integer
         
-        #attribute :tor_shadow, :type => DataType::Integer
-        #attribute :tor_shadowscars, :type => DataType::Integer
+        attribute :tor_shadow, :type => DataType::Integer
+        attribute :tor_shadowscars, :type => DataType::Integer
+        attribute :tor_shadowtotal, :type => DataType::Integer
         
         attribute :tor_maxendurance, :type => DataType::Integer
         attribute :tor_endurance, :type => DataType::Integer
