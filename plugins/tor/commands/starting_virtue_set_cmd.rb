@@ -36,7 +36,7 @@ module AresMUSH
                    return t('tor.invalid_virtue')
             end
                
-          #return nil if enactor_name == self.target_name
+          return nil if enactor_name == self.target_name
           return nil if Tor.can_manage_abilities?(enactor)
           return t('dispatcher.not_allowed')
           end
