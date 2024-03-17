@@ -3,19 +3,19 @@ module AresMUSH
       class RollOtherCmd
         include CommandHandler
         
-        attr_accessor :roll_str, :modifier, :favoured, :character
+        attr_accessor :roll_str, :modifier, :favoured, :character_name
     
         def parse_args
            return if !cmd.args
            args = cmd.parse_args(ArgParser.flexible_args)
-           self.character = titlecase_arg(args.arg1)
+           self.character_name = titlecase_arg(args.arg1)
            self.roll_str = titlecase_arg(args.arg2)
            self.modifier = integer_arg(args.arg3)
            self.favoured = titlecase_arg(args.arg4)
         end
         
         def required_args
-          [ self.character, self.roll_str ]
+          [ self.character_name, self.roll_str ]
         end
         
         def check_modifier
@@ -30,8 +30,9 @@ module AresMUSH
         end
         
         def handle
-        
-        results = Tor.roll_skill(self.character, self.roll_str, self.modifier, self.favoured)
+
+            ClassTargetFinder.with_a_character(self.character_name, client, enactor) do |model|
+                results = Tor.roll_skill(model, self.roll_str, self.modifier, self.favoured)
           
           if (!results)
             client.emit_failure t('tor.invalid_skill')
@@ -41,13 +42,13 @@ module AresMUSH
           if (results.successful == true)
             if (results.gandalf_rune)
               message = t('tor.gandalf_rune', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
-               :roll => self.roll_str, :char => character, :TN => results.target_number.to_s )
+               :roll => self.roll_str, :char => character_name, :TN => results.target_number.to_s )
             elsif (results.eye_of_mordor)
               message = t('tor.roll_eye_of_mordor_success', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
-               :roll => self.roll_str, :char => character, :TN => results.target_number.to_s )
+               :roll => self.roll_str, :char => character_name, :TN => results.target_number.to_s )
             else
               message = t('tor.roll_successful', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :roll => self.roll_str, 
-              :char => character, :TN => results.target_number.to_s )
+              :char => character_name, :TN => results.target_number.to_s )
             end
           end
             
@@ -55,9 +56,9 @@ module AresMUSH
           if (results.successful == false)
               if (results.eye_of_mordor)
                 message = t('tor.eye_of_mordor_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), 
-                :roll => self.roll_str, :char => character, :TN => results.target_number.to_s )
+                :roll => self.roll_str, :char => character_name, :TN => results.target_number.to_s )
               else
-                message = t('tor.roll_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),  :roll => self.roll_str, :char => character,
+                message = t('tor.roll_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),  :roll => self.roll_str, :char => character_name,
                 :TN => results.target_number.to_s )
               end
             
@@ -67,6 +68,7 @@ module AresMUSH
           Rooms.emit_ooc_to_room enactor_room, message          
                   
        
+        end
         end
       end
     end
