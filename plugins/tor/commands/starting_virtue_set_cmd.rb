@@ -42,9 +42,12 @@ module AresMUSH
         
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            Tor.virtue_set(model, self.virtue_name)            
+            if !Tor.virtue_set(model, self.virtue_name)
+                client.emit_success "That virtue is not available to your culture."
+            else    
            
-            client.emit_success t('tor.virtue_set')
+                client.emit_success t('tor.virtue_set')
+            end
          
           end
         end
