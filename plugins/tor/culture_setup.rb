@@ -208,12 +208,20 @@ module AresMUSH
                 rating = model.tor_maxhope - 2
                 model.update(:tor_maxhope => rating)
                 virtue.delete
-            elsif (virtue_name.downcase == "hardiness")
+            end
+            virtue = Tor.find_virtue(model, "hardiness")
+            if (virtue)
                 rating = model.tor_maxendurance - 2
                 model.update(:tor_maxendurance => rating)    
-            elsif (virtue_name.downcase == "nimbleness")
+                virtue.delete
+            end
+            virtue = Tor.find_virtue(model, "nimbleness")
+            if (virtue)
+
                 rating = model.tor_parry + 1
                 model.update(:tor_parry => rating)
+                virtue.delete
+            end
             
             end
 
