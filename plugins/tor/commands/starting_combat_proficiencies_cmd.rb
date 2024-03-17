@@ -16,7 +16,7 @@ module AresMUSH
                 profiencies = Tor.find_combat_proficiencies_config(culture_name)
           
                 # Sort the hash and then convert it to a list of the form "Name Description"
-                list = "You can select " + profiencies["options1"].to_s + " or " + profiencies["options2"].to_s + " to have a starting rating of 2, and select any other combat proficiency, whether axes, bows, spears or swords, to have a starting rating of 1.\nAn example of the command syntax is startingcombatproficiencies/set spears/bows."
+                list = "You can select " + profiencies["option1"].to_s + " or " + profiencies["options"].to_s + " to have a starting rating of 2, and select any other combat proficiency, whether axes, bows, spears or swords, to have a starting rating of 1.\nAn example of the command syntax is startingcombatproficiencies/set spears/bows."
          
                   # Use the standard bordered list template to show the list with a title above it.
                   client.emit list
