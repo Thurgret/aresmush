@@ -4,11 +4,13 @@ module AresMUSH
         class StartingCombatProficienciesCmd
         
             include CommandHandler
-    
-       
+
+          
             def handle
+
+                
         
-                ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+                ClassTargetFinder.with_a_character(enactor_name, client, enactor) do |model|
                 # Get the hash of attributes out of the configuration
                 profiencies = Tor.find_combat_proficiencies_config(model)
           
