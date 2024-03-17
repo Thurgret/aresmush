@@ -223,7 +223,6 @@ module AresMUSH
                 virtue.delete
             end
             
-            end
 
         end
   
