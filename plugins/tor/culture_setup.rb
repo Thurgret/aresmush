@@ -170,6 +170,7 @@ module AresMUSH
             else
                 virtue_config = Tor.find_virtue_config(virtue_name)
                 virtue_desc = virtue_config.fetch("desc")
+                Global.logger.debug virtue_desc
                 TorVirtues.create(name: virtue_name, desc: virtue_desc, character: model)
             end
         end
