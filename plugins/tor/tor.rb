@@ -61,6 +61,10 @@ module AresMUSH
       if (cmd.switch_is?("set"))
         return VirtueSetCmd
       end
+    when "wisdom"
+      if (cmd.switch_is?("set"))
+        return WisdomSetCmd
+      end
   
     end
     
