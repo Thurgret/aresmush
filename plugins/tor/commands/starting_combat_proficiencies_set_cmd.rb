@@ -17,8 +17,6 @@ module AresMUSH
             self.target_name = enactor_name
             self.firstproficiency = titlecase_arg(args.arg1)
             self.secondproficiency = titlecase_arg(args.arg2)
-            Global.logger.debug firstproficiency
-            Global.logger.debug secondproficiency
           end
         end
         
@@ -54,6 +52,7 @@ module AresMUSH
           Chargen.check_chargen_locked(enactor)
         end
         
+       
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 
@@ -62,11 +61,11 @@ module AresMUSH
             Tor.set_combat_proficiency(model, secondproficiency, 2)
             
             client.emit_success t('tor.virtue_set')
-            end
-         
           end
+           
         end
-      end
+         
+          
     end
-  end
-  
+      
+end
