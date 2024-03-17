@@ -96,8 +96,9 @@ module AresMUSH
                     feat_dice = feat_dice.reverse
                 end
 
-                results.feat_dice = feat_dice
             end
+
+            results.feat_dice = feat_dice
 
 
 
