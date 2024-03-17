@@ -169,7 +169,7 @@ module AresMUSH
                 virtue.delete
             else
                 virtue_config = Tor.find_virtue_config(name)
-                virtue_desc = virtue_config['desc']
+                virtue_desc = virtue_config["desc"]
                 TorVirtues.create(name: virtue_name, desc: virtue_desc, character: model)
             end
         end
