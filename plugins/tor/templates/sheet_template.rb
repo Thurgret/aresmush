@@ -84,7 +84,7 @@ module AresMUSH
         end
 
         def combatproficiencies
-          "" + "Axes: " + @char.tor_axes_proficiency + " Bows: " + @char.tor_bows_proficiency + " Spears: " + @char.tor_spears_proficiency + " Swords: " + @char.tor_swords_proficiency
+          "" + "Axes: " + @char.tor_axes_proficiency.to_s + " Bows: " + @char.tor_bows_proficiency.to_s + " Spears: " + @char.tor_spears_proficiency.to_s + " Swords: " + @char.tor_swords_proficiency.to_s
         end
 
         
