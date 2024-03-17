@@ -77,8 +77,8 @@ module AresMUSH
         end
 
         def adventure_and_skill_points
-          firstline = left(("Current Adventure Points: " + @char.tor_adventure_points.to_s), 40) + right(("Total Adventure Points Earned: " + @char.tor_lifetime_adventure_points.to_s), 40)
-          secondline = left(("Current Skill Points: " + @char.tor_skill_points.to_s), 40) + right(("Total Skill Points Earned: " + @char.tor_lifetime_skill_points.to_s), 40)
+          firstline = left(("Current Adventure Points: " + @char.tor_adventure_points.to_s), 35) + right(("Total Adventure Points: " + @char.tor_lifetime_adventure_points.to_s), 35)
+          secondline = left(("Current Skill Points: " + @char.tor_skill_points.to_s), 35) + right(("Total Skill Points: " + @char.tor_lifetime_skill_points.to_s), 35)
           "" + firstline + "\n" + secondline + "\n"
         end
 
