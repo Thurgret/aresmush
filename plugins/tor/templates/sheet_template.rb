@@ -74,6 +74,7 @@ module AresMUSH
 
         def shadow
           firstline = left(("Shadow: " + @char.tor_shadow.to_s), 20) + center(("Shadow Scars: " + @char.tor_shadowscars.to_s), 20) + right(("Total Shadow: " + @char.tor_shadowtotal.to_s), 20)
+          "" + firstline + "\n"
         end
 
         def adventure_and_skill_points
