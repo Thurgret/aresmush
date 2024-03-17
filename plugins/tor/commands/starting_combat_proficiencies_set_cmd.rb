@@ -26,7 +26,7 @@ module AresMUSH
         
         def check_valid_proficiency
             if (["Axes", "Bows", "Spears", "Swords"].exclude?(self.firstproficiency) || ["Axes", "Bows", "Spears", "Swords"].exclude?(self.secondproficiency))
-                return t('tor.invalid_combat_proficiency')
+                return t('tor.invalid_proficiency_name')
             return nil
         end
         
