@@ -172,11 +172,13 @@ module AresMUSH
                 if (virtue_name.downcase == "confidence")
                     rating = model.tor_maxhope - 2
                     model.update(:tor_maxhope => rating)
+                    model.update(:tor_hope => rating)
                 elsif (virtue_name.downcase == "hardiness")
                     rating = model.tor_maxendurance - 2
                     model.update(:tor_maxendurance => rating)    
+                    model.update(:tor_endurance => rating)
                 elsif (virtue_name.downcase == "nimbleness")
-                    rating = model.tor_parry + 1
+                    rating = model.tor_parry - 1
                     model.update(:tor_parry => rating)
                
                 end
@@ -190,11 +192,13 @@ module AresMUSH
                 if (virtue_name.downcase == "confidence")
                     rating = model.tor_maxhope + 2
                     model.update(:tor_maxhope => rating)
+                    model.update(:tor_hope => rating)
                 elsif (virtue_name.downcase == "hardiness")
                     rating = model.tor_maxendurance + 2
                     model.update(:tor_maxendurance => rating)
+                    model.update(:tor_endurance => rating)
                 elsif (virtue_name.downcase == "nimbleness")
-                    rating = model.tor_parry - 1
+                    rating = model.tor_parry + 1
                     model.update(:tor_parry => rating)
                 end
                 virtue_desc = virtue_config["desc"]
@@ -207,12 +211,14 @@ module AresMUSH
             if (virtue)
                 rating = model.tor_maxhope - 2
                 model.update(:tor_maxhope => rating)
+                model.update(:tor_hope => rating)
                 virtue.delete
             end
             virtue = Tor.find_virtue(model, "hardiness")
             if (virtue)
                 rating = model.tor_maxendurance - 2
                 model.update(:tor_maxendurance => rating)    
+                model.update(:tor_endurance => rating)
                 virtue.delete
             end
             virtue = Tor.find_virtue(model, "nimbleness")
