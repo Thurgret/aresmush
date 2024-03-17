@@ -22,6 +22,7 @@ en:
         invalid_virtue_not_for_everyone: "Please enter a valid virtue name which is available to everyone. Culture-specific virtues cannot be chosen at character creation."
         invalid_proficiency_name: "Please enter a valid combat proficiency name."
         proficiency_not_available: "That proficiency is not available to start at 2 points. Please use STARTINGCOMBATPROFICIENCIES to see what your options are."
+        same_proficiency_selected: "You can't select the same proficiency twice."
 
 
 
