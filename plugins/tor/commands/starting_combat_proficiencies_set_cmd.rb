@@ -1,6 +1,6 @@
 module AresMUSH    
     module Tor
-      class VirtueSetCmd
+      class StartingCombatProfienciesSetCmd
         include CommandHandler
         
         attr_accessor :target_name, :firstproficiency, :secondproficiency

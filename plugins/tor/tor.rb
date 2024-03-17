@@ -67,6 +67,7 @@ module AresMUSH
       end
     when "startingcombatproficiencies"
       if (cmd.switch_is?("set"))
+        return StartingCombatProfienciesSetCmd
       else
         return StartingCombatProficienciesCmd
       end
