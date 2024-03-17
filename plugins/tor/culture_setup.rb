@@ -139,9 +139,10 @@ module AresMUSH
             if (rating > 2)
                 virtue = Tor.find_virtue(model, "hardiness")
                 if (virtue)
-                    temp = rating - 1
-                    model.tor_maxendurance = model.tor_maxendurance - temp + rating
-                    model.tor_endurance = model.tor_maxendurance
+                    current_endurance = model.tor_maxendurance
+                    new_endurance = current_endurance + 1
+                    model.update(:tor_maxendurance => new_endurance)
+                    model.update(:tor_endurance => model.tor_maxendurance)
                 end
             end
         end
