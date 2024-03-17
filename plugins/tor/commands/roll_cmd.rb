@@ -31,9 +31,11 @@ module AresMUSH
       
       def handle
         if (other_character)
-          results = Tor.roll_skill(enactor, self.roll_str, self.modifier, self.favoured)
+          ClassTargetFinder.with_a_character(self.other_character, client, enactor) do |model|
+            results = Tor.roll_skill(model, self.roll_str, self.modifier, self.favoured)
+          end
         else
-          results = Tor.roll_skill(self.other_character, self.roll_str, self.modifier, self.favoured)
+          results = Tor.roll_skill(enactor, self.roll_str, self.modifier, self.favoured)
         end
         
         if (!results)
