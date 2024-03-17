@@ -131,18 +131,18 @@ module AresMUSH
         end
 
         def self.set_valour(model, rating)
-            if (model.tor_valour == nil)
-                model.create(:tor_valour => rating)
-            else
-                model.update(:tor_valour => rating)
-            end
+            model.update(:tor_valour => rating)
         end
 
         def self.set_wisdom(model, rating)
-            if (model.tor_wisdom == nil)
-                model.create(:tor_wisdom => rating)
-            else
-                model.update(:tor_wisdom => rating)
+            model.update(:tor_wisdom => rating)
+            if (rating > 2)
+                virtue = Tor.find_virtue(model, "hardiness")
+                if (virtue)
+                    temp = rating - 1
+                    model.tor_maxendurance = model.tor_maxendurance - temp + rating
+                    model.tor_endurance = model.tor_maxendurance
+                end
             end
         end
 
