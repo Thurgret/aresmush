@@ -30,9 +30,8 @@ module AresMUSH
         end
         
         def handle
-            ClassTargetFinder.with_a_character(self.character, client, enactor) do |model|
-                results = Tor.roll_skill(model, self.roll_str, self.modifier, self.favoured)
-            end
+        
+        results = Tor.roll_skill(self.character, self.roll_str, self.modifier, self.favoured)
           
           if (!results)
             client.emit_failure t('tor.invalid_skill')
