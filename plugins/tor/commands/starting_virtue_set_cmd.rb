@@ -23,16 +23,23 @@ module AresMUSH
         end
         
         def check_valid_virtue
-            ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
                 return t('tor.invalid_virtue') if !Tor.is_valid_virtue_name?(self.virtue_name)
                 return nil
-            end
+            
         end
         
         def check_can_set
+          ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+            virtue_config = Tor.find_virtue_config(self.virtue_name)
+            virtue_culture = virtue_config["culture"]
+            if (virtue_culture.downcase != "everyone" && !Tor.can_manage_abilities?(enactor))
+                   return t('tor.invalid_virtue')
+            end
+               
           return nil if enactor_name == self.target_name
           return nil if Tor.can_manage_abilities?(enactor)
           return t('dispatcher.not_allowed')
+          end
         end     
         
         def check_chargen_locked
