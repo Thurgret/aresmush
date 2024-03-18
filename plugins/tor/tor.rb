@@ -77,6 +77,9 @@ module AresMUSH
       elsif (cmd.switch_is?("discardarmour"))
         return ArmourDiscardCmd
       end
+    when "equip"
+      return EquipWargearCmd
+      
   
     end
     
