@@ -29,9 +29,6 @@ module AresMUSH
         
         def check_can_set
           
-           
-            
-
                
           return nil if enactor_name == self.target_name
           return nil if Tor.can_manage_abilities?(enactor)
@@ -66,6 +63,7 @@ module AresMUSH
             ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
                 culture_name = model.group("Culture").downcase
                 proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
+                Global.logger.debug proficiency_config
             
                 
                 if (proficiency_config.include?(self.firstproficiency))
@@ -74,21 +72,22 @@ module AresMUSH
                     return t('tor.proficiency_not_available')
                 end
             end
-                if (firstproficiency == secondproficiency)
-                    return t('tor.same_proficiency_selected')            
-                end
+               
+            if (firstproficiency == secondproficiency)
+                return t('tor.same_proficiency_selected')            
+            end
             else
                 return t('tor.invalid_proficiency_name')
+            
             end
         
                   
             ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-
-
-            Tor.set_combat_proficiency(model, firstproficiency, 2)
-            Tor.set_combat_proficiency(model, secondproficiency, 2)
+                Tor.set_combat_proficiency(model, firstproficiency, 2)
+                Tor.set_combat_proficiency(model, secondproficiency, 1)
+                
+                client.emit_success t('tor.virtue_set')
             
-            client.emit_success t('tor.virtue_set')
             
         end
           
