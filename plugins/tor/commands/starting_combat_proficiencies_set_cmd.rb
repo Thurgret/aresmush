@@ -49,7 +49,6 @@ module AresMUSH
 
             options = ["Axes", "Bows", "Spears", "Swords"]
             onevalid = options.include?(self.firstproficiency)
-
             twovalid = options.include?(self.secondproficiency)
             Global.logger.debug "test"
             Global.logger.debug onevalid
@@ -59,6 +58,8 @@ module AresMUSH
             
             if (onevalid && twovalid)
 
+                Global.logger.debug "test2"
+
 
             ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
                 culture_name = model.group("Culture").downcase
@@ -67,11 +68,11 @@ module AresMUSH
                 option2 = proficiency_config['option2']
                 Global.logger.debug option1
                 Global.logger.debug option2
+                Global.
                 
-                if (option1 == self.firstproficiency || option2 = self.firstproficiency)
+                if (!(option1 == self.firstproficiency) || !(option2 = self.firstproficiency))
               
-                else
-                    client.emit_failure "Invalid skill selected."
+                    client.emit_failure "Invalid skill selected."                    
                 end
            
                 if (self.firstproficiency == self.secondproficiency)
