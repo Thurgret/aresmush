@@ -91,8 +91,16 @@ module AresMUSH
         def armour_sort(list)
           list.to_a.sort_by { |a| a.name }
             .each_with_index
-              .map do |a, i| 
-                "#{a.name}: Protection: #{a.protection} Load: #{a.gearload}\nRewards: #{a.rewards}\n"
+              .map do |a, i|
+                if a.rewards
+                  if a.origin
+                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin}\nRewards: #{a.rewards}\n"
+                  else
+                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload}\nRewards: #{a.rewards}\n"
+                  end
+                else
+                  "#{a.name}: Protection: #{a.protection} Load: #{a.gearload}\n"
+                end
           end
         end
 
