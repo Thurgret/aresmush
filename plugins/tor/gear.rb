@@ -3,7 +3,7 @@ module AresMUSH
 
 
         def self.add_armour(model, armour_name)
-            armour = find_armour(armour_name)
+            armour = find_armour(model, armour_name)
             if (armour)
                 return nil
             end
