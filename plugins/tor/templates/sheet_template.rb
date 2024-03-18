@@ -92,17 +92,29 @@ module AresMUSH
           list.to_a.sort_by { |a| a.name }
             .each_with_index
               .map do |a, i|
-                if a.rewards
-                  if a.origin
-                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin}\nRewards: #{a.rewards}\n"
+                if a.equipped == "Equipped"
+                  if a.rewards
+                    if a.origin
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - equipped\nRewards: #{a.rewards}\n"
+                    else
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - equipped\nRewards: #{a.rewards}\n"
+                    end
                   else
-                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload}\nRewards: #{a.rewards}\n"
+                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - equipped\n"
                   end
-                else
-                  "#{a.name}: Protection: #{a.protection} Load: #{a.gearload}\n"
+                elsif a.equipped == "Unequipped"
+                  if a.rewards
+                    if a.origin
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - unequipped\nRewards: #{a.rewards}\n"
+                    else
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - unequipped\nRewards: #{a.rewards}\n"
+                    end
+                  else
+                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - unequipped\n"
+                  end
                 end
-          end
-        end
+              end
+            end
 
         def armour
           armour_sort @char.tor_armour
