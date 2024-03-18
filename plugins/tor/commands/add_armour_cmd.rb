@@ -47,14 +47,16 @@ module AresMUSH
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
             armour = Tor.find_armour(model, self.armour_name)
                        
+            Global.logger.debug armour
             if (armour)
               client.emit_failure "You already have that type of armour."
               return nil
             else
+                Global.logger.debug "Doing something here"
                Tor.add_armour(model, self.armour_name)
             end
            
-            client.emit_success t('tor.attribute_set')
+            client.emit_success "Armour added."
         
         end
     end
