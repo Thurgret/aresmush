@@ -46,7 +46,7 @@ module AresMUSH
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
             if (Tor.is_valid_armour_name?(self.wargear_name))
-                wargear = Tor.find_armour(model, self.armour_name)
+                wargear = Tor.find_armour(model, self.wargear_name)
                 wargear.update(:equipped => "Equipped")
             end
                        
