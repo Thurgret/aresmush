@@ -102,15 +102,15 @@ module AresMUSH
                   else
                     "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - equipped\n"
                   end
-                elsif a.equipped == "Unequipped"
+                elsif a.equipped == "Dropped"
                   if a.rewards
                     if a.origin
-                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - unequipped\nRewards: #{a.rewards}\n"
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - dropped\nRewards: #{a.rewards}\n"
                     else
-                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - unequipped\nRewards: #{a.rewards}\n"
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - dropped\nRewards: #{a.rewards}\n"
                     end
                   else
-                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - unequipped\n"
+                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - dropped\n"
                   end
                 end
               end
