@@ -72,8 +72,10 @@ module AresMUSH
         return StartingCombatProficienciesCmd
       end
     when "wargear"
-      if (cmd.switch_is?("armour"))
+      if (cmd.switch_is?("addarmour"))
         return ArmourAddCmd
+      elsif (cmd.switch_is?("discardarmour"))
+        return ArmourDiscardCmd
       end
   
     end

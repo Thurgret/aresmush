@@ -8,12 +8,6 @@ module AresMUSH
                 return nil
             end
             config = find_armour_config(armour_name)
-            Global.logger.debug "Creating armour"
-            Global.logger.debug config
-            name = config["name"]
-            type = config["type"]
-            Global.logger.debug name
-            Global.logger.debug type
             TorArmour.create(:name => config["name"], :type => config["type"], :gearload => config["load"], :protection => config["protection"], :character => model)           
 
         end

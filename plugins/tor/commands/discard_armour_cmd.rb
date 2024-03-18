@@ -1,6 +1,6 @@
 module AresMUSH    
     module Tor
-      class ArmourAddCmd
+      class ArmourDiscardCmd
         include CommandHandler
         
         attr_accessor :target_name, :armour_name
@@ -48,14 +48,15 @@ module AresMUSH
             armour = Tor.find_armour(model, self.armour_name)
                        
             if (armour)
-              client.emit_failure "You already have that type of armour."
+                Tor.discard_armour(model, self.armour_name)
+              
               return nil
             else
-               Tor.add_armour(model, self.armour_name)
+                client.emit_failure "You don't have that armour to discard."
             end
 
            
-            client.emit_success "Armour added."
+            client.emit_success "Armour discarded."
         
         end
     end
