@@ -165,8 +165,8 @@ module AresMUSH
         attribute :rewards
         attribute :equipped
         attribute :type
-        attribute :protection :type => DataType::Integer
-        attribute :gearload :type => DataType::Integer
+        attribute :protection, :type => DataType::Integer
+        attribute :gearload, :type => DataType::Integer
         reference :character, "AresMUSH::Character"
         index :name       
     end
