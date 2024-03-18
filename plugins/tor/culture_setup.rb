@@ -147,16 +147,16 @@ module AresMUSH
         end
 
         def self.set_combat_proficiency(model, rating, proficiency)
-            if (proficiency == "Axes")
+            if (proficiency.downcase == "axes")
                 model.update(:tor_axes_proficiency => rating)
             end
-            if (proficiency == "Bows")
+            if (proficiency.downcase == "bows")
                 model.update(:tor_bows_proficiency => rating)
             end
-            if (proficiency == "Spears")
+            if (proficiency.downcase == "spears")
                 model.update(:tor_spears_proficiency => rating)
             end
-            if (proficiency == "Swords")
+            if (proficiency.downcase == "swords")
                 model.update(:tor_swords_proficiency => rating)
             end
         end

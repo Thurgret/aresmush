@@ -74,23 +74,12 @@ module AresMUSH
                 
                     
                     if (!(option1 == self.firstproficiency) || !(option2 = self.firstproficiency))
-              
-                    
-                        client.emit_failure "Invalid skill selected."                    
-               
+                        client.emit_failure "Please select from one of the two options listed by the STARTINGCOMBATPROFICIENCES command."                  
                     end
            
                
                     if (self.firstproficiency == self.secondproficiency)
-                
-                 
-                        return t('tor.same_proficiency_selected')          
-                
-                    
-                    else
-                   
-                        return t('tor.invalid_proficiency_name')
-                
+                        client.emit_failure "Please select a different proficiency for each option.."  
                     end
                        
                             
@@ -98,6 +87,8 @@ module AresMUSH
                     Tor.set_combat_proficiency(model, self.secondproficiency, 1)                
                     client.emit_success t('tor.virtue_set')  
                 end
+            else
+                client.emit_failure "Invalid skill names."
             
             end
         
