@@ -28,7 +28,7 @@ module AresMUSH
         def check_valid_proficiency
             options = ["Axes", "Bows", "Spears", "Swords"]
             
-            if (options.include?(self.firstproficiency) == false || options.include?(self.secondproficiency) == false)
+            if ((options.include?(self.firstproficiency) == false) || (options.include?(self.secondproficiency) == false))
                 return t('tor.invalid_proficiency_name')
             else
                 return nil            
