@@ -92,12 +92,10 @@ module AresMUSH
           list.to_a.sort_by { |a| a.name }
             .each_with_index
               .map do |a, i| 
-                linebreak = i % 1 == 0 ? "\n" : ""
+                linebreak = i % 2 == 0 ? "\n" : ""
                 title = left("#{ a.name }:", 15)
                 rating = left("#{a.protection}:", 20)
-                gearload = center("#{a.gearload}:", 20)
-                rewards = left("#{a.rewards.to_s}:", 80)
-                "#{linebreak}%xh#{title}%xn #{rating} #{gearload}\n#{rewards}"
+                "#{linebreak}%xh#{title}%xn #{rating}"
           end
         end
 
