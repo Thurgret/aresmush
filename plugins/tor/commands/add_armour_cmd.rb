@@ -49,6 +49,7 @@ module AresMUSH
                        
             if (armour)
               client.emit_failure "You already have that type of armour."
+              return nil
             else
                Tor.add_armour(model, self.armour_name)
             end
