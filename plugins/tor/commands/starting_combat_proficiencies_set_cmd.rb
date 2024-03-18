@@ -47,18 +47,15 @@ module AresMUSH
         def handle
 
 
+
+
             options = ["Axes", "Bows", "Spears", "Swords"]
             onevalid = options.include?(self.firstproficiency)
             twovalid = options.include?(self.secondproficiency)
-            Global.logger.debug "test"
-            Global.logger.debug onevalid
-            Global.logger.debug twovalid
-            Global.logger.debug self.firstproficiency
-            Global.logger.debug self.secondproficiency
+
             
             if (onevalid && twovalid)
 
-                Global.logger.debug "test2"
 
 
            
@@ -67,9 +64,11 @@ module AresMUSH
                     proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
                     option1 = proficiency_config['option1']
                     option2 = proficiency_config['option2']
-                    Global.logger.debug option1
-              
-                    Global.logger.debug option2
+                    
+                    Tor.set_combat_proficiency(model, "Axes", 0)
+                    Tor.set_combat_proficiency(model, "Bows", 0)
+                    Tor.set_combat_proficiency(model, "Spears", 0)
+                    Tor.set_combat_proficiency(model, "Swords", 0)
                 
                 
                     

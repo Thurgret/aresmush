@@ -4,9 +4,7 @@ module AresMUSH
         def self.initial_setup(model)
             culture_name = model.group("Culture")            
             culture = Tor.find_culture(model, culture_name)
-
-            Global.logger.debug "" + model.group("Culture").downcase
-                
+             
             if (culture)
                 culture.update(name: culture_name)
             else
@@ -22,6 +20,10 @@ module AresMUSH
             Tor.add_skill_points(model, 0)
             Tor.culture_skills(model, culture_name)
             Tor.set_initial_derived_stats(model)
+
+            proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
+            Tor.set_combat_proficiency(model, proficiency_config["option1"], 2)
+            Tor.set_combat_proficiency(model, proficiency_config["option2"], 1)
         end
     
         
