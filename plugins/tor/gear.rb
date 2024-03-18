@@ -14,7 +14,7 @@ module AresMUSH
             type = config["type"]
             Global.logger.debug name
             Global.logger.debug type
-            TorArmour.create(:name => config["name"], :type => config["type"], :gearload => config["load"], :protection => config["protection"])           
+            armour.update(:name => config["name"], :type => config["type"], :gearload => config["load"], :protection => config["protection"])           
 
         end
 
