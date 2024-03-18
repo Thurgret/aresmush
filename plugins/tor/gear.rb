@@ -13,7 +13,7 @@ module AresMUSH
         end
 
         def self.discard_armour(model, armour_name)
-            armour = find_armour(armour_name)
+            armour = find_armour(model, armour_name)
             armour.delete
         end
 
