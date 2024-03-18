@@ -60,28 +60,27 @@ module AresMUSH
             Global.logger.debug self.firstproficiency
             Global.logger.debug self.secondproficiency
             
-            if (!onevalid || !twovalid)
-                return t('tor.invalid_proficiency_name')
-            else
+            if (onevalid && twovalid)
 
-                return nil
-            end
-          
 
             ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
                 culture_name = model.group("Culture").downcase
                 proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
+            end
                 
-                if (proficiency_config.include?(self.firstproficiency) == false)
-                       return t('tor.proficiency_not_available')
+                if (proficiency_config.include?(self.firstproficiency))
+                    
+                else
+                    return t('tor.proficiency_not_available')
                 end
                 if (firstproficiency == secondproficiency)
-                    return t('tor.same_proficiency_selected')
-                
-            
+                    return t('tor.same_proficiency_selected')            
                 end
+            else
+                return t('tor.invalid_proficiency_name')
             end
-          
+        
+                  
             ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 
 
@@ -89,6 +88,8 @@ module AresMUSH
             Tor.set_combat_proficiency(model, secondproficiency, 2)
             
             client.emit_success t('tor.virtue_set')
+            
+        end
           
         
         end
