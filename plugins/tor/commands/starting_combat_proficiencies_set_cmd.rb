@@ -66,13 +66,14 @@ module AresMUSH
             ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
                 culture_name = model.group("Culture").downcase
                 proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
-            end
+            
                 
                 if (proficiency_config.include?(self.firstproficiency))
                     
                 else
                     return t('tor.proficiency_not_available')
                 end
+            end
                 if (firstproficiency == secondproficiency)
                     return t('tor.same_proficiency_selected')            
                 end
