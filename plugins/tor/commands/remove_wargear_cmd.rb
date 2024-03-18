@@ -1,6 +1,6 @@
 module AresMUSH    
     module Tor
-      class WargearAddCmd
+      class DropWargearCmd
         include CommandHandler
         
         attr_accessor :target_name, :wargear_name
@@ -27,7 +27,7 @@ module AresMUSH
           return nil
         end
         
-        def check_valid_armour
+        def check_valid_wargear
           return t('tor.invalid_armour_name') if !Tor.is_valid_armour_name?(self.wargear_name)
           return nil
         end
@@ -46,13 +46,14 @@ module AresMUSH
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
             if (Tor.is_valid_armour_name?(self.wargear_name))
-                armour = Tor.find_armour(model, self.wargear_name)              
-                if (armour)
-                    client.emit_failure "You already have that type of armour."
-                    return nil
-                else
-                    Tor.add_armour(model, self.wargear_name)
-                end
+                wargear = Tor.find_armour(model, self.wargear_name)
+                wargear.update(:equipped => "Dropped")
+            end
+                       
+            if (!wargear)
+              client.emit_failure "You don't have any wargear with that name."
+            else
+               
             end
 
            

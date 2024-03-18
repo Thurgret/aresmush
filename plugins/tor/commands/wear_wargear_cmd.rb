@@ -50,13 +50,14 @@ module AresMUSH
                 wargear.update(:equipped => "Equipped")
             end
                        
-            if (wargear)
+            if (!wargear)
               client.emit_failure "You don't have any wargear with that name."
             else
                
             end
 
-           
+            message = enactor_name + " equips a " + wargear_name
+            Rooms.emit_ooc_to_room enactor_room, message
             client.emit_success "Armour added."
         
         end
