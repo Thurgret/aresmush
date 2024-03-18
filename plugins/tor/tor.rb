@@ -79,6 +79,8 @@ module AresMUSH
       end
     when "equip"
       return EquipWargearCmd
+    when "drop"
+      return DropWargearCmd
 
   
     end
