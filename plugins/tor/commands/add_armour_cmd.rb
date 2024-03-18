@@ -56,7 +56,6 @@ module AresMUSH
                Tor.add_armour(model, self.armour_name)
             end
 
-            Global.logger.debug model.tor_armour.to_h
            
             client.emit_success "Armour added."
         
