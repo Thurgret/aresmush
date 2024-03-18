@@ -60,10 +60,11 @@ module AresMUSH
             Global.logger.debug self.firstproficiency
             Global.logger.debug self.secondproficiency
             
-            if ((onevalid == false) || (twovalid == false))
+            if (!onevalid || !twovalid)
                 return t('tor.invalid_proficiency_name')
             else
-                return nil            
+
+                return nil
             end
           
 
