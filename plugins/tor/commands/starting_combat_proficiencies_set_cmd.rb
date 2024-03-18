@@ -28,10 +28,15 @@ module AresMUSH
        
         
         def check_can_set
+          
+           
+            
+
                
           return nil if enactor_name == self.target_name
           return nil if Tor.can_manage_abilities?(enactor)
           return t('dispatcher.not_allowed')
+          
         
         end
        
@@ -72,6 +77,7 @@ module AresMUSH
                 if (firstproficiency == secondproficiency)
                     return t('tor.same_proficiency_selected')
                 
+            
                 end
             end
           
@@ -87,10 +93,11 @@ module AresMUSH
         end
          
          
+   
     end
        
+
 end
       
-end
 end
 end
