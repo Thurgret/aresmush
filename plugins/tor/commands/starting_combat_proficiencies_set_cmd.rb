@@ -26,7 +26,27 @@ module AresMUSH
         end
         
        
-        def check_valid_proficiency
+        
+        def check_can_set
+               
+          return nil if enactor_name == self.target_name
+          return nil if Tor.can_manage_abilities?(enactor)
+          return t('dispatcher.not_allowed')
+        
+        end
+       
+        
+        def check_chargen_locked
+          return nil if Tor.can_manage_abilities?(enactor)
+          Chargen.check_chargen_locked(enactor)
+       
+        end
+        
+        def handle
+
+
+
+
             options = ["Axes", "Bows", "Spears", "Swords"]
             onevalid = options.include?(firstproficiency)
 
@@ -40,41 +60,20 @@ module AresMUSH
             else
                 return nil            
             end
-        end
-        
-        def check_can_set
           
-           
-            
-           
+
             ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            culture_name = model.group("Culture").downcase
-            proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
-            
-            if (proficiency_config.include?(self.firstproficiency) == false)
-                   return t('tor.proficiency_not_available')
+                culture_name = model.group("Culture").downcase
+                proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
+                
+                if (proficiency_config.include?(self.firstproficiency) == false)
+                       return t('tor.proficiency_not_available')
+                end
+                if (firstproficiency == secondproficiency)
+                    return t('tor.same_proficiency_selected')
+                
+                end
             end
-            if (firstproficiency == secondproficiency)
-                return t('tor.same_proficiency_selected')
-            
-            end
-               
-          return nil if enactor_name == self.target_name
-          return nil if Tor.can_manage_abilities?(enactor)
-          return t('dispatcher.not_allowed')
-          
-        
-        end
-       
-        
-        def check_chargen_locked
-          return nil if Tor.can_manage_abilities?(enactor)
-          Chargen.check_chargen_locked(enactor)
-       
-        end
-        
-        def handle
-          
           
             ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 
