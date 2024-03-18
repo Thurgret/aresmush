@@ -57,6 +57,8 @@ module AresMUSH
             Global.logger.debug "test"
             Global.logger.debug onevalid
             Global.logger.debug twovalid
+            Global.logger.debug self.firstproficiency
+            Global.logger.debug self.secondproficiency
             
             if ((onevalid == false) || (twovalid == false))
                 return t('tor.invalid_proficiency_name')
