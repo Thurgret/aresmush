@@ -12,6 +12,16 @@ module AresMUSH
 
         end
 
+        def self.wear_armour(model, armour_name)
+            armour = find_armour(model, armour_name)
+            armour.update(:equipped => "Equipped")
+        end
+
+        def self.remove_armour(model, armour_name)
+            armour = find_armour(model, armour_name)
+            armour.update(:equipped => "Unequipped")
+        end
+
         def self.discard_armour(model, armour_name)
             armour = find_armour(model, armour_name)
             armour.delete
