@@ -63,17 +63,19 @@ module AresMUSH
             ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
                 culture_name = model.group("Culture").downcase
                 proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
+                option1 = proficiency_config['option1']
+                option2 = proficiency_config['option2']
                 Global.logger.debug proficiency_config
             
                 
-                if (proficiency_config.include?(self.firstproficiency))
+                if (option1 == self.firstproficiency || option2 = self.firstproficiency)
                     
                 else
                     return t('tor.proficiency_not_available')
                 end
             end
                
-            if (firstproficiency == secondproficiency)
+            if (self.firstproficiency == self.secondproficiency)
                 return t('tor.same_proficiency_selected')            
             end
             else
@@ -83,8 +85,8 @@ module AresMUSH
         
                   
             ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-                Tor.set_combat_proficiency(model, firstproficiency, 2)
-                Tor.set_combat_proficiency(model, secondproficiency, 1)
+                Tor.set_combat_proficiency(model, self.firstproficiency, 2)
+                Tor.set_combat_proficiency(model, self.secondproficiency, 1)
                 
                 client.emit_success t('tor.virtue_set')
             
