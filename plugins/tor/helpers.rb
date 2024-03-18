@@ -38,6 +38,13 @@ module AresMUSH
             names.include?(name.downcase)
         end
 
+        def self.is_valid_armour_name(name)
+            return false if !name
+            names = Global.read_config('tor', 'armour').map { |a| a['name'].downcase }
+            names.include?(name.downcase)
+        end
+
+
 
         
         def self.can_manage_abilities?(actor)      
@@ -72,6 +79,7 @@ module AresMUSH
             name_downcase = attribute_name.downcase
             model.tor_tn.select { |a| a.name.downcase == name_downcase }.first
         end
+
 
         def self.find_maximum_derived_stat(model, stat_name)
             if (stat_name.downcase == "parry")

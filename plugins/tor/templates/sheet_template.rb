@@ -87,6 +87,24 @@ module AresMUSH
           "" + "Axes: " + @char.tor_axes_proficiency.to_s + " Bows: " + @char.tor_bows_proficiency.to_s + " Spears: " + @char.tor_spears_proficiency.to_s + " Swords: " + @char.tor_swords_proficiency.to_s
         end
 
+
+        def armour_sort
+          list.to_a.sort_by { |a| a.name }
+            .each_with_index
+              .map do |a, i| 
+                linebreak = i % 1 == 0 ? "\n" : ""
+                title = left("#{ a.name }:", 15)
+                rating = left(a.protection, 20)
+                gearload = center(a.gearload)
+                rewards = left(a.rewards.to_s)
+                "#{linebreak}%xh#{title}%xn #{rating} #{gearload}\n#{rewards}"
+          end
+        end
+
+        def armour
+          armour_sort @char.tor_armour
+        end
+
         
       end
     end

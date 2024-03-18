@@ -14,7 +14,7 @@ module AresMUSH
         collection :tor_virtues, "AresMUSH::TorVirtues"
         ##collection :tor_rewards, "AresMUSH::TorRewards"
         ##collection :tor_distinctivefeatures, "AresMUSH::TorDistinctiveFeatures"
-        ##collection :tor_armour, "AresMUSH::TorArmour"
+        collection :tor_armour, "AresMUSH::TorArmour"
         ##collection :tor_weapons, "AresMUSH::TorWeapons"
         #collection :tor_shields, "AresMUSH::TorShields"
         
@@ -43,6 +43,9 @@ module AresMUSH
         attribute :tor_bows_proficiency, :type => DataType::Integer
         attribute :tor_spears_proficiency, :type => DataType::Integer
         attribute :tor_swords_proficiency, :type => DataType::Integer
+
+        attribute :tor_protection, :type => DataType::Integer
+        attribute :tor_load, :type => DataType::Integer
         
         #attribute :treasure, :type => DataType::Integer
         #attribute :treasure_carried, :type => DataType::Integer
@@ -155,17 +158,18 @@ module AresMUSH
 
 
 
-  #  class TorArmour < Ohm::Model
-   #     include ObjectModel
-        
-    #    attribute :name
-     #   attribute :desc
-      #  attribute :protection :type => DataType::Integer
-       # attribute :load :type => DataType::Integer
-        #reference :character, "AresMUSH::Character"
-       # index :name
-        
- #   end
+    class TorArmour < Ohm::Model
+        include ObjectModel
+        attribute :name
+        attribute :desc
+        attribute :rewards
+        attribute :equipped
+        attribute :type
+        attribute :protection :type => DataType::Integer
+        attribute :gearload :type => DataType::Integer
+        reference :character, "AresMUSH::Character"
+        index :name       
+    end
 #
 
   #  class TorWeapons < Ohm::Model
