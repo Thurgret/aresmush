@@ -65,31 +65,32 @@ module AresMUSH
                 proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
                 option1 = proficiency_config['option1']
                 option2 = proficiency_config['option2']
-                Global.logger.debug proficiency_config
-            
+                Global.logger.debug option1
+                Global.logger.debug option2
                 
                 if (option1 == self.firstproficiency || option2 = self.firstproficiency)
-                    
+              
                 else
-                    return t('tor.proficiency_not_available')
+                    client.emit_failure "Invalid skill selected."
                 end
-            end
-               
-            if (self.firstproficiency == self.secondproficiency)
-                return t('tor.same_proficiency_selected')            
-            end
-            else
-                return t('tor.invalid_proficiency_name')
-            
-            end
-        
-                  
-            ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-                Tor.set_combat_proficiency(model, self.firstproficiency, 2)
-                Tor.set_combat_proficiency(model, self.secondproficiency, 1)
+           
+                if (self.firstproficiency == self.secondproficiency)
                 
+                    return t('tor.same_proficiency_selected')          
+                else
+                    return t('tor.invalid_proficiency_name')
+                end
+                       
+            
+            
+               
+                Tor.set_combat_proficiency(model, self.firstproficiency, 2)         
+                Tor.set_combat_proficiency(model, self.secondproficiency, 1)
                 client.emit_success t('tor.virtue_set')
             
+          
+            end
+        
             
         end
           
