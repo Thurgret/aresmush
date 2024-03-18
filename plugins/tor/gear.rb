@@ -18,7 +18,7 @@ module AresMUSH
 
         def self.find_armour_config(armour_name)
             stats = Global.read_config('tor', 'armour')
-            name_downcase = culture.downcase
+            name_downcase = armour_name.downcase
             stats.select { |a| a['name'].downcase == name_downcase }.first
         end
 
