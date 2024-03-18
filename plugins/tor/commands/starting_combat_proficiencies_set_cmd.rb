@@ -50,17 +50,15 @@ module AresMUSH
         def handle
 
 
-
-
             options = ["Axes", "Bows", "Spears", "Swords"]
-            onevalid = options.include?(firstproficiency)
+            onevalid = options.include?(self.firstproficiency)
 
-            twovalid = options.include?(secondproficiency)
+            twovalid = options.include?(self.secondproficiency)
             Global.logger.debug "test"
             Global.logger.debug onevalid
             Global.logger.debug twovalid
             
-            if (onevalid == false || twovalid == false)
+            if ((onevalid == false) || (twovalid == false))
                 return t('tor.invalid_proficiency_name')
             else
                 return nil            
