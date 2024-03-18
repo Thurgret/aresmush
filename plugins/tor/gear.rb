@@ -33,7 +33,7 @@ module AresMUSH
         
         def self.find_armour(model, armour_name)
             name_downcase = armour_name.downcase
-            model.tor_armour.select { |a| a.name.downcase = name_downcase }.first
+            model.tor_armour.select { |a| a.name.downcase == name_downcase }.first
         end
 
 
