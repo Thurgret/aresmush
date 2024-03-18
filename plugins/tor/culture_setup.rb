@@ -146,7 +146,7 @@ module AresMUSH
             end
         end
 
-        def self.set_combat_proficiency(model, rating, proficiency)
+        def self.set_combat_proficiency(model, proficiency, rating)
             if (proficiency.downcase == "axes")
                 model.update(:tor_axes_proficiency => rating)
             end
