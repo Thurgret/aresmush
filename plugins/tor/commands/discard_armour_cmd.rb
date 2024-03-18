@@ -49,8 +49,6 @@ module AresMUSH
                        
             if (armour)
                 Tor.discard_armour(model, self.armour_name)
-              
-              return nil
             else
                 client.emit_failure "You don't have that armour to discard."
             end
