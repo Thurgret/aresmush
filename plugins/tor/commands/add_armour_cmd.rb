@@ -1,6 +1,6 @@
 module AresMUSH    
     module Tor
-      class AttributeSetCmd
+      class ArmourAddCmd
         include CommandHandler
         
         attr_accessor :target_name, :armour_name
