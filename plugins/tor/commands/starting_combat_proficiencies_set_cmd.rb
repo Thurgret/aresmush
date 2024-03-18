@@ -25,11 +25,15 @@ module AresMUSH
             [self.firstproficiency, self.secondproficiency]
         end
         
+       
         def check_valid_proficiency
             options = ["Axes", "Bows", "Spears", "Swords"]
             onevalid = options.include?(firstproficiency)
 
             twovalid = options.include?(secondproficiency)
+            Global.logger.debug "test"
+            Global.logger.debug onevalid
+            Global.logger.debug twovalid
             
             if (onevalid == false || twovalid == false)
                 return t('tor.invalid_proficiency_name')
