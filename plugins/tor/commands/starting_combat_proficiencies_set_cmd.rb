@@ -61,35 +61,44 @@ module AresMUSH
                 Global.logger.debug "test2"
 
 
-            ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-                culture_name = model.group("Culture").downcase
-                proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
-                option1 = proficiency_config['option1']
-                option2 = proficiency_config['option2']
-                Global.logger.debug option1
-                Global.logger.debug option2
-                Global.
-                
-                if (!(option1 == self.firstproficiency) || !(option2 = self.firstproficiency))
-              
-                    client.emit_failure "Invalid skill selected."                    
-                end
            
-                if (self.firstproficiency == self.secondproficiency)
+                ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+                    culture_name = model.group("Culture").downcase
+                    proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
+                    option1 = proficiency_config['option1']
+                    option2 = proficiency_config['option2']
+                    Global.logger.debug option1
+              
+                    Global.logger.debug option2
                 
-                    return t('tor.same_proficiency_selected')          
-                else
-                    return t('tor.invalid_proficiency_name')
-                end
-                       
-            
-            
+                
+                    
+                    if (!(option1 == self.firstproficiency) || !(option2 = self.firstproficiency))
+              
+                    
+                        client.emit_failure "Invalid skill selected."                    
                
-                Tor.set_combat_proficiency(model, self.firstproficiency, 2)         
-                Tor.set_combat_proficiency(model, self.secondproficiency, 1)
-                client.emit_success t('tor.virtue_set')
+                    end
+           
+               
+                    if (self.firstproficiency == self.secondproficiency)
+                
+                 
+                        return t('tor.same_proficiency_selected')          
+                
+                    
+                    else
+                   
+                        return t('tor.invalid_proficiency_name')
+                
+                    end
+                       
+                            
+                    Tor.set_combat_proficiency(model, self.firstproficiency, 2)              
+                    Tor.set_combat_proficiency(model, self.secondproficiency, 1)                
+                    client.emit_success t('tor.virtue_set')  
+                end
             
-          
             end
         
             
