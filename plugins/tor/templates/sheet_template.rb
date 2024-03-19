@@ -132,7 +132,7 @@ module AresMUSH
 
 
         def weapon_sort(list)
-          Global.logger.debug list
+          rewards = list["rewards"]
           list.to_a.sort_by { |a| a.name }
             .each_with_index
               .map do |a, i|
@@ -140,9 +140,9 @@ module AresMUSH
                   if (a.wielded == "in hand")
                     if a.rewards
                       if a.origin
-                        "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - in hand\nRewards: #{rewards}\n"
+                        "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - in hand\nRewards: #{a.rewards}\n"
                       else
-                        "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand\nRewards: #{rewards}\n"
+                        "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand\nRewards: #{a.rewards}\n"
                       end
                     else
                       "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand\n"
@@ -150,9 +150,9 @@ module AresMUSH
                   else
                     if a.rewards
                       if a.origin
-                        "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - worn\nRewards: #{rewards}\n"
+                        "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - worn\nRewards: #{a.rewards}\n"
                       else
-                        "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - worn\nRewards: #{rewards}\n"
+                        "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - worn\nRewards: #{a.rewards}\n"
                       end
                     else
                       "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - worn\n"
@@ -161,9 +161,9 @@ module AresMUSH
                 elsif a.equipped == "Dropped"
                   if a.rewards
                     if a.origin
-                      "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - dropped\nRewards: #{rewards}\n"
+                      "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - dropped\nRewards: #{a.rewards}\n"
                     else
-                      "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - dropped\nRewards: #{rewards}\n"
+                      "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - dropped\nRewards: #{a.rewards}\n"
                     end
                   else
                     "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - dropped\n"
