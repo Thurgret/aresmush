@@ -49,6 +49,8 @@ module AresMUSH
             if (Tor.is_valid_shield_name?(self.wargear_name))
               if (!mode.shield_in_use)
                 Tor.store_shield(model, self.wargear_name)
+                message = enactor_name + " stores a " + wargear_name + "."
+            Rooms.emit_ooc_to_room enactor_room, message
               else
                 client.emit_failure "No shield in hand."
               end
@@ -57,14 +59,15 @@ module AresMUSH
             if (Tor.is_valid_weapon_name?(self.wargear_name))
               if (!model.first_hand_in_use)
                 Tor.store_weapon(model, self.wargear_name)
+                message = enactor_name + " stores a " + wargear_name + "."
+            Rooms.emit_ooc_to_room enactor_room, message
               else
                 client.emit_failure "No weapon in hand."
               end
             end
                        
 
-            message = enactor_name + " stores a " + wargear_name + "."
-            Rooms.emit_ooc_to_room enactor_room, message
+            
         
         end
     end

@@ -98,15 +98,15 @@ module AresMUSH
                 if(weapon.hands == "either")    
                     two_handed_injury = weapon.injury + 2
                     weapon.update(:injury => two_handed_injury)
-                    model.update(:second_hand_in_use => true)
+                    model.update(:second_hand_in_use => "yes")
                 elsif(weapon.hands == "both")
-                    model.update(:second_hand_in_use => true)
+                    model.update(:second_hand_in_use => "yes")
                 
                 end
             end
             Global.logger.debug weapon.hands
             Global.logger.debug weapon
-            model.update(:first_hand_in_use => true)           
+            model.update(:first_hand_in_use => "yes")           
             weapon.update(:wielded => "in hand")
           
         end
@@ -114,12 +114,11 @@ module AresMUSH
         def self.store_weapon(model, weapon_name)
             weapon = find_weapon(model, weapon_name)
             config = find_weapon_config(weapon_name)
-            weapon.update(:injury => config["injury"])
             if (!model.shield_in_use && model.second_hand_in_use)
                 rating = weapon.injury - 2
                 weapon.update(:injury => rating)
             end
-            model.update(:first_hand_in_use => false)
+            model.update(:first_hand_in_use => nil)
             weapon.update(:wielded => "stored")
         end
 
@@ -133,8 +132,8 @@ module AresMUSH
                 return nil
             else
                 shield.update(:wielded => "in hand")
-                model.update(:second_hand_in_use => true)
-                model.update(:shield_in_use => true)
+                model.update(:second_hand_in_use => "yes")
+                model.update(:shield_in_use => "yes")
                 rating = model.tor_parry + shield.parrymodifier
                 model.update(:tor_parry => rating)
             end
@@ -143,8 +142,8 @@ module AresMUSH
         def self.store_shield(model, shield_name)
             if (model.shield_in_use)
                 shield = find_shield(model, shield_name)
-                model.update(:second_hand_in_use => false)
-                model.update(:shield_in_use => false)
+                model.update(:second_hand_in_use => nil)
+                model.update(:shield_in_use => nil)
                 shield.update(:wielded => "stored") 
                 rating = model.tor_parry - shield.parrymodifier
                 model.update(:tor_parry => rating)
