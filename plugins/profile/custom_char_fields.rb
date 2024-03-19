@@ -13,7 +13,7 @@ module AresMUSH
       # @example
       #    return { goals: Website.format_markdown_for_html(char.goals) }
       def self.get_fields_for_viewing(char, viewer)
-        strength_string = "Strength: " + Tor.attribute_rating(@char, "strength").to_s + "(TN: " + Tor.tn_rating(@char, "strength").to_s + ")")
+        strength_string = "Strength: " + Tor.attribute_rating(@char, "strength").to_s + "(TN: " + Tor.tn_rating(@char, "strength").to_s + ")"
         Global.logger.debug strength_string
         return { strength: Website.format_markdown_for_html(strength_string) }
       end
