@@ -52,12 +52,12 @@ module AresMUSH
 
             if (Tor.is_valid_shield_name?(self.wargear_name))
                 wargear = Tor.find_shield(model, self.wargear_name)
-                wargear.update(:equipped => "Worn")
+                wargear.update(:equipped => "Equipped")
             end
 
             if (Tor.is_valid_weapon_name?(self.wargear_name))
                 wargear = Tor.find_weapon(model, self.wargear_name)
-                wargear.update(:equipped => "Worn")
+                wargear.update(:equipped => "Equipped")
             end
                        
             if (!wargear)
