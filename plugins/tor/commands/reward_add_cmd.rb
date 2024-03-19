@@ -50,6 +50,7 @@ module AresMUSH
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
             Tor.add_weapon_reward(model, self.wargear_name, self.reward_name)
           end
+        end
             
            
            
