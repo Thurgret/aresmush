@@ -147,7 +147,7 @@ module AresMUSH
                       "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand\n"
                     end
                   else
-                    if a.rewards
+                    if (a.rewards != "")
                       if a.origin
                         "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - worn\nRewards: #{a.rewards}\n"
                       else
