@@ -21,7 +21,7 @@ module AresMUSH
         endurance_string = "Endurance: " + charmodel.tor_endurance + "(" + charmodel.tor_maxendurance + ")"
         hope_string = "Hope: " + charmodel.tor_hope + "(" + charmodel.tor_maxhope + ")"
         parry_string = "Parry: " + charmodel.tor_parry
-        return { strength: Website.format_markdown_for_html(strength_string), heart: Website.format_markdown_for_html(heart_string), wits: Website.format_markdown_for_html(wits_string)
+        return { strength: Website.format_markdown_for_html(strength_string), heart: Website.format_markdown_for_html(heart_string), wits: Website.format_markdown_for_html(wits_string),
       endurance: Website.format_markdown_for_html(endurance_string), hope: Website.format_markdown_for_html(hope_string), parry: Website.format_markdown_for_html(parry_string) }
       end
     
