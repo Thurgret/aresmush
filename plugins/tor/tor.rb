@@ -85,6 +85,11 @@ module AresMUSH
       return WargearWieldCmd
     when "store"
       return WargearStoreCmd
+    when "rewards"
+      if (switch_is?("add"))
+        return RewardAddCmd
+      end
+      
 
   
     end
