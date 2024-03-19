@@ -41,6 +41,7 @@ module AresMUSH
         lore_string = "Lore: " + Tor.skill_rating(charmodel, "Lore").to_s
 
         
+        virtue_string = ''
         
         charmodel.tor_virtues.to_a.sort_by { |a| a.name }.each_with_index.map do |a|
            virtue_string = virtue_string + a.name + ": " + a.desc + "\n"
