@@ -40,7 +40,7 @@ module AresMUSH
         riddle_string = "Riddle: " + Tor.skill_rating(charmodel, "Riddle").to_s
         lore_string = "Lore: " + Tor.skill_rating(charmodel, "Lore").to_s
 
-        virtue_string = ""
+        virtue_string = "test"
         
         
         charmodel.tor_virtues.to_a.sort_by { |a| a.name }.each_with_index.map do |a|
