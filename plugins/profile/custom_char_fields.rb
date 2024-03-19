@@ -14,15 +14,15 @@ module AresMUSH
       #    return { goals: Website.format_markdown_for_html(char.goals) }
       def self.get_fields_for_viewing(char, viewer)
         char_name = char.name
-        Global.logger.debug char_name
         charmodel = Character.find_one_by_name(char_name)
         strength_string = "Strength: " + Tor.attribute_rating(charmodel, "strength").to_s + "(TN: " + Tor.tn_rating(charmodel, "strength").to_s + ")"
         heart_string = "Heart: " + Tor.attribute_rating(charmodel, "heart").to_s + "(TN: " + Tor.tn_rating(charmodel, "heart").to_s + ")"
         wits_string = "Wits: " + Tor.attribute_rating(charmodel, "wits").to_s + "(TN: " + Tor.tn_rating(charmodel, "wits").to_s + ")"
-        Global.logger.debug strength_string
-        Global.logger.debug heart_string
-        Global.logger.debug wits_string
-        return { strength: Website.format_markdown_for_html(strength_string), heart: Website.format_input_for_html(heart_string), wits: Website.format_markdown_for_html(wits_string) }
+        endurance_string = "Endurance: " + charmodel.tor_endurance + "(" + charmodel.tor_maxendurance + ")"
+        hope_string = "Hope: " + charmodel.tor_hope + "(" + charmodel.tor_maxhope + ")"
+        parry_string = "Parry: " + charmodel.tor_parry
+        return { strength: Website.format_markdown_for_html(strength_string), heart: Website.format_markdown_for_html(heart_string), wits: Website.format_markdown_for_html(wits_string)
+      endurance: Website.format_markdown_for_html(endurance_string), hope: Website.format_markdown_for_html(hope_string), parry: Website.format_markdown_for_html(parry_string) }
       end
     
       # Gets custom fields for the character profile editor.
