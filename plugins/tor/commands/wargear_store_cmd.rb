@@ -47,11 +47,19 @@ module AresMUSH
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 
             if (Tor.is_valid_shield_name?(self.wargear_name))
+              if (!mode.shield_in_use)
                 Tor.store_shield(model, self.wargear_name)
+              else
+                Client.emit_failure "No shield in hand."
+              end
             end
 
             if (Tor.is_valid_weapon_name?(self.wargear_name))
+              if (!model.first_hand_in_use)
                 Tor.store_weapon(model, self.wargear_name)
+              else
+                Client.emit_failure "No weapon in hand."
+              end
             end
                        
 
