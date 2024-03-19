@@ -55,7 +55,7 @@ module AresMUSH
         end
 
         def self.remove_shield(model, shield_name)
-            weapon = find_shield(model, shield_name)
+            shield = find_shield(model, shield_name)
             shield.update(:equipped => "Dropped")
         end
 
