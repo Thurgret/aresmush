@@ -132,14 +132,10 @@ module AresMUSH
 
 
         def weapon_sort(list)
-          rewards = ""
-          list.each do |b|
-            rewards = rewards + b.rewards + " "
-          end
-          Global.logger.debug rewards
           list.to_a.sort_by { |a| a.name }
             .each_with_index
               .map do |a, i|
+                Global.logger.debug a.rewards
                 if (a.equipped == "Equipped")
                   if (a.wielded == "in hand")
                     if a.rewards
