@@ -17,7 +17,7 @@ module AresMUSH
                 return nil
             end
             config = find_weapon_config(weapon_name)
-            TorWeapons.create(:name => config["name"], :damage => config["damage"], :injury => config["injury"], :gearload => config["load"], :equipped => "Equipped", :proficiency => config["proficiency"], :hands => config["hands"], :rewards => [] :character => model)
+            TorWeapons.create(:name => config["name"], :damage => config["damage"], :injury => config["injury"], :gearload => config["load"], :equipped => "Equipped", :proficiency => config["proficiency"], :hands => config["hands"], :rewards => [], :character => model)
         end
 
         def self.add_shield(model, shield_name)
