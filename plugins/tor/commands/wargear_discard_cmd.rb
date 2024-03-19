@@ -49,8 +49,9 @@ module AresMUSH
               armour = Tor.find_armour(model, self.wargear_name)
               if (armour)
                  Tor.discard_armour(model, self.wargear_name)
-                 client.emit_success "Armour discarded."
-            
+
+                 message = enactor_name + " discards a " + wargear_name + "."
+                Rooms.emit_ooc_to_room enactor_room, message
               else
                     client.emit_failure "You don't have that armour to discard."
             
@@ -61,8 +62,9 @@ module AresMUSH
                   weapon = Tor.find_weapon(model, self.wargear_name)
                   if (weapon)
                     Tor.discard_weapon(model, self.wargear_name)
-                    client.emit_success "Weapon discarded."
-                
+
+                    message = enactor_name + " discards a " + wargear_name + "."
+                Rooms.emit_ooc_to_room enactor_room, message
                   else
                   client.emit_failure "You don't have that weapon to discard."
                 end
@@ -73,8 +75,9 @@ module AresMUSH
                 
                   if (shield)
                     Tor.discard_shield(model, self.wargear_name)
-                    client.emit_success "Shield discarded."
-                  else
+
+                    message = enactor_name + " discards a " + wargear_name + "."
+                    Rooms.emit_ooc_to_room enactor_room, message                  else
                     client.emit_failure "You don't have that shield to discard."
                   end
                 end
