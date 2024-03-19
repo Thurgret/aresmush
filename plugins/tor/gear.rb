@@ -117,7 +117,7 @@ module AresMUSH
             if (!model.shield_in_use && model.second_hand_in_use)
                 rating = weapon.injury - 2
                 weapon.update(:injury => rating)
-                model.update(second_hand_in_use => nil)
+                model.update(:second_hand_in_use => nil)
             end
             model.update(:first_hand_in_use => nil)
             weapon.update(:wielded => "stored")
