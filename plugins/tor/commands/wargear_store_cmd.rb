@@ -50,7 +50,7 @@ module AresMUSH
               if (!mode.shield_in_use)
                 Tor.store_shield(model, self.wargear_name)
               else
-                Client.emit_failure "No shield in hand."
+                client.emit_failure "No shield in hand."
               end
             end
 
@@ -58,7 +58,7 @@ module AresMUSH
               if (!model.first_hand_in_use)
                 Tor.store_weapon(model, self.wargear_name)
               else
-                Client.emit_failure "No weapon in hand."
+                client.emit_failure "No weapon in hand."
               end
             end
                        
