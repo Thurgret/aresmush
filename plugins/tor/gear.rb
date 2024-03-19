@@ -20,8 +20,8 @@ module AresMUSH
             TorWeapon.create(:name => config["name"], :damage => config["damage"], :injury => config["injury"], :gearload => config["load"], :proficiency => config["proficiency"], :hands => config["hands"])
         end
 
-        def self.add_shield(model, weapon_name)
-            shield = find_shield(model, weapon_name)
+        def self.add_shield(model, shield_name)
+            shield = find_shield(model, shield_name)
             if (shield)
                 return nil
             end
