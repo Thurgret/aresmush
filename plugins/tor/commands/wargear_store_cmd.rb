@@ -47,7 +47,7 @@ module AresMUSH
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 
             if (Tor.is_valid_shield_name?(self.wargear_name))
-              if (!mode.shield_in_use)
+              if (!model.shield_in_use)
                 Tor.store_shield(model, self.wargear_name)
                 message = enactor_name + " stores a " + wargear_name + "."
             Rooms.emit_ooc_to_room enactor_room, message
