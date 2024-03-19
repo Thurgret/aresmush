@@ -40,7 +40,10 @@ module AresMUSH
         riddle_string = "Riddle: " + Tor.skill_rating(charmodel, "Riddle").to_s
         lore_string = "Lore: " + Tor.skill_rating(charmodel, "Lore").to_s
 
-        virtue_string = charmodel.tor_virtues.to_a.sort_by { |a| a.name }.each_with_index.map do |a| "" + a.name + ": " + a.desc
+        virtue_string = ""
+        charmodel.tor_virtues.to_a.sort_by { |a| a.name }.each_with_index.map do |a|
+          virtue_string + a.name + ": " + a.desc + "\n"
+        end
 
         return { strength: Website.format_markdown_for_html(strength_string), heart: Website.format_markdown_for_html(heart_string), wits: Website.format_markdown_for_html(wits_string),
       endurance: Website.format_markdown_for_html(endurance_string), hope: Website.format_markdown_for_html(hope_string), parry: Website.format_markdown_for_html(parry_string),
