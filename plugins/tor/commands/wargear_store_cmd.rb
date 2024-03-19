@@ -57,7 +57,7 @@ module AresMUSH
             end
 
             if (Tor.is_valid_weapon_name?(self.wargear_name))
-              if (!model.first_hand_in_use)
+              if (model.first_hand_in_use)
                 Tor.store_weapon(model, self.wargear_name)
                 message = enactor_name + " stores a " + wargear_name + "."
             Rooms.emit_ooc_to_room enactor_room, message
