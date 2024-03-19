@@ -127,7 +127,7 @@ module AresMUSH
         end
 
 
-        def weapon_sort
+        def weapon_sort(list)
           list.to_a.sort_by { |a| a.name }
             .each_with_index
               .map do |a, i|
