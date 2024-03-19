@@ -29,6 +29,26 @@ module AresMUSH
             TorShields.create(:name => config["name"], :gearload => config["load"], :equipped => "Equipped", :parrymodifier => config["modifier"], :character => model)
         end
 
+        def self.add_weapon_reward(model, weapon_name, reward_name)
+            weapon = find_weapon(model, weapon_name)
+            if (reward_name.downcase == "fell")
+                weapon.rewards << "Fell"
+                rating = weapon.injury + 2
+                weapon.update(:injury => rating)
+            end
+            if (reward_name.downcase == "grievous")
+                weapon.rewards << "Grievous"
+                rating = weapon.damage + 1
+                weapon.update(:damage => rating)
+            if (reward_name.downcase == "keen")
+                weapon.rewards << "Keen"
+            end
+        end
+
+
+
+
+
         def self.wear_armour(model, armour_name)
             armour = find_armour(model, armour_name)
             armour.update(:equipped => "Equipped")
