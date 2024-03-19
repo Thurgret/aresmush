@@ -40,6 +40,8 @@ module AresMUSH
         riddle_string = "Riddle: " + Tor.skill_rating(charmodel, "Riddle").to_s
         lore_string = "Lore: " + Tor.skill_rating(charmodel, "Lore").to_s
 
+        virtue_string = charmodel.tor_virtues.to_a.sort_by { |a| a.name }.each_with_index.map do |a| "" + a.name + ": " + a.desc
+
         return { strength: Website.format_markdown_for_html(strength_string), heart: Website.format_markdown_for_html(heart_string), wits: Website.format_markdown_for_html(wits_string),
       endurance: Website.format_markdown_for_html(endurance_string), hope: Website.format_markdown_for_html(hope_string), parry: Website.format_markdown_for_html(parry_string),
     awe: Website.format_markdown_for_html(awe_string), athletics: Website.format_markdown_for_html(athletics_string), awareness: Website.format_markdown_for_html(awareness_string),
@@ -47,7 +49,8 @@ module AresMUSH
     enhearten: Website.format_markdown_for_html(enhearten_string), travel: Website.format_markdown_for_html(travel_string), insight: Website.format_markdown_for_html(insight_string),
     healing: Website.format_markdown_for_html(healing_string), courtesy: Website.format_markdown_for_html(courtesy_string), battle: Website.format_markdown_for_html(battle_string),
     persuade: Website.format_markdown_for_html(persuade_string), stealth: Website.format_markdown_for_html(stealth_string), scan: Website.format_markdown_for_html(scan_string),
-    explore: Website.format_markdown_for_html(explore_string), riddle: Website.format_markdown_for_html(riddle_string), lore: Website.format_markdown_for_html(lore_string)}
+    explore: Website.format_markdown_for_html(explore_string), riddle: Website.format_markdown_for_html(riddle_string), lore: Website.format_markdown_for_html(lore_string),
+    virtue: Website.format_markdown_for_html(virtue_string)}
       end
     
       # Gets custom fields for the character profile editor.
