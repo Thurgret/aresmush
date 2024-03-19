@@ -20,6 +20,8 @@ module AresMUSH
         heart_string = "Heart: " + Tor.attribute_rating(charmodel, "heart").to_s + "(TN: " + Tor.tn_rating(charmodel, "heart").to_s + ")"
         wits_string = "Wits: " + Tor.attribute_rating(charmodel, "wits").to_s + "(TN: " + Tor.tn_rating(charmodel, "wits").to_s + ")"
         Global.logger.debug strength_string
+        Global.logger.debug heart_string
+        Global.logger.debug wits_string
         return { strength: Website.format_markdown_for_html(strength_string), heart: Website.format_input_for_html(heart_string), wits: Website.format_markdown_for_html(wits_string) }
       end
     
