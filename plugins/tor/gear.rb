@@ -88,8 +88,6 @@ module AresMUSH
             if (model.second_hand_in_use)
                 if (weapon.hands == "both")
                     return nil
-                elsif(weapon.hands == "either")
-                    weapon.update(:injury => weapon["injury"]) 
                 end
             else
                 if(weapon.hands == "either")
