@@ -15,7 +15,7 @@ module AresMUSH
       def self.get_fields_for_viewing(char, viewer)
         testthis = char.name
         Global.logger.debug testthis
-        charmodel = Character.find_one_by_name(char.name
+        charmodel = Character.find_one_by_name(char.name)
         strength_string = "Strength: " + Tor.attribute_rating(@char, "strength").to_s + "(TN: " + Tor.tn_rating(@char, "strength").to_s + ")"
         Global.logger.debug strength_string
         return { strength: Website.format_markdown_for_html(strength_string) }
