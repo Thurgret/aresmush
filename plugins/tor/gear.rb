@@ -45,29 +45,34 @@ module AresMUSH
         end
 
         def self.remove_armour(model, armour_name)
+            armour_name = armour_name.downcase
             armour = find_armour(model, armour_name)
             armour.update(:equipped => "Dropped")
         end
 
         def self.remove_weapon(model, weapon_name)
+            weapon_name = weapon_name.downcase
             weapon = find_weapon(model, weapon_name)
             weapon.update(:equipped => "Dropped")
         end
 
         def self.remove_shield(model, shield_name)
+            shield_name = shield_name.downcase
             shield = find_shield(model, shield_name)
             shield.update(:equipped => "Dropped")
         end
 
         def self.discard_armour(model, armour_name)
+            armour_name = armour_name.downcase
             remove_armour(model, armour_name)
             armour = find_armour(model, armour_name)
             armour.delete
         end
 
         def self.discard_shield(model, shield_name)
-            store_shield(model, shield_name)
-            remove_shield(model, shield_name)
+            name_downcase = shield_name.downcase
+            store_shield(model, name_downcase)
+            remove_shield(model, name_downcase)
             shield = find_shield(model, shield_name)
             shield.delete
         end
