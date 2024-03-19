@@ -59,7 +59,10 @@ module AresMUSH
         def self.remove_shield(model, shield_name)
             shield_name = shield_name.downcase
             shield = find_shield(model, shield_name)
-            shield.update(:equipped => "Dropped")
+            if(shield)
+                         
+                shield.update(:equipped => "Dropped")
+            end
         end
 
         def self.discard_armour(model, armour_name)
