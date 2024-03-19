@@ -135,7 +135,9 @@ module AresMUSH
           list.to_a.sort_by { |a| a.name }
             .each_with_index
               .map do |a, i|
-                Global.logger.debug a.rewards.join(" ")
+                if (a.rewards.is_a?(String))
+                  Global.logger.debug "ahhhh"
+                end
                 if (a.equipped == "Equipped")
                   if (a.wielded == "in hand")
                     if a.rewards
