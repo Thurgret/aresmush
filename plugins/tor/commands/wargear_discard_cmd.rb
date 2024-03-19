@@ -82,11 +82,6 @@ module AresMUSH
                   end
                 end
 
-
-                message = enactor_name + " discards a " + wargear_name + "."
-                Rooms.emit_ooc_to_room enactor_room, message
-           
-        
         end
     end
   end

@@ -51,6 +51,7 @@ module AresMUSH
                     client.emit_failure "You already have that type of armour."
                     return nil
                 else
+                  client.emit_success "Armour added."
                     Tor.add_armour(model, self.wargear_name)
                 end
             end
@@ -60,6 +61,7 @@ module AresMUSH
                 client.emit_failure "You already have that type of weapon"
                 return nil
               else
+                client.emit_success "Weapon added."
               Tor.add_weapon(model, self.wargear_name)
               end
             end
