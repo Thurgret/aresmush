@@ -42,9 +42,9 @@ module AresMUSH
 
         virtue_string = ""
         
-
+        
         charmodel.tor_virtues.to_a.sort_by { |a| a.name }.each_with_index.map do |a|
-           virtue_string + a.name + ": " + a.desc + "\n"
+           "" + virtue_string + a.name + ": " + a.desc + "\n"
            Global.logger.debug virtue_string
           end
 
