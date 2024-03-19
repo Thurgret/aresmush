@@ -13,7 +13,7 @@ module AresMUSH
       # @example
       #    return { goals: Website.format_markdown_for_html(char.goals) }
       def self.get_fields_for_viewing(char, viewer)
-        return { strength: Website.format_markdown_for_html(char.first_hand_in_use)}
+        return { strength: Website.format_markdown_for_html("Strength: "  + Tor.attribute_rating(@char, "strength").to_s + "(TN: " + Tor.tn_rating(@char, "strength").to_s + ")")}
       end
     
       # Gets custom fields for the character profile editor.
