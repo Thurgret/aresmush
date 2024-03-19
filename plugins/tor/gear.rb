@@ -74,8 +74,8 @@ module AresMUSH
                 if (weapon["hands"] == "both")
                     return nil
                 elsif(weapon["hands"] == "either")
-                    weapon.update(:injury => weapon["injury"])
-                    
+                    weapon.update(:injury => weapon["injury"]) 
+                end
             else
                 if(weapon["hands"] == "either")
                     two_handed_injury = weapon["injury"] + 2
@@ -83,6 +83,7 @@ module AresMUSH
                     model.update(:second_hand_in_use => true)
                 elsif(weapon["hands"] == "both")
                     model.update(:second_hand_in_use => true)
+                
                 end
             end
             model.update(:first_hand_in_use => true)           
