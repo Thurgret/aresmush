@@ -40,6 +40,7 @@ module AresMUSH
             if (reward_name.downcase == "grievous")
                 newstring = weapon.rewards + "Grievous: Add 1 to the Damage rating of the selected weapon.\n"
                 weapon.update(:rewards => newstring)
+                rating = weapon.damage + 1
                 weapon.update(:damage => rating)
             end
             if (reward_name.downcase == "keen")
