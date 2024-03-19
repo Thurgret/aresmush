@@ -11,7 +11,6 @@ module AresMUSH
                 TorCulture.create(name: culture_name, character: model)    
             end
             Tor.remove_starting_virtues(model)
-            Tor.remove_all_shields(model)
             Tor.select_attributes(model, "5")            
             Tor.set_valour(model, 1)
             Tor.set_wisdom(model, 1)
@@ -299,11 +298,6 @@ module AresMUSH
 
         end
 
-        def self.remove_all_shields(model)
-            Tor.discard_shield(model, "Buckler")
-            Tor.discard_shield(model, "Shield")
-            Tor.discard_shield(model, "Great Shield")
-        end
   
     end
 end
