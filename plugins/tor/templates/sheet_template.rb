@@ -127,7 +127,7 @@ module AresMUSH
         end
 
         def shields
-          sheidl_sort @char.tor_shields
+          shield_sort @char.tor_shields
         end
 
 
