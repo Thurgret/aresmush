@@ -60,16 +60,21 @@ module AresMUSH
         end
 
         def self.discard_armour(model, armour_name)
+            remove_armour(model, armour_name)
             armour = find_armour(model, armour_name)
             armour.delete
         end
 
         def self.discard_shield(model, shield_name)
+            store_shield(model, shield_name)
+            remove_shield(model, shield_name)
             shield = find_shield(model, shield_name)
             shield.delete
         end
 
         def self.discard_weapon(model, weapon_name)
+            store_weapon(model, weapon_name)
+            remove_weapon(model, weapon_name)
             weapon = find_weapon(model, weapon_name)
             weapon.delete
         end

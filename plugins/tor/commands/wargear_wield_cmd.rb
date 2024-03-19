@@ -1,6 +1,6 @@
 module AresMUSH    
     module Tor
-      class EquipWargearCmd
+      class WargearWieldCmd
         include CommandHandler
         
         attr_accessor :target_name, :wargear_name
@@ -28,7 +28,7 @@ module AresMUSH
         end
         
         def check_valid_wargear
-          return t('tor.invalid_armour_name') if ((!Tor.is_valid_armour_name?(self.wargear_name)) && (!Tor.is_valid_weapon_name?(self.wargear_name)) && (!Tor.is_valid_shield_name?(self.wargear_name)))
+          return t('tor.invalid_armour_name') if ((!Tor.is_valid_weapon_name?(self.wargear_name)) && (!Tor.is_valid_shield_name?(self.wargear_name)))
           return nil
         end
         
@@ -45,18 +45,21 @@ module AresMUSH
         
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            if (Tor.is_valid_armour_name?(self.wargear_name))
-                Tor.wear_armour(model, self.wargear_name)
-            end
 
             if (Tor.is_valid_shield_name?(self.wargear_name))
-                Tor.wear_shield(model, self.wargear_name)
+                Tor.hold_shield(model, self.wargear_name)
             end
 
             if (Tor.is_valid_weapon_name?(self.wargear_name))
-                Tor.wear_weapon(model, self.wargear_name)
+                Tor.wield_weapon(model, self.wargear_name)
             end
                        
+            if (!wargear)
+              client.emit_failure "You don't have any wargear with that name."
+              return nil
+            else
+               
+            end
 
             message = enactor_name + " equips a " + wargear_name + "."
             Rooms.emit_ooc_to_room enactor_room, message

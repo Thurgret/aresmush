@@ -46,18 +46,15 @@ module AresMUSH
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
             if (Tor.is_valid_armour_name?(self.wargear_name))
-                wargear = Tor.find_armour(model, self.wargear_name)
-                wargear.update(:equipped => "Dropped")
+                Tor.remove_armour(model, self.wargear_name)
             end
 
             if (Tor.is_valid_shield_name?(self.wargear_name))
-                wargear = Tor.find_shield(model, self.wargear_name)
-                wargear.update(:equipped => "Dropped")
+                Tor.remove_shield(model, self.wargear_name)
             end
 
             if (Tor.is_valid_weapon_name?(self.wargear_name))
-                wargear = Tor.find_weapon(model, self.wargear_name)
-                wargear.update(:equipped => "Dropped")
+                Tor.remove_weapon(model, self.wargear_name)
             end
                        
             if (!wargear)
@@ -66,8 +63,9 @@ module AresMUSH
                
             end
 
+            message = enactor_name + " drops a " + wargear_name + "."
+            Rooms.emit_ooc_to_room enactor_room, message
            
-            client.emit_success "Armour added."
         
         end
     end
