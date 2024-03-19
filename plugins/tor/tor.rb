@@ -81,6 +81,8 @@ module AresMUSH
       return EquipWargearCmd
     when "drop"
       return DropWargearCmd
+    when "wield"
+      return WargearWieldCmd
 
   
     end
