@@ -10,6 +10,10 @@ module AresMUSH
             else
                 TorCulture.create(name: culture_name, character: model)    
             end
+
+            model.update(:first_hand_in_use => nil)
+            model.update(:second_hand_in_use => nil)
+
             Tor.remove_starting_virtues(model)
             Tor.select_attributes(model, "5")            
             Tor.set_valour(model, 1)
