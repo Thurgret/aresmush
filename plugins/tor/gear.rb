@@ -109,6 +109,7 @@ module AresMUSH
                 end
             end
             Global.logger.debug weapon.hands
+            Global.logger.debug weapon
             model.update(:first_hand_in_use => true)           
             weapon.update(:wielded => "in hand")
           
