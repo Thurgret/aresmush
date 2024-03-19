@@ -1,9 +1,9 @@
 module AresMUSH    
     module Tor
-      class ArmourDiscardCmd
+      class DiscardWargearCmd
         include CommandHandler
         
-        attr_accessor :target_name, :armour_name
+        attr_accessor :target_name, :wargear_name
         
         def parse_args
           # Admin version
@@ -11,16 +11,16 @@ module AresMUSH
           if (cmd.args =~ /=/)
             args = cmd.parse_args(ArgParser.arg1_equals_arg2)
             self.target_name = titlecase_arg(args.arg1)
-            self.armour_name = titlecase_arg(args.arg2)
+            self.wargear_name = titlecase_arg(args.arg2)
           else
             args = cmd.args
             self.target_name = enactor_name
-            self.armour_name = args.to_s
+            self.wargear_name = args.to_s
           end
         end
         
         def required_args
-          [self.target_name, self.armour_name]
+          [self.target_name, self.wargear_name]
         end
         
         def check_valid_rating
@@ -28,7 +28,7 @@ module AresMUSH
         end
         
         def check_valid_armour
-          return t('tor.invalid_armour_name') if !Tor.is_valid_armour_name?(self.armour_name)
+          return t('tor.invalid_armour_name') if ((!Tor.is_valid_armour_name?(self.wargear_name)) && (!Tor.is_valid_weapon_name?(self.wargear_name)) && (!Tor.is_valid_shield_name?(self.wargear_name)))
           return nil
         end
         
@@ -45,16 +45,39 @@ module AresMUSH
         
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            armour = Tor.find_armour(model, self.armour_name)
-                       
-            if (armour)
-                Tor.discard_armour(model, self.armour_name)
-            else
-                client.emit_failure "You don't have that armour to discard."
-            end
+            if (Tor.is_valid_armour_name?(self.wargear_name))
+              armour = Tor.find_armour(model, self.wargear_name)
+              if (armour)
+                 Tor.discard_armour(model, self.wargear_name)
+            
+              else
+                    client.emit_failure "You don't have that armour to discard."
+            
+                  
+                  end
+                end
+                if (Tor.is_valid_weapon_name?(self.wargear_name))
+                  weapon = Tor.find_weapon(model, self.wargear_name)
+                  if (weapon)
+                    Tor.discard_weapon(model, self.wargear_name)
+                
+                  else
+                  client.emit_failure "You don't have that weapon to discard."
+                end
+                end
+                if (Tor.is_valid_shield_name?(self.wargear_name))
+                  shield = Tor.find_shield(model, self.wargear_name)
+                
+                  if (shield)
+                    Tor.discard_shield(model, self.wargear_name)
+                  else
+                    client.emit_failure "You don't have that shield to discard."
+                  end
+                end
+
 
            
-            client.emit_success "Armour discarded."
+            client.emit_success "Gear discarded."
         
         end
     end
