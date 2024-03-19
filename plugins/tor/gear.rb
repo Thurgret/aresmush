@@ -17,7 +17,7 @@ module AresMUSH
                 return nil
             end
             config = find_weapon_config(weapon_name)
-            TorWeapons.create(:name => config["name"], :damage => config["damage"], :injury => config["injury"], :gearload => config["load"], :equipped => "Equipped", :proficiency => config["proficiency"], :hands => config["hands"], :rewards => Array.new, :character => model)
+            TorWeapons.create(:name => config["name"], :damage => config["damage"], :injury => config["injury"], :gearload => config["load"], :equipped => "Equipped", :proficiency => config["proficiency"], :hands => config["hands"], :rewards => "", :character => model)
         end
 
         def self.add_shield(model, shield_name)
@@ -32,17 +32,19 @@ module AresMUSH
         def self.add_weapon_reward(model, weapon_name, reward_name)
             weapon = find_weapon(model, weapon_name)
             if (reward_name.downcase == "fell")
-                weapon.rewards << "Fell"
+                newstring = weapon.rewards + "Fell: Add 2 to the Injury rating of the selected weapon.\n"
+                weapon.update(:rewards => newstring)
                 rating = weapon.injury + 2
                 weapon.update(:injury => rating)
             end
             if (reward_name.downcase == "grievous")
-                weapon.rewards << "Grievous"
-                rating = weapon.damage + 1
+                newstring = weapon.rewards + "Grievous: Add 1 to the Damage rating of the selected weapon.\n"
+                weapon.update(:rewards => newstring)
                 weapon.update(:damage => rating)
             end
             if (reward_name.downcase == "keen")
-                weapon.rewards << "Keen"
+                newstring = weapon.rewards + "Keen: Attack rolls made with a Keen weapon score a Piercing Blow also on a result of 9 on the Feat die.\n"
+                weapon.update(:rewards => newstring)
             end
         end
 
