@@ -49,6 +49,16 @@ module AresMUSH
                 wargear = Tor.find_armour(model, self.wargear_name)
                 wargear.update(:equipped => "Dropped")
             end
+
+            if (Tor.is_valid_shield_name?(self.wargear_name))
+                wargear = Tor.find_shield(model, self.wargear_name)
+                wargear.update(:equipped => "Dropped")
+            end
+
+            if (Tor.is_valid_weapon_name?(self.wargear_name))
+                wargear = Tor.find_weapon(model, self.wargear_name)
+                wargear.update(:equipped => "Dropped")
+            end
                        
             if (!wargear)
               client.emit_failure "You don't have any wargear with that name."
