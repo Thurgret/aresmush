@@ -39,6 +39,7 @@ module AresMUSH
             if (reward_name.downcase == "grievous")
                 weapon.rewards << "Grievous"
                 rating = weapon.damage + 1
+            end
                 weapon.update(:damage => rating)
             if (reward_name.downcase == "keen")
                 weapon.rewards << "Keen"
