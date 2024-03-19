@@ -116,9 +116,58 @@ module AresMUSH
               end
             end
 
+
+
         def armour
           armour_sort @char.tor_armour
         end
+
+        def weapon
+          weapon_sort @char.tor_weapons
+        end
+
+
+        def weapon_sort
+          list.to_a.sort_by { |a| a.name }
+            .each_with_index
+              .map do |a, i|
+                if (a.equipped == "Equipped")
+                  if (a.wielded == "in hand")
+                    if a.rewards
+                      if a.origin
+                        "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - in hand\nRewards: #{a.rewards}\n"
+                      else
+                        "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand\nRewards: #{a.rewards}\n"
+                      end
+                    else
+                      "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand\n"
+                    end
+                  else
+                    if a.rewards
+                      if a.origin
+                        "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - worn\nRewards: #{a.rewards}\n"
+                      else
+                        "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - worn\nRewards: #{a.rewards}\n"
+                      end
+                    else
+                      "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - worn\n"
+                    end
+                  end
+                elsif a.equipped == "Dropped"
+                  if a.rewards
+                    if a.origin
+                      "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - dropped\nRewards: #{a.rewards}\n"
+                    else
+                      "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - dropped\nRewards: #{a.rewards}\n"
+                    end
+                  else
+                    "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - dropped\n"
+                  end
+                end
+              end
+            end
+
+
 
         
       end
