@@ -28,7 +28,7 @@ module AresMUSH
         end
         
         def check_valid_wargear
-          return t('tor.invalid_armour_name') if !Tor.is_valid_armour_name?(self.wargear_name)
+          return t('tor.invalid_armour_name') if ((!Tor.is_valid_armour_name?(self.wargear_name)) && (!Tor.is_valid_weapon_name?(self.wargear_name)) && (!Tor.is_valid_shield_name?(self.wargear_name)))
           return nil
         end
         
