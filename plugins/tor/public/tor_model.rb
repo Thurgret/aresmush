@@ -191,9 +191,9 @@ module AresMUSH
         attribute :origin
         attribute :custom_name
         attribute :hands
-        attribute :damage :type => DataType::Integer
-        attribute :injury :type => DataType::Integer
-        attribute :gearload :type => DataType::Integer
+        attribute :damage, :type => DataType::Integer
+        attribute :injury, :type => DataType::Integer
+        attribute :gearload, :type => DataType::Integer
         reference :character, "AresMUSH::Character"
         index :name
         
@@ -210,8 +210,8 @@ module AresMUSH
         attribute :wielded
         attribute :origin
         attribute :custom_name
-        attribute :parrymodifier :type => DataType::Integer
-        attribute :gearload :type => DataType::Integer
+        attribute :parrymodifier, :type => DataType::Integer
+        attribute :gearload, :type => DataType::Integer
         reference :character, "AresMUSH::Character"
         index :name
                 
