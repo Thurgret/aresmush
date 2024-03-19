@@ -78,8 +78,8 @@ module AresMUSH
         end
 
         def adventure_and_skill_points
-          firstline = left(("Current Adventure Points: " + @char.tor_adventure_points.to_s), 35) + right(("Total Adventure Points: " + @char.tor_lifetime_adventure_points.to_s), 35)
-          secondline = left(("Current Skill Points: " + @char.tor_skill_points.to_s), 35) + right(("Total Skill Points: " + @char.tor_lifetime_skill_points.to_s), 35)
+          firstline = left(("Current Adventure Points: " + @char.tor_adventure_points.to_s), 35) + right(("Current Skill Points: " + @char.tor_skill_points.to_s), 35)
+          secondline = left(("Total Adventure Points: " + @char.tor_lifetime_adventure_points.to_s), 35) + right(("Total Skill Points: " + @char.tor_lifetime_skill_points.to_s), 35)
           "" + firstline + "\n" + secondline + "\n"
         end
 
@@ -95,12 +95,12 @@ module AresMUSH
                 if a.equipped == "Equipped"
                   if a.rewards
                     if a.origin
-                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - equipped\nRewards: #{a.rewards}\n"
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - worn\nRewards: #{a.rewards}\n"
                     else
-                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - equipped\nRewards: #{a.rewards}\n"
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - worn\nRewards: #{a.rewards}\n"
                     end
                   else
-                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - equipped\n"
+                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - worn\n"
                   end
                 elsif a.equipped == "Dropped"
                   if a.rewards

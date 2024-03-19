@@ -15,8 +15,8 @@ module AresMUSH
         ##collection :tor_rewards, "AresMUSH::TorRewards"
         ##collection :tor_distinctivefeatures, "AresMUSH::TorDistinctiveFeatures"
         collection :tor_armour, "AresMUSH::TorArmour"
-        ##collection :tor_weapons, "AresMUSH::TorWeapons"
-        #collection :tor_shields, "AresMUSH::TorShields"
+        collection :tor_weapons, "AresMUSH::TorWeapons"
+        collection :tor_shields, "AresMUSH::TorShields"
         
         attribute :tor_adventure_points, :type => DataType::Integer
         attribute :tor_skill_points, :type => DataType::Integer
@@ -46,6 +46,11 @@ module AresMUSH
 
         attribute :tor_protection, :type => DataType::Integer
         attribute :tor_load, :type => DataType::Integer
+
+        attribute :first_hand_in_use
+        attribute :second_hand_in_use
+
+        attribute :shield_in_use
         
         #attribute :treasure, :type => DataType::Integer
         #attribute :treasure_carried, :type => DataType::Integer
@@ -166,39 +171,51 @@ module AresMUSH
         attribute :equipped
         attribute :type
         attribute :origin
+        attribute :custom_name
         attribute :protection, :type => DataType::Integer
         attribute :gearload, :type => DataType::Integer
         reference :character, "AresMUSH::Character"
         index :name       
     end
-#
-
-  #  class TorWeapons < Ohm::Model
-   #     include ObjectModel
-        
-    #    attribute :name
-     #   attribute :desc
-      #  attribute :proficiency
-       # attribute :damage :type => DataType::Integer
-  #      attribute :injury :type => DataType::Integer
-   #     attribute :load :type => DataType::Integer
-    #    reference :character, "AresMUSH::Character"
-     #   index :name
-        
-   # end
 
 
-  #  class TorShields < Ohm::Model
-   #     include ObjectModel
+    class TorWeapons < Ohm::Model
+        include ObjectModel
         
-    #    attribute :name
-     #   attribute :desc
-      #  attribute :parrymodifier :type => DataType::Integer
-       # attribute :load :type => DataType::Integer
-        #reference :character, "AresMUSH::Character"
- #       index :name
+        attribute :name
+        attribute :desc
+        attribute :rewards
+        attribute :proficiency
+        attribute :equipped
+        attribute :wielded
+        attribute :origin
+        attribute :custom_name
+        attribute :hands
+        attribute :damage :type => DataType::Integer
+        attribute :injury :type => DataType::Integer
+        attribute :gearload :type => DataType::Integer
+        reference :character, "AresMUSH::Character"
+        index :name
+        
+    end
+
+
+    class TorShields < Ohm::Model
+        include ObjectModel
+        
+        attribute :name
+        attribute :desc
+        attribute :rewards
+        attribute :equipped
+        attribute :wielded
+        attribute :origin
+        attribute :custom_name
+        attribute :parrymodifier :type => DataType::Integer
+        attribute :gearload :type => DataType::Integer
+        reference :character, "AresMUSH::Character"
+        index :name
                 
-  #  end
+    end
 
 
 end

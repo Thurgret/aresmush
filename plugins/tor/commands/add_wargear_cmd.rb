@@ -54,6 +54,24 @@ module AresMUSH
                     Tor.add_armour(model, self.wargear_name)
                 end
             end
+            if (Tor.is_valid_weapon_name?(self.wargear_name))
+              weapon = Tor.find_weapon(model, self.wargear_name)
+              if (weapon)
+                client.emit_failure "You already have that type of weapon"
+                return nil
+              else
+              Tor.add_weapon(model, self.wargear_name)
+            end
+            if (Tor.is_valid_shield_name?(self.wargear_name))
+              shield = Tor.find_shield(model, self.wargear_name)
+              if (shield)
+                client.emit_failure "You already have that type of shield."
+            
+              else
+                Tor.add_shield(model, self.wargear_name)
+              end
+            end
+            
 
            
             client.emit_success "Armour added."

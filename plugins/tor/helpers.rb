@@ -44,6 +44,19 @@ module AresMUSH
             names.include?(name.downcase)
         end
 
+        def self.is_valid_shield_name?(name)
+            return false if !name
+            names = Global.read_config('tor', 'shields').map { |a| a['name'].downcase }
+            names.include?(name.downcase)
+        end
+
+
+
+        def self.is_valid_weapon_name?(name)
+            return false if !name
+            names = Global.read_config('tor', 'weapons').map { |a| a['name'].downcase }
+            names.include?(name.downcase)
+        end
 
 
         

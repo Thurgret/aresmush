@@ -28,7 +28,7 @@ module AresMUSH
         end
         
         def check_valid_wargear
-          return t('tor.invalid_armour_name') if !Tor.is_valid_armour_name?(self.wargear_name)
+          return t('tor.invalid_armour_name') if ((!Tor.is_valid_armour_name?(self.wargear_name)) && (!Tor.is_valid_weapon_name?(self.wargear_name)) && (!Tor.is_valid_shield_name?(self.wargear_name)))
           return nil
         end
         
@@ -49,6 +49,16 @@ module AresMUSH
                 wargear = Tor.find_armour(model, self.wargear_name)
                 wargear.update(:equipped => "Equipped")
             end
+
+            if (Tor.is_valid_shield_name?(self.wargear_name))
+                wargear = Tor.find_shield(model, self.wargear_name)
+                wargear.update(:equipped => "Worn")
+            end
+
+            if (Tor.is_valid_weapon_name?(self.wargear_name))
+                wargear = Tor.find_weapon(model, self.wargear_name)
+                wargear.update(:equipped => "Worn")
+            end
                        
             if (!wargear)
               client.emit_failure "You don't have any wargear with that name."
@@ -56,9 +66,8 @@ module AresMUSH
                
             end
 
-            message = enactor_name + " equips a " + wargear_name
+            message = enactor_name + " equips a " + wargear_name + "."
             Rooms.emit_ooc_to_room enactor_room, message
-            client.emit_success "Armour added."
         
         end
     end
