@@ -17,8 +17,10 @@ module AresMUSH
         Global.logger.debug char_name
         charmodel = Character.find_one_by_name(char_name)
         strength_string = "Strength: " + Tor.attribute_rating(charmodel, "strength").to_s + "(TN: " + Tor.tn_rating(charmodel, "strength").to_s + ")"
+        heart_string = "Heart: " + Tor.attribute_rating(charmodel, "heart").to_s + "(TN: " + Tor.tn_rating(charmodel, "heart").to_s + ")"
+        wits_string = "Wits: " + Tor.attribute_rating(@char, "wits").to_s + "(TN: " + Tor.tn_rating(@char, "wits").to_s + ")"
         Global.logger.debug strength_string
-        return { strength: Website.format_markdown_for_html(strength_string) }
+        return { strength: Website.format_markdown_for_html(strength_string), heart: Website.format_input_for_html(heart_string), wits: Website.format_markdown_for_html(wits_string) }
       end
     
       # Gets custom fields for the character profile editor.
