@@ -86,17 +86,17 @@ module AresMUSH
                 return nil
             end
             if (model.second_hand_in_use)
-                if (weapon["hands"] == "both")
+                if (weapon.hands == "both")
                     return nil
-                elsif(weapon["hands"] == "either")
+                elsif(weapon.hands == "either")
                     weapon.update(:injury => weapon["injury"]) 
                 end
             else
-                if(weapon["hands"] == "either")
+                if(weapon.hands == "either")
                     two_handed_injury = weapon["injury"] + 2
                     weapon.update(:injury => two_handed_injury)
                     model.update(:second_hand_in_use => true)
-                elsif(weapon["hands"] == "both")
+                elsif(weapon.hands == "both")
                     model.update(:second_hand_in_use => true)
                 
                 end
@@ -129,7 +129,7 @@ module AresMUSH
                 shield.update(:wielded => "in hand")
                 model.update(:second_hand_in_use => true)
                 model.update(:shield_in_use => true)
-                model.parry = model.parry + shield["modifier"]
+                model.tor_parry = model.tor_parry + shield.modifier
             end
         end
 
@@ -138,7 +138,7 @@ module AresMUSH
                 shield = find_shield(model, shield_name)
                 model.update(:second_hand_in_use => false)
                 shield.update(:wielded => "stored") 
-                model.parry = model.parry - shield["modifier"]
+                model.parry = model.parry - shield.modifier
             else
                 return nil
             end
