@@ -86,10 +86,10 @@ module AresMUSH
     when "store"
       return WargearStoreCmd
     when "rewards"
-      if (switch_is?("add"))
+      if (cmd.switch_is?("add"))
         return RewardAddCmd
       end
-      
+
 
   
     end
