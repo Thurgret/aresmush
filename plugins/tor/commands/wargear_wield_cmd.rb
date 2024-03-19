@@ -54,12 +54,6 @@ module AresMUSH
                 Tor.wield_weapon(model, self.wargear_name)
             end
                        
-            if (!wargear)
-              client.emit_failure "You don't have any wargear with that name."
-              return nil
-            else
-               
-            end
 
             message = enactor_name + " equips a " + wargear_name + "."
             Rooms.emit_ooc_to_room enactor_room, message
