@@ -17,7 +17,7 @@ module AresMUSH
                 return nil
             end
             config = find_weapon_config(weapon_name)
-            TorWeapons.create(:name => config["name"], :damage => config["damage"], :injury => config["injury"], :gearload => config["load"], :proficiency => config["proficiency"], :hands => config["hands"])
+            TorWeapons.create(:name => config["name"], :damage => config["damage"], :injury => config["injury"], :gearload => config["load"], :proficiency => config["proficiency"], :hands => config["hands"], :character => model)
         end
 
         def self.add_shield(model, shield_name)
@@ -26,7 +26,7 @@ module AresMUSH
                 return nil
             end
             config = find_shield_config(shield_name)
-            TorShields.create(:name => config["name"], :gearload => config["load"], :modifier => config["modifier"])
+            TorShields.create(:name => config["name"], :gearload => config["load"], :modifier => config["modifier"], :character => model)
         end
 
         def self.wear_armour(model, armour_name)

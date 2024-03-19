@@ -67,7 +67,6 @@ module AresMUSH
               shield = Tor.find_shield(model, self.wargear_name)
               if (shield)
                 client.emit_failure "You already have that type of shield."
-            
               else
                 client.emit_success "Shield added."
                 Tor.add_shield(model, self.wargear_name)
