@@ -21,8 +21,33 @@ module AresMUSH
         endurance_string = "Endurance: " + charmodel.tor_endurance.to_s + "(" + charmodel.tor_maxendurance.to_s + ")"
         hope_string = "Hope: " + charmodel.tor_hope.to_s + "(" + charmodel.tor_maxhope.to_s + ")"
         parry_string = "Parry: " + charmodel.tor_parry.to_s
+        awe_string = "Awe: " + Tor.skill_rating(charmodel, "Awe").to_s
+        athletics_string = "Athletics: " + Tor.skill_rating(charmodel, "Athletics").to_s
+        awareness_string = "Awareness: " + Tor.skill_rating(charmodel, "Awareness").to_s
+        hunting_string = "Hunting: " + Tor.skill_rating(charmodel, "Hunting").to_s
+        song_string = "Song: " + Tor.skill_rating(charmodel, "Song").to_s
+        craft_string = "Craft: " + Tor.skill_rating(charmodel, "Craft").to_s
+        enhearten_string = "Enhearten: " + Tor.skill_rating(charmodel, "Enhearten").to_s
+        travel_string = "Travel: " + Tor.skill_rating(charmodel, "Travel").to_s
+        insight_string = "Insight: " + Tor.skill_rating(charmodel, "Insight").to_s
+        healing_string = "Healing: " + Tor.skill_rating(charmodel, "Healing").to_s
+        courtesy_string = "Courtesy: " + Tor.skill_rating(charmodel, "Courtesy").to_s
+        battle_string = "Battle: " + Tor.skill_rating(charmodel, "Battle").to_s
+        persuade_string = "Persuade: " + Tor.skill_rating(charmodel, "Persuade").to_s
+        stealth_string = "Stealth: " + Tor.skill_rating(charmodel, "Stealth").to_s
+        scan_string = "Scan: " + Tor.skill_rating(charmodel, "Scan").to_s
+        explore_string = "Explore: " + Tor.skill_rating(charmodel, "Explore").to_s
+        riddle_string = "Riddle: " + Tor.skill_rating(charmodel, "Riddle").to_s
+        lore_string = "Lore: " + Tor.skill_rating(charmodel, "Lore").to_s
+
         return { strength: Website.format_markdown_for_html(strength_string), heart: Website.format_markdown_for_html(heart_string), wits: Website.format_markdown_for_html(wits_string),
-      endurance: Website.format_markdown_for_html(endurance_string), hope: Website.format_markdown_for_html(hope_string), parry: Website.format_markdown_for_html(parry_string) }
+      endurance: Website.format_markdown_for_html(endurance_string), hope: Website.format_markdown_for_html(hope_string), parry: Website.format_markdown_for_html(parry_string),
+    awe: Website.format_markdown_for_html(awe_string), athletics: Website.format_markdown_for_html(athletics_string), awareness: Website.format_markdown_for_html(awareness_string),
+    hunting: Website.format_markdown_for_html(hunting_string), song: Website.format_markdown_for_html(song_string), craft: Website.format_markdown_for_html(craft_string),
+    enhearten: Website.format_markdown_for_html(enhearten_string), travel: Website.format_markdown_for_html(travel_string), insight: Website.format_markdown_for_html(insight_string),
+    healing: Website.format_markdown_for_html(healing_string), courtesy: Website.format_markdown_for_html(courtesy_string), battle: Website.format_markdown_for_html(battle_string),
+    persuade: Website.format_markdown_for_html(persuade_string), stealth: Website.format_markdown_for_html(stealth_string), scan: Website.format_markdown_for_html(scan_string),
+    explore: Website.format_markdown_for_html(explore_string), riddle: Website.format_markdown_for_html(riddle_string), lore: Website.format_markdown_for_html(lore_string)}
       end
     
       # Gets custom fields for the character profile editor.
