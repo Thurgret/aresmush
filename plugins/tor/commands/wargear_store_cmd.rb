@@ -1,6 +1,6 @@
 module AresMUSH    
     module Tor
-      class WargearWieldCmd
+      class WargearStoreCmd
         include CommandHandler
         
         attr_accessor :target_name, :wargear_name
