@@ -129,7 +129,7 @@ module AresMUSH
                 shield.update(:wielded => "in hand")
                 model.update(:second_hand_in_use => true)
                 model.update(:shield_in_use => true)
-                rating = model.tor_parry + shield.modifier
+                rating = model.tor_parry + shield.parrymodifier
                 model.update(:tor_parry => rating)
             end
         end
@@ -139,7 +139,7 @@ module AresMUSH
                 shield = find_shield(model, shield_name)
                 model.update(:second_hand_in_use => false)
                 shield.update(:wielded => "stored") 
-                rating = model.tor_parry - shield.modifier
+                rating = model.tor_parry - shield.parrymodifier
                 model.update(:tor_parry => rating)
             else
                 return nil
