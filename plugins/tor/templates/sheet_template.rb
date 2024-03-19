@@ -122,7 +122,7 @@ module AresMUSH
           armour_sort @char.tor_armour
         end
 
-        def weapon
+        def weapons
           weapon_sort @char.tor_weapons
         end
 
