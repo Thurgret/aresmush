@@ -191,6 +191,8 @@ module AresMUSH
         attribute :origin
         attribute :custom_name
         attribute :hands
+        attribute :bane1
+        attribute :bane2
         attribute :damage, :type => DataType::Integer
         attribute :injury, :type => DataType::Integer
         attribute :gearload, :type => DataType::Integer

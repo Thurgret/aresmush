@@ -116,8 +116,9 @@ module AresMUSH
             weapon = find_weapon(model, weapon_name)
             config = find_weapon_config(weapon_name)
             weapon.update(:injury => config["injury"])
-            if (!model.shield_in_use)
-                model.update(:second_hand_in_use => false)
+            if (!model.shield_in_use && model.second_hand_in_use)
+                rating = weapon.injury - 2
+                weapon.update(:injury => rating)
             end
             model.update(:first_hand_in_use => false)
             weapon.update(:wielded => "stored")
