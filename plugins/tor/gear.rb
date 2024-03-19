@@ -26,7 +26,7 @@ module AresMUSH
                 return nil
             end
             config = find_shield_config(shield_name)
-            TorShields.create(:name => config["name"], :gearload => config["load"], :equipped => "Equipped", :modifier => config["modifier"], :character => model)
+            TorShields.create(:name => config["name"], :gearload => config["load"], :equipped => "Equipped", :parrymodifier => config["modifier"], :character => model)
         end
 
         def self.wear_armour(model, armour_name)
