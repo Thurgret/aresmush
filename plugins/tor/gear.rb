@@ -141,6 +141,7 @@ module AresMUSH
             if (model.shield_in_use)
                 shield = find_shield(model, shield_name)
                 model.update(:second_hand_in_use => false)
+                model.update(:shield_in_use => false)
                 shield.update(:wielded => "stored") 
                 rating = model.tor_parry - shield.parrymodifier
                 model.update(:tor_parry => rating)
