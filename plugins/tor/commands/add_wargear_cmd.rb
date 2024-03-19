@@ -69,14 +69,12 @@ module AresMUSH
                 client.emit_failure "You already have that type of shield."
             
               else
+                client.emit_success "Shield added."
                 Tor.add_shield(model, self.wargear_name)
               end
             end
 
 
-           
-            client.emit_success "Armour added."
-        
         
           end
     end

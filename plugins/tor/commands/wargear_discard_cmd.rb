@@ -70,6 +70,7 @@ module AresMUSH
                 
                   if (shield)
                     Tor.discard_shield(model, self.wargear_name)
+                    client.emit_success "Shield discarded."
                   else
                     client.emit_failure "You don't have that shield to discard."
                   end
@@ -77,7 +78,6 @@ module AresMUSH
 
 
            
-            client.emit_success "Gear discarded."
         
         end
     end
