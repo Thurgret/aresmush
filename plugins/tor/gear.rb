@@ -93,13 +93,9 @@ module AresMUSH
             if (model.first_hand_in_use)
                 return nil
             end
-            if (model.second_hand_in_use)
-                if (weapon.hands == "both")
-                    return nil
-                end
-            else
-                if(weapon.hands == "either")
-                    
+            if (!model.second_hand_in_use)
+                
+                if(weapon.hands == "either")    
                     two_handed_injury = weapon.injury + 2
                     weapon.update(:injury => two_handed_injury)
                     model.update(:second_hand_in_use => true)
