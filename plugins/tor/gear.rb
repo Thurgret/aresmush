@@ -99,6 +99,7 @@ module AresMUSH
                 end
             else
                 if(weapon.hands == "either")
+                    Global.logger.debug weapon.hands
                     two_handed_injury = weapon.injury + 2
                     weapon.update(:injury => two_handed_injury)
                     model.update(:second_hand_in_use => true)
