@@ -1,6 +1,6 @@
 module AresMUSH    
     module Tor
-      class DiscardWargearCmd
+      class WargearDiscardCmd
         include CommandHandler
         
         attr_accessor :target_name, :wargear_name
