@@ -107,8 +107,11 @@ module AresMUSH
       nil
    end
 
+  
    def self.get_web_request_handler(request)
-     nil
+    case request.cmd
+    when "addSceneRoll"
+      return AddSceneRollRequestHandler
    end
   end
 end

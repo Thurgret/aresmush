@@ -160,6 +160,130 @@ module AresMUSH
         def self.roll_success_die
             [ 1, 2, 3, 4, 5, 6 ].shuffle.first
         end
+
+
+
+        def self.determine_web_roll_result(request, enactor)
+      
+            roll_str = request.args[:roll_string]
+            pc_name = request.args[:pc_name] || ""
+            pc_skill = request.args[:pc_skill] || ""
+          
+            skill_name = roll_str
+      
+            # ------------------
+            # PC ROLL
+            # ------------------
+            elsif (!pc_name.blank?)
+              char = Character.find_one_by_name(pc_name)
+      
+              if (!char && !pc_skill.is_integer?)
+                pc_skill = "3"
+              end
+
+              
+
+              result = roll_skill(char, skill_name)
+      
+
+              if (results.successful == true)
+                if (results.gandalf_rune)
+                  message = t('tor.gandalf_rune', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                   :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s )
+                elsif (results.eye_of_mordor)
+                  message = t('tor.roll_eye_of_mordor_success', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                   :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s )
+                else
+                  message = t('tor.roll_successful', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :roll => skill_name, 
+                  :char => pc_name, :TN => results.target_number.to_s )
+                end
+              end
+                
+             
+             
+              if (results.successful == false)
+                  if (results.eye_of_mordor)
+                    message = t('tor.eye_of_mordor_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), 
+                    :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s )
+                  else
+                    message = t('tor.roll_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),  :roll => skill_name, :char => pc_name,
+                    :TN => results.target_number.to_s )
+                  end
+                
+              
+                end
+
+            # ------------------
+            # SELF ROLL
+            # ------------------
+            
+
+
+            else
+
+           
+                result = roll_skill(enactor, skill_name = roll_str)
+
+
+            pc_name = enactor
+
+
+
+         
+            if (results.successful == true)
+                if (results.gandalf_rune)
+                    message = t('tor.gandalf_rune', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                    :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s )
+                elsif (results.eye_of_mordor)
+                    message = t('tor.roll_eye_of_mordor_success', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                    :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s )
+                else
+                    message = t('tor.roll_successful', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :roll => skill_name, 
+                    :char => pc_name, :TN => results.target_number.to_s )       
+                end
+          
+            end
+                
+             
+             
+              if (results.successful == false)
+                  if (results.eye_of_mordor)
+                    message = t('tor.eye_of_mordor_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), 
+                    :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s )
+                  else
+                    message = t('tor.roll_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),  :roll => skill_name, :char => pc_name,
+                    :TN => results.target_number.to_s )
+                  end
+                
+              
+                end
+
+
+           
+            end
+            
+            return { message: message }
+          end
+
+
+
+          def self.emit_results(message, client, room, is_private)
+            if (is_private)
+              client.emit message
+            else
+              room.emit message
+              channel = Global.read_config("fs3skills", "roll_channel")
+              if (channel)
+                Channels.send_to_channel(channel, message)
+              end
+              
+              if (room.scene)
+                Scenes.add_to_scene(room.scene, message)
+              end
+              
+            end
+            Global.logger.info "FS3 roll results: #{message}"
+          end
   
    
     

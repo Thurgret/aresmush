@@ -50,6 +50,7 @@ module AresMUSH
         end
           
        
+       
         if (results.successful == false)
             if (results.eye_of_mordor)
               message = t('tor.eye_of_mordor_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), 
@@ -60,6 +61,7 @@ module AresMUSH
             end
           
          
+        
           end
 
         Rooms.emit_ooc_to_room enactor_room, message          
