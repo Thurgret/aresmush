@@ -169,6 +169,8 @@ module AresMUSH
             pc_name = request.args[:pc_name] || ""
             pc_skill = request.args[:pc_skill] || ""
           
+            Global.logger.debug pc_name
+
             skill_name = roll_str
       
             # ------------------
@@ -258,12 +260,7 @@ module AresMUSH
                     message = t('tor.roll_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),  :roll => skill_name, :char => pc_name,
                     :TN => results.target_number.to_s )
                   end
-                
-              
                 end
-
-
-           
             end
             
             return { message: message }
