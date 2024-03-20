@@ -112,6 +112,7 @@ module AresMUSH
     case request.cmd
     when "addSceneRoll"
       return AddSceneRollRequestHandler
+    end
    end
   end
 end
