@@ -169,7 +169,7 @@ module AresMUSH
             pc_name = request.args[:pc_name] || ""
             pc_skill = request.args[:pc_skill] || ""
             favoured = request.args[:favoured_string]
-            modifier = request.args[:modifier_string]
+            rollmodifier = request.args[:modifier_string].to_i
           
 
             
@@ -193,7 +193,7 @@ module AresMUSH
               
               Global.logger.debug pc_name
 
-              results = roll_skill(char, skill_name, modifier, favoured)
+              results = roll_skill(char, skill_name, rollmodifier, favoured)
       
 
               if (results.successful == true)
@@ -238,7 +238,7 @@ module AresMUSH
             
 
            
-                results = roll_skill(enactor, skill_name, modifier, favoured)
+                results = roll_skill(enactor, skill_name, rollmodifier, favoured)
 
 
             pc_name = enactor.name
