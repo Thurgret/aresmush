@@ -169,6 +169,7 @@ module AresMUSH
             pc_name = request.args[:pc_name] || ""
             pc_skill = request.args[:pc_skill] || ""
           
+            
 
             skill_name = roll_str
       
@@ -184,6 +185,8 @@ module AresMUSH
               end
 
               pc_name = char.name
+
+              Global.logger.debug char
               
               Global.logger.debug pc_name
 
