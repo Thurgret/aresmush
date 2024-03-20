@@ -174,7 +174,8 @@ module AresMUSH
             # ------------------
             # PC ROLL
             # ------------------
-            elsif (!pc_name.blank?)
+           
+            if (!pc_name.blank?)
               char = Character.find_one_by_name(pc_name)
       
               if (!char && !pc_skill.is_integer?)
@@ -211,6 +212,8 @@ module AresMUSH
                   end
                 
               
+               
+                
                 end
 
             # ------------------
@@ -219,7 +222,8 @@ module AresMUSH
             
 
 
-            else
+            
+        else
 
            
                 result = roll_skill(enactor, skill_name = roll_str)
