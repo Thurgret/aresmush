@@ -56,6 +56,10 @@ module AresMUSH
                 modifier = 0
             end
 
+            if (favoured.downcase == "n")
+                favoured = nil
+            end
+
 
 
             dice = []
