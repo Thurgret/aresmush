@@ -14,7 +14,10 @@ module AresMUSH
         if (FS3Skills.is_enabled?)
           abilities = FS3Skills::CharAbilitiesRequestHandler.new.handle(request)
         else
-          abilities = ["Awe", "Athletics"]
+          abilities = ["Awe", "Enhearten", "Persuade", "Athletics",
+        "Travel", "Stealth", "Awareness", "Insight", "Scan", "Hunting",
+      "Healing", "Explore", "Song", "Courtesy", "Riddle", "Craft",
+    "Battle", "Lore", "Valour", "Wisdom", "Axes", "Bows", "Spears", "Sword"]
         end
         
         
