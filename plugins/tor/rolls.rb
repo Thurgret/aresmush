@@ -178,7 +178,7 @@ module AresMUSH
 
             
 
-            skill_name = roll_str
+            skill_name = roll_str.titlecase
       
             # ------------------
             # PC ROLL
