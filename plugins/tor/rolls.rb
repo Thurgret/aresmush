@@ -226,7 +226,7 @@ module AresMUSH
         else
 
            
-                result = roll_skill(enactor, skill_name, nil, nil)
+                results = roll_skill(enactor, skill_name, nil, nil)
 
 
             pc_name = enactor
