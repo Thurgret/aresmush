@@ -187,7 +187,7 @@ module AresMUSH
               
               Global.logger.debug pc_name
 
-              result = roll_skill(char, skill_name)
+              result = roll_skill(char, skill_name, nil, nil)
       
 
               if (results.successful == true)
