@@ -169,7 +169,6 @@ module AresMUSH
             pc_name = request.args[:pc_name] || ""
             pc_skill = request.args[:pc_skill] || ""
           
-            Global.logger.debug pc_name
 
             skill_name = roll_str
       
@@ -184,7 +183,9 @@ module AresMUSH
                 pc_skill = "3"
               end
 
+              pc_name = char.name
               
+              Global.logger.debug pc_name
 
               result = roll_skill(char, skill_name)
       
@@ -231,7 +232,7 @@ module AresMUSH
                 results = roll_skill(enactor, skill_name, nil, nil)
 
 
-            pc_name = enactor
+            pc_name = enactor.name
 
 
 
