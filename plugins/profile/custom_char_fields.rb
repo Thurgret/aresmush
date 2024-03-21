@@ -173,6 +173,9 @@ module AresMUSH
         Global.logger.debug chargen_data[:custom]
 
         attribute_option = Website.format_input_for_mush(chargen_data[:custom][:attributeoption])
+        if (!attribute_option)
+          attribute_option = "1"
+        end
         Global.logger.debug attribute_option
         Tor.select_attributes(charmodel, attribute_option[0])
         return []
