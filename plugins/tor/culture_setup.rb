@@ -49,7 +49,6 @@ module AresMUSH
         end
 
         def self.select_attributes(model, option)
-            Global.logger.debug "test"
 
             Tor.remove_starting_virtues(model)
             culture = model.group("Culture").downcase
