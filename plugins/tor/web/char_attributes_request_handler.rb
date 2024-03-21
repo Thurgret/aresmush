@@ -3,6 +3,8 @@ module AresMUSH
       class CharAttributesRequestHandler
         def handle(request)
           char = Character.find_one_by_name request.args[:id]
+
+          Global.logger.debug "Here"
           
           if (!char)
             return []
