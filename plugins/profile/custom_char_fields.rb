@@ -111,7 +111,7 @@ module AresMUSH
 
 
         culture = char.group("Culture")
-        attribute_options = Tor.find_attribute_options_config(culture)
+        attribute_options = Tor.find_attribute_options_config(culture).to_a
         finalattributeoptions = ""
 
         #attribute_options.to_a do |a|
