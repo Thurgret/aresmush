@@ -246,7 +246,7 @@ module AresMUSH
                 virtue_culture = virtue_config["culture"]
                 
                 if (virtue_culture.downcase != model.group("Culture").downcase && virtue_culture.downcase != "everyone")
-                    if (model.group("Culture") == "Elves of Rivendell" && virtue_culture.downcase == "Elves of Lindon")
+                    if (model.group("Culture").downcase == "elves of rivendell" && virtue_culture.downcase == "elves of lindon")
                     else
                         return nil
                     end
