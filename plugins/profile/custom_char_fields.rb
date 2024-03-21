@@ -45,7 +45,6 @@ module AresMUSH
         
         charmodel.tor_virtues.to_a.sort_by { |a| a.name }.each_with_index.map do |a|
            virtue_string = virtue_string + a.name + ": " + a.desc + "\n"
-           Global.logger.debug virtue_string
           end
 
         
@@ -114,7 +113,6 @@ module AresMUSH
         
         charmodel.tor_virtues.to_a.sort_by { |a| a.name }.each_with_index.map do |a|
            virtue_string = virtue_string + a.name + ": " + a.desc + "\n"
-           Global.logger.debug virtue_string
           end
 
         
