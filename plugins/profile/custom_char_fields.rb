@@ -172,6 +172,8 @@ module AresMUSH
         Global.logger.debug char_name
         Global.logger.debug chargen_data[:custom]
 
+        Tor.initial_setup(charmodel)
+
         attribute_option = Website.format_input_for_mush(chargen_data[:custom][:attributeoption])
 
         Global.logger.debug attribute_option
