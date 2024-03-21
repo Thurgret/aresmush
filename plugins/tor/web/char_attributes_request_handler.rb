@@ -23,6 +23,7 @@ module AresMUSH
 
           options.each do |option, attrs, rating|
             finaloptions << attrs.to_s + rating
+            Global.logger.debug attrs.to_s
           end
 
           
