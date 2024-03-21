@@ -245,10 +245,10 @@ module AresMUSH
                 virtue_config = Tor.find_virtue_config(virtue_name)
                 virtue_culture = virtue_config["culture"]
                 if (model.group("Culture") == "Elves of Rivendell" && virtue_culture.downcase == "Elves of Lindon")
+                
                 elsif (virtue_culture.downcase != model.group("Culture").downcase && virtue_culture.downcase != "everyone")
                         return nil
                 
-                    end
                 end
                 if (virtue_name.downcase == "confidence")
                     rating = model.tor_maxhope + 2
