@@ -108,6 +108,9 @@ module AresMUSH
         riddle_string = "Riddle: " + Tor.skill_rating(charmodel, "Riddle").to_s
         lore_string = "Lore: " + Tor.skill_rating(charmodel, "Lore").to_s
 
+
+
+        culture = char.group("Culture")
         attribute_options = Tor.find_attribute_options_config(culture)
         finalattributeoptions = []
 
