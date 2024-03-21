@@ -122,7 +122,6 @@ module AresMUSH
 
 
 
-        Global.logger.debug finalattributeoptions
 
         virtue_string = ''
         
@@ -169,6 +168,7 @@ module AresMUSH
       def self.save_fields_from_chargen(char, chargen_data)
         char_name = char.name
         charmodel = Character.find_one_by_name(char_name)
+        Global.logger.debug char_name
         attribute_option = Website.format_input_for_mush(chargen_data[:custom][:attributeoption])
         Global.logger.debug attribute_option
         Tor.select_attributes(charmodel, attribute_option[0])
