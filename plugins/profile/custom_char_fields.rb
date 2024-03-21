@@ -108,7 +108,15 @@ module AresMUSH
         riddle_string = "Riddle: " + Tor.skill_rating(charmodel, "Riddle").to_s
         lore_string = "Lore: " + Tor.skill_rating(charmodel, "Lore").to_s
 
-        
+        attribute_options = Tor.find_attribute_options_config(culture)
+        finalattributeoptions = []
+
+        attribute_options.each do |option, attrs, rating|
+          finalattributeoptions << attrs.to_s + rating
+          Global.logger.debug attrs.to_s
+        end
+
+
         virtue_string = ''
         
         charmodel.tor_virtues.to_a.sort_by { |a| a.name }.each_with_index.map do |a|
@@ -124,7 +132,7 @@ module AresMUSH
     healing: Website.format_markdown_for_html(healing_string), courtesy: Website.format_markdown_for_html(courtesy_string), battle: Website.format_markdown_for_html(battle_string),
     persuade: Website.format_markdown_for_html(persuade_string), stealth: Website.format_markdown_for_html(stealth_string), scan: Website.format_markdown_for_html(scan_string),
     explore: Website.format_markdown_for_html(explore_string), riddle: Website.format_markdown_for_html(riddle_string), lore: Website.format_markdown_for_html(lore_string),
-    virtue: Website.format_markdown_for_html(virtue_string) }
+    virtue: Website.format_markdown_for_html(virtue_string), attribute_options: finalattributeoptions }
       end
       
       # Saves fields from profile editing.
