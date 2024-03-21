@@ -114,8 +114,8 @@ module AresMUSH
         attribute_options = Tor.find_attribute_options_config(culture).to_a
 
         finalattributeoptions = []
-        attribute_options.each do |option, attrs|
-          finalattributeoptions << option.to_s + " - " + attrs.to_a.to_s
+        attribute_options.to_a.each do |option, attrs|
+          finalattributeoptions << option.to_s + " - " + attrs.to_s
        end
 
 
