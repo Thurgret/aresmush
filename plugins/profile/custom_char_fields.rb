@@ -116,9 +116,12 @@ module AresMUSH
 
         attribute_options.each do |option, attrs, rating|
           finalattributeoptions + option.to_s +": "+ attrs.to_s + ": " + rating.to_s
-          Global.logger.debug attrs.to_s
+          
         end
 
+
+
+        Global.logger.debug finalattributeoptions
 
         virtue_string = ''
         
