@@ -120,6 +120,7 @@ module AresMUSH
           end
        end
 
+       
 
 
 
@@ -138,7 +139,7 @@ module AresMUSH
     healing: Website.format_markdown_for_html(healing_string), courtesy: Website.format_markdown_for_html(courtesy_string), battle: Website.format_markdown_for_html(battle_string),
     persuade: Website.format_markdown_for_html(persuade_string), stealth: Website.format_markdown_for_html(stealth_string), scan: Website.format_markdown_for_html(scan_string),
     explore: Website.format_markdown_for_html(explore_string), riddle: Website.format_markdown_for_html(riddle_string), lore: Website.format_markdown_for_html(lore_string),
-    virtue: Website.format_markdown_for_html(virtue_string), attribute_options: finalattributeoptions }
+    virtue: Website.format_markdown_for_html(virtue_string), attribute_options: finalattributeoptions, attribute_option: "0" }
       end
       
       # Saves fields from profile editing.
@@ -169,7 +170,7 @@ module AresMUSH
         char_name = char.name
         charmodel = Character.find_one_by_name(char_name)
         Global.logger.debug char_name
-        
+
         attribute_option = Website.format_input_for_mush(chargen_data[:custom][:attributeoption])
         Global.logger.debug attribute_option
         Tor.select_attributes(charmodel, attribute_option[0])
