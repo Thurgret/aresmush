@@ -88,6 +88,8 @@ module AresMUSH
         return AppReviewRequestHandler
       when "charAbilities"
         return CharAbilitiesRequestHandler
+      when "attributeOptions"
+        return Tor.CharAttributesRequestHandler
       end
       nil
     end
