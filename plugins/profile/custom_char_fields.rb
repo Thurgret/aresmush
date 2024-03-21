@@ -170,6 +170,7 @@ module AresMUSH
         char_name = char.name
         charmodel = Character.find_one_by_name(char_name)
         Global.logger.debug char_name
+        Global.logger.debug chargen_data[:custom]
 
         attribute_option = Website.format_input_for_mush(chargen_data[:custom][:attributeoption])
         Global.logger.debug attribute_option
