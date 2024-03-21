@@ -68,6 +68,7 @@ module AresMUSH
                 end
             end
             Tor.set_initial_tn(model)
+            Tor.set_initial_derived_stats(model)
         end
 
         def self.set_initial_tn(model)
