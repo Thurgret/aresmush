@@ -115,7 +115,7 @@ module AresMUSH
         finalattributeoptions = ""
 
         attribute_options.each do |option, attrs, rating|
-          finalattributeoptions + option.to_s +": "+ attrs.to_s + ": " + rating.to_s
+          finalattributeoptions = finalattributeoptions + option.to_s +": "+ attrs.to_s + ": " + rating.to_s
           
         end
 
