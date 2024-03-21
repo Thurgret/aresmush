@@ -139,7 +139,7 @@ module AresMUSH
     healing: Website.format_markdown_for_html(healing_string), courtesy: Website.format_markdown_for_html(courtesy_string), battle: Website.format_markdown_for_html(battle_string),
     persuade: Website.format_markdown_for_html(persuade_string), stealth: Website.format_markdown_for_html(stealth_string), scan: Website.format_markdown_for_html(scan_string),
     explore: Website.format_markdown_for_html(explore_string), riddle: Website.format_markdown_for_html(riddle_string), lore: Website.format_markdown_for_html(lore_string),
-    virtue: Website.format_markdown_for_html(virtue_string), attribute_options: finalattributeoptions, attributeoption: "0" }
+    virtue: Website.format_markdown_for_html(virtue_string), attribute_options: finalattributeoptions, attributeoption: "1" }
       end
       
       # Saves fields from profile editing.
