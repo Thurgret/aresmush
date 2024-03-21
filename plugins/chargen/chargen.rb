@@ -89,6 +89,7 @@ module AresMUSH
       when "charAbilities"
         return CharAbilitiesRequestHandler
       when "attributeOptions"
+        Global.logger.debug "Got to this part"
         return Tor.CharAttributesRequestHandler
       end
       nil
