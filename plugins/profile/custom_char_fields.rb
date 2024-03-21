@@ -167,8 +167,11 @@ module AresMUSH
       #        char.update(goals: Website.format_input_for_mush(chargen_data[:custom][:goals]))
       #        return []
       def self.save_fields_from_chargen(char, chargen_data)
+        char_name = char.name
+        charmodel = Character.find_one_by_name(char_name)
         attribute_option = Website.format_input_for_mush(chargen_data[:custom][:attributeoption])
-        Tor.select_attributes(char, attribute_option[0])
+        Global.logger.debug attribute_option
+        Tor.select_attributes(charmodel, attribute_option[0])
         return []
       end
       
