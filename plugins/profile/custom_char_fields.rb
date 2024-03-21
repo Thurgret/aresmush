@@ -115,9 +115,10 @@ module AresMUSH
 
         finalattributeoptions = []
         attribute_options.sort_by { |a| a[0] }.each_with_index.map do |a|
-          finalattributeoptions << a[0].to_s + " - " + a[1].to_s + ": " a[2].to_s
+          finalattributeoptions << a[0].to_s + " - " + a[1].to_s
           
-       end
+     
+        end
 
 
 
