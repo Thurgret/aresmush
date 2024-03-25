@@ -206,7 +206,7 @@ module AresMUSH
 
         def self.armour_list(char)
             list = char.tor_armour
-            newlist list.to_a.sort_by { |a| a.name }
+            newlist = list.to_a.sort_by { |a| a.name }
             .each_with_index
               .map do |a, i|
                 if a.equipped == "Equipped"
