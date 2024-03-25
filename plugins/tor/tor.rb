@@ -89,6 +89,11 @@ module AresMUSH
       if (cmd.switch_is?("add"))
         return RewardAddCmd
       end
+    when "favouredskills"
+      if (cmd.switch_is?("set"))
+        return FavouredSkillsSetCmd
+      end
+      
 
 
   
