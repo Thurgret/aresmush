@@ -204,6 +204,9 @@ module AresMUSH
             end
         end
 
+        def self.wargear_list(char)
+        end
+
 
 
 
