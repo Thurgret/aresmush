@@ -230,6 +230,7 @@ module AresMUSH
 
         if (cultural_favoured_skill_selection != "-" && calling_favoured_skill_first_selection != "-" && calling_favoured_skill_second_selection != "-")
           favoured_skills_string = cultural_favoured_skill_selection + ", " + calling_favoured_skill_first_selection + ", " + calling_favoured_skill_second_selection
+          Global.logger.debug favoured_skills_string
           charmodel.update(favoured_skills: favoured_skills_string)
         end
 
