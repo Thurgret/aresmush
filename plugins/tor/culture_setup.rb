@@ -314,6 +314,11 @@ module AresMUSH
 
         end
 
+        def self.update_favoured_skills(model, skills)
+            model.update(:favoured_skills => skills)
+        end
+            
+
   
     end
 end
