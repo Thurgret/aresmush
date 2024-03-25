@@ -193,7 +193,7 @@ module AresMUSH
             elsif (culture == "elves of lindon")
                 return "Elven-skill: If you are not Miserable, you can spend 1 point of Hope to achieve a Magical success on a roll when using a Skill in which you possess at least one rank."    
             elsif (culture == "elves of rivendell")
-                return "Elven-wise: Add 1 point to one Attribute of your choice. Additionally, if you are not Miserable, you can spend 1 point of Hope to achieve a Magical success on a skill roll.\n
+                return "Elven-wise: Add 1 point to one Attribute of your choice. Additionally, if you are not Miserable, you can spend 1 point of Hope to achieve a Magical success on a skill roll.
                 Beset by Woe: You can remove accumulated Shadow points exclusively during a Yule Fellowship Phase."
             elsif (culture == "hobbits of the shire")
                 return "Hobbit-sense: Your WISDOM rolls are Favoured, and you gain (1d) on all Shadow Tests made to resist the effects of Greed.\n
