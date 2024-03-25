@@ -26,10 +26,7 @@ module AresMUSH
             Tor.set_initial_derived_stats(model)
 
             proficiency_config = Tor.find_combat_proficiencies_config(culture_name)
-            Tor.set_combat_proficiency(model, "axes", 0)
-            Tor.set_combat_proficiency(model, "bows", 0)
-            Tor.set_combat_proficiency(model, "spears", 0)
-            Tor.set_combat_proficiency(model, "swords", 0)
+
             Tor.set_combat_proficiency(model, proficiency_config["option1"], 2)
             Tor.set_combat_proficiency(model, proficiency_config["option2"], 1)
         end
@@ -303,6 +300,14 @@ module AresMUSH
                 virtue.delete
             end
             
+
+        end
+
+        def self.zero_combat_proficiencies(model)
+            Tor.set_combat_proficiency(model, "axes", 0)
+            Tor.set_combat_proficiency(model, "bows", 0)
+            Tor.set_combat_proficiency(model, "spears", 0)
+            Tor.set_combat_proficiency(model, "swords", 0)
 
         end
 

@@ -43,6 +43,8 @@ module AresMUSH
         cultural_characteristics_string = Tor.cultural_characteristics(charmodel)
         armour_string = Tor.armour_list(charmodel)
 
+        combat_proficiency_string = "" + "Axes: " + charmodel.tor_axes_proficiency.to_s + " Bows: " + charmodel.tor_bows_proficiency.to_s + " Spears: " + charmodel.tor_spears_proficiency.to_s + " Swords: " + charmodel.tor_swords_proficiency.to_s
+
         
         virtue_string = ''
         
@@ -60,7 +62,7 @@ module AresMUSH
     persuade: Website.format_markdown_for_html(persuade_string), stealth: Website.format_markdown_for_html(stealth_string), scan: Website.format_markdown_for_html(scan_string),
     explore: Website.format_markdown_for_html(explore_string), riddle: Website.format_markdown_for_html(riddle_string), lore: Website.format_markdown_for_html(lore_string),
     virtue: Website.format_markdown_for_html(virtue_string), cultural_characteristics: Website.format_markdown_for_html(cultural_characteristics_string),
-    armour: Website.format_markdown_for_html(armour_string) }
+    armour: Website.format_markdown_for_html(armour_string), combat_proficiency_display: Website.format_markdown_for_html(combat_proficiency_string) }
   end
     
       # Gets custom fields for the character profile editor.
@@ -202,6 +204,8 @@ module AresMUSH
 
         first_weapon_proficiency = Website.format_input_for_mush(chargen_data[:custom][:first_weapon_proficiency])
         second_weapon_proficiency = Website.format_input_for_mush(chargen_data[:custom][:second_weapon_proficiency])
+
+        Tor.zero_combat_proficiencies(charmodel)
 
         if (first_weapon_proficiency != "-")
           Tor.set_combat_proficiency(charmodel, first_weapon_proficiency, 2)
