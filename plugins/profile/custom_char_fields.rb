@@ -200,6 +200,9 @@ module AresMUSH
           Tor.select_attributes(charmodel, attribute_option[0])
         end
 
+        first_weapon_proficiency = Website.format_input_for_mush(chargen_data[:custom][:first_weapon_proficiency])
+        second_weapon_proficiency = Website.format_input_for_mush(chargen_data[:custom][:second_weapon_proficiency])
+
         if (first_weapon_proficiency != "-")
           Tor.set_combat_proficiency(charmodel, first_weapon_proficiency, 2)
         end
