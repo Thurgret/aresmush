@@ -59,10 +59,8 @@ module AresMUSH
           favoured_skills_string = charmodel.favoured_skills
 
           
-       favoured_skills_string = charmodel.favoured_skills
+       
 
-       Global.logger.debug "test"
-       Global.logger.debug favoured_skills_string
 
 
         
@@ -150,6 +148,8 @@ module AresMUSH
        
        cultural_favoured_skills_array = Tor.cultural_favoured_skills(charmodel)
        calling_favoured_skills_array = Tor.calling_favoured_skills(charmodel)
+
+       favoured_skills_string = charmodel.favoured_skills
 
 
 
