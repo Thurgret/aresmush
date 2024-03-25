@@ -55,7 +55,8 @@ module AresMUSH
                       Rewards: #{a.rewards}
                       "
                     else
-                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - dropped\nRewards: #{a.rewards}
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - dropped
+                      Rewards: #{a.rewards}
                       "
                     end
                   else
@@ -64,8 +65,7 @@ module AresMUSH
                   end
                 end
               end
-              return newlist.join("
-              ")
+              return newlist.join("")
         end
    
    
