@@ -155,7 +155,7 @@ module AresMUSH
     
     
     weapon_proficiencies: weapon_proficiency_options,
-    second_weapon_proficiences: second_weapon_proficiency_array,
+    second_weapon_proficiencies: second_weapon_proficiency_array,
     first_weapon_proficiency: "",
     second_weapon_proficiency: "",
     attribute_options: finalattributeoptions, attributeoption: "" }
