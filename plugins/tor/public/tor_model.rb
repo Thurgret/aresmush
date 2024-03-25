@@ -12,7 +12,7 @@ module AresMUSH
         collection :tor_skills, "AresMUSH::TorSkills"
         collection :tor_tn, "AresMUSH::TorTN"
         collection :tor_virtues, "AresMUSH::TorVirtues"
-        ##collection :tor_rewards, "AresMUSH::TorRewards"
+
         ##collection :tor_distinctivefeatures, "AresMUSH::TorDistinctiveFeatures"
         collection :tor_armour, "AresMUSH::TorArmour"
         collection :tor_weapons, "AresMUSH::TorWeapons"
@@ -138,16 +138,6 @@ module AresMUSH
     end
 
 
-
-    #class TorRewards < Ohm::Model
-     #   include ObjectModel
-        
-      #  attribute :name
-       # attribute :desc
-        #reference :character, "AresMUSH::Character"
-     #   index :name
-        
- #   end
 
 
   #  class TorDistinctiveFeatures < Ohm::Model
