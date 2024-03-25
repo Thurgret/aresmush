@@ -92,17 +92,17 @@ module AresMUSH
         def self.calling_favoured_skills(model)
           calling = model.group("Calling").to_s.downcase
           if (calling == "captain")
-            return ["Battle", "Enhearten", "Persuade"]
+            return ["-", "Battle", "Enhearten", "Persuade"]
           elsif (calling == "champion")
-            return ["Athletics", "Awe", "Hunting"]
+            return ["-", "Athletics", "Awe", "Hunting"]
           elsif (calling == "messenger")
-            return ["Courtesy", "Song", "Travel"]
+            return ["-", "Courtesy", "Song", "Travel"]
           elsif (calling == "scholar")
-            return ["Craft", "Lore", "Riddle"]
+            return ["-", "Craft", "Lore", "Riddle"]
           elsif (calling == "treasure hunter")
-            return ["Explore", "Scan", "Stealth"]
+            return ["-", "Explore", "Scan", "Stealth"]
           elsif (calling == "warden")
-            return ["Awareness", "Healing", "insight"]
+            return ["-", "Awareness", "Healing", "insight"]
           end
         end
 

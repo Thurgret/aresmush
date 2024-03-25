@@ -218,6 +218,11 @@ module AresMUSH
         calling_favoured_skill_second_selection = Website.format_input_for_mush(chargen_data[:custom][:calling_favoured_skill_second_selection])
 
         Tor.zero_combat_proficiencies(charmodel)
+        
+
+        Global.logger.debug cultural_favoured_skill_selection
+        Global.logger.debug calling_favoured_skill_first_selection
+        Global.logger.debug calling_favoured_skill_second_selection
 
         if (cultural_favoured_skill_selection != "-" && calling_favoured_skill_first_selection != "-" && calling_favoured_skill_second_selection != "-")
           favoured_skills_string = cultural_favoured_skill_selection + ", " + calling_favoured_skill_first_selection + ", " + calling_favoured_skill_second_selection
