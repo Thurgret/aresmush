@@ -14,6 +14,8 @@ module AresMUSH
             model.update(:first_hand_in_use => nil)
             model.update(:second_hand_in_use => nil)
 
+            model.update(favoured_skills: "")
+
             Tor.remove_starting_virtues(model)
             Tor.select_attributes(model, "5")            
             Tor.set_valour(model, 1)
