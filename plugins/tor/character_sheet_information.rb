@@ -36,22 +36,31 @@ module AresMUSH
                 if a.equipped == "Equipped"
                   if a.rewards
                     if a.origin
-                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - worn\nRewards: #{a.rewards}\n"
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - worn
+                      Rewards: #{a.rewards}
+                      "
                     else
-                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - worn\nRewards: #{a.rewards}\n"
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - worn
+                      Rewards: #{a.rewards}
+                      "
                     end
                   else
-                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - worn\n"
+                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - worn
+                    "
                   end
                 elsif a.equipped == "Dropped"
                   if a.rewards
                     if a.origin
-                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - dropped\nRewards: #{a.rewards}\n"
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - dropped
+                      Rewards: #{a.rewards}
+                      "
                     else
-                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - dropped\nRewards: #{a.rewards}\n"
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - dropped\nRewards: #{a.rewards}
+                      "
                     end
                   else
-                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - dropped\n"
+                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - dropped
+                    "
                   end
                 end
               end
