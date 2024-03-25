@@ -204,7 +204,34 @@ module AresMUSH
             end
         end
 
-        def self.wargear_list(char)
+        def self.armour_list(char)
+            list = char.tor_armour
+            newlist list.to_a.sort_by { |a| a.name }
+            .each_with_index
+              .map do |a, i|
+                if a.equipped == "Equipped"
+                  if a.rewards
+                    if a.origin
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - worn\nRewards: #{a.rewards}\n"
+                    else
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - worn\nRewards: #{a.rewards}\n"
+                    end
+                  else
+                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - worn\n"
+                  end
+                elsif a.equipped == "Dropped"
+                  if a.rewards
+                    if a.origin
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - dropped\nRewards: #{a.rewards}\n"
+                    else
+                      "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - dropped\nRewards: #{a.rewards}\n"
+                    end
+                  else
+                    "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} - dropped\n"
+                  end
+                end
+              end
+              return newlist
         end
 
 
