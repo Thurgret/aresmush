@@ -124,6 +124,12 @@ module AresMUSH
           end
        end
 
+       weapon_proficiency_config = Tor.find_combat_proficiencies_config(culture)
+       weapon_proficiency_options = []
+       weapon_proficiency_options << "-"
+       weapon_proficiency_options << proficiency_config["option1"]
+       weapon_proficiency_options << proficiency_config["option2"]
+
        
 
 
@@ -147,7 +153,9 @@ module AresMUSH
     
     
     
-    
+    weapon_proficiencies: weapon_proficiency_options,
+    first_weapon_proficiency: ""
+    second_weapon_proficiency: ""
     attribute_options: finalattributeoptions, attributeoption: "" }
       end
       
@@ -189,6 +197,14 @@ module AresMUSH
         if (attribute_option[0] != "-" && attribute_option != "")
           Tor.select_attributes(charmodel, attribute_option[0])
         end
+
+        if (first_weapon_proficiency != "-")
+          Tor.set_combat_proficiency(charmodel, first_weapon_proficiency, 2)
+        end
+        if (second_weapon_proficiency != "-")
+          Tor.set_combat_proficiency(charmodel, second_weapon_proficiency, 1)
+        end
+
         return []
       end
       
