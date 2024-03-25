@@ -43,7 +43,10 @@ module AresMUSH
         cultural_characteristics_string = Tor.cultural_characteristics(charmodel)
         armour_string = Tor.armour_list(charmodel)
 
-        combat_proficiency_string = "" + "Axes: " + charmodel.tor_axes_proficiency.to_s + " Bows: " + charmodel.tor_bows_proficiency.to_s + " Spears: " + charmodel.tor_spears_proficiency.to_s + " Swords: " + charmodel.tor_swords_proficiency.to_s
+        combat_proficiency_string = "" + "Axes: " + charmodel.tor_axes_proficiency.to_s + "
+        Bows: " + charmodel.tor_bows_proficiency.to_s + "
+        Spears: " + charmodel.tor_spears_proficiency.to_s + "
+        Swords: " + charmodel.tor_swords_proficiency.to_s
 
         
         virtue_string = ''
