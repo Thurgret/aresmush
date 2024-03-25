@@ -71,7 +71,7 @@ module AresMUSH
 
 
         def self.cultural_favoured_skills(model)
-          culture = model.groups("Culture").to_s.downcase
+          culture = model.group("Culture").to_s.downcase
           if (culture == "bardings")
             return ["-", "Athletics", "Enhearten"]
           elsif (culture == "bree-folk")
