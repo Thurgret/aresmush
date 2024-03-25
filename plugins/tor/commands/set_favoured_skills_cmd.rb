@@ -31,9 +31,12 @@ module AresMUSH
            
             client.emit_success "Favoured skills set."
         
+        
         end
+  
+  
     end
-  end
+
 end
 end
   
