@@ -231,7 +231,7 @@ module AresMUSH
                   end
                 end
               end
-              return newlist
+              return newlist.to_s
         end
 
 
