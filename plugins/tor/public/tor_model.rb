@@ -7,6 +7,8 @@ module AresMUSH
         collection :tor_culture, "AresMUSH::TorCulture"
         attribute :tor_calling
         
+        attribute :favoured_skills
+        
         
         collection :tor_attributes, "AresMUSH::TorAttributes"
         collection :tor_skills, "AresMUSH::TorSkills"

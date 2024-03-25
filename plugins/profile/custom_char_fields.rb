@@ -43,6 +43,7 @@ module AresMUSH
         cultural_characteristics_string = Tor.cultural_characteristics(charmodel)
         armour_string = Tor.armour_list(charmodel)
 
+
         combat_proficiency_string = "" + "Axes: " + charmodel.tor_axes_proficiency.to_s + "
         Bows: " + charmodel.tor_bows_proficiency.to_s + "
         Spears: " + charmodel.tor_spears_proficiency.to_s + "
@@ -137,6 +138,7 @@ module AresMUSH
        second_weapon_proficiency_array = ["-", "Axes", "Bows", "Spears", "Swords"]
 
        
+       cultural_favoured_skills_array = Tor.cultural_favoured_skills(charmodel)
 
 
 
@@ -158,7 +160,7 @@ module AresMUSH
     virtue: Website.format_markdown_for_html(virtue_string),
     
     
-    
+    cultural_favoured_skills_list: cultural_favoured_skills_array,
     weapon_proficiencies: weapon_proficiency_options,
     second_weapon_proficiencies: second_weapon_proficiency_array,
     first_weapon_proficiency: "",
@@ -193,8 +195,6 @@ module AresMUSH
       def self.save_fields_from_chargen(char, chargen_data)
         char_name = char.name
         charmodel = Character.find_one_by_name(char_name)
-        Global.logger.debug char_name
-        Global.logger.debug chargen_data[:custom]
 
         Tor.initial_setup(charmodel)
 
@@ -208,7 +208,16 @@ module AresMUSH
         first_weapon_proficiency = Website.format_input_for_mush(chargen_data[:custom][:first_weapon_proficiency])
         second_weapon_proficiency = Website.format_input_for_mush(chargen_data[:custom][:second_weapon_proficiency])
 
+        cultural_favoured_skill_selection = Website.format_input_for_mush(chargen_data[:custom][:cultural_favoured_skill_selection])
+        calling_favoured_skill_first_selection = Website.format_input_for_mush(chargen_data[:custom][:calling_favoured_skill_first_selection])
+        calling_favoured_skill_second_selection = Website.format_input_for_mush(chargen_data[:custom][:calling_favoured_skill_second_selection])
+
         Tor.zero_combat_proficiencies(charmodel)
+
+        if (cultural_favoured_skill_selection != "-" && calling_favoured_skill_first_selection != "-" && calling_favoured_skill_second_selection != "-")
+          favoured_skills_string = cultural_favoured_skill_selection + ", " + calling_favoured_skill_first_selection + ", " + calling_favoured_skill_second_selection
+          charmodel.update(favoured_skills: favoured_skills_string)
+        end
 
         if (first_weapon_proficiency != "-")
           Tor.set_combat_proficiency(charmodel, first_weapon_proficiency, 2)

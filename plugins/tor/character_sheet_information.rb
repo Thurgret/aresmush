@@ -67,6 +67,27 @@ module AresMUSH
               end
               return newlist.join("")
         end
+
+
+
+        def self.cultural_favoured_skills(model)
+          culture = model.groups("Culture").to_s.downcase
+          if (culture == "bardings")
+            return ["-", "Athletics", "Enhearten"]
+          elsif (culture == "bree-folk")
+            return ["-", "Insight", "Riddle"]
+          elsif (culture == "dwarves of durin's folk")
+            return ["-", "Craft", "Travel"]
+          elsif (culture == "elves of lindon")
+            return ["-", "Song", "Lore"]
+          elsif (culture == "elves of rivendell")
+            return ["-", "Awareness", "Healing"]
+          elsif (culture == "hobbits of the shire")
+            return ["-", "Courtesy", "Stealth"]
+          elsif (culture == "rangers of the north")
+            return ["-", "Hunting", "Lore"]
+          end
+        end
    
    
    
