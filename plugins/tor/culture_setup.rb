@@ -16,6 +16,7 @@ module AresMUSH
 
             model.update(favoured_skills: "")
 
+
             Tor.remove_starting_virtues(model)
             Tor.select_attributes(model, "5")            
             Tor.set_valour(model, 1)

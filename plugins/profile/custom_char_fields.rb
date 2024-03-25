@@ -144,6 +144,8 @@ module AresMUSH
        cultural_favoured_skills_array = Tor.cultural_favoured_skills(charmodel)
        calling_favoured_skills_array = Tor.calling_favoured_skills(charmodel)
 
+       favoured_skills_string = charmodel.favoured_skills
+
 
 
         virtue_string = ''
@@ -163,6 +165,8 @@ module AresMUSH
     explore: Website.format_markdown_for_html(explore_string), riddle: Website.format_markdown_for_html(riddle_string), lore: Website.format_markdown_for_html(lore_string),
     virtue: Website.format_markdown_for_html(virtue_string),
     
+
+    favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
     
     cultural_favoured_skills_list: cultural_favoured_skills_array,
     calling_favoured_skills_list: calling_favoured_skills_array,
