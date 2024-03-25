@@ -127,8 +127,8 @@ module AresMUSH
        weapon_proficiency_config = Tor.find_combat_proficiencies_config(culture)
        weapon_proficiency_options = []
        weapon_proficiency_options << "-"
-       weapon_proficiency_options << proficiency_config["option1"]
-       weapon_proficiency_options << proficiency_config["option2"]
+       weapon_proficiency_options << weapon_proficiency_config["option1"]
+       weapon_proficiency_options << weapon_proficiency_config["option2"]
        second_weapon_proficiency_array = ["Axes", "Bows", "Spears", "Swords"]
 
        
