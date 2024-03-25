@@ -168,8 +168,6 @@ module AresMUSH
     calling_favoured_skills_list: calling_favoured_skills_array,
     weapon_proficiencies: weapon_proficiency_options,
     second_weapon_proficiencies: second_weapon_proficiency_array,
-    calling_favoured_skill_first_selection: "",
-    calling_favoured_skill_second_selection: "",
     first_weapon_proficiency: "",
     second_weapon_proficiency: "",
     attribute_options: finalattributeoptions, attributeoption: "" }
