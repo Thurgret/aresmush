@@ -129,6 +129,7 @@ module AresMUSH
        weapon_proficiency_options << "-"
        weapon_proficiency_options << proficiency_config["option1"]
        weapon_proficiency_options << proficiency_config["option2"]
+       second_weapon_proficiency_array = ["Axes", "Bows", "Spears", "Swords"]
 
        
 
@@ -154,8 +155,9 @@ module AresMUSH
     
     
     weapon_proficiencies: weapon_proficiency_options,
-    first_weapon_proficiency: ""
-    second_weapon_proficiency: ""
+    second_weapon_proficiences: second_weapon_proficiency_array,
+    first_weapon_proficiency: "",
+    second_weapon_proficiency: "",
     attribute_options: finalattributeoptions, attributeoption: "" }
       end
       
