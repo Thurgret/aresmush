@@ -146,6 +146,9 @@ module AresMUSH
 
        favoured_skills_string = charmodel.favoured_skills
 
+       Global.logger.debug "test"
+       Global.logger.debug favoured_skills_string
+
 
 
         virtue_string = ''
