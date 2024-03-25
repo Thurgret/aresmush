@@ -316,7 +316,7 @@ module AresMUSH
 
         def self.update_favoured_skills(model, skills)
             model.update(:favoured_skills => skills)
-            Tor.logger.debug model.favoured_skills
+            Global.logger.debug model.favoured_skills
         end
             
 
