@@ -58,6 +58,13 @@ module AresMUSH
 
           favoured_skills_string = charmodel.favoured_skills
 
+          
+       favoured_skills_string = charmodel.favoured_skills
+
+       Global.logger.debug "test"
+       Global.logger.debug favoured_skills_string
+
+
         
         return { strength: Website.format_markdown_for_html(strength_string), heart: Website.format_markdown_for_html(heart_string), wits: Website.format_markdown_for_html(wits_string),
       endurance: Website.format_markdown_for_html(endurance_string), hope: Website.format_markdown_for_html(hope_string), parry: Website.format_markdown_for_html(parry_string),
@@ -143,11 +150,6 @@ module AresMUSH
        
        cultural_favoured_skills_array = Tor.cultural_favoured_skills(charmodel)
        calling_favoured_skills_array = Tor.calling_favoured_skills(charmodel)
-
-       favoured_skills_string = charmodel.favoured_skills
-
-       Global.logger.debug "test"
-       Global.logger.debug favoured_skills_string
 
 
 
