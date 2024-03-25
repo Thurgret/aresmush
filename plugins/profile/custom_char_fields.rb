@@ -120,7 +120,7 @@ module AresMUSH
         finalattributeoptions = ["-"]
         attribute_options.to_a.each do |option, attrs|
           if (option.is_a?(Integer))
-            finalattributeoptions << option.to_s + " - " + attrs.to_s
+            finalattributeoptions << option.join("") + " - " + attrs.join("")
           end
        end
 
