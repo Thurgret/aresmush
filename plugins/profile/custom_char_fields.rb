@@ -142,6 +142,7 @@ module AresMUSH
 
        
        cultural_favoured_skills_array = Tor.cultural_favoured_skills(charmodel)
+       calling_favoured_skills_array = Tor.calling_favoured_skills(charmodel)
 
 
 
@@ -164,6 +165,7 @@ module AresMUSH
     
     
     cultural_favoured_skills_list: cultural_favoured_skills_array,
+    calling_favoured_skills_list: calling_favoured_skills_array,
     weapon_proficiencies: weapon_proficiency_options,
     second_weapon_proficiencies: second_weapon_proficiency_array,
     first_weapon_proficiency: "",
