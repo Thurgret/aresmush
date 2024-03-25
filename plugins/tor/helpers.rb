@@ -231,7 +231,8 @@ module AresMUSH
                   end
                 end
               end
-              return newlist.to_s
+              return newlist.join("
+              ")
         end
 
 
