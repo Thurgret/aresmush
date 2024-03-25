@@ -41,7 +41,7 @@ module AresMUSH
         lore_string = "Lore: " + Tor.skill_rating(charmodel, "Lore").to_s
 
         cultural_characteristics_string = Tor.cultural_characteristics(charmodel)
-        wargear_string = Tor.wargear_list
+        armour_string = Tor.armour_list
 
         
         virtue_string = ''
