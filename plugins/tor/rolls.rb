@@ -44,13 +44,14 @@ module AresMUSH
 
             
            
-        def self.roll_skill(char, skill_name, modifier, favoured)
+        def self.roll_skill(char, skill_name, modifier, favoured, alternative_tn)
             #params = Tor.parse_roll_string(roll_str)
 
 
             return nil if !skill_name
 
-            return nil if (!Tor.find_skill(char, skill_name) && skill_name.downcase != "valour" && skill_name.downcase != "wisdom")
+            return nil if (!Tor.find_skill(char, skill_name) && skill_name.downcase != "valour" && skill_name.downcase != "wisdom" && skill_name.downcase != "axes"
+            && skill_name.downcase != "bows" && skill_name.downcase != "spears" && skill_name.downcase != "swords" && skill_name.downcase != "protection")
 
             if !modifier
                 modifier = 0
@@ -60,6 +61,7 @@ module AresMUSH
                 favoured = nil
             end
 
+                hostile_parry_modifier = 0
 
 
             dice = []
@@ -74,6 +76,21 @@ module AresMUSH
             elsif (skill_name.downcase == "valour")
                 skill_dice = char.tor_valour.to_i + modifier
                 target_number = tn_rating(char, "Heart")
+            elsif (skill_name.downcase == "axes")
+                skill_dice = char.tor_axes_proficiency.to_i + modifier
+                target_number = alternative_tn
+            elsif (skill_name.downcase == "bows")
+                skill_dice = char.tor_bows_proficiency.to_i + modifier
+                target_number = alternative_tn
+            elsif (skill_name.downcase == "spears")
+                skill_dice = char.tor_spears_proficiency.to_i + modifier
+                target_number = alternative_tn
+            elsif (skill_name.downcase == "swords")
+                skill_dice = char.tor_swords_proficiency.to_i + modifier
+                target_number = alternative_tn
+            elsif (skill_name.downcase == "protection")
+                skill_dice = char.tor_protection.to_i + modifier
+                target_number = alternative_tn
             end
 
             results = TorRollResults.new
@@ -174,6 +191,7 @@ module AresMUSH
             pc_skill = request.args[:pc_skill] || ""
             favoured = request.args[:favoured_string]
             rollmodifier = request.args[:modifier_string].to_i
+            alternative_tn = request.args[:alternative_tn_string].to_i
           
 
             
@@ -197,7 +215,7 @@ module AresMUSH
               
               Global.logger.debug pc_name
 
-              results = roll_skill(char, skill_name, rollmodifier, favoured)
+              results = roll_skill(char, skill_name, rollmodifier, favoured, alternative_tn)
       
 
               if (results.successful == true)
@@ -242,7 +260,7 @@ module AresMUSH
             
 
            
-                results = roll_skill(enactor, skill_name, rollmodifier, favoured)
+                results = roll_skill(enactor, skill_name, rollmodifier, favoured, alternative_tn)
 
 
             pc_name = enactor.name
