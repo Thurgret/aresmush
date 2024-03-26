@@ -60,7 +60,7 @@ module AresMUSH
                 favoured = nil
             end
 
-                hostile_parry_modifier = 0
+            
 
 
             dice = []
@@ -133,6 +133,11 @@ module AresMUSH
                 if result == 6
                     degrees += 1
                 end
+            end
+
+            if (alternative_tn)
+                target_number = alternative_tn
+                results.target_number = alternative_tn
             end
 
        
