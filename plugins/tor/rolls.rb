@@ -12,7 +12,7 @@ module AresMUSH
 
 
         class TorRollResults
-            attr_accessor :successful, :eye_of_mordor, :gandalf_rune, :degrees, :dice, :feat_dice, :target_number, :total_number
+            attr_accessor :successful, :eye_of_mordor, :gandalf_rune, :degrees, :dice, :feat_dice, :target_number, :total_number, :weary, :miserable
 
             def initialize
                 dice = []
@@ -44,7 +44,7 @@ module AresMUSH
 
             
            
-        def self.roll_skill(char, skill_name, modifier, favoured, alternative_tn)
+        def self.roll_skill(char, skill_name, modifier, favoured, alternative_tn, weary, miserable)
             #params = Tor.parse_roll_string(roll_str)
 
 
@@ -59,6 +59,7 @@ module AresMUSH
             if (favoured.downcase == "n")
                 favoured = nil
             end
+            
 
             
 
@@ -93,6 +94,13 @@ module AresMUSH
             end
 
             results = TorRollResults.new
+
+            if (weary == "weary")
+                results.weary = true
+            end
+            if (miserable == "miserable")
+                results.miserable = true
+            end
 
 
             skill_dice.times.each do |d|
@@ -129,7 +137,13 @@ module AresMUSH
 
 
             dice.each do |result|
-                current_number += result
+                if (weary == "weary")
+                    if (current_number >= 4)
+                        current_number += result
+                    end
+                else
+                    current_number += result
+                end
                 if result == 6
                     degrees += 1
                 end
@@ -196,6 +210,15 @@ module AresMUSH
             favoured = request.args[:favoured_string]
             rollmodifier = request.args[:modifier_string].to_i
             alternative_tn = request.args[:alternative_tn_string].to_i
+            weary = request.args[:weary_string]
+            miserable = request.args[:miserable_string]
+
+            if (weary.length > 0)
+                weary = "weary"
+            end
+            if (miserable.length > 0)
+                miserable = "miserable"
+            end
           
 
             
@@ -219,7 +242,7 @@ module AresMUSH
               
               Global.logger.debug pc_name
 
-              results = roll_skill(char, skill_name, rollmodifier, favoured, alternative_tn)
+              results = roll_skill(char, skill_name, rollmodifier, favoured, alternative_tn, weary, miserable)
       
 
               if (results.successful == true)
@@ -264,7 +287,7 @@ module AresMUSH
             
 
            
-                results = roll_skill(enactor, skill_name, rollmodifier, favoured, alternative_tn)
+                results = roll_skill(enactor, skill_name, rollmodifier, favoured, alternative_tn, weary, miserable)
 
 
             pc_name = enactor.name
@@ -277,8 +300,13 @@ module AresMUSH
                     message = t('tor.gandalf_rune', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
                     :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s )
                 elsif (results.eye_of_mordor)
-                    message = t('tor.roll_eye_of_mordor_success', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
-                    :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s )
+                    if (results.miserable == true)
+                        message = t('tor.miserable_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                        :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s )
+                    else
+                        message = t('tor.roll_eye_of_mordor_success', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                        :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s )
+                    end
                 else
                     message = t('tor.roll_successful', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :roll => skill_name, 
                     :char => pc_name, :TN => results.target_number.to_s )       
@@ -290,8 +318,13 @@ module AresMUSH
              
               if (results.successful == false)
                   if (results.eye_of_mordor)
+                    if (results.miserable == true)
+                        message = t('tor.miserable_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                        :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s )
+                    else
                     message = t('tor.eye_of_mordor_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), 
                     :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s )
+                    end
                   else
                     message = t('tor.roll_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),  :roll => skill_name, :char => pc_name,
                     :TN => results.target_number.to_s )
