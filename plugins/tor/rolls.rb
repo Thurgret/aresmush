@@ -147,6 +147,8 @@ module AresMUSH
                 if result == 6
                     degrees += 1
                 end
+                Global.logger.debug result
+                Global.logger.debug current_number
             end
 
             if (alternative_tn > 0)
@@ -238,9 +240,6 @@ module AresMUSH
 
               pc_name = char.name
 
-              Global.logger.debug char
-              
-              Global.logger.debug pc_name
 
               results = roll_skill(char, skill_name, rollmodifier, favoured, alternative_tn, weary, miserable)
       
