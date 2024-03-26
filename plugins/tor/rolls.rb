@@ -135,7 +135,7 @@ module AresMUSH
                 end
             end
 
-            if (alternative_tn)
+            if (alternative_tn > 0)
                 target_number = alternative_tn
                 results.target_number = alternative_tn
             end
