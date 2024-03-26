@@ -149,6 +149,8 @@ module AresMUSH
        cultural_favoured_skills_array = Tor.cultural_favoured_skills(charmodel)
        calling_favoured_skills_array = Tor.calling_favoured_skills(charmodel)
 
+       cultural_distinctive_features_array = Tor.cultural_distinctive_features(charmodel)
+
        favoured_skills_string = charmodel.favoured_skills
 
 
@@ -171,6 +173,7 @@ module AresMUSH
     virtue: Website.format_markdown_for_html(virtue_string),
     
 
+    cultural_distinctive_features: cultural_distinctive_features_array,
     favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
     
     cultural_favoured_skills_list: cultural_favoured_skills_array,

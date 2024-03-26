@@ -106,6 +106,27 @@ module AresMUSH
           end
         end
 
+
+        def self.cultural_distinctive_features(model)
+          culture = model.group("Culture").to_s.downcase
+          if (culture == "bardings")
+            return ["-", "Bold", "Eager", "Fair", "Fierce", "Generous", "Proud", "Tall", "Wilful"]
+          elsif (culture == "bree-folk")
+            return ["-", "Fair-spoken", "Faithful", "Generous", "Inquisitive", "Patient", "Rustic", "True-hearted"]
+          elsif (culture == "dwarves of durin's folk")
+            return ["-", "Cunning", "Fierce", "Lordly", "Proud", "Secretive", "Stern", "Wary", "Wilful"]
+          elsif (culture == "elves of lindon")
+            return ["-", "Fair", "Keen-eyed", "Lordly", "Merry", "Patient", "Subtle", "Swift", "Wary"]
+          elsif (culture == "elves of rivendell")
+            return ["-", "Fair", "Inquisitive", "Keen-eyed", "Lordly", "Merry", "Proud", "Subtle", "Wilful"]
+          elsif (culture == "hobbits of the shire")
+            return ["-", "Eager", "Fair-spoken", "Faithful", "Honourable", "Inquisitive", "Keen-eyed", "Merry", "Rustic"]
+          elsif (culture == "rangers of the north")
+            return ["-", "Bold", "Honourable", "Secretive", "Stern", "Subtle", "Swift", "Tall", "True-hearted"]
+          end
+        end
+
+
    
    
    
