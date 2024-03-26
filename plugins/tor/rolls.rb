@@ -134,6 +134,7 @@ module AresMUSH
             current_number = 0
             degrees = 0
 
+            Global.logger.debug weary
 
 
             dice.each do |result|
