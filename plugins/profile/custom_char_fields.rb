@@ -60,6 +60,7 @@ module AresMUSH
 
           
        
+          distinctive_features_string = charmodel.distinctive_features
 
 
 
@@ -74,7 +75,8 @@ module AresMUSH
     explore: Website.format_markdown_for_html(explore_string), riddle: Website.format_markdown_for_html(riddle_string), lore: Website.format_markdown_for_html(lore_string),
     virtue: Website.format_markdown_for_html(virtue_string), cultural_characteristics: Website.format_markdown_for_html(cultural_characteristics_string),
     armour: Website.format_markdown_for_html(armour_string), combat_proficiency_display: Website.format_markdown_for_html(combat_proficiency_string),
-  favoured_skills: Website.format_markdown_for_html(favoured_skills_string) }
+  favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
+  distinctive_features: Website.format_markdown_for_html(distinctive_features_string) }
   end
     
       # Gets custom fields for the character profile editor.
@@ -154,6 +156,9 @@ module AresMUSH
        favoured_skills_string = charmodel.favoured_skills
 
 
+       distinctive_features_string = charmodel.distinctive_features
+
+
 
         virtue_string = ''
         
@@ -172,6 +177,7 @@ module AresMUSH
     explore: Website.format_markdown_for_html(explore_string), riddle: Website.format_markdown_for_html(riddle_string), lore: Website.format_markdown_for_html(lore_string),
     virtue: Website.format_markdown_for_html(virtue_string),
     
+    distinctive_features: Website.format_markdown_for_html(distinctive_features_string),
 
     cultural_distinctive_features: cultural_distinctive_features_array,
     favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
@@ -229,16 +235,15 @@ module AresMUSH
         calling_favoured_skill_first_selection = Website.format_input_for_mush(chargen_data[:custom][:calling_favoured_skill_first_selection])
         calling_favoured_skill_second_selection = Website.format_input_for_mush(chargen_data[:custom][:calling_favoured_skill_second_selection])
 
+        first_distinctive_feature = Website.format_input_for_mush(chargen_data[:custom][distinctive_feature_first_selection])
+        second_distinctive_feature = Website.format_input_for_mush(chargen_data[:custom][distinctive_feature_second_selection])
+
         Tor.zero_combat_proficiencies(charmodel)
         
 
-        Global.logger.debug cultural_favoured_skill_selection
-        Global.logger.debug calling_favoured_skill_first_selection
-        Global.logger.debug calling_favoured_skill_second_selection
 
         if (cultural_favoured_skill_selection != "-" && calling_favoured_skill_first_selection != "-" && calling_favoured_skill_second_selection != "-")
           favoured_skills_string = cultural_favoured_skill_selection + ", " + calling_favoured_skill_first_selection + ", " + calling_favoured_skill_second_selection
-          Global.logger.debug favoured_skills_string
           Tor.update_favoured_skills(charmodel, favoured_skills_string)
         end
 
@@ -247,6 +252,10 @@ module AresMUSH
         end
         if (second_weapon_proficiency != "-")
           Tor.set_combat_proficiency(charmodel, second_weapon_proficiency, 1)
+        end
+
+        if (first_distinctive_feature != "-" && second_distinctive_feature != "-")
+          Tor.set_distinctive_features(charmodel, first_distinctive_feature, second_distinctive_feature)
         end
 
         return []

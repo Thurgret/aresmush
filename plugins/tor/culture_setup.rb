@@ -319,6 +319,10 @@ module AresMUSH
             Global.logger.debug model.favoured_skills
         end
             
+        def self.set_distinctive_features(model, first_distinctive_feature, second_distinctive_feature)
+            newstring = calling_distinctive_feature(model) + ", " + first_distinctive_feature + ", " + second_distinctive_feature
+            return newstring
+        end
 
   
     end

@@ -8,6 +8,7 @@ module AresMUSH
         attribute :tor_calling
         
         attribute :favoured_skills
+        attribute :distinctive_features
         
         
         collection :tor_attributes, "AresMUSH::TorAttributes"
@@ -56,18 +57,26 @@ module AresMUSH
         
         #attribute :treasure, :type => DataType::Integer
         #attribute :treasure_carried, :type => DataType::Integer
+
+
+        
   
   
         before_delete :delete_tor_abilities
 
+        #self.tor_skills, self.tor_attributes, self.tor_culture, self.tor_tn, self.tor_maxhope, self.tor_hope, self.tor_maxendurance,
+        #self.tor_endurance, self.tor_parry, self.tor_virtues
 
 
         #self.tor_distinctivefeatures, self.tor_tn, self.tor_combatproficiencies,
          # self.tor_virtues, self.tor_rewards, self.tor_armour, self.tor_weapons, self.tor_shields
       
       def delete_tor_abilities
-        [ self.tor_skills, self.tor_attributes, self.tor_culture, self.tor_tn, self.tor_maxhope, self.tor_hope, self.tor_maxendurance,
-          self.tor_endurance, self.tor_parry, self.tor_virtues  ].each do |list|
+        [ self.tor_culture, self.tor_calling, self.favoured_skills, self.distinctive_features, self.tor_attributes, self.tor_skills, self.tor_tn, self.tor_armour,
+        self.tor_weapons, self.tor_shields, self.tor_adventure_points, self.tor_skill_points, self.tor_lifetime_adventure_points, self.tor_lifetime_skill_points,
+        self.tor_wisdom, self.tor_valour, self.tor_maxhope, self.tor_hope, self.tor_shadow, self.tor_shadowscars, self.tor_shadowtotal, self.tor_maxendurance,
+        self.tor_endurance, self.tor_parry, self.tor_axes_proficiency, self.tor_bows_proficiency, self.tor_spears_proficiency, self.tor_swords_proficiency,
+        self.tor_load, self.first_hand_in_use, self.second_hand_in_use, self.shield_in_use  ].each do |list|
           list.each do |a|
             a.delete
           end
@@ -138,21 +147,6 @@ module AresMUSH
         index :name
         
     end
-
-
-
-
-  #  class TorDistinctiveFeatures < Ohm::Model
-   #     include ObjectModel
-        
-    #    attribute :name
-     #   attribute :desc
-      #  reference :character, "AresMUSH::Character"
-       # index :name
-        
-   # end
-
-
 
 
     class TorArmour < Ohm::Model

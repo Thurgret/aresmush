@@ -127,6 +127,26 @@ module AresMUSH
         end
 
 
+
+      def self.calling_distinctive_feature(model)
+        calling = model.group("Calling").to_s.downcase
+          if (calling == "captain")
+            return "Leadership"
+          elsif (calling == "champion")
+            return "Enemy Lore"
+          elsif (calling == "messenger")
+            return "Folk-lore"
+          elsif (calling == "scholar")
+            return "Rhymes of Lore"
+          elsif (calling == "treasure hunter")
+            return "Burglary"
+          elsif (calling == "warden")
+            return "Shadow-lore"
+          end
+      
+      end
+
+
    
    
    
