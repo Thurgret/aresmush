@@ -139,7 +139,7 @@ module AresMUSH
 
             dice.each do |result|
                 if (weary == "weary")
-                    if (current_number >= 4)
+                    if (result >= 4)
                         current_number += result
                         
                 Global.logger.debug result
