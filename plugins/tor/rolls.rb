@@ -50,8 +50,7 @@ module AresMUSH
 
             return nil if !skill_name
 
-            return nil if (!Tor.find_skill(char, skill_name) && skill_name.downcase != "valour" && skill_name.downcase != "wisdom" && skill_name.downcase != "axes"
-            && skill_name.downcase != "bows" && skill_name.downcase != "spears" && skill_name.downcase != "swords" && skill_name.downcase != "protection")
+            return nil if (!Tor.find_skill(char, skill_name) && skill_name.downcase != "valour" && skill_name.downcase != "wisdom" && skill_name.downcase != "axes" && skill_name.downcase != "bows" && skill_name.downcase != "spears" && skill_name.downcase != "swords" && skill_name.downcase != "protection")
 
             if !modifier
                 modifier = 0
