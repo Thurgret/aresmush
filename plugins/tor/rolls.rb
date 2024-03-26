@@ -77,16 +77,16 @@ module AresMUSH
                 target_number = tn_rating(char, "Heart")
             elsif (skill_name.downcase == "axes")
                 skill_dice = char.tor_axes_proficiency.to_i + modifier
-                target_number = alternative_tn
+                target_number = tn_rating(char, "Strength")
             elsif (skill_name.downcase == "bows")
                 skill_dice = char.tor_bows_proficiency.to_i + modifier
-                target_number = alternative_tn
+                target_number = tn_rating(char, "Strength")
             elsif (skill_name.downcase == "spears")
                 skill_dice = char.tor_spears_proficiency.to_i + modifier
-                target_number = alternative_tn
+                target_number = tn_rating(char, "Strength")
             elsif (skill_name.downcase == "swords")
                 skill_dice = char.tor_swords_proficiency.to_i + modifier
-                target_number = alternative_tn
+                target_number = tn_rating(char, "Strength")
             elsif (skill_name.downcase == "protection")
                 skill_dice = char.tor_protection.to_i + modifier
                 target_number = alternative_tn
