@@ -140,15 +140,19 @@ module AresMUSH
                 if (weary == "weary")
                     if (current_number >= 4)
                         current_number += result
+                        
+                Global.logger.debug result
+                Global.logger.debug current_number
                     end
                 else
                     current_number += result
+                    
+                Global.logger.debug result
+                Global.logger.debug current_number
                 end
                 if result == 6
                     degrees += 1
                 end
-                Global.logger.debug result
-                Global.logger.debug current_number
             end
 
             if (alternative_tn > 0)
