@@ -83,6 +83,7 @@ module AresMUSH
                 model.update(wearing_helm: nil)
             else
                 model.update(wearing_armour: nil)
+            end
         end
 
         def self.remove_weapon(model, weapon_name)
