@@ -28,11 +28,12 @@ module AresMUSH
         end
 
 
+        #newlist = list.to_a.sort_by { |a| a.name }
+       # .each_with_index
+          #.map do |a, i|
+
         def self.armour_list(char)
-            list = char.tor_armour
-            newlist = list.to_a.sort_by { |a| a.name }
-            .each_with_index
-              .map do |a, i|
+            list = char.tor_armour.each do |a|
                 if a.equipped == "Equipped"
                   if a.rewards
                     if a.origin
@@ -65,7 +66,61 @@ module AresMUSH
                   end
                 end
               end
-              return newlist.join("")
+              return list.join("")
+        end
+
+        def self.weapon_list(char)
+          list = char.tor_weapons.each do |a|
+            if (a.equipped == "Equipped")
+              if (a.wielded == "in hand")
+                if a.rewards
+                  if a.origin
+                    "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - in hand
+                    Rewards: #{a.rewards}
+                    "
+                  else
+                    "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand
+                    Rewards: #{a.rewards}
+                    "
+                  end
+                else
+                  "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand
+                  "
+                end
+              else
+                if (a.rewards != "")
+                  if a.origin
+                    "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - worn
+                    Rewards: #{a.rewards}
+                    "
+                  else
+                    "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - worn
+                    Rewards: #{a.rewards}
+                    "
+                  end
+                else
+                  "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - worn
+                  "
+                end
+              end
+            elsif a.equipped == "Dropped"
+              if a.rewards
+                if a.origin
+                  "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - dropped
+                  Rewards: #{a.rewards}
+                  "
+                else
+                  "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - dropped
+                  Rewards: #{a.rewards}
+                  "
+                end
+              else
+                "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - dropped
+                "
+              end
+            end
+            return list.join("")
+          end
         end
 
 
