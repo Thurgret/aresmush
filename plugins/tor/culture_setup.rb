@@ -15,6 +15,7 @@ module AresMUSH
             model.update(:second_hand_in_use => nil)
 
             model.update(favoured_skills: "")
+            model.update(distinctive_features: "")
 
 
             Tor.remove_starting_virtues(model)

@@ -238,23 +238,28 @@ module AresMUSH
         first_distinctive_feature = Website.format_input_for_mush(chargen_data[:custom][:distinctive_feature_first_selection])
         second_distinctive_feature = Website.format_input_for_mush(chargen_data[:custom][:distinctive_feature_second_selection])
 
-        Tor.zero_combat_proficiencies(charmodel)
+        
         
 
 
-        if (cultural_favoured_skill_selection != "-" && calling_favoured_skill_first_selection != "-" && calling_favoured_skill_second_selection != "-")
+        if (cultural_favoured_skill_selection != "-" && calling_favoured_skill_first_selection != "-" && calling_favoured_skill_second_selection != "-" &&
+          cultural_favoured_skill_selection != "" && calling_favoured_skill_first_selection != "" && calling_favoured_skill_second_selection != "")
           favoured_skills_string = cultural_favoured_skill_selection + ", " + calling_favoured_skill_first_selection + ", " + calling_favoured_skill_second_selection
           Tor.update_favoured_skills(charmodel, favoured_skills_string)
         end
 
-        if (first_weapon_proficiency != "-")
+
+        Tor.zero_combat_proficiencies(charmodel)
+
+        if (first_weapon_proficiency != "-" && first_weapon_proficiency != "")
           Tor.set_combat_proficiency(charmodel, first_weapon_proficiency, 2)
         end
-        if (second_weapon_proficiency != "-")
+        if (second_weapon_proficiency != "-" && second_weapon_proficiency != "")
           Tor.set_combat_proficiency(charmodel, second_weapon_proficiency, 1)
         end
 
-        if (first_distinctive_feature != "-" && second_distinctive_feature != "-")
+        if (first_distinctive_feature != "-" && second_distinctive_feature != "-" &&
+          first_distinctive_feature != "" && second_distinctive_feature != "")
           Tor.set_distinctive_features(charmodel, first_distinctive_feature, second_distinctive_feature)
         end
 
