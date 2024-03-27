@@ -119,8 +119,8 @@ module AresMUSH
                 "
               end
             end
-            return list.join("")
           end
+          return list.join("")
         end
 
         def self.shield_list(char)
