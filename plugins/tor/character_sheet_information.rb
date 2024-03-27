@@ -153,7 +153,7 @@ module AresMUSH
         elsif (treasure >= 30)
           return ["-", "Leather Shirt", "Leather Corslet", "Mail-shirt", "Helm"]
         else
-          return return ["-", "Leather Shirt", "Leather Corslet", "Helm"]
+          return ["-", "Leather Shirt", "Leather Corslet", "Helm"]
         end
 
       end
