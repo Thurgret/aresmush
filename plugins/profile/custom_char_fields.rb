@@ -252,6 +252,8 @@ module AresMUSH
         weapon_selection = Website.format_input_for_mush(chargen_data[:custom][:weapon_selection])
         shield_selection = Website.format_input_for_mush(chargen_data[:custom][:shield_selection])
 
+        wargear_discard_selection = Website.format_input_for_mush(chargen_data[:custom][:wargear_discard_selection])
+
         
         
 
@@ -290,6 +292,18 @@ module AresMUSH
           Tor.add_shield(charmodel, shield_selection)
         end
         
+        weapon_to_discard = Tor.find_weapon(model, wargear_discard_selection)
+        if (weapon_to_discard)
+          weapon_to_discard.delete
+        end
+        armour_to_discard = Tor.find_armour(model, wargear_discard_selection)
+        if (armour_to_discard)
+          armour_to_discard.delete
+        end
+        shield_to_discard = Tor.find_shield(model, wargear_discard_selection)
+        if (shield_to_discard)
+          shield_to_discard.delete
+        end
 
         return []
       end
