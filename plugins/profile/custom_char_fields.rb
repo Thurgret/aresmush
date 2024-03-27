@@ -279,13 +279,10 @@ module AresMUSH
 
 
 
-        if (first_weapon_proficiency != "-" && first_weapon_proficiency != "" && first_weapon_proficiency)
+        if (first_weapon_proficiency != "-" && first_weapon_proficiency != "" && first_weapon_proficiency
+          && second_weapon_proficiency != "-" && second_weapon_proficiency != "" && second_weapon_proficiency)
           Tor.zero_combat_proficiencies(charmodel)
           Tor.set_combat_proficiency(charmodel, first_weapon_proficiency, 2)
-        end
-        if (second_weapon_proficiency != "-" && second_weapon_proficiency != "" && second_weapon_proficiency)
-          
-        Tor.zero_combat_proficiencies(charmodel)
           Tor.set_combat_proficiency(charmodel, second_weapon_proficiency, 1)
         end
 
