@@ -123,6 +123,45 @@ module AresMUSH
           end
         end
 
+        def self.shield_list(model)
+          list = char.tor_shields.to_a.each.map do |a|
+                    if (a.equipped == "Equipped")
+                      if (a.wielded == "in hand")
+                        if a.rewards
+                          if a.origin
+                            "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} Origin: #{a.origin} - in hand\nRewards: #{a.rewards}\n"
+                          else
+                            "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - in hand\nRewards: #{a.rewards}\n"
+                          end
+                        else
+                          "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - in hand\n"
+                        end
+                      else
+                        if a.rewards
+                          if a.origin
+                            "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} Origin: #{a.origin} - worn\nRewards: #{a.rewards}\n"
+                          else
+                            "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - worn\nRewards: #{a.rewards}\n"
+                          end
+                        else
+                          "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - worn\n"
+                        end
+                      end
+                    elsif a.equipped == "Dropped"
+                      if a.rewards
+                        if a.origin
+                          "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} Origin: #{a.origin} - dropped\nRewards: #{a.rewards}\n"
+                        else
+                          "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - dropped\nRewards: #{a.rewards}\n"
+                        end
+                      else
+                        "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - dropped\n"
+                      end
+                    end
+                  end
+                  return list.join("")
+                end
+
 
 
         def self.cultural_favoured_skills(model)

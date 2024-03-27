@@ -62,6 +62,9 @@ module AresMUSH
        
           distinctive_features_string = charmodel.distinctive_features
 
+          weapon_string = Tor.weapon_list(charmodel)
+          shield_string = Tor.shield_list(charmodel)
+
 
 
         
@@ -76,7 +79,9 @@ module AresMUSH
     virtue: Website.format_markdown_for_html(virtue_string), cultural_characteristics: Website.format_markdown_for_html(cultural_characteristics_string),
     armour: Website.format_markdown_for_html(armour_string), combat_proficiency_display: Website.format_markdown_for_html(combat_proficiency_string),
   favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
-  distinctive_features: Website.format_markdown_for_html(distinctive_features_string) }
+  distinctive_features: Website.format_markdown_for_html(distinctive_features_string),
+   weapons: Website.format_markdown_for_html(weapon_string),
+  shields: Website.format_markdown_for_html(shield_string)}
   end
     
       # Gets custom fields for the character profile editor.
