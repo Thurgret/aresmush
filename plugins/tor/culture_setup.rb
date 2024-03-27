@@ -17,6 +17,7 @@ module AresMUSH
             model.update(favoured_skills: "")
             model.update(distinctive_features: "")
 
+            Tor.set_starting_treasure(model)
 
             Tor.remove_starting_virtues(model)
             Tor.select_attributes(model, "5")            
