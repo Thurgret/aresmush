@@ -41,8 +41,7 @@ module AresMUSH
         lore_string = "Lore: " + Tor.skill_rating(charmodel, "Lore").to_s
 
         cultural_characteristics_string = Tor.cultural_characteristics(charmodel)
-        armour_string = Tor.armour_list(charmodel)
-
+        
 
         combat_proficiency_string = "" + "Axes: " + charmodel.tor_axes_proficiency.to_s + "
         Bows: " + charmodel.tor_bows_proficiency.to_s + "
@@ -62,6 +61,7 @@ module AresMUSH
        
           distinctive_features_string = charmodel.distinctive_features
 
+          armour_string = Tor.armour_list(charmodel)
           weapon_string = Tor.weapon_list(charmodel)
           shield_string = Tor.shield_list(charmodel)
 
@@ -169,6 +169,10 @@ module AresMUSH
 
        wargear_list = Tor.current_wargear_list(charmodel)
 
+       armour_string = Tor.armour_list(charmodel)
+          weapon_string = Tor.weapon_list(charmodel)
+          shield_string = Tor.shield_list(charmodel)
+
 
 
         virtue_string = ''
@@ -193,6 +197,9 @@ module AresMUSH
     shield_options: shield_options_array,
     weapon_options: weapon_options_array,
     wargear_list: wargear_list,
+    weapons: Website.format_markdown_for_html(weapon_string),
+  shields: Website.format_markdown_for_html(shield_string),
+  armour: Website.format_markdown_for_html(armour_string),
 
     cultural_distinctive_features: cultural_distinctive_features_array,
     favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
@@ -271,9 +278,9 @@ module AresMUSH
         end
 
 
-        Tor.zero_combat_proficiencies(charmodel)
 
         if (first_weapon_proficiency != "-" && first_weapon_proficiency != "" && first_weapon_proficiency)
+          Tor.zero_combat_proficiencies(charmodel)
           Tor.set_combat_proficiency(charmodel, first_weapon_proficiency, 2)
         end
         if (second_weapon_proficiency != "-" && second_weapon_proficiency != "" && second_weapon_proficiency)
