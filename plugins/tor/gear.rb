@@ -9,7 +9,7 @@ module AresMUSH
             end
             Global.logger.debug armour_name
             config = find_armour_config(armour_name)
-            TorArmour.create(:name => config["name"], :type => config["type"], :gearload => config["load"], :equipped => "Equipped", :protection => config["protection"], :character => model)           
+            TorArmour.create(:name => config["name"], :type => config["type"], :gearload => config["load"], :equipped => "Dropped", :protection => config["protection"], :character => model)           
         end
 
         def self.add_weapon(model, weapon_name)
