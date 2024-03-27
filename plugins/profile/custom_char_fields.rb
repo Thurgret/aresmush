@@ -245,8 +245,8 @@ module AresMUSH
         second_distinctive_feature = Website.format_input_for_mush(chargen_data[:custom][:distinctive_feature_second_selection])
 
         armour_selection = Website.format_input_for_mush(chargen_data[:custom][:armour_selection])
-        weapon_selection = Website.format_input_for_mush(chargen_data[:custom][weapon_selection])
-        shield_selection = Website.format_input_for_mush(chargen_data[:custom][shield_selection])
+        weapon_selection = Website.format_input_for_mush(chargen_data[:custom][:weapon_selection])
+        shield_selection = Website.format_input_for_mush(chargen_data[:custom][:shield_selection])
 
         
         
