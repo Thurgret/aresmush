@@ -235,8 +235,8 @@ module AresMUSH
         calling_favoured_skill_first_selection = Website.format_input_for_mush(chargen_data[:custom][:calling_favoured_skill_first_selection])
         calling_favoured_skill_second_selection = Website.format_input_for_mush(chargen_data[:custom][:calling_favoured_skill_second_selection])
 
-        first_distinctive_feature = Website.format_input_for_mush(chargen_data[:custom][distinctive_feature_first_selection])
-        second_distinctive_feature = Website.format_input_for_mush(chargen_data[:custom][distinctive_feature_second_selection])
+        first_distinctive_feature = Website.format_input_for_mush(chargen_data[:custom][:distinctive_feature_first_selection])
+        second_distinctive_feature = Website.format_input_for_mush(chargen_data[:custom][:distinctive_feature_second_selection])
 
         Tor.zero_combat_proficiencies(charmodel)
         
