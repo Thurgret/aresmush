@@ -253,7 +253,8 @@ module AresMUSH
 
 
         if (cultural_favoured_skill_selection != "-" && calling_favoured_skill_first_selection != "-" && calling_favoured_skill_second_selection != "-" &&
-          cultural_favoured_skill_selection != "" && calling_favoured_skill_first_selection != "" && calling_favoured_skill_second_selection != "")
+          cultural_favoured_skill_selection != "" && calling_favoured_skill_first_selection != "" && calling_favoured_skill_second_selection != "" &&
+          cultural_favoured_skill_selection && calling_favoured_skill_first_selection && calling_favoured_skill_second_selection)
           favoured_skills_string = cultural_favoured_skill_selection + ", " + calling_favoured_skill_first_selection + ", " + calling_favoured_skill_second_selection
           Tor.update_favoured_skills(charmodel, favoured_skills_string)
         end
@@ -261,26 +262,27 @@ module AresMUSH
 
         Tor.zero_combat_proficiencies(charmodel)
 
-        if (first_weapon_proficiency != "-" && first_weapon_proficiency != "")
+        if (first_weapon_proficiency != "-" && first_weapon_proficiency != "" && first_weapon_proficiency)
           Tor.set_combat_proficiency(charmodel, first_weapon_proficiency, 2)
         end
-        if (second_weapon_proficiency != "-" && second_weapon_proficiency != "")
+        if (second_weapon_proficiency != "-" && second_weapon_proficiency != "" && second_weapon_proficiency)
           Tor.set_combat_proficiency(charmodel, second_weapon_proficiency, 1)
         end
 
         if (first_distinctive_feature != "-" && second_distinctive_feature != "-" &&
-          first_distinctive_feature != "" && second_distinctive_feature != "")
+          first_distinctive_feature != "" && second_distinctive_feature != "" &&
+          first_distinctive_feature && second_distinctive_feature)
           Tor.set_distinctive_features(charmodel, first_distinctive_feature, second_distinctive_feature)
         end
 
-        if (armour_selection != "-" && armour_selection != "")
+        if (armour_selection != "-" && armour_selection != "" && armour_selection)
           Tor.add_armour(charmodel, armour_selection)
           Tor.wear_armour(charmodel, armour_selection)
         end
-        if (weapon_selection != "-" && weapon_selection != "")
+        if (weapon_selection != "-" && weapon_selection != "" && weapon_selection)
           Tor.add_weapon(charmodel, weapon_selection)
         end
-        if (shield_selection != "-" && shield_selection != "")
+        if (shield_selection != "-" && shield_selection != "" && shield_selection)
           Tor.add_shield(charmodel, shield_selection)
         end
 
