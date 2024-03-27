@@ -327,7 +327,7 @@ module AresMUSH
         end
 
         def self.set_starting_treasure(model)
-            treasure = model.treasure
+            culture = model.group("Culture").to_s.downcase
             if (culture == "elves of lindon" || culture == "rangers of the north")
                 model.update(treasure: 0)
             elsif (culture == "hobbits of the shire" || culture == "bree-folk")
