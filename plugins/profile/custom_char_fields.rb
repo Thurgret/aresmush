@@ -285,6 +285,7 @@ module AresMUSH
         if (shield_selection != "-" && shield_selection != "" && shield_selection)
           Tor.add_shield(charmodel, shield_selection)
         end
+        
 
         return []
       end

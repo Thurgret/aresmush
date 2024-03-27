@@ -7,13 +7,14 @@ module AresMUSH
             if (armour)
                 return nil
             end
-            Global.logger.debug armour_name
             config = find_armour_config(armour_name)
             TorArmour.create(:name => config["name"], :type => config["type"], :gearload => config["load"], :equipped => "Dropped", :protection => config["protection"], :character => model)           
         end
 
         def self.add_weapon(model, weapon_name)
             weapon = find_weapon(model, weapon_name)
+            
+            Global.logger.debug weapon_name
             if (weapon)
                 return nil
             end
@@ -141,8 +142,6 @@ module AresMUSH
                 
                 end
             end
-            Global.logger.debug weapon.hands
-            Global.logger.debug weapon
             model.update(:first_hand_in_use => "yes")           
             weapon.update(:wielded => "in hand")
           
