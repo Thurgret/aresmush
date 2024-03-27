@@ -182,7 +182,7 @@ module AresMUSH
       end
 
      
-      def self.weapon_options
+      def self.weapon_options(model)
         treasure = model.treasure
         culture = model.group("Culture").to_s.downcase
         
