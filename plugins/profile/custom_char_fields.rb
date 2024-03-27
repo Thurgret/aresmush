@@ -162,6 +162,9 @@ module AresMUSH
        weapon_options_array = Tor.weapon_options(charmodel)
 
 
+       wargear_list = Tor.current_wargear_list(charmodel)
+
+
 
         virtue_string = ''
         
@@ -184,6 +187,7 @@ module AresMUSH
     armour_options: armour_options_array,
     shield_options: shield_options_array,
     weapon_options: weapon_options_array,
+    wargear_list: wargear_list,
 
     cultural_distinctive_features: cultural_distinctive_features_array,
     favoured_skills: Website.format_markdown_for_html(favoured_skills_string),

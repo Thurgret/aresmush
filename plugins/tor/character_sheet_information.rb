@@ -200,6 +200,10 @@ module AresMUSH
       end
 
 
+      def self.current_wargear_list(model)
+        list = model.tor_weapons("name")
+      end
+
    
    
    
