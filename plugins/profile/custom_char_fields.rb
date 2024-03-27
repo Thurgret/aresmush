@@ -182,8 +182,8 @@ module AresMUSH
     
     distinctive_features: Website.format_markdown_for_html(distinctive_features_string),
     armour_options: armour_options_array,
-    shield_options: shield_options_array
-    weapon_options: weapon_options_array
+    shield_options: shield_options_array,
+    weapon_options: weapon_options_array,
 
     cultural_distinctive_features: cultural_distinctive_features_array,
     favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
