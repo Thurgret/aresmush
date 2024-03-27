@@ -321,7 +321,7 @@ module AresMUSH
             
         def self.set_distinctive_features(model, first_distinctive_feature, second_distinctive_feature)
             newstring = calling_distinctive_feature(model) + ", " + first_distinctive_feature + ", " + second_distinctive_feature
-            return newstring
+            model.update(distinctive_features: newstring)
         end
 
   
