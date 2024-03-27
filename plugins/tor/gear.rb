@@ -54,8 +54,15 @@ module AresMUSH
 
 
         def self.wear_armour(model, armour_name)
-            armour = find_armour(model, armour_name)
-            armour.update(:equipped => "Equipped")
+            if (!model.wearing_armour)
+                armour = find_armour(model, armour_name)
+                armour.update(:equipped => "Equipped")
+                if (armour_name == "helm")
+                    model.update(wearing_helm: true)
+                else
+                    model.update(wearing_armour: true)
+                end
+            end
         end
 
         def self.wear_weapon(model, weapon_name)
@@ -72,6 +79,10 @@ module AresMUSH
             armour_name = armour_name.downcase
             armour = find_armour(model, armour_name)
             armour.update(:equipped => "Dropped")
+            if (armour_name == "helm")
+                model.update(wearing_helm: nil)
+            else
+                model.update(wearing_armour: nil)
         end
 
         def self.remove_weapon(model, weapon_name)

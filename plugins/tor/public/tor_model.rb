@@ -16,7 +16,6 @@ module AresMUSH
         collection :tor_tn, "AresMUSH::TorTN"
         collection :tor_virtues, "AresMUSH::TorVirtues"
 
-        ##collection :tor_distinctivefeatures, "AresMUSH::TorDistinctiveFeatures"
         collection :tor_armour, "AresMUSH::TorArmour"
         collection :tor_weapons, "AresMUSH::TorWeapons"
         collection :tor_shields, "AresMUSH::TorShields"
@@ -55,8 +54,11 @@ module AresMUSH
 
         attribute :shield_in_use
         
-        #attribute :treasure, :type => DataType::Integer
+        attribute :treasure, :type => DataType::Integer
         #attribute :treasure_carried, :type => DataType::Integer
+
+        attribute :wearing_armour
+        attribute :wearing_helm
 
 
         
@@ -66,8 +68,6 @@ module AresMUSH
 
         #self.tor_skills, self.tor_attributes, self.tor_culture, self.tor_tn, self.tor_maxhope, self.tor_hope, self.tor_maxendurance,
         #self.tor_endurance, self.tor_parry, self.tor_virtues
-
-
         #self.tor_distinctivefeatures, self.tor_tn, self.tor_combatproficiencies,
          # self.tor_virtues, self.tor_rewards, self.tor_armour, self.tor_weapons, self.tor_shields
       

@@ -157,6 +157,9 @@ module AresMUSH
 
 
        distinctive_features_string = charmodel.distinctive_features
+       armour_options_array = Tor.armour_options(charmodel)
+       shield_options_array = Tor.shield_options(charmodel)
+       weapon_options_array = Tor.weapon_options(charmodel)
 
 
 
@@ -178,6 +181,9 @@ module AresMUSH
     virtue: Website.format_markdown_for_html(virtue_string),
     
     distinctive_features: Website.format_markdown_for_html(distinctive_features_string),
+    armour_options: Website.format_markdown_for_html(armour_options_array),
+    shield_options: Website.format_markdown_for_html(shield_options_array),
+    weapon_options: Website.format_markdown_for_html(weapon_options_array),
 
     cultural_distinctive_features: cultural_distinctive_features_array,
     favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
@@ -238,6 +244,10 @@ module AresMUSH
         first_distinctive_feature = Website.format_input_for_mush(chargen_data[:custom][:distinctive_feature_first_selection])
         second_distinctive_feature = Website.format_input_for_mush(chargen_data[:custom][:distinctive_feature_second_selection])
 
+        armour_selection = Website.format_input_for_mush(chargen_data[:custom][:armour_selection])
+        weapon_selection = Website.format_input_for_mush(chargen_data[:custom][weapon_selection])
+        shield_selection = Website.format_input_for_mush(chargen_data[:custom][shield_selection])
+
         
         
 
@@ -261,6 +271,17 @@ module AresMUSH
         if (first_distinctive_feature != "-" && second_distinctive_feature != "-" &&
           first_distinctive_feature != "" && second_distinctive_feature != "")
           Tor.set_distinctive_features(charmodel, first_distinctive_feature, second_distinctive_feature)
+        end
+
+        if (armour_selection != "-" && armour_selection != "")
+          Tor.add_armour(charmodel, armour_selection)
+          Tor.wear_armour(charmodel, armour_selection)
+        end
+        if (weapon_selection != "-" && weapon_selection != "")
+          Tor.add_weapon(charmodel, weapon_selection)
+        end
+        if (shield_selection != "-" && shield_selection != "")
+          Tor.add_shield(charmodel, shield_selection)
         end
 
         return []

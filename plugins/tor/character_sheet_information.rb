@@ -146,6 +146,59 @@ module AresMUSH
       
       end
 
+      def self.armour_options(model)
+        treasure = model.treasure
+        if (treasure >= 90)
+          return ["-", "Leather Shirt", "Leather Corslet", "Mail-shirt", "Coat of Mail", "Helm"]
+        elsif (treasure >= 30)
+          return ["-", "Leather Shirt", "Leather Corslet", "Mail-shirt", "Helm"]
+        else
+          return return ["-", "Leather Shirt", "Leather Corslet", "Helm"]
+        end
+
+      end
+
+      def self.weapon_options(model)
+        treasure = model.treasure
+        culture = model.group("Culture").to_s.downcase
+      end
+
+      def self.shield_options(model)
+        treasure = model.treasure
+        culture = model.group("Culture").to_s.downcase
+        if (culture == "dwarves of durin's folk" || culture == "hobbits of the shire")
+          if (treasure >= 30)
+            return ["-", "Buckler", "Shield"]
+          else
+            return ["-", "Buckler"]
+          end  
+        elsif (treasure >= 90)
+          return ["-", "Buckler", "Shield", "Great Shield"]
+        elsif (treasure >= 30)
+          return ["-", "Buckler", "Shield"]
+        else
+          return ["-", "Buckler"]
+        end
+      end
+
+     
+      def self.weapon_options
+        treasure = model.treasure
+        culture = model.group("Culture").to_s.downcase
+        
+        if (culture == "hobbits of the shire")
+          return ["-", "Axe", "Bow", "Club", "Cudgel", "Dagger", "Short Sword", "Short Spear", "Spear"]
+        elsif (culture == "dwarves of durin's folk")
+          return ["-", "Dagger", "Cudgel", "Club", "Short Sword", "Sword", "Long Sword",
+        "Short Spear", "Spear", "Axe", "Long-hafted Axe", "Great Axe", "Mattock",
+      "Bow"]
+        else
+          return ["-", "Dagger", "Cudgel", "Club", "Short Sword", "Sword", "Long Sword",
+          "Short Spear", "Spear", "Great Spear", "Axe", "Long-hafted Axe", "Great Axe", "Mattock",
+        "Bow", "Great Bow"]
+        end
+      end
+
 
    
    

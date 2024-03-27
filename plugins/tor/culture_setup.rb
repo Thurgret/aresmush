@@ -325,6 +325,17 @@ module AresMUSH
             model.update(distinctive_features: newstring)
         end
 
+        def self.set_starting_treasure(model)
+            treasure = model.treasure
+            if (culture == "elves of lindon" || culture == "rangers of the north")
+                model.update(treasure: 0)
+            elsif (culture == "hobbits of the shire" || culture == "bree-folk")
+                model.update(treasure: 30)
+            else
+                model.update(treasure: 90)
+            end
+        end
+
   
     end
 end
