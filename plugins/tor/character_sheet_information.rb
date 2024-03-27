@@ -149,9 +149,9 @@ module AresMUSH
       def self.armour_options(model)
         treasure = model.treasure
         if (treasure >= 90)
-          return ["-", "Leather Shirt", "Leather Corslet", "Mail-shirt", "Coat of Mail", "Helm"]
+          return ["-", "Leather Shirt", "Leather Corslet", "Mail Shirt", "Coat of Mail", "Helm"]
         elsif (treasure >= 30)
-          return ["-", "Leather Shirt", "Leather Corslet", "Mail-shirt", "Helm"]
+          return ["-", "Leather Shirt", "Leather Corslet", "Mail Shirt", "Helm"]
         else
           return ["-", "Leather Shirt", "Leather Corslet", "Helm"]
         end
