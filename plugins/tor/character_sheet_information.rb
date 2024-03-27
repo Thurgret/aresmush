@@ -33,7 +33,7 @@ module AresMUSH
           #.map do |a, i|
 
         def self.armour_list(char)
-            list = char.tor_armour.each do |a|
+            list = char.tor_armour.to_a.each.map do |a|
                 if a.equipped == "Equipped"
                   if a.rewards
                     if a.origin
@@ -70,7 +70,7 @@ module AresMUSH
         end
 
         def self.weapon_list(char)
-          list = char.tor_weapons.each do |a|
+          list = char.tor_weapons.to_a.each.map do |a|
             if (a.equipped == "Equipped")
               if (a.wielded == "in hand")
                 if a.rewards
