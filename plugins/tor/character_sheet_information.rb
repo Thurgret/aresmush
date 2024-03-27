@@ -123,7 +123,7 @@ module AresMUSH
           end
         end
 
-        def self.shield_list(model)
+        def self.shield_list(char)
           list = char.tor_shields.to_a.each.map do |a|
                     if (a.equipped == "Equipped")
                       if (a.wielded == "in hand")
