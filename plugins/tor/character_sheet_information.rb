@@ -201,7 +201,11 @@ module AresMUSH
 
 
       def self.current_wargear_list(model)
-        list = model.tor_weapons("name")
+        list = []
+        model.tor_weapons.each do |a|
+          list << a.name
+        end
+        return list
       end
 
    
