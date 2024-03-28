@@ -296,7 +296,7 @@ module AresMUSH
             virtue = Tor.find_virtue(model, "nimbleness")
             if (virtue)
 
-                rating = model.tor_parry + 1
+                rating = model.tor_parry - 1
                 model.update(:tor_parry => rating)
                 virtue.delete
             end
