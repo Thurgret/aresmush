@@ -4,7 +4,6 @@ module AresMUSH
         
     
     
-        collection :tor_culture, "AresMUSH::TorCulture"
         attribute :tor_calling
         
         attribute :favoured_skills
@@ -74,7 +73,7 @@ module AresMUSH
          # self.tor_virtues, self.tor_rewards, self.tor_armour, self.tor_weapons, self.tor_shields
       
       def delete_tor_abilities
-        [ self.tor_culture, self.tor_calling, self.favoured_skills, self.distinctive_features, self.tor_attributes, self.tor_skills, self.tor_tn, self.tor_armour,
+        [ self.tor_calling, self.favoured_skills, self.distinctive_features, self.tor_attributes, self.tor_skills, self.tor_tn, self.tor_armour,
         self.tor_weapons, self.tor_shields, self.tor_adventure_points, self.tor_skill_points, self.tor_lifetime_adventure_points, self.tor_lifetime_skill_points,
         self.tor_wisdom, self.tor_valour, self.tor_maxhope, self.tor_hope, self.tor_shadow, self.tor_shadowscars, self.tor_shadowtotal, self.tor_maxendurance,
         self.tor_endurance, self.tor_parry, self.tor_axes_proficiency, self.tor_bows_proficiency, self.tor_spears_proficiency, self.tor_swords_proficiency,
@@ -111,16 +110,6 @@ module AresMUSH
         
     end
 
-
-    class TorCulture < Ohm::Model
-          include ObjectModel
-
-          attribute :name
-          attribute :desc
-
-          reference :character, "AresMUSH::Character"
-          index :name
-    end
 
 
 
