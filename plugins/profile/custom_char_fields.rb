@@ -153,7 +153,7 @@ module AresMUSH
        second_weapon_proficiency_array = ["-", "Axes", "Bows", "Spears", "Swords"]
 
 
-       common_virtues_array = ["-", "Confidence - Raise your maximum Hope rating by 2 points.", "Dour-handed - Your blows have become more forceful and your aim steadier, allowing you to do greater harm.",
+       common_virtues_array = ["-", "Confidence - Raise your maximum Hope rating by 2 points.", "Dour-handed - When inflicting Special Damage in combat, add +1 to your STRENGTH rating on a Heavy Blow, and +1 to the Feat Die numerical result on a Pierce.",
       "Hardiness - Raise your maximum Endurance rating by 2 points, or by your WISDOM rating, whichever is higher.", "Mastery - Choose two Skills and make them Favoured.",
     "Nimbleness - Raise your Parry raiting by 1 point.", "Prowess - Lower one of your attribute TNs by 1."]
        
@@ -281,7 +281,7 @@ module AresMUSH
           if (virtue_selection == "Confidence - Raise your maximum Hope rating by 2 points.")
             Tor.remove_starting_virtues(charmodel)
             Tor.virtue_set(charmodel, "Confidence")
-          elsif (virtue_selection == "Dour-handed - Your blows have become more forceful and your aim steadier, allowing you to do greater harm.")
+          elsif (virtue_selection == "Dour-handed - When inflicting Special Damage in combat, add +1 to your STRENGTH rating on a Heavy Blow, and +1 to the Feat Die numerical result on a Pierce.")
             Tor.remove_starting_virtues(charmodel)
               Tor.virtue_set(charmodel, "Dour-handed")
           elsif (virtue_selection == "Hardiness - Raise your maximum Endurance rating by 2 points, or by your WISDOM rating, whichever is higher.")
