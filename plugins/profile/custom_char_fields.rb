@@ -152,6 +152,10 @@ module AresMUSH
        weapon_proficiency_options << weapon_proficiency_config["option2"]
        second_weapon_proficiency_array = ["-", "Axes", "Bows", "Spears", "Swords"]
 
+
+       common_virtues_array = ["-", "Confidence - Raise your maximum Hope rating by 2 points.", "Dour-handed - Your blows have become more forceful and your aim steadier, allowing you to do greater harm.",
+      "Hardiness - Raise your maximum Endurance rating by 2 points, or by your WISDOM rating, whichever is higher.", "Mastery - Choose two Skills and make them Favoured.",
+    "Nimbleness - Raise your Parry raiting by 1 point.", "Prowess - Lower one of your attribute TNs by 1."]
        
        cultural_favoured_skills_array = Tor.cultural_favoured_skills(charmodel)
        calling_favoured_skills_array = Tor.calling_favoured_skills(charmodel)
@@ -200,6 +204,7 @@ module AresMUSH
     weapons: Website.format_markdown_for_html(weapon_string),
   shields: Website.format_markdown_for_html(shield_string),
   armour: Website.format_markdown_for_html(armour_string),
+  common_virtues: common_virtues_array
 
     cultural_distinctive_features: cultural_distinctive_features_array,
     favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
@@ -266,6 +271,24 @@ module AresMUSH
 
         wargear_discard_selection = Website.format_input_for_mush(chargen_data[:custom][:wargear_discard_selection])
 
+        virtue_selection = Website.format_input_for_mush(chargen_data[:custom][:virtue_selection])
+
+
+        if (virtue_selection && virtue_selection != "-" && virtue_selection != "")
+          if (virtue_selection == "Confidence - Raise your maximum Hope rating by 2 points.")
+            virtue_set(charmodel, "Confidence")
+          elsif (virtue_selection == "Dour-handed - Your blows have become more forceful and your aim steadier, allowing you to do greater harm.")
+              virtue_set(charmodel, "Dour-handed")
+          elsif (virtue_selection == "Hardiness - Raise your maximum Endurance rating by 2 points, or by your WISDOM rating, whichever is higher.")
+              virtue_set(charmodel, "Hardiness")
+          elsif (virtue_selection == "Mastery - Choose two Skills and make them Favoured.")
+                virtue_set(charmodel, "Mastery")
+          elsif (virtue_selection == "Nimbleness - Raise your Parry raiting by 1 point.")
+                virtue_set(charmodel, "Nimbleness")
+          elsif (virtue_selection == "Prowess - Lower one of your attribute TNs by 1.")
+                 virtue_set(charmodel, "Prowess")
+          end
+        end
         
         
 
