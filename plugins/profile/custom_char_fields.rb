@@ -275,18 +275,23 @@ module AresMUSH
 
 
         if (virtue_selection && virtue_selection != "-" && virtue_selection != "")
-          Tor.remove_starting_virtues(charmodel)
           if (virtue_selection == "Confidence - Raise your maximum Hope rating by 2 points.")
+            Tor.remove_starting_virtues(charmodel)
             Tor.virtue_set(charmodel, "Confidence")
           elsif (virtue_selection == "Dour-handed - Your blows have become more forceful and your aim steadier, allowing you to do greater harm.")
+            Tor.remove_starting_virtues(charmodel)
               Tor.virtue_set(charmodel, "Dour-handed")
           elsif (virtue_selection == "Hardiness - Raise your maximum Endurance rating by 2 points, or by your WISDOM rating, whichever is higher.")
+            Tor.remove_starting_virtues(charmodel)
               Tor.virtue_set(charmodel, "Hardiness")
           elsif (virtue_selection == "Mastery - Choose two Skills and make them Favoured.")
+            Tor.remove_starting_virtues(charmodel)
                 Tor.virtue_set(charmodel, "Mastery")
           elsif (virtue_selection == "Nimbleness - Raise your Parry raiting by 1 point.")
+            Tor.remove_starting_virtues(charmodel)
                 Tor.virtue_set(charmodel, "Nimbleness")
           elsif (virtue_selection == "Prowess - Lower one of your attribute TNs by 1.")
+            Tor.remove_starting_virtues(charmodel)
                  Tor.virtue_set(charmodel, "Prowess")
           end
         end
