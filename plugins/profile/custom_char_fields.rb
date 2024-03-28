@@ -246,7 +246,10 @@ module AresMUSH
         char_name = char.name
         charmodel = Character.find_one_by_name(char_name)
 
-        Tor.initial_setup(charmodel)
+        if (charmodel.group("Culture").to_s != charmodel.chargen_last_selected_culture)
+          Tor.initial_setup(charmodel)
+          charmodel.update(chargen_last_selected_culture: charmodel.group("Culture").to_s)
+        end
 
         attribute_option = Website.format_input_for_mush(chargen_data[:custom][:attributeoption])
 

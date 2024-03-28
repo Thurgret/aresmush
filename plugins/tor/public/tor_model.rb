@@ -60,6 +60,8 @@ module AresMUSH
         attribute :wearing_armour
         attribute :wearing_helm
 
+        attribute :chargen_last_selected_culture
+
 
         
   
