@@ -204,7 +204,7 @@ module AresMUSH
     weapons: Website.format_markdown_for_html(weapon_string),
   shields: Website.format_markdown_for_html(shield_string),
   armour: Website.format_markdown_for_html(armour_string),
-  common_virtues: common_virtues_array
+  common_virtues: common_virtues_array,
 
     cultural_distinctive_features: cultural_distinctive_features_array,
     favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
