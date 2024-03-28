@@ -3,13 +3,7 @@ module AresMUSH
 
         def self.initial_setup(model)
             culture_name = model.group("Culture")            
-            culture = Tor.find_culture(model, culture_name)
-             
-            if (culture)
-                culture.update(name: culture_name)
-            else
-                TorCulture.create(name: culture_name, character: model)    
-            end
+
 
             model.update(:first_hand_in_use => nil)
             model.update(:second_hand_in_use => nil)

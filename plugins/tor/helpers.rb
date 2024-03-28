@@ -83,10 +83,6 @@ module AresMUSH
             model.tor_attributes.select { |a| a.name.downcase == name_downcase }.first
         end
 
-        def self.find_culture(model, culture_name)
-            name_downcase = culture_name.downcase
-            model.tor_culture.select { |a| a.name.downcase == name_downcase }.first
-        end
 
         def self.find_tn(model, attribute_name)
             name_downcase = attribute_name.downcase
