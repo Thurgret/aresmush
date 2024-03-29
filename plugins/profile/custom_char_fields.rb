@@ -341,15 +341,15 @@ module AresMUSH
         
         weapon_to_discard = Tor.find_weapon(charmodel, wargear_discard_selection)
         if (weapon_to_discard)
-          weapon_to_discard.delete
+          Tor.discard_weapon(charmodel, weapon_to_discard)
         end
         armour_to_discard = Tor.find_armour(charmodel, wargear_discard_selection)
         if (armour_to_discard)
-          armour_to_discard.delete
+          Tor.discard_armour(charmodel, armour_to_discard)
         end
         shield_to_discard = Tor.find_shield(charmodel, wargear_discard_selection)
         if (shield_to_discard)
-          shield_to_discard.delete
+          Tor.discard_shield(charmodel, shield_to_discard)
         end
 
         return []
