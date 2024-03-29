@@ -56,6 +56,7 @@ module AresMUSH
                 modifier = 0
             end
 
+            Global.logger.debug char.favoured_skills.downcase
 
             
             if char.favoured_skills.downcase.include?(skill_name.downcase) && !favoured
