@@ -8,7 +8,7 @@ module AresMUSH
                 return nil
             end
             config = find_armour_config(armour_name)
-            TorArmour.create(:name => config["name"], :type => config["type"], :gearload => config["load"], :equipped => "Dropped", :protection => config["protection"], :character => model)
+            TorArmour.create(:name => config["name"], :type => config["type"], :gearload => config["load"], :equipped => "Equipped", :protection => config["protection"], :character => model)
             wear_armour(model, armour_name)         
         end
 
