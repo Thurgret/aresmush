@@ -66,6 +66,7 @@ module AresMUSH
             end
 
             if (favoured.downcase == "n")
+                Global.logger.debug favoured.downcase
                 favoured_roll = nil
             elsif (favoured.downcase == "f")
                 favoured_roll = "F"
