@@ -71,6 +71,16 @@ module AresMUSH
           total_load_string = "Total: " + total_load.to_s
           protection_string = "Protection: " + charmodel.tor_protection.to_s
 
+          shadow_string = "Shadow: " + charmodel.tor_shadow.to_s
+          shadow_scars_string = "Shadow scars: " + charmodel.tor_shadowscars.to_s
+          total_shadow_string = "Total: " + charmodel.tor_shadowtotal
+
+          if charmodel.tor_shadowtotal >= charmodel.tor_hope
+            miserable_string = "Miserable"
+          else
+            miserable_string = "Not miserable"
+          end
+
           if total_load >= charmodel.tor_endurance
             weary_string = "Weary"
           else
@@ -98,7 +108,11 @@ module AresMUSH
 protection: Website.format_markdown_for_html(protection_string),
 fatigue: Website.format_markdown_for_html(fatigue_string),
 total_load: Website.format_markdown_for_html(total_load_string),
-weary: Website.format_markdown_for_html(weary_string)}
+weary: Website.format_markdown_for_html(weary_string),
+shadow: Website.format_markdown_for_html(shadow_string),
+shadow_scars: Website.format_markdown_for_html(shadow_scars_string),
+total_shadow: Website.format_markdown_for_html(total_shadow_string),
+miserable: Website.format_markdown_for_html(miserable_string)}
   end
     
       # Gets custom fields for the character profile editor.
@@ -201,6 +215,17 @@ weary: Website.format_markdown_for_html(weary_string)}
           total_load_string = "Total: " + total_load.to_s
           protection_string = charmodel.tor_protection.to_s
 
+          
+          shadow_string = "Shadow: " + charmodel.tor_shadow.to_s
+          shadow_scars_string = "Shadow scars: " + charmodel.tor_shadowscars.to_s
+          total_shadow_string = "Total: " + charmodel.tor_shadowtotal
+
+          if charmodel.tor_shadowtotal >= charmodel.tor_hope
+            miserable_string = "Miserable"
+          else
+            miserable_string = "Not miserable"
+          end
+
           if total_load >= charmodel.tor_endurance
             weary_string = "Weary"
           else
@@ -234,6 +259,11 @@ weary: Website.format_markdown_for_html(weary_string)}
   armour: Website.format_markdown_for_html(armour_string),
   common_virtues: common_virtues_array,
   protection: Website.format_markdown_for_html(protection_string),
+
+  shadow: Website.format_markdown_for_html(shadow_string),
+shadow_scars: Website.format_markdown_for_html(shadow_scars_string),
+total_shadow: Website.format_markdown_for_html(total_shadow_string),
+miserable: Website.format_markdown_for_html(miserable_string),
 
     cultural_distinctive_features: cultural_distinctive_features_array,
     favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
