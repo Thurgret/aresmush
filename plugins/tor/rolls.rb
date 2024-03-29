@@ -253,6 +253,7 @@ module AresMUSH
               results = roll_skill(char, skill_name, rollmodifier, favoured, alternative_tn, weary, miserable)
               if results.weary
                 weary_string = "but because of being weary, results of 1, 2 and 3 are discarded."
+              end
       
 
               if (results.successful == true)
@@ -305,6 +306,7 @@ module AresMUSH
                 results = roll_skill(enactor, skill_name, rollmodifier, favoured, alternative_tn, weary, miserable)
                 if results.weary
                     weary_string = "but because of being weary, results of 1, 2 and 3 are discarded."
+                end
 
 
             pc_name = enactor.name
