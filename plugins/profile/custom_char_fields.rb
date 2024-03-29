@@ -75,6 +75,18 @@ module AresMUSH
           shadow_scars_string = "Shadow scars: " + charmodel.tor_shadowscars.to_s
           total_shadow_string = "Total: " + charmodel.tor_shadowtotal.to_s
 
+        if charmodel.treasure < 30
+          treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a frugal standard of living."
+        elsif charmodel.treasure < 90
+          treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a common standard of living."
+        elsif charmodel.treasure < 180
+          treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a prosperous standard of living."
+        elsif charmodel.treasure < 300
+          treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a rich standard of living."
+        else
+          treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a very rich standard of living."
+
+
           if charmodel.tor_shadowtotal >= charmodel.tor_hope
             miserable_string = "Miserable"
           else
@@ -112,7 +124,8 @@ weary: Website.format_markdown_for_html(weary_string),
 shadow: Website.format_markdown_for_html(shadow_string),
 shadow_scars: Website.format_markdown_for_html(shadow_scars_string),
 total_shadow: Website.format_markdown_for_html(total_shadow_string),
-miserable: Website.format_markdown_for_html(miserable_string)}
+miserable: Website.format_markdown_for_html(miserable_string),
+treasure: Website.format_markdown_for_html(treasure_string)}
   end
     
       # Gets custom fields for the character profile editor.
@@ -201,6 +214,17 @@ miserable: Website.format_markdown_for_html(miserable_string)}
        shield_options_array = Tor.shield_options(charmodel)
        weapon_options_array = Tor.weapon_options(charmodel)
 
+       if charmodel.treasure < 30
+        treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a frugal standard of living."
+      elsif charmodel.treasure < 90
+        treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a common standard of living."
+      elsif charmodel.treasure < 180
+        treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a prosperous standard of living."
+      elsif charmodel.treasure < 300
+        treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a rich standard of living."
+      else
+        treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a very rich standard of living."
+
 
        wargear_list = Tor.current_wargear_list(charmodel)
 
@@ -271,6 +295,7 @@ miserable: Website.format_markdown_for_html(miserable_string),
     fatigue: Website.format_markdown_for_html(fatigue_string),
 total_load: Website.format_markdown_for_html(total_load_string),
 weary: Website.format_markdown_for_html(weary_string),
+treasure: Website.format_markdown_for_html(treasure_string),
     
     cultural_favoured_skills_list: cultural_favoured_skills_array,
     calling_favoured_skills_list: calling_favoured_skills_array,
