@@ -106,6 +106,8 @@ module AresMUSH
                 armour.update(:equipped => "Dropped")
                 new_load = model.tor_load - armour.gearload
                 model.update(:tor_load => new_load)
+                new_protection = model.tor_protection - armour.protection
+                model.update(:tor_protection => new_protection)  
                 if (armour_name == "helm")
                     model.update(wearing_helm: nil)
                 else
