@@ -60,7 +60,7 @@ module AresMUSH
                 favoured = nil
             end
             
-            if check_weary
+            if check_weary(char)
                 weary = "weary"
             end
 
