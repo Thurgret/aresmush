@@ -59,16 +59,16 @@ module AresMUSH
             Global.logger.debug char.favoured_skills.downcase
 
             
-            if char.favoured_skills.downcase.include?(skill_name.downcase) && !favoured
-                favoured = "F"
+            if char.favoured_skills.downcase.include?(skill_name.downcase)
+                favoured_roll = "F"
             end
 
             if (favoured.downcase == "n")
-                favoured = nil
+                favoured_roll = nil
             elsif (favoured.downcase == "f")
-                favoured = "F"
+                favoured_roll = "F"
             elsif (favoured.downcase == "i")
-                favoured = "I"
+                favoured_roll = "I"
             end
             
 
@@ -125,16 +125,16 @@ module AresMUSH
             end
             results.dice = dice.sort.reverse
 
-            if !favoured
+            if !favoured_roll
                 feat_dice[0] = Tor.roll_feat_die
                 results.feat_dice = feat_dice
-            elsif (favoured == "F")
+            elsif (favoured_roll == "F")
                 feat_dice[0] = Tor.roll_feat_die
                 feat_dice[1] = Tor.roll_feat_die
                 if feat_dice[0] < feat_dice[1]
                     feat_dice = feat_dice.reverse
                 end
-            elsif (favoured == "I")   
+            elsif (favoured_roll == "I")   
                 feat_dice[0] = Tor.roll_feat_die
                     feat_dice[1] = Tor.roll_feat_die
                 if feat_dice[0] > feat_dice[1]
