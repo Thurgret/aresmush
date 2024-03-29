@@ -85,6 +85,7 @@ module AresMUSH
           treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a rich standard of living."
         else
           treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a very rich standard of living."
+        end
 
 
           if charmodel.tor_shadowtotal >= charmodel.tor_hope
@@ -224,6 +225,7 @@ treasure: Website.format_markdown_for_html(treasure_string)}
         treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a rich standard of living."
       else
         treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a very rich standard of living."
+      end
 
 
        wargear_list = Tor.current_wargear_list(charmodel)
