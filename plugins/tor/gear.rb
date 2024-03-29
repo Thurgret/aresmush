@@ -130,23 +130,33 @@ module AresMUSH
 
         def self.discard_armour(model, armour_name)
             armour_name = armour_name.downcase
-            remove_armour(model, armour_name)
             armour = find_armour(model, armour_name)
+            if (armour.equipped == "Equipped")
+                remove_armour(model, armour_name)
+            end
             armour.delete
         end
 
         def self.discard_shield(model, shield_name)
             name_downcase = shield_name.downcase
-            store_shield(model, name_downcase)
-            remove_shield(model, name_downcase)
             shield = find_shield(model, shield_name)
+            if (shield.wielded == "in hand")
+                store_shield(model, name_downcase)
+            end
+            if (shield.equipped == "Equipped")
+                remove_shield(model, name_downcase)
+            end
             shield.delete
         end
 
         def self.discard_weapon(model, weapon_name)
-            store_weapon(model, weapon_name)
-            remove_weapon(model, weapon_name)
             weapon = find_weapon(model, weapon_name)
+            if (weapon.wielded == "in hand")
+                store_weapon(model, weapon_name)
+            end
+            if (weapon.equipped == "Equipped")
+                remove_weapon(model, weapon_name)
+            end
             weapon.delete
         end
 
@@ -174,14 +184,18 @@ module AresMUSH
 
         def self.store_weapon(model, weapon_name)
             weapon = find_weapon(model, weapon_name)
-            config = find_weapon_config(weapon_name)
-            if (!model.shield_in_use && model.second_hand_in_use)
-                rating = weapon.injury - 2
-                weapon.update(:injury => rating)
-                model.update(:second_hand_in_use => nil)
+            if (weapon.wielded == "in hand")
+                config = find_weapon_config(weapon_name)
+                 if (!model.shield_in_use && model.second_hand_in_use)
+                    rating = weapon.injury - 2
+                    weapon.update(:injury => rating)
+                    model.update(:second_hand_in_use => nil)
+                end
+                model.update(:first_hand_in_use => nil)
+                weapon.update(:wielded => "stored")
+            else
+                return nil
             end
-            model.update(:first_hand_in_use => nil)
-            weapon.update(:wielded => "stored")
         end
 
 
