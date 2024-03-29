@@ -60,6 +60,9 @@ module AresMUSH
                 favoured = nil
             end
             
+            if check_weary
+                weary = "weary"
+            end
 
             
 
@@ -354,6 +357,8 @@ module AresMUSH
             end
             Global.logger.info "FS3 roll results: #{message}"
           end
+
+
   
    
     

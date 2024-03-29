@@ -48,6 +48,8 @@ module AresMUSH
         attribute :tor_protection, :type => DataType::Integer
         attribute :tor_load, :type => DataType::Integer
 
+        attribute :tor_fatigue, :type => DataType::Integer
+
         attribute :first_hand_in_use
         attribute :second_hand_in_use
 
@@ -60,6 +62,8 @@ module AresMUSH
         attribute :wearing_helm
 
         attribute :chargen_last_selected_culture
+
+
 
 
         

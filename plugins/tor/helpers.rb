@@ -179,7 +179,14 @@ module AresMUSH
 
         
 
-        
+        def self.check_weary(model)
+            cumulative_load = model.tor_load + model.tor_fatigue
+            if (cumulative_load >= model.tor_endurance)
+                return true
+            else
+                return false
+            end
+        end
 
 
 
