@@ -65,6 +65,8 @@ module AresMUSH
           weapon_string = Tor.weapon_list(charmodel)
           shield_string = Tor.shield_list(charmodel)
 
+          gearload = charmodel.tor_load.to_s
+
 
 
         
@@ -81,7 +83,8 @@ module AresMUSH
   favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
   distinctive_features: Website.format_markdown_for_html(distinctive_features_string),
    weapons: Website.format_markdown_for_html(weapon_string),
-  shields: Website.format_markdown_for_html(shield_string)}
+  shields: Website.format_markdown_for_html(shield_string)
+  gearload: Website.format_markdown_for_html(gearload_string)}
   end
     
       # Gets custom fields for the character profile editor.
@@ -177,7 +180,7 @@ module AresMUSH
           weapon_string = Tor.weapon_list(charmodel)
           shield_string = Tor.shield_list(charmodel)
 
-
+          gearload = charmodel.tor_load.to_s
 
         virtue_string = ''
         
@@ -208,6 +211,7 @@ module AresMUSH
 
     cultural_distinctive_features: cultural_distinctive_features_array,
     favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
+    gearload: Website.format_markdown_for_html(gearload_string),
     
     cultural_favoured_skills_list: cultural_favoured_skills_array,
     calling_favoured_skills_list: calling_favoured_skills_array,

@@ -19,7 +19,7 @@ module AresMUSH
                 return nil
             end
             config = find_weapon_config(weapon_name)
-            TorWeapons.create(:name => config["name"], :damage => config["damage"], :injury => config["injury"], :gearload => config["load"], :equipped => "Equipped", :proficiency => config["proficiency"], :hands => config["hands"], :wielded => "stored", :rewards => "", :character => model)
+            TorWeapons.create(:name => config["name"], :damage => config["damage"], :injury => config["injury"], :gearload => config["load"], :equipped => "Dropped", :proficiency => config["proficiency"], :hands => config["hands"], :wielded => "stored", :rewards => "", :character => model)
         end
 
         def self.add_shield(model, shield_name)
@@ -28,7 +28,7 @@ module AresMUSH
                 return nil
             end
             config = find_shield_config(shield_name)
-            TorShields.create(:name => config["name"], :gearload => config["load"], :equipped => "Equipped", :parrymodifier => config["modifier"], :character => model)
+            TorShields.create(:name => config["name"], :gearload => config["load"], :equipped => "Dropped", :parrymodifier => config["modifier"], :character => model)
         end
 
         def self.add_weapon_reward(model, weapon_name, reward_name)
@@ -55,50 +55,72 @@ module AresMUSH
 
 
 
+       
         def self.wear_armour(model, armour_name)
-            if (!model.wearing_armour)
                 armour = find_armour(model, armour_name)
-                armour.update(:equipped => "Equipped")
-                if (armour_name == "helm")
-                    model.update(wearing_helm: true)
-                else
+                if (!model.wearing_armour && armour_name.downcase != "helm")
+                    armour.update(:equipped => "Equipped")
+                    new_load = armour.gearload + model.tor_load
+                    model.update(:tor_load => new_load)
                     model.update(wearing_armour: true)
+                elsif (armour_name.downcase == "helm" && !model.wearing_helm)
+                    armour.update(:equipped => "Equipped")
+                    new_load = armour.gearload + model.tor_load
+                    model.update(:tor_load => new_load)
+                    model.update(wearing_helm: true)                 
+
                 end
             end
-        end
 
         def self.wear_weapon(model, weapon_name)
             weapon = find_weapon(model, weapon_name)
-            weapon.update(:equipped => "Equipped")
+            if (weapon.equipped == "Dropped")
+                new_load = weapon.gearload + model.tor_load
+                model.update(:tor_load => new_load)
+                weapon.update(:equipped => "Equipped")
+            end
         end
 
         def self.wear_shield(model, shield_name)
             shield = find_shield(model, shield_name)
-            shield.update(:equipped => "Equipped")
+            if (shield.equipped == "Dropped")
+                new_load = shield.gearload + model.tor_load
+                model.update(:tor_load => new_load)
+                shield.update(:equipped => "Equipped")
+            end
         end
 
         def self.remove_armour(model, armour_name)
             armour_name = armour_name.downcase
             armour = find_armour(model, armour_name)
-            armour.update(:equipped => "Dropped")
-            if (armour_name == "helm")
-                model.update(wearing_helm: nil)
-            else
-                model.update(wearing_armour: nil)
+            if (armour.equipped == "Equipped")
+                armour.update(:equipped => "Dropped")
+                new_load = model.tor_load - armour.gearload
+                model.update(:tor_load => new_load)
+                if (armour_name == "helm")
+                    model.update(wearing_helm: nil)
+                else
+                    model.update(wearing_armour: nil)
+                end
             end
         end
 
         def self.remove_weapon(model, weapon_name)
             weapon_name = weapon_name.downcase
             weapon = find_weapon(model, weapon_name)
-            weapon.update(:equipped => "Dropped")
+            if (weapon.equipped == "Equipped")
+                new_load = model.tor_load - weapon.gearload
+                model.update(:tor_load => new_load)
+                weapon.update(:equipped => "Dropped")
+            end
         end
 
         def self.remove_shield(model, shield_name)
             shield_name = shield_name.downcase
             shield = find_shield(model, shield_name)
-            if(shield)
-                         
+            if (shield.equipped == "Equipped")
+                new_load = model.tor_load - shield.gearload
+                model.update(:tor_load => new_load)           
                 shield.update(:equipped => "Dropped")
             end
         end
