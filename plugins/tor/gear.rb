@@ -54,7 +54,7 @@ module AresMUSH
             end
         end
 
-        
+
 
 
 
@@ -69,14 +69,14 @@ module AresMUSH
                     model.update(:tor_load => new_load)
                     model.update(wearing_armour: true)
                     new_protection = model.tor_protection + armour.protection
-                    model.update(:tor_protection = new_protection)
+                    model.update(:tor_protection => new_protection)
                 elsif (armour_name.downcase == "helm" && !model.wearing_helm)
                     armour.update(:equipped => "Equipped")
                     new_load = armour.gearload + model.tor_load
                     model.update(:tor_load => new_load)
                     model.update(wearing_helm: true)
                     new_protection = model.tor_protection + armour.protection
-                    model.update(:tor_protection = new_protection)         
+                    model.update(:tor_protection => new_protection)         
 
                 end
             end
