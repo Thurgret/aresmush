@@ -93,6 +93,10 @@ module AresMUSH
       if (cmd.switch_is?("set"))
         return FavouredSkillsSetCmd
       end
+    when "shadow"
+      if (cmd.switch_is?("set"))
+        return ShadowSetCmd
+      end
       
 
 
