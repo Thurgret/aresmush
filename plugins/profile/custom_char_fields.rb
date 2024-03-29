@@ -65,7 +65,7 @@ module AresMUSH
           weapon_string = Tor.weapon_list(charmodel)
           shield_string = Tor.shield_list(charmodel)
 
-          gearload = charmodel.tor_load.to_s
+          gearload_string = charmodel.tor_load.to_s
 
 
 
@@ -180,7 +180,7 @@ module AresMUSH
           weapon_string = Tor.weapon_list(charmodel)
           shield_string = Tor.shield_list(charmodel)
 
-          gearload = charmodel.tor_load.to_s
+          gearload_string = charmodel.tor_load.to_s
 
         virtue_string = ''
         
