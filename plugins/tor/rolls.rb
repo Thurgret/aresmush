@@ -56,6 +56,10 @@ module AresMUSH
                 modifier = 0
             end
 
+            if char.favoured_skills.downcase.include?(skill_name.downcase)
+                favoured_roll = "favoured"
+            end
+
             if (favoured.downcase == "n")
                 favoured = nil
             end
@@ -114,16 +118,16 @@ module AresMUSH
             end
             results.dice = dice.sort.reverse
 
-            if !favoured
+            if !favoured_roll
                 feat_dice[0] = Tor.roll_feat_die
                 results.feat_dice = feat_dice
-            elsif (favoured == "F")
+            elsif (favoured_roll == "F")
                 feat_dice[0] = Tor.roll_feat_die
                 feat_dice[1] = Tor.roll_feat_die
                 if feat_dice[0] < feat_dice[1]
                     feat_dice = feat_dice.reverse
                 end
-            elsif (favoured == "I")   
+            elsif (favoured_roll == "I")   
                 feat_dice[0] = Tor.roll_feat_die
                     feat_dice[1] = Tor.roll_feat_die
                 if feat_dice[0] > feat_dice[1]
@@ -244,7 +248,7 @@ module AresMUSH
 
               results = roll_skill(char, skill_name, rollmodifier, favoured, alternative_tn, weary, miserable)
               if results.weary
-                weary_string = " but because of being weary, results of 1, 2 and 3 are discarded"
+                weary_string = " but because of being weary, results of 1, 2 and 3 were discarded"
               end
       
 
@@ -297,7 +301,7 @@ module AresMUSH
            
                 results = roll_skill(enactor, skill_name, rollmodifier, favoured, alternative_tn, weary, miserable)
                 if results.weary
-                    weary_string = " but because of being weary, results of 1, 2 and 3 are discarded"
+                    weary_string = " but because of being weary, results of 1, 2 and 3 were discarded"
                 end
 
 
