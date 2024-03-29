@@ -96,13 +96,14 @@ module AresMUSH
             results = TorRollResults.new
 
 
-            if check_weary(char)
-                weary = "weary"
+            if (weary.downcase == "no")
+                results.weary = nil
+            elsif (check_weary(char) || weary.downcase == "yes")
+                results.weary = true
+            else
+                results.weary = nil
             end
 
-            if (weary == "weary")
-                results.weary = true
-            end
             if (miserable == "miserable")
                 results.miserable = true
             end
@@ -143,7 +144,7 @@ module AresMUSH
 
 
             dice.each do |result|
-                if (weary == "weary")
+                if (results.weary)
                     if (result >= 4)
                         current_number += result
                         
@@ -220,15 +221,6 @@ module AresMUSH
             alternative_tn = request.args[:alternative_tn_string].to_i
             weary = request.args[:weary_string]
             miserable = request.args[:miserable_string]
-
-            weary_string = ""
-            if (weary.length > 0)
-                weary = "weary"
-            end
-            if (miserable.length > 0)
-                miserable = "miserable"
-            end
-
             
           
 
@@ -252,7 +244,7 @@ module AresMUSH
 
               results = roll_skill(char, skill_name, rollmodifier, favoured, alternative_tn, weary, miserable)
               if results.weary
-                weary_string = "but because of being weary, results of 1, 2 and 3 are discarded."
+                weary_string = " but because of being weary, results of 1, 2 and 3 are discarded"
               end
       
 
@@ -305,7 +297,7 @@ module AresMUSH
            
                 results = roll_skill(enactor, skill_name, rollmodifier, favoured, alternative_tn, weary, miserable)
                 if results.weary
-                    weary_string = "but because of being weary, results of 1, 2 and 3 are discarded."
+                    weary_string = " but because of being weary, results of 1, 2 and 3 are discarded"
                 end
 
 
