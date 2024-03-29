@@ -71,6 +71,12 @@ module AresMUSH
           total_load_string = "Total: " + total_load.to_s
           protection_string = "Protection: " + charmodel.tor_protection.to_s
 
+          if total_load >= charmodel.tor_endurance
+            weary_string = "Weary"
+          else
+            weary_string = "Not weary"
+          end
+
 
 
         
@@ -91,7 +97,8 @@ module AresMUSH
   gearload: Website.format_markdown_for_html(gearload_string),
 protection: Website.format_markdown_for_html(protection_string),
 fatigue: Website.format_markdown_for_html(fatigue_string),
-total_load: Website.format_markdown_for_html(total_load_string)}
+total_load: Website.format_markdown_for_html(total_load_string),
+weary: Website.format_markdown_for_html(weary_string)}
   end
     
       # Gets custom fields for the character profile editor.
@@ -194,6 +201,12 @@ total_load: Website.format_markdown_for_html(total_load_string)}
           total_load_string = "Total: " + total_load.to_s
           protection_string = charmodel.tor_protection.to_s
 
+          if total_load >= charmodel.tor_endurance
+            weary_string = "Weary"
+          else
+            weary_string = "Not weary"
+          end
+
         virtue_string = ''
         
         charmodel.tor_virtues.to_a.sort_by { |a| a.name }.each_with_index.map do |a|
@@ -227,6 +240,7 @@ total_load: Website.format_markdown_for_html(total_load_string)}
     gearload: Website.format_markdown_for_html(gearload_string),
     fatigue: Website.format_markdown_for_html(fatigue_string),
 total_load: Website.format_markdown_for_html(total_load_string),
+weary: Website.format_markdown_for_html(weary_string),
     
     cultural_favoured_skills_list: cultural_favoured_skills_array,
     calling_favoured_skills_list: calling_favoured_skills_array,
