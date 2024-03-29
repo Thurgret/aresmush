@@ -61,6 +61,7 @@ module AresMUSH
 
             
             if char.favoured_skills.downcase.include?(skill_name.downcase)
+                Global.logger.debug "thing"
                 favoured_roll = "F"
             end
 
@@ -151,8 +152,6 @@ module AresMUSH
                 
             current_number = 0
             degrees = 0
-
-            Global.logger.debug weary
 
 
             dice.each do |result|
