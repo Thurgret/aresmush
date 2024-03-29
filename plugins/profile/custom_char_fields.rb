@@ -73,7 +73,7 @@ module AresMUSH
 
           shadow_string = "Shadow: " + charmodel.tor_shadow.to_s
           shadow_scars_string = "Shadow scars: " + charmodel.tor_shadowscars.to_s
-          total_shadow_string = "Total: " + charmodel.tor_shadowtotal
+          total_shadow_string = "Total: " + charmodel.tor_shadowtotal.to_s
 
           if charmodel.tor_shadowtotal >= charmodel.tor_hope
             miserable_string = "Miserable"
@@ -218,7 +218,7 @@ miserable: Website.format_markdown_for_html(miserable_string)}
           
           shadow_string = "Shadow: " + charmodel.tor_shadow.to_s
           shadow_scars_string = "Shadow scars: " + charmodel.tor_shadowscars.to_s
-          total_shadow_string = "Total: " + charmodel.tor_shadowtotal
+          total_shadow_string = "Total: " + charmodel.tor_shadowtotal.to_s
 
           if charmodel.tor_shadowtotal >= charmodel.tor_hope
             miserable_string = "Miserable"
