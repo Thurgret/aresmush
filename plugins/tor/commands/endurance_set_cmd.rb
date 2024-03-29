@@ -43,7 +43,7 @@ module AresMUSH
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
             if (self.maxendurance_rating == nil)
-              self.maxendurance_rating = model.tor_maxhope
+              self.maxendurance_rating = model.tor_maxendurance
             end
                                   
             if (model.tor_endurance)
