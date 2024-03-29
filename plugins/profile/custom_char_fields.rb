@@ -83,7 +83,7 @@ module AresMUSH
   favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
   distinctive_features: Website.format_markdown_for_html(distinctive_features_string),
    weapons: Website.format_markdown_for_html(weapon_string),
-  shields: Website.format_markdown_for_html(shield_string)
+  shields: Website.format_markdown_for_html(shield_string),
   gearload: Website.format_markdown_for_html(gearload_string)}
   end
     
