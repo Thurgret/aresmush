@@ -49,9 +49,11 @@ module AresMUSH
             
               model.update(:tor_shadow => self.shadow)
               model.update(:tor_shadowscars => self.shadow_scars)
+              new_total = shadow + shadow_scars
+              model.update(:tor_shadowtotal => new_total)
             
            
-            client.emit_success "Endurance set."
+            client.emit_success "Shadow set."
         
        
          
