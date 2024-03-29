@@ -65,7 +65,11 @@ module AresMUSH
           weapon_string = Tor.weapon_list(charmodel)
           shield_string = Tor.shield_list(charmodel)
 
-          gearload_string = charmodel.tor_load.to_s
+          gearload_string = "Load: " + charmodel.tor_load.to_s
+          fatigue_string = "Fatigue: " + charmodel.tor_fatigue.to_s
+          total_load = charmodel.tor_load + charmodel.tor_fatigue
+          total_load_string = "Total: " + total_load.to_s
+          protection_string = "Protection: " + charmodel.tor_protection.to_s
 
 
 
@@ -84,7 +88,10 @@ module AresMUSH
   distinctive_features: Website.format_markdown_for_html(distinctive_features_string),
    weapons: Website.format_markdown_for_html(weapon_string),
   shields: Website.format_markdown_for_html(shield_string),
-  gearload: Website.format_markdown_for_html(gearload_string)}
+  gearload: Website.format_markdown_for_html(gearload_string),
+protection: Website.format_markdown_for_html(protection_string),
+fatigue: Website.format_markdown_for_html(fatigue_string),
+total_load: Website.format_markdown_for_html(total_load_string)}
   end
     
       # Gets custom fields for the character profile editor.
@@ -182,6 +189,11 @@ module AresMUSH
 
           gearload_string = charmodel.tor_load.to_s
 
+          fatigue_string = "Fatigue: " + charmodel.tor_fatigue.to_s
+          total_load = charmodel.tor_load + charmodel.tor_fatigue
+          total_load_string = "Total: " + total_load.to_s
+          protection_string = charmodel.tor_protection.to_s
+
         virtue_string = ''
         
         charmodel.tor_virtues.to_a.sort_by { |a| a.name }.each_with_index.map do |a|
@@ -208,10 +220,13 @@ module AresMUSH
   shields: Website.format_markdown_for_html(shield_string),
   armour: Website.format_markdown_for_html(armour_string),
   common_virtues: common_virtues_array,
+  protection: Website.format_markdown_for_html(protection_string),
 
     cultural_distinctive_features: cultural_distinctive_features_array,
     favoured_skills: Website.format_markdown_for_html(favoured_skills_string),
     gearload: Website.format_markdown_for_html(gearload_string),
+    fatigue: Website.format_markdown_for_html(fatigue_string),
+total_load: Website.format_markdown_for_html(total_load_string),
     
     cultural_favoured_skills_list: cultural_favoured_skills_array,
     calling_favoured_skills_list: calling_favoured_skills_array,
@@ -279,6 +294,7 @@ module AresMUSH
         wargear_discard_selection = Website.format_input_for_mush(chargen_data[:custom][:wargear_discard_selection])
 
         virtue_selection = Website.format_input_for_mush(chargen_data[:custom][:virtue_selection])
+
 
 
         if (virtue_selection && virtue_selection != "-" && virtue_selection != "")
