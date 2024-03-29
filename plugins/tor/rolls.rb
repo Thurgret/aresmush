@@ -60,9 +60,6 @@ module AresMUSH
                 favoured = nil
             end
             
-            if check_weary(char)
-                weary = "weary"
-            end
 
             
 
@@ -97,6 +94,11 @@ module AresMUSH
             end
 
             results = TorRollResults.new
+
+
+            if check_weary(char)
+                weary = "weary"
+            end
 
             if (weary == "weary")
                 results.weary = true
