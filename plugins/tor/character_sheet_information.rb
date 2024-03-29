@@ -20,7 +20,7 @@ module AresMUSH
                 Beset by Woe: You can remove accumulated Shadow points exclusively during a Yule Fellowship Phase."
             elsif (culture == "hobbits of the shire")
                 return "Hobbit-sense: Your WISDOM rolls are Favoured, and you gain (1d) on all Shadow Tests made to resist the effects of Greed.
-                Halflings: Axe, bow, club, cudgel, dagger, short sword, short spear, spear. Additionally, Hobbits cannot use a great shield."    
+                Halflings:  Due to their reduced size, Hobbits cannot use larger weapons effectively. The weapons available to Hobbits are: axe, bow, club, cudgel, dagger, short sword, short spear, spear. Additionally, Hobbits cannot use a great shield."    
             elsif (culture == "rangers of the north")
                 return "Kings of Men: Add 1 point to one Attribute of your choice.
                 Allegiance of the Dúnedain: During the Fellow ship phase (not Yule) you recover a maximum number of Hope points equal to half your HEART score (rounding fractions up)."
