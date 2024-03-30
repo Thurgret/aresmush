@@ -360,6 +360,8 @@ treasure: Website.format_markdown_for_html(treasure_string),
           Tor.discard_shield(charmodel, wargear_discard_selection)
         end
 
+        char.update(:tor_load => 50)
+
         return []
       end
       
