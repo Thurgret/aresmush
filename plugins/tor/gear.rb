@@ -72,6 +72,7 @@ module AresMUSH
                     model.update(:tor_load => new_load)
                     Global.logger.debug "Got here"
                     model.update(wearing_armour: true)
+                    Global.logger.debug model.tor_load
                     new_protection = model.tor_protection + armour.protection
                     model.update(:tor_protection => new_protection)
                 elsif (armour_name.downcase == "helm" && !model.wearing_helm)
