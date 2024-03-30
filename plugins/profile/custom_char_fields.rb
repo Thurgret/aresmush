@@ -139,7 +139,14 @@ treasure: Website.format_markdown_for_html(treasure_string)}
       # @example
       #    return { goals: Website.format_input_for_html(char.goals) }
       def self.get_fields_for_editing(char, viewer)
-        return {}
+        wargear_list = Tor.current_wargear_list(charmodel)
+        armour_options_array = Tor.armour_options(charmodel)
+        shield_options_array = Tor.shield_options(charmodel)
+        weapon_options_array = Tor.weapon_options(charmodel)
+        return {armour_options: armour_options_array,
+        shield_options: shield_options_array,
+        weapon_options: weapon_options_array,
+        wargear_list: wargear_list}
       end
 
       # Gets custom fields for character creation (chargen).
@@ -319,6 +326,28 @@ treasure: Website.format_markdown_for_html(treasure_string),
       #        char.update(goals: Website.format_input_for_mush(char_data[:custom][:goals]))
       #        return []
       def self.save_fields_from_profile_edit(char, char_data)
+        if (armour_selection != "-" && armour_selection != "" && armour_selection)
+          Tor.add_armour(charmodel, armour_selection)
+        end
+        if (weapon_selection != "-" && weapon_selection != "" && weapon_selection)
+          Tor.add_weapon(charmodel, weapon_selection)
+        end
+        if (shield_selection != "-" && shield_selection != "" && shield_selection)
+          Tor.add_shield(charmodel, shield_selection)
+        end
+        
+        weapon_to_discard = Tor.find_weapon(charmodel, wargear_discard_selection)
+        if (weapon_to_discard)
+          Tor.discard_weapon(charmodel, wargear_discard_selection)
+        end
+        armour_to_discard = Tor.find_armour(charmodel, wargear_discard_selection)
+        if (armour_to_discard)
+          Tor.discard_armour(charmodel, wargear_discard_selection)
+        end
+        shield_to_discard = Tor.find_shield(charmodel, wargear_discard_selection)
+        if (shield_to_discard)
+          Tor.discard_shield(charmodel, wargear_discard_selection)
+        end
         return []
       end
       
@@ -417,7 +446,6 @@ treasure: Website.format_markdown_for_html(treasure_string),
 
         if (armour_selection != "-" && armour_selection != "" && armour_selection)
           Tor.add_armour(charmodel, armour_selection)
-          Tor.wear_armour(charmodel, armour_selection)
         end
         if (weapon_selection != "-" && weapon_selection != "" && weapon_selection)
           Tor.add_weapon(charmodel, weapon_selection)
