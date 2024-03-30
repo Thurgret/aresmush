@@ -9,6 +9,11 @@ module AresMUSH
             end
             config = find_armour_config(armour_name)
             TorArmour.create(:name => config["name"], :type => config["type"], :gearload => config["load"], :equipped => "Dropped", :protection => config["protection"], :character => model)
+            if (model.group("Culture").to_s.downcase == "dwarves of durin's folk")
+                armour = find_armour(model, armour_name)
+                new_load = (armour.gearload/2).round
+                armour.update(:gearload => new_load)
+            end
             wear_armour(model, armour_name)         
         end
 
@@ -79,6 +84,7 @@ module AresMUSH
                     model.update(:tor_protection => new_protection)         
 
                 end
+
             end
 
         def self.wear_weapon(model, weapon_name)
