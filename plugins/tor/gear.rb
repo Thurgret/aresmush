@@ -120,6 +120,9 @@ module AresMUSH
             weapon_name = weapon_name.downcase
             weapon = find_weapon(model, weapon_name)
             if (weapon.equipped == "Equipped")
+                if (weapon.wielded == "in hand")
+                    store_weapon (model, weapon_name)
+                end
                 new_load = model.tor_load - weapon.gearload
                 model.update(:tor_load => new_load)
                 weapon.update(:equipped => "Dropped")
@@ -130,6 +133,9 @@ module AresMUSH
             shield_name = shield_name.downcase
             shield = find_shield(model, shield_name)
             if (shield.equipped == "Equipped")
+                if (shield.wielded == "in hand")
+                    store_shield(model, shield_name)
+                end
                 new_load = model.tor_load - shield.gearload
                 model.update(:tor_load => new_load)           
                 shield.update(:equipped => "Dropped")
