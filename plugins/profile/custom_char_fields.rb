@@ -347,6 +347,10 @@ treasure: Website.format_markdown_for_html(treasure_string),
         shield_selection = Website.format_input_for_mush(char_data[:custom][:shield_selection])
 
         wargear_discard_selection = Website.format_input_for_mush(char_data[:custom][:wargear_discard_selection])
+        wargear_wear_selection = Website.format_input_for_mush(char_data[:custom][:wargear_wear_selection])
+        wargear_drop_selection = Website.format_input_for_mush(char_data[:custom][:wargear_drop_selection])
+        wargear_wield_selection = Website.format_input_for_mush(char_data[:custom][:wargear_wield_selection])
+        wargear_store_selection = Website.format_input_for_mush(char_data[:custom][:wargear_store_selection])
 
         if (armour_selection != "-" && armour_selection != "" && armour_selection)
           Tor.add_armour(char, armour_selection)
@@ -369,6 +373,56 @@ treasure: Website.format_markdown_for_html(treasure_string),
         shield_to_discard = Tor.find_shield(charmodel, wargear_discard_selection)
         if (shield_to_discard)
           Tor.discard_shield(char, wargear_discard_selection)
+        end
+
+        armour_to_wear = Tor.find_armour(charmodel, wargear_wear_selection)
+        if (armour_to_wear)
+          Tor.wear_armour(char, wargear_wear_selection)
+        end
+
+        weapon_to_wear = Tor.find_weapon(charmodel, wargear_wear_selection)
+        if (weapon_to_wear)
+          Tor.wear_weapon(char, wargear_wear_selection)
+        end
+
+        shield_to_wear = Tor.find_shield(charmodel, wargear_wear_selection)
+        if (shield_to_wear)
+          Tor.wear_shield(char, wargear_wear_selection)
+        end
+
+        armour_to_drop = Tor.find_armour(charmodel, wargear_drop_selection)
+        if (armour_to_drop)
+          Tor.remove_armour(char, wargear_drop_selection)
+        end
+
+        weapon_to_drop = Tor.find_weapon(charmodel, wargear_drop_selection)
+        if (weapon_to_drop)
+          Tor.remove_weapon(char, wargear_drop_selection)
+        end
+
+        shield_to_drop = Tor.find_shield(charmodel, wargear_drop_selection)
+        if (shield_to_drop)
+          Tor.remove_shield(char, wargear_drop_selection)
+        end
+
+        weapon_to_wield = Tor.find_weapon(charmodel, wargear_wield_selection)
+        if (weapon_to_wield)
+          Tor.wield_weapon(char, wargear_wield_selection)
+        end
+
+        shield_to_wield = Tor.find_shield(charmodel, wargear_wield_selection)
+        if (shield_to_wield)
+          Tor.hold_shield(char, wargear_wield_selection)
+        end
+
+        weapon_to_store = Tor.find_weapon(charmodel, wargear_wield_selection)
+        if (weapon_to_store)
+          Tor.store_weapon(char, wargear_store_selection)
+        end
+
+        shield_to_store = Tor.find_shield(charmodel, wargear_store_selection)
+        if (shield_to_store)
+          Tor.store_shield(char, wargear_store_selection)
         end
 
 
