@@ -141,15 +141,15 @@ treasure: Website.format_markdown_for_html(treasure_string)}
       def self.get_fields_for_editing(char, viewer)
         char_name = char.name
         charmodel = Character.find_one_by_name(char_name)
-        wargear_list = Tor.current_wargear_list(char)
-        armour_options_array = Tor.armour_options(char)
-        shield_options_array = Tor.shield_options(char)
-        weapon_options_array = Tor.weapon_options(char)
+        wargear_list = Tor.current_wargear_list(charmodel)
+        armour_options_array = Tor.armour_options(charmodel)
+        shield_options_array = Tor.shield_options(charmodel)
+        weapon_options_array = Tor.weapon_options(charmodel)
 
-        wielded_equipment = Tor.wielded_equipment(char)
-        worn_equipment = Tor.worn_equipment(char)
-        dropped_equipment = Tor.dropped_equipment(char)
-        stored_equipment = Tor.stored_equipment(char)
+        wielded_equipment = Tor.wielded_equipment(charmodel)
+        worn_equipment = Tor.worn_equipment(charmodel)
+        dropped_equipment = Tor.dropped_equipment(charmodel)
+        stored_equipment = Tor.stored_equipment(charmodel)
 
         return {armour_options: armour_options_array,
         shield_options: shield_options_array,

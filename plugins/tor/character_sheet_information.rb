@@ -310,7 +310,7 @@ module AresMUSH
 
       def self.wielded_equipment(model)
         list = ["-"]
-        model.tor_weapons each do |a|
+        model.tor_weapons.each do |a|
           if (a.wielded == "in hand")
             list << a.name
           end
