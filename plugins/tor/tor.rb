@@ -101,6 +101,11 @@ module AresMUSH
       if (cmd.switch_is?("set"))
         return LoadSetCmd
       end
+    when "protection"
+      if (cmd.switch_is?("set"))
+        return ProtectionSetCmd
+      end
+      
       
 
 
