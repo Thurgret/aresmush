@@ -42,7 +42,6 @@ module AresMUSH
         
        
          
-          end
     
         end
  
