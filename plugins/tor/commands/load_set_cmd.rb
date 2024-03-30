@@ -12,7 +12,6 @@ module AresMUSH
             args = cmd.parse_args(ArgParser.arg1_equals_arg2)
             self.target_name = titlecase_arg(args.arg1)
             self.character_load = integer_arg(args.arg2)
-          end
         
         end
         
@@ -35,10 +34,10 @@ module AresMUSH
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
             
-
-            model.update(:tor_load => self.character_load)
+            new_load = self.character_load
+            model.update(:tor_load => new_load)
            
-            client.emit_success "Endurance set."
+            client.emit_success "Load set."
         
        
          
