@@ -97,6 +97,10 @@ module AresMUSH
       if (cmd.switch_is?("set"))
         return ShadowSetCmd
       end
+    when "load"
+      if (cmd.switch_is?("set"))
+        return LoadSetCmd
+      end
       
 
 
