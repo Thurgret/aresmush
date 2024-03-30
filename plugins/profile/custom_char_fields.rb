@@ -338,29 +338,28 @@ treasure: Website.format_markdown_for_html(treasure_string),
         wargear_discard_selection = Website.format_input_for_mush(char_data[:custom][:wargear_discard_selection])
 
         if (armour_selection != "-" && armour_selection != "" && armour_selection)
-          Tor.add_armour(charmodel, armour_selection)
+          Tor.add_armour(char, armour_selection)
         end
         if (weapon_selection != "-" && weapon_selection != "" && weapon_selection)
-          Tor.add_weapon(charmodel, weapon_selection)
+          Tor.add_weapon(char, weapon_selection)
         end
         if (shield_selection != "-" && shield_selection != "" && shield_selection)
-          Tor.add_shield(charmodel, shield_selection)
+          Tor.add_shield(char, shield_selection)
         end
         
         weapon_to_discard = Tor.find_weapon(charmodel, wargear_discard_selection)
         if (weapon_to_discard)
-          Tor.discard_weapon(charmodel, wargear_discard_selection)
+          Tor.discard_weapon(char, wargear_discard_selection)
         end
         armour_to_discard = Tor.find_armour(charmodel, wargear_discard_selection)
         if (armour_to_discard)
-          Tor.discard_armour(charmodel, wargear_discard_selection)
+          Tor.discard_armour(char, wargear_discard_selection)
         end
         shield_to_discard = Tor.find_shield(charmodel, wargear_discard_selection)
         if (shield_to_discard)
-          Tor.discard_shield(charmodel, wargear_discard_selection)
+          Tor.discard_shield(char, wargear_discard_selection)
         end
 
-        char.update(:tor_load => 50)
 
         return []
       end
