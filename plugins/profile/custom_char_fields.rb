@@ -405,15 +405,18 @@ treasure: Website.format_markdown_for_html(treasure_string),
           Tor.remove_shield(char, wargear_drop_selection)
         end
 
-        weapon_to_wield = Tor.find_weapon(charmodel, wargear_wield_selection)
-        if (weapon_to_wield)
-          Tor.wield_weapon(char, wargear_wield_selection)
-        end
 
         shield_to_wield = Tor.find_shield(charmodel, wargear_wield_selection)
         if (shield_to_wield)
           Tor.hold_shield(char, wargear_wield_selection)
         end
+
+        weapon_to_wield = Tor.find_weapon(charmodel, wargear_wield_selection)
+        if (weapon_to_wield)
+          Tor.wield_weapon(char, wargear_wield_selection)
+        end
+
+
 
         weapon_to_store = Tor.find_weapon(charmodel, wargear_store_selection)
         if (weapon_to_store)
