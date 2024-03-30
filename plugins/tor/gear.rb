@@ -67,6 +67,7 @@ module AresMUSH
                     armour.update(:equipped => "Equipped")
                     new_load = armour.gearload + model.tor_load
                     model.update(:tor_load => new_load)
+                    Global.logger.debug "Got here"
                     model.update(wearing_armour: true)
                     new_protection = model.tor_protection + armour.protection
                     model.update(:tor_protection => new_protection)
