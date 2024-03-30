@@ -121,7 +121,7 @@ module AresMUSH
             weapon = find_weapon(model, weapon_name)
             if (weapon.equipped == "Equipped")
                 if (weapon.wielded == "in hand")
-                    store_weapon (model, weapon_name)
+                    store_weapon(model, weapon_name)
                 end
                 new_load = model.tor_load - weapon.gearload
                 model.update(:tor_load => new_load)
