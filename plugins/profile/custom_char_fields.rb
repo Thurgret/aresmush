@@ -331,7 +331,7 @@ treasure: Website.format_markdown_for_html(treasure_string),
 
         char_name = char.name
         charmodel = Character.find_one_by_name(char_name)
-        armour_selection = Website.format_input_for_mush(char_data[:custom][:armour_selection])
+        armour_selection = Website.format_input_for_mush(char_data[:custom][:current_armour_selection])
         weapon_selection = Website.format_input_for_mush(char_data[:custom][:weapon_selection])
         shield_selection = Website.format_input_for_mush(char_data[:custom][:shield_selection])
 
