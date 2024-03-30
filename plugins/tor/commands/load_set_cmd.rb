@@ -38,6 +38,7 @@ module AresMUSH
             model.update(:tor_load => new_load)
            
             client.emit_success "Load set."
+          end
         
        
          
