@@ -308,6 +308,77 @@ module AresMUSH
         return list
       end
 
+      def self.wielded_equipment(model)
+        list = ["-"]
+        model.tor_weapons each do |a|
+          if (a.wielded == "in hand")
+            list << a.name
+          end
+        end
+        model.tor_shields each do |a|
+          if (a.wielded == "in hand")
+            list << a.name
+          end
+        end
+        return list
+      end
+
+      def self.stored_equipment(model)
+        list = ["-"]
+        model.tor_weapons each do |a|
+          if (a.wielded == "stored")
+            list << a.name
+          end
+        end
+        model.tor_shields each do |a|
+          if (a.wielded == "stored")
+            list << a.name
+          end
+        end
+        return list
+      end
+
+      def self.worn_equipment(model)
+        list = ["-"]
+        model.tor_weapons.each do |a|
+          if (a.equipped == "Equipped")
+            list << a.name
+          end
+        end
+        model.tor_armour.each do |a|
+          if (a.equipped == "Equipped")
+            list << a.name
+          end
+        end
+        model.tor_shields.each do |a|
+          if (a.equipped == "Equipped")
+            list << a.name
+          end
+        end
+        return list
+      end
+
+      def self.dropped_equipment(model)
+        list = ["-"]
+        model.tor_weapons.each do |a|
+          if (a.equipped == "Dropped")
+            list << a.name
+          end
+        end
+        model.tor_armour.each do |a|
+          if (a.equipped == "Dropped")
+            list << a.name
+          end
+        end
+        model.tor_shields.each do |a|
+          if (a.equipped == "Dropped")
+            list << a.name
+          end
+        end
+        return list
+      end
+
+
    
    
    

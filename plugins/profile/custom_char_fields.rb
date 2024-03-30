@@ -145,6 +145,11 @@ treasure: Website.format_markdown_for_html(treasure_string)}
         armour_options_array = Tor.armour_options(charmodel)
         shield_options_array = Tor.shield_options(charmodel)
         weapon_options_array = Tor.weapon_options(charmodel)
+
+        wielded_equipment = Tor.wielded_equipment(charmodel)
+        worn_equipment = Tor.worn_equipment(charmodel)
+        dropped_equipment = Tor.dropped_equipment(charmodel)
+        
         return {armour_options: armour_options_array,
         shield_options: shield_options_array,
         weapon_options: weapon_options_array,
