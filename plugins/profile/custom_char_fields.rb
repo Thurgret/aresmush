@@ -337,11 +337,6 @@ treasure: Website.format_markdown_for_html(treasure_string),
 
         wargear_discard_selection = Website.format_input_for_mush(char_data[:custom][:wargear_discard_selection])
 
-        Global.logger.debug armour_selection
-        Global.logger.debug weapon_selection
-        Global.logger.debug shield_selection
-        Global.logger.debug wargear_discard_selection
-
         if (armour_selection != "-" && armour_selection != "" && armour_selection)
           Tor.add_armour(charmodel, armour_selection)
         end
@@ -365,10 +360,6 @@ treasure: Website.format_markdown_for_html(treasure_string),
           Tor.discard_shield(charmodel, wargear_discard_selection)
         end
 
-
-        charmodel.save
-        Global.logger.debug "Load at this point is"
-        Global.logger.debug charmodel.tor_load
         return []
       end
       
