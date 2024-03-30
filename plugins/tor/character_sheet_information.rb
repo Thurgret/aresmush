@@ -315,7 +315,7 @@ module AresMUSH
             list << a.name
           end
         end
-        model.tor_shields each do |a|
+        model.tor_shields.each do |a|
           if (a.wielded == "in hand")
             list << a.name
           end
@@ -325,12 +325,12 @@ module AresMUSH
 
       def self.stored_equipment(model)
         list = ["-"]
-        model.tor_weapons each do |a|
+        model.tor_weapons.each do |a|
           if (a.wielded == "stored")
             list << a.name
           end
         end
-        model.tor_shields each do |a|
+        model.tor_shields.each do |a|
           if (a.wielded == "stored")
             list << a.name
           end
