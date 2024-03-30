@@ -331,11 +331,11 @@ treasure: Website.format_markdown_for_html(treasure_string),
 
         char_name = char.name
         charmodel = Character.find_one_by_name(char_name)
-        armour_selection = Website.format_input_for_mush(chargen_data[:custom][:armour_selection])
-        weapon_selection = Website.format_input_for_mush(chargen_data[:custom][:weapon_selection])
-        shield_selection = Website.format_input_for_mush(chargen_data[:custom][:shield_selection])
+        armour_selection = Website.format_input_for_mush(char_data[:custom][:armour_selection])
+        weapon_selection = Website.format_input_for_mush(char_data[:custom][:weapon_selection])
+        shield_selection = Website.format_input_for_mush(char_data[:custom][:shield_selection])
 
-        wargear_discard_selection = Website.format_input_for_mush(chargen_data[:custom][:wargear_discard_selection])
+        wargear_discard_selection = Website.format_input_for_mush(char_data[:custom][:wargear_discard_selection])
         if (armour_selection != "-" && armour_selection != "" && armour_selection)
           Tor.add_armour(charmodel, armour_selection)
         end
