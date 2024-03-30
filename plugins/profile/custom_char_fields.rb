@@ -345,8 +345,6 @@ treasure: Website.format_markdown_for_html(treasure_string),
 
         if (armour_selection != "-" && armour_selection != "" && armour_selection)
           Tor.add_armour(charmodel, armour_selection)
-          Global.logger.debug "Load at this point is"
-          Global.logger.debug charmodel.tor_load
         end
         if (weapon_selection != "-" && weapon_selection != "" && weapon_selection)
           Tor.add_weapon(charmodel, weapon_selection)
@@ -367,6 +365,10 @@ treasure: Website.format_markdown_for_html(treasure_string),
         if (shield_to_discard)
           Tor.discard_shield(charmodel, wargear_discard_selection)
         end
+
+
+        Global.logger.debug "Load at this point is"
+        Global.logger.debug charmodel.tor_load
         return []
       end
       

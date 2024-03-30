@@ -65,14 +65,9 @@ module AresMUSH
                 armour = find_armour(model, armour_name)
                 if (!model.wearing_armour && armour_name.downcase != "helm")
                     armour.update(:equipped => "Equipped")
-                    Global.logger.debug armour.gearload
-                    Global.logger.debug model.tor_load
                     new_load = armour.gearload + model.tor_load
-                    Global.logger.debug new_load
                     model.update(:tor_load => new_load)
-                    Global.logger.debug "Got here"
                     model.update(wearing_armour: true)
-                    Global.logger.debug model.tor_load
                     new_protection = model.tor_protection + armour.protection
                     model.update(:tor_protection => new_protection)
                 elsif (armour_name.downcase == "helm" && !model.wearing_helm)
