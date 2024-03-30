@@ -415,7 +415,7 @@ treasure: Website.format_markdown_for_html(treasure_string),
           Tor.hold_shield(char, wargear_wield_selection)
         end
 
-        weapon_to_store = Tor.find_weapon(charmodel, wargear_wield_selection)
+        weapon_to_store = Tor.find_weapon(charmodel, wargear_store_selection)
         if (weapon_to_store)
           Tor.store_weapon(char, wargear_store_selection)
         end
