@@ -139,6 +139,8 @@ treasure: Website.format_markdown_for_html(treasure_string)}
       # @example
       #    return { goals: Website.format_input_for_html(char.goals) }
       def self.get_fields_for_editing(char, viewer)
+        char_name = char.name
+        charmodel = Character.find_one_by_name(char_name)
         wargear_list = Tor.current_wargear_list(charmodel)
         armour_options_array = Tor.armour_options(charmodel)
         shield_options_array = Tor.shield_options(charmodel)
@@ -326,6 +328,9 @@ treasure: Website.format_markdown_for_html(treasure_string),
       #        char.update(goals: Website.format_input_for_mush(char_data[:custom][:goals]))
       #        return []
       def self.save_fields_from_profile_edit(char, char_data)
+
+        char_name = char.name
+        charmodel = Character.find_one_by_name(char_name)
         if (armour_selection != "-" && armour_selection != "" && armour_selection)
           Tor.add_armour(charmodel, armour_selection)
         end
