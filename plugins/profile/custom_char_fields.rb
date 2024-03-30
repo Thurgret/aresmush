@@ -66,7 +66,6 @@ module AresMUSH
           shield_string = Tor.shield_list(charmodel)
 
           gearload_string = "Load: " + charmodel.tor_load.to_s
-          Global.logger.debug gearload_string
           fatigue_string = "Fatigue: " + charmodel.tor_fatigue.to_s
           total_load = charmodel.tor_load + charmodel.tor_fatigue
           total_load_string = "Total: " + total_load.to_s
@@ -367,6 +366,7 @@ treasure: Website.format_markdown_for_html(treasure_string),
         end
 
 
+        charmodel.save
         Global.logger.debug "Load at this point is"
         Global.logger.debug charmodel.tor_load
         return []

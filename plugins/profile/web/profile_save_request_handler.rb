@@ -14,8 +14,7 @@ module AresMUSH
         end
 
         Global.logger.info "#{enactor.name} saving profile for #{char.name}."
-        Global.logger.debug "Armour value is"
-        Global.logger.debug char.tor_protection
+
         
         manager = Profile.can_manage_profiles?(enactor)
         
