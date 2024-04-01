@@ -42,6 +42,7 @@ module AresMUSH
 
             culture_config["starting_skills"].each do |skill, rating|
                 skill = Tor.find_skill(model, skill)
+                Global.logger.debug skill
                 if (skill)
                     skill.update(rating: rating)
                 else
