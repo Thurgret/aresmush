@@ -69,7 +69,7 @@ module AresMUSH
 
         def self.find_skill(model, skill_name) 
             name_downcase = skill_name.downcase    
-            model.tor_skills.select { |a| a.name.downcase == name_downcase }.first
+            model.tor_skills.select { |a| a.name.to_s.downcase == name_downcase }.first
         end
 
         def self.find_virtue(model, virtue_name)
@@ -132,8 +132,6 @@ module AresMUSH
 
 
         def self.skill_rating(char, skill_name)
-            Global.logger.debug char
-            
             skill = Tor.find_skill(char, skill_name)
             skill ? skill.rating : 0
         end
