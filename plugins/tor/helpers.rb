@@ -132,6 +132,8 @@ module AresMUSH
 
 
         def self.skill_rating(char, skill_name)
+            Global.logger.debug char
+            
             skill = Tor.find_skill(char, skill_name)
             skill ? skill.rating : 0
         end
