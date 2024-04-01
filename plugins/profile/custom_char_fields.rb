@@ -266,7 +266,7 @@ treasure: Website.format_markdown_for_html(treasure_string)}
           fatigue_string = "Fatigue: " + charmodel.tor_fatigue.to_s
           total_load = charmodel.tor_load + charmodel.tor_fatigue
           total_load_string = "Total: " + total_load.to_s
-          protection_string = charmodel.tor_protection.to_s
+          protection_string = "Protection: " + charmodel.tor_protection.to_s
 
           
           shadow_string = "Shadow: " + charmodel.tor_shadow.to_s
