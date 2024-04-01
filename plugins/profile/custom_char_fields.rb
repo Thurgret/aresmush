@@ -21,7 +21,7 @@ module AresMUSH
         endurance_string = "Endurance: " + charmodel.tor_endurance.to_s + "(" + charmodel.tor_maxendurance.to_s + ")"
         hope_string = "Hope: " + charmodel.tor_hope.to_s + "(" + charmodel.tor_maxhope.to_s + ")"
         parry_string = "Parry: " + charmodel.tor_parry.to_s
-        awe_string = "Awe: " + Tor.skill_rating(charmodel, "Awe").to_s
+        awe_string = "Awe: " + Tor.skill_rating(char, "Awe").to_s
         athletics_string = "Athletics: " + Tor.skill_rating(charmodel, "Athletics").to_s
         awareness_string = "Awareness: " + Tor.skill_rating(charmodel, "Awareness").to_s
         hunting_string = "Hunting: " + Tor.skill_rating(charmodel, "Hunting").to_s

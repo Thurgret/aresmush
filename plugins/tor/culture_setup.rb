@@ -47,7 +47,6 @@ module AresMUSH
                 else
                     TorSkills.create(name: skill, rating: rating, character: model)
                 end
-                
             end
         end
 
