@@ -198,6 +198,13 @@ treasure: Website.format_markdown_for_html(treasure_string)}
         riddle_string = "Riddle: " + Tor.skill_rating(charmodel, "Riddle").to_s
         lore_string = "Lore: " + Tor.skill_rating(charmodel, "Lore").to_s
 
+        cultural_characteristics_string = Tor.cultural_characteristics(charmodel)
+
+        combat_proficiency_string = "" + "Axes: " + charmodel.tor_axes_proficiency.to_s + "
+        Bows: " + charmodel.tor_bows_proficiency.to_s + "
+        Spears: " + charmodel.tor_spears_proficiency.to_s + "
+        Swords: " + charmodel.tor_swords_proficiency.to_s
+
 
 
         culture = char.group("Culture")
@@ -294,7 +301,8 @@ treasure: Website.format_markdown_for_html(treasure_string)}
     persuade: Website.format_markdown_for_html(persuade_string), stealth: Website.format_markdown_for_html(stealth_string), scan: Website.format_markdown_for_html(scan_string),
     explore: Website.format_markdown_for_html(explore_string), riddle: Website.format_markdown_for_html(riddle_string), lore: Website.format_markdown_for_html(lore_string),
     virtue: Website.format_markdown_for_html(virtue_string),
-    
+    cultural_characteristics: Website.format_markdown_for_html(cultural_characteristics_string),
+    combat_proficiency_display: Website.format_markdown_for_html(combat_proficiency_string),
     distinctive_features: Website.format_markdown_for_html(distinctive_features_string),
     armour_options: armour_options_array,
     shield_options: shield_options_array,
