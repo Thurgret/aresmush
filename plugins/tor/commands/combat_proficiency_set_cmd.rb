@@ -8,21 +8,15 @@ module AresMUSH
         def parse_args
           # Admin version
         
-          if (cmd.args =~ /=/)
             args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
             self.target_name = titlecase_arg(args.arg1)
-            self.firstproficiency = titlecase_arg(args.arg2)
-            self.secondproficiency = titlecase_arg(args.arg3)
-          else
-            args = cmd.parse_args(ArgParser.arg1_slash_arg2)
-            self.target_name = enactor_name
-            self.firstproficiency = titlecase_arg(args.arg1)
-            self.secondproficiency = titlecase_arg(args.arg2)
-          end
+            self.proficiency = titlecase_arg(args.arg2)
+            self.value = titlecase_arg(args.arg3)
+          
         end
         
         def required_args
-            [self.firstproficiency, self.secondproficiency]
+            [self.proficiency, self.value]
         end
         
        
@@ -45,7 +39,7 @@ module AresMUSH
 
 
             options = ["Axes", "Bows", "Spears", "Swords"]
-            onevalid = options.include?(self.firstproficiency)
+            onevalid = options.include?(self.proficiency)
 
             
             if (onevalid)
