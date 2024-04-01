@@ -68,8 +68,11 @@ module AresMUSH
 
 
         def self.find_skill(model, skill_name)
-            name_downcase = skill_name.downcase
-            model.tor_skills.select { |a| a.name.downcase == name_downcase }.first
+            if (skill_name)
+                name_downcase = skill_name.downcase
+                model.tor_skills.select { |a| a.name.downcase == name_downcase }.first
+            end
+            nil
         end
 
         def self.find_virtue(model, virtue_name)
