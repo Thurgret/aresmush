@@ -70,6 +70,7 @@ module AresMUSH
         def self.find_skill(model, skill_name)
             if (skill_name)
                 name_downcase = skill_name.downcase
+                Global.logger.debug skill_name
                 model.tor_skills.select { |a| a.name.downcase == name_downcase }.first
             end
             nil
