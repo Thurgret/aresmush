@@ -149,13 +149,13 @@ module AresMUSH
 
         def self.find_attribute_options_config(culture)
             options = Global.read_config('tor', 'attributes_chargen')
-            name_downcase = culture.downcase
+            name_downcase = culture.to_s.downcase
             options.select { |a| a['name'].downcase == name_downcase }.first
         end
 
         def self.find_derived_stats_config(culture)
             stats = Global.read_config('tor', 'derived_stats')
-            name_downcase = culture.downcase
+            name_downcase = culture.to_s.downcase
             stats.select { |a| a['name'].downcase == name_downcase }.first
         end
 
