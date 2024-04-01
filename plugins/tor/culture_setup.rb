@@ -42,7 +42,12 @@ module AresMUSH
 
             culture_config["starting_skills"].each do |skill, rating|
                 skill = Tor.find_skill(model, skill)
-                skill.update(rating: rating)
+                if (skill)
+                    skill.update(rating: rating)
+                else
+                    TorSkills.create(name: skill, rating: rating, character: model)
+                end
+                
             end
         end
 
