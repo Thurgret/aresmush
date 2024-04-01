@@ -5,7 +5,7 @@ module AresMUSH
 
 
         def self.cultural_characteristics(char)
-            culture = char.group("Culture").downcase
+            culture = char.group("Culture").to_s.downcase
             if (culture == "bardings")
                 return "Stout-hearted: Your VALOUR rolls are Favoured."
             elsif (culture == "bree-folk")
