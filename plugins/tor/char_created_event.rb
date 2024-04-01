@@ -4,7 +4,7 @@ module AresMUSH
         Global.logger.debug event_name
         case event_name
         when "CharCreatedEvent"
-          return CharSetInitialCulture
+          return CharCreatedEventHandler
         end
         nil
       end

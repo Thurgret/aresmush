@@ -1,6 +1,6 @@
 module AresMUSH
     module Tor
-      class CharSetInitialCulture
+      class CharCreatedEventHandler
         def on_event(event)
            char = Character[event.char_id]
            Global.logger.debug char.name
