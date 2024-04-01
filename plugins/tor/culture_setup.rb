@@ -40,13 +40,13 @@ module AresMUSH
 
             Global.logger.debug culture_config
 
-            culture_config["starting_skills"].each do |skill, rating|
-                skill = Tor.find_skill(model, skill)
+            culture_config["starting_skills"].each do |skill_name, rating|
+                skill = Tor.find_skill(model, skill_name)
                 Global.logger.debug skill
                 if (skill)
                     skill.update(rating: rating)
                 else
-                    TorSkills.create(name: skill, rating: rating, character: model)
+                    TorSkills.create(name: skill_name, rating: rating, character: model)
                 end
             end
         end
