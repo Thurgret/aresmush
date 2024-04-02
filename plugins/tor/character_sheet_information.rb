@@ -75,13 +75,9 @@ module AresMUSH
               if (a.wielded == "in hand")
                 if a.rewards
                   if a.origin
-                    "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - in hand
-                    Rewards: #{a.rewards}
-                    "
+                    "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} Origin: #{a.origin} - in hand\nRewards: #{a.rewards}\n"
                   else
-                    "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand
-                    Rewards: #{a.rewards}
-                    "
+                    "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand\nRewards: #{a.rewards}\n"
                   end
                 else
                   "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand
@@ -129,48 +125,33 @@ module AresMUSH
                       if (a.wielded == "in hand")
                         if a.rewards
                           if a.origin
-                            "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} Origin: #{a.origin} - in hand
-                            Rewards: #{a.rewards}
-                            "
+                            "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} Origin: #{a.origin} - in hand\nRewards: #{a.rewards}\n"
                           else
-                            "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - in hand
-                            Rewards: #{a.rewards}
-                            "
+                            "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - in hand\nRewards: #{a.rewards}\n"
                           end
                         else
-                          "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - in hand
-                          "
+                          "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - in hand\n"
                         end
                       else
                         if a.rewards
                           if a.origin
-                            "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} Origin: #{a.origin} - worn
-                            Rewards: #{a.rewards}
-                            "
+                            "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} Origin: #{a.origin} - worn\nRewards: #{a.rewards}\n"
                           else
-                            "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - worn
-                            Rewards: #{a.rewards}
-                            "
+                            "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - worn\nRewards: #{a.rewards}\n"
                           end
                         else
-                          "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - worn
-                          "
+                          "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - worn\n"
                         end
                       end
                     elsif a.equipped == "Dropped"
                       if a.rewards
                         if a.origin
-                          "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} Origin: #{a.origin} - dropped
-                          Rewards: #{a.rewards}
-                          "
+                          "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} Origin: #{a.origin} - dropped\nRewards: #{a.rewards}\n"
                         else
-                          "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - dropped
-                          Rewards: #{a.rewards}
-                          "
+                          "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - dropped\nRewards: #{a.rewards}\n"
                         end
                       else
-                        "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - dropped
-                        "
+                        "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - dropped\n"
                       end
                     end
                   end
