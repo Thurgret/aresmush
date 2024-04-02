@@ -48,7 +48,18 @@ module AresMUSH
         
         def handle
           ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-            Tor.add_weapon_reward(model, self.wargear_name, self.reward_name)
+            armour = Tor.find_armour(model, self.wargear_name)
+            if (armour)
+              Tor.add_armour_reward(model, self.wargear_name, self.reward_name)
+            end
+            shield = Tor.find_shield(model, self.wargear_name)
+            if (shield)
+              Tor.add_shield_reward(model, self.wargear_name, self.reward_name)
+            end
+            weapon = Tor.find_weapon(model,self.wargear_name)
+            if (weapon)
+              Tor.add_weapon_reward(model, self.wargear_name, self.reward_name)
+            end
           end
         end
             
