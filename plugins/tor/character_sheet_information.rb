@@ -80,8 +80,7 @@ module AresMUSH
                     "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand\nRewards: #{a.rewards}\n"
                   end
                 else
-                  "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand
-                  "
+                  "#{a.name}: Damage: #{a.damage} Injury: #{a.injury} Load: #{a.gearload} - in hand"
                 end
               else
                 if (a.rewards != "")
