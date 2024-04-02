@@ -67,6 +67,7 @@ module AresMUSH
             end
             if (reward_name.downcase == "cunning make")
                 newstring = armour.rewards + "Cunning Make: Reduce the Load rating of the selected item by 2 (to a minimum of 0 Load)."
+                armour.update(:rewards => newstring)
                 remove_armour(model, armour_name)
                 if (model.group("Culture").downcase == "dwarves of durin's folk")
                     armour_config = find_armour_config(armour_name)
