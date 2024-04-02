@@ -65,11 +65,13 @@ module AresMUSH
         def self.add_armour_reward(model, armour_name, reward_name)
             armour = find_armour(model, armour_name)
             if (reward_name.downcase == "close-fitting")
-                newstring = armour.rewards + "Close-fitting: When you make a PROTECTION roll while wearing a close- fitting armour or helm you add +2 to the result."
+                newstring = armour.rewards + "Close-fitting: When you make a PROTECTION roll while wearing a close- fitting armour or helm you add +2 to the result.
+                "
                 armour.update(:rewards => newstring)
             end
             if (reward_name.downcase == "cunning make")
-                newstring = armour.rewards + "Reduce the Load rating of the selected item by 2 (to a minimum of 0 Load)."
+                newstring = armour.rewards + "Cunning Make: Reduce the Load rating of the selected item by 2 (to a minimum of 0 Load).
+                "
                 if (model.group("Culture").downcase == "dwarves of durin's folk")
                     armour_config = find_armour_config(armour_name)
                     originalload = armour_config["load"].to_i
@@ -88,10 +90,16 @@ module AresMUSH
             if (reward_name.downcase == "cunning make")
                 newload = shield.gearload - 2
                 shield.update(:gearload => newload)
+                newstring = shield.rewards + "Cunning Make: Reduce the Load rating of the selected item by 2 (to a minimum of 0 Load).
+                "
+                shield.update(:rewards => newstring )
             end
             if (reward_name.downcase == "reinforced")
                 newparry = shield.parrymodifier + 1
                 shield.update(:parrymodifier => newparry)
+                newstring = shield.rewards + "Reinforced: Add 1 to your shield's Parry bonus.
+                "
+                shield.update(:rewards => newstring )
             end
         end
 
