@@ -8,7 +8,7 @@ module AresMUSH
                 return nil
             end
             config = find_armour_config(armour_name)
-            TorArmour.create(:name => config["name"], :type => config["type"], :gearload => config["load"], :equipped => "Dropped", :protection => config["protection"], :character => model)
+            TorArmour.create(:name => config["name"], :type => config["type"], :gearload => config["load"], :equipped => "Dropped", :protection => config["protection"], :rewards => "", :character => model)
             if (model.group("Culture").to_s.downcase == "dwarves of durin's folk")
                 armour = find_armour(model, armour_name)
                 new_load = (armour.gearload/2).round
@@ -35,7 +35,7 @@ module AresMUSH
                 return nil
             end
             config = find_shield_config(shield_name)
-            TorShields.create(:name => config["name"], :gearload => config["load"], :equipped => "Dropped", :parrymodifier => config["modifier"], :wielded => "stored", :character => model)
+            TorShields.create(:name => config["name"], :gearload => config["load"], :equipped => "Dropped", :parrymodifier => config["modifier"], :wielded => "stored", :rewards => "", :character => model)
             wear_shield(model, shield_name)
         end
 
