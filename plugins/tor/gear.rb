@@ -56,8 +56,7 @@ module AresMUSH
                 weapon.update(:damage => rating)
             end
             if (reward_name.downcase == "keen")
-                newstring = weapon.rewards + "Keen: Attack rolls made with a Keen weapon score a Piercing Blow also on a result of 9 on the Feat die.
-                "
+                newstring = weapon.rewards + "Keen: Attack rolls made with a Keen weapon score a Piercing Blow also on a result of 9 on the Feat die."
                 weapon.update(:rewards => newstring)
             end
         end
