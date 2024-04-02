@@ -67,6 +67,7 @@ module AresMUSH
             end
             if (reward_name.downcase == "cunning make")
                 newstring = armour.rewards + "Cunning Make: Reduce the Load rating of the selected item by 2 (to a minimum of 0 Load)."
+                remove_armour(model, armour_name)
                 if (model.group("Culture").downcase == "dwarves of durin's folk")
                     armour_config = find_armour_config(armour_name)
                     originalload = armour_config["load"].to_i
@@ -76,6 +77,7 @@ module AresMUSH
                     newload = armour.gearload - 2
                     armour.update(:gearload => newload)
                 end
+                wear_armour(model, armour_name)
             end
 
         end
@@ -83,10 +85,12 @@ module AresMUSH
         def self.add_shield_reward(model, shield_name, reward_name)
             shield = find_shield(model, shield_name)
             if (reward_name.downcase == "cunning make")
+                remove_shield(model, shield_name)
                 newload = shield.gearload - 2
                 shield.update(:gearload => newload)
                 newstring = shield.rewards + "Cunning Make: Reduce the Load rating of the selected item by 2 (to a minimum of 0 Load)."
                 shield.update(:rewards => newstring )
+                wear_shield(model, shield_name)
             end
             if (reward_name.downcase == "reinforced")
                 newparry = shield.parrymodifier + 1
