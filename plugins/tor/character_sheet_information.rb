@@ -196,7 +196,7 @@ module AresMUSH
           elsif (calling == "treasure hunter")
             return ["-", "Explore", "Scan", "Stealth"]
           elsif (calling == "warden")
-            return ["-", "Awareness", "Healing", "insight"]
+            return ["-", "Awareness", "Healing", "Insight"]
           end
         end
 
