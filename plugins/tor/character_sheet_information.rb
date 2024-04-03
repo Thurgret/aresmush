@@ -191,7 +191,7 @@ module AresMUSH
           if (culture == "bardings")
             return ["-", "Bold", "Eager", "Fair", "Fierce", "Generous", "Proud", "Tall", "Wilful"]
           elsif (culture == "bree-folk")
-            return ["-", "Fair-spoken", "Faithful", "Generous", "Inquisitive", "Patient", "Rustic", "True-hearted"]
+            return ["-", "Cunning", "Fair-spoken", "Faithful", "Generous", "Inquisitive", "Patient", "Rustic", "True-hearted"]
           elsif (culture == "dwarves of durin's folk")
             return ["-", "Cunning", "Fierce", "Lordly", "Proud", "Secretive", "Stern", "Wary", "Wilful"]
           elsif (culture == "elves of lindon")
