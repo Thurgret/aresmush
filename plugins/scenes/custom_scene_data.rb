@@ -7,6 +7,7 @@ module AresMUSH
       
         torcombatabilities = ["Axes", "Bows", "Spears", "Swords", "Protection"]
 
+        Global.logger.debug "Here"
         
       
       
