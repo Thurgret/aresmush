@@ -14,7 +14,7 @@ module AresMUSH
         
         def handle
           
-            Adversary.each do |a|
+            Adversary.all.each do |a|
                 a.delete
             end
     
