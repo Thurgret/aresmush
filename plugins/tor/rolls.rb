@@ -366,9 +366,15 @@ module AresMUSH
             miserable = request.args[:miserable_string]
 
 
-            proficiency = 
             
+            Adversary.all.each do |a|
+                if (a.name.downcase == target_adversary.downcase)
+                    rollmodifier = rollmodifier + a.parrymodifier
+                    adversary_armour = a.armour
+                end
+            end
           
+            
 
             
 
@@ -388,7 +394,22 @@ module AresMUSH
               pc_name = char.name
 
 
-              results = roll_skill(char, skill_name, rollmodifier, favoured, alternative_tn, weary, miserable)
+
+              piercing_threshold = 10
+              char.tor_weapons.each do |a|
+                if (a.wielded == "in hand")
+                    skill_name = a.proficiency
+                    damage = a.damage
+                    injury = a.injury
+                    if (a.rewards.downcase.include?("keen"))
+                        piercing_threshold = piercing_threshold - 1
+                    end
+                end
+            end
+
+
+
+              results = roll_skill(char, skill_name, rollmodifier, favoured, tn, weary, miserable)
               if results.weary
                 weary_string = " but because of being weary, results of 1, 2 and 3 were discarded"
               end
@@ -405,10 +426,26 @@ module AresMUSH
         else
 
 
+            tn = tn_rating(char, "Strength") + rollmodifier              
+            piercing_threshold = 10
+            char.tor_weapons.each do |a|
+              if (a.wielded == "in hand")
+                  skill_name = a.proficiency
+                  weapon_name = a.weapon
+                  damage = a.damage
+                  injury = a.injury
+                  if (a.rewards.downcase.include?("keen"))
+                      piercing_threshold = piercing_threshold - 1
+                  end
+              end
+         
+            end
+
+
             
 
            
-                results = roll_skill(enactor, skill_name, rollmodifier, favoured, alternative_tn, weary, miserable)
+                results = roll_skill(enactor, skill_name, rollmodifier, favoured, tn, weary, miserable)
                 if results.weary
                     weary_string = " but because of being weary, results of 1, 2 and 3 were discarded"
                 end
@@ -427,7 +464,7 @@ module AresMUSH
             if (results.successful == true)
                 if (results.gandalf_rune)
                     message = t('tor.gandalf_rune', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
-                    :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
+                    :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string ) + "using a" + weapon_name
                 elsif (results.eye_of_mordor)
                     if (results.miserable == true)
                         message = t('tor.miserable_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
@@ -438,7 +475,7 @@ module AresMUSH
                     end
                 else
                     message = t('tor.roll_successful', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :roll => skill_name, 
-                    :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )       
+                    :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )       + "using a" + weapon_name
                 end
           
             end
