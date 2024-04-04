@@ -9,7 +9,7 @@ module AresMUSH
 
 
         
-        Adversary.each do |a|
+        Adversary.all.each do |a|
         torcombatabilitiesarray <<  a.name
         end
       
