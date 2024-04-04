@@ -1,6 +1,6 @@
 module AresMUSH
     module Tor
-      class AddSceneRollRequestHandler
+      class AddCombatRollRequestHandler
         def handle(request)
           scene = Scene[request.args[:id]]
           enactor = request.enactor
