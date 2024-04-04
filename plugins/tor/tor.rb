@@ -109,6 +109,11 @@ module AresMUSH
       if (cmd.switch_is?("set"))
         return ProtectionSetCmd
       end
+    when "generateadversary"
+      return GenerateAdversaryCmd
+    when "deleteadversaries"
+      return DeleteAdversariesCmd
+
       
       
 

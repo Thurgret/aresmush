@@ -1,4 +1,28 @@
 module AresMUSH
+
+
+  class Adversary < Ohm::Model
+    attribute :name
+    attribute :adversary_type
+    attribute :attribute_level
+    attribute :endurance
+    attribute :might
+    attribute :resolve
+    attribute :parry
+    attribute :armour
+    attribute :first_weapon_name
+    attribute :first_weapon_proficiency
+    attribute :first_weapon_damage
+    attribute :first_weapon_injury
+    attribute :second_weapon_name
+    attribute :second_weapon_proficiency
+    attribute :second_weapon_damage
+    attribute :second_weapon_injury
+    attribute :fell_abilities
+  end
+
+
+
     class Character < Ohm::Model
     
         

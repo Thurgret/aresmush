@@ -6,10 +6,6 @@ module AresMUSH
       
       
         torcombatabilitiesarray = ["Axes", "Bows", "Spears", "Swords", "Protection"]
-
-        Global.logger.debug "Here"
-        Global.logger.debug torcombatabilitiesarray
-        
       
       
       
