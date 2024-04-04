@@ -17,7 +17,7 @@ module AresMUSH
           abilities = ["Awe", "Enhearten", "Persuade", "Athletics",
         "Travel", "Stealth", "Awareness", "Insight", "Scan", "Hunting",
       "Healing", "Explore", "Song", "Courtesy", "Riddle", "Craft",
-    "Battle", "Lore", "Valour", "Wisdom", "Protection", "Axes", "Bows", "Spears", "Sword"]
+    "Battle", "Lore", "Valour", "Wisdom", "Protection", "Axes", "Bows", "Spears", "Swords"]
         end
         
         

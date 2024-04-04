@@ -143,7 +143,7 @@ module AresMUSH
     when "torabilities"
       return TorCharAbilitiesRequestHandler
     when "torcombatabilities"
-      return CharCombatAbilitiesRequestHandler
+      return TorCharCombatAbilitiesRequestHandler
     end
    end
   end

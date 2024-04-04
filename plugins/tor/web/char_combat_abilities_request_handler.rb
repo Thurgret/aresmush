@@ -1,6 +1,6 @@
 module AresMUSH
     module Tor
-      class CharCombatAbilitiesRequestHandler
+      class TorCharCombatAbilitiesRequestHandler
         def handle(request)
           char = Character.find_one_by_name request.args[:id]
           
