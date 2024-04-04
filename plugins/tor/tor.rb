@@ -142,8 +142,6 @@ module AresMUSH
       return AddCombatRollRequestHandler
     when "torabilities"
       return TorCharAbilitiesRequestHandler
-    when "torcombatabilities"
-      return TorCharCombatAbilitiesRequestHandler
     end
    end
   end

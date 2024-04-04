@@ -7,6 +7,14 @@ module AresMUSH
       #end
       
       # Always return {}.
+
+      if (request.args['cmd'] == "torcombatabilities")
+        combatabilities = ["Axes", "Bows", "Spears", "Swords", "Protection"]
+
+        return combatabilities
+      end
+
+
       return {}
     end
   end
