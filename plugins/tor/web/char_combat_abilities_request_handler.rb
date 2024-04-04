@@ -1,5 +1,5 @@
 module AresMUSH
-    module Chargen
+    module Tor
       class CharCombatAbilitiesRequestHandler
         def handle(request)
           char = Character.find_one_by_name request.args[:id]
@@ -11,7 +11,7 @@ module AresMUSH
           error = Website.check_login(request, true)
           return error if error
           
-            combatabilities = ["Axes", "Bows", "Spears", "Sword", "Protection"]
+            combatabilities = ["Axes", "Bows", "Spears", "Swords", "Protection"]
           
           
           
