@@ -355,6 +355,137 @@ module AresMUSH
           end
 
 
+          def determine_web_combat_result(request, enactor)
+            roll_str = request.args[:roll_string]
+            pc_name = request.args[:pc_name] || ""
+            pc_skill = request.args[:pc_skill] || ""
+            favoured = request.args[:favoured_string]
+            rollmodifier = request.args[:modifier_string].to_i
+            alternative_tn = request.args[:alternative_tn_string].to_i
+            weary = request.args[:weary_string]
+            miserable = request.args[:miserable_string]
+            
+          
+
+            
+
+            skill_name = roll_str.titlecase
+      
+            # ------------------
+            # PC ROLL
+            # ------------------
+           
+            if (!pc_name.blank?)
+              char = Character.find_one_by_name(pc_name)
+      
+              if (!char && !pc_skill.is_integer?)
+                pc_skill = "3"
+              end
+
+              pc_name = char.name
+
+
+              results = roll_skill(char, skill_name, rollmodifier, favoured, alternative_tn, weary, miserable)
+              if results.weary
+                weary_string = " but because of being weary, results of 1, 2 and 3 were discarded"
+              end
+      
+
+              if (results.successful == true)
+                if (results.gandalf_rune)
+                  message = t('tor.gandalf_rune', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                   :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
+                elsif (results.eye_of_mordor)
+                    if (results.miserable == true)
+                        message = t('tor.miserable_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                        :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
+                    else
+                    message = t('tor.roll_eye_of_mordor_success', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                   :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
+                    end
+                else
+                  message = t('tor.roll_successful', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :roll => skill_name, 
+                  :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
+                end
+              end
+                
+             
+             
+              if (results.successful == false)
+                  if (results.eye_of_mordor)
+                    message = t('tor.eye_of_mordor_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), 
+                    :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
+                  else
+                    message = t('tor.roll_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),  :roll => skill_name, :char => pc_name,
+                    :TN => results.target_number.to_s, :weary => weary_string )
+                  end
+                
+              
+               
+                
+                end
+
+            # ------------------
+            # SELF ROLL
+            # ------------------
+            
+
+
+            
+        else
+
+
+            
+
+           
+                results = roll_skill(enactor, skill_name, rollmodifier, favoured, alternative_tn, weary, miserable)
+                if results.weary
+                    weary_string = " but because of being weary, results of 1, 2 and 3 were discarded"
+                end
+
+
+            pc_name = enactor.name
+
+
+
+
+         
+            if (results.successful == true)
+                if (results.gandalf_rune)
+                    message = t('tor.gandalf_rune', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                    :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
+                elsif (results.eye_of_mordor)
+                    if (results.miserable == true)
+                        message = t('tor.miserable_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                        :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
+                    else
+                        message = t('tor.roll_eye_of_mordor_success', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                        :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
+                    end
+                else
+                    message = t('tor.roll_successful', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :roll => skill_name, 
+                    :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )       
+                end
+          
+            end
+                
+             
+             
+              if (results.successful == false)
+                  if (results.eye_of_mordor)
+                    message = t('tor.eye_of_mordor_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), 
+                    :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
+                  else
+                    message = t('tor.roll_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),  :roll => skill_name, :char => pc_name,
+                    :TN => results.target_number.to_s, :weary => weary_string )
+                  end
+                end
+            end
+            
+            return { message: message }
+          end
+
+
 
           def self.emit_results(message, client, room, is_private)
             if (is_private)
