@@ -6,6 +6,12 @@ module AresMUSH
       
       
         torcombatabilitiesarray = ["Axes", "Bows", "Spears", "Swords", "Protection"]
+
+
+        
+        Adversary.each do |a|
+        torcombatabilitiesarray <<  a.name
+        end
       
       
       
