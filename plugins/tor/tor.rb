@@ -140,6 +140,8 @@ module AresMUSH
       return AddSceneRollRequestHandler
     when "addCombatRoll"
       return AddCombatRollRequestHandler
+    when "combatabilities"
+      return CharCombatAbilitiesRequestHandler
     end
    end
   end
