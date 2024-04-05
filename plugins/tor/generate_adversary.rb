@@ -3,14 +3,26 @@ module AresMUSH
 
 
         def self.generate_adversary(adversary_name, adversary_type)
-            if (adversary_type.downcase == "southerner raider")
-                Adversary.create(:name => adversary_name, :adversary_type => adversary_type, :attribute_level => 4,
-                :endurance => 16, :might => 1, :resolve => 4, :parry => 1, :armour => 2,
-                :first_weapon_name => "Axe", :first_weapon_proficiency => 3, :first_weapon_damage => 5,
-                :first_weapon_injury => 18, :second_weapon_name => "Short Spear", 
-                :second_weapon_proficiency => 2, :second_weapon_damage => 3,
-                :second_weapon_injury => 14)
+            config = find_adversary_config(adversary_type)
+            Adversary.all.each do |a|
+                if (a.name.downcase == adversary_name.downcase)
+                    return nil
+                end
             end
+                
+            Adversary.create(:name => config['name'], :adversary_type => config['adversary_type'], :attribute_level => config['attribute_level'],
+                :endurance => config['endurance'], :might => config['might'], :resolve => config['resolve'], :parry => config['parry'], :armour => config['armour'],
+                :first_weapon_name => config['first_weapon_name'], :first_weapon_proficiency => config['first_weapon_proficiency'], :first_weapon_damage => config['first_weapon_damage'],
+                :first_weapon_injury => config['first_weapon_injury'], :second_weapon_name => config['second_weapon_name'], 
+                :second_weapon_proficiency => config['second_weapon_proficiency'], :second_weapon_damage => config['second_weapon_damage'],
+                :second_weapon_injury => config['second_weapon_injury'], :fell_abilities => config['fell_abilities'])
+        end
+
+
+        def self.find_adversary_config(adversary_type)
+            options = Global.read_config('tor', 'adversaries')
+            name_downcase = adversary_type.to_s.downcase
+            options.select { |a| a['name'].downcase == name_downcase }.first
         end
 
 
