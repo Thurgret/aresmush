@@ -485,7 +485,7 @@ module AresMUSH
                 
                     end
                 else
-                    message = pc_name " attacks " +  target_adversary + " with a " + weapon_name + " and hits. The attack causes " + damage.to_s + 
+                    message = pc_name + " attacks " +  target_adversary + " with a " + weapon_name + " and hits. The attack causes " + damage.to_s + 
                     " endurance damage."
                 end
           
