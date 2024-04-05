@@ -369,7 +369,7 @@ module AresMUSH
             
             Adversary.all.each do |a|
                 if (a.name.downcase == target_adversary.downcase)
-                    rollmodifier = rollmodifier + a.parry
+                    rollmodifier = rollmodifier.to_i + a.parry.to_i
                     adversary_armour = a.armour
                 end
             end
@@ -393,6 +393,7 @@ module AresMUSH
               pc_name = char.name
 
 
+              tn = tn_rating(char, "Strength").to_i + rollmodifier              
 
               piercing_threshold = 10
               char.tor_weapons.each do |a|
