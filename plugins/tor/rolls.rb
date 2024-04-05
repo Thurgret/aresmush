@@ -537,11 +537,11 @@ module AresMUSH
                        
                             if (results.successful)
                                 message = t('tor.adversary_attack_success', :adversary => a.name, :target_pc => char.name, :injury => injury.to_s, :damage => damage.to_s,
-                                :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name,
+                                :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => a.first_weapon_name,
                                 :degrees => results.degrees.to_s)
                        
-                            else essage = t('tor.adversary_attack_failure', :adversary => a.name, :target_pc => char.name, :injury => injury.to_s, :damage => damage.to_s,
-                                :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name,
+                            else message = t('tor.adversary_attack_failure', :adversary => a.name, :target_pc => char.name, :injury => injury.to_s, :damage => damage.to_s,
+                                :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => a.first_weapon_name,
                                 :degrees => results.degrees.to_s)
                             end
                         elsif (adversary_attack_string.downcase.include?(a.first_weapon_name.downcase))
