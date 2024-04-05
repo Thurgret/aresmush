@@ -10,7 +10,7 @@ module AresMUSH
                 end
             end
                 
-            Adversary.create(:name => config['name'], :adversary_type => config['adversary_type'], :attribute_level => config['attribute_level'],
+            Adversary.create(:name => adversary_name, :adversary_type => config['name'], :attribute_level => config['attribute_level'],
                 :endurance => config['endurance'], :might => config['might'], :resolve => config['resolve'], :parry => config['parry'], :armour => config['armour'],
                 :first_weapon_name => config['first_weapon_name'], :first_weapon_proficiency => config['first_weapon_proficiency'], :first_weapon_damage => config['first_weapon_damage'],
                 :first_weapon_injury => config['first_weapon_injury'], :second_weapon_name => config['second_weapon_name'], 
