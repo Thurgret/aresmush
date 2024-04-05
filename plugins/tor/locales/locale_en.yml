@@ -27,7 +27,7 @@ en:
 
         attack_piercing_blow: "%{char} attacks %{target_adversary} with a %{weapon_name}, against a target number of %{TN}, and achieves a piercing blow! Now %{target_adversary} must make a protection roll against an injury rating of %{injury}. Further, the attack inflicts %{damage} endurance damage. There were %{degrees} of success to use on special damage options. The success dice were %{dice} and the feat dice were %{feat_dice}."
         attack_success: "%{char} attacks %{target_adversary} with a %{weapon_name}, against a target number of %{TN}, and hits, inflicting %{damage} endurance damage. There were %{degrees} of success to use on special damage options. The success dice were %{dice} and the feat dice were %{feat_dice}."
-        attack_success: "%{char} attacks %{target_adversary} with a %{weapon_name}, against a target number of %{TN}, and fails. There were %{degrees} of success to use on special damage options. The success dice were %{dice} and the feat dice were %{feat_dice}."
+        attack_failure: "%{char} attacks %{target_adversary} with a %{weapon_name}, against a target number of %{TN}, and fails. There were %{degrees} of success to use on special damage options. The success dice were %{dice} and the feat dice were %{feat_dice}."
 
 
         attribute_option: "%{option}: %{attrs} %{rating}"
