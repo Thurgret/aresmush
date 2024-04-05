@@ -539,9 +539,20 @@ module AresMUSH
                             results = roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
                        
                             if (results.successful)
+                                if (results.feat_dice[0] == 11)
+                                    message = t('tor.adversary_eye_of_mordor_attack_success', :adversary => a.name, :target_pc => char.name, :injury => injury.to_s, :damage => damage.to_s,
+                                :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => a.first_weapon_name,
+                                :degrees => results.degrees.to_s)
+                                elsif (results.feat_dice[0] == 10)
+                                    message = t('tor.adversary_piercing_blow_attack_success', :adversary => a.name, :target_pc => char.name, :injury => injury.to_s, :damage => damage.to_s,
+                                :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => a.first_weapon_name,
+                                :degrees => results.degrees.to_s)
+
+                                else
                                 message = t('tor.adversary_attack_success', :adversary => a.name, :target_pc => char.name, :injury => injury.to_s, :damage => damage.to_s,
                                 :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => a.first_weapon_name,
                                 :degrees => results.degrees.to_s)
+                                end
                        
                             else message = t('tor.adversary_attack_failure', :adversary => a.name, :target_pc => char.name, :injury => injury.to_s, :damage => damage.to_s,
                                 :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => a.first_weapon_name,

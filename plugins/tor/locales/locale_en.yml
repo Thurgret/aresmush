@@ -32,9 +32,16 @@ en:
 
         adversary_attack_success: "%{adversary} attacks %{target_pc}, with a parry rating of %{TN} and hits, inflicting %{damage} endurance damage. There were %{degrees} degrees of success to use on special options. The success dice were %{dice} and the feat dice were %{feat_dice}."
         adversary_attack_failure: "%{adversary} attacks %{target_pc}, with a parry rating of %{TN} and fails. The success dice were %{dice} and the feat dice were %{feat_dice}."
+        adversary_eye_of_mordor_attack_success: "%{adversary} attacks %{target_pc}, with a parry rating of %{TN} and, rolling the Eye of Mordor, automatically succeeds, and strikes a piercing blow! They also inflict %{damage} endurance damage. There were %{degrees} degrees of success to use on special options. The success dice were %{dice} and the feat dice were %{feat_dice}."
+    	adversary_piercing_blow_attack_success: "%{adversary} attacks %{target_pc}, with a parry rating of %{TN} and strikes a piercing blow! They also inflict %{damage} endurance damage. There were %{degrees} degrees of success to use on special options. The success dice were %{dice} and the feat dice were %{feat_dice}."
 
-        adversary_protection_success: "%{adversary} rolls against an injury rating of %{TN} and succeeds, avoiding taking a wound. The success dice were %{dice} and the feat dice were %{feat_dice}."
-        adversary_protection_failure: "%{adversary} rolls against an injury rating of %{TN} and fails, taking a wound as a consequence. The success dice were %{dice} and the feat dice were %{feat_dice}."
+
+
+        adversary_protection_success: "%{adversary} rolls protection against an injury rating of %{TN} and succeeds, avoiding taking a wound. The success dice were %{dice} and the feat dice were %{feat_dice}."
+        adversary_protection_failure: "%{adversary} rolls protection against an injury rating of %{TN} and fails, taking a wound as a consequence. The success dice were %{dice} and the feat dice were %{feat_dice}."
+
+
+
 
         attribute_option: "%{option}: %{attrs} %{rating}"
 
