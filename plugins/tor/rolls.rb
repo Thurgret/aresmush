@@ -431,7 +431,7 @@ module AresMUSH
             enactor.tor_weapons.each do |a|
               if (a.wielded == "in hand")
                   skill_name = a.proficiency
-                  weapon_name = a.weapon
+                  weapon_name = a.name
                   damage = a.damage
                   injury = a.injury
                   if (a.rewards.downcase.include?("keen"))
