@@ -524,7 +524,7 @@ module AresMUSH
             end
 
 
-            if (attacking_adversary_string != "-" && attacking_adversary_string)
+            if (adversary_attack_string != "-" && adversary_attack_string)
                 Adversary.all.each.do |a|
                 if (adversary_attack_string.downcase.include?(a.name.downcase))
                     if (adversary_attack_string.downcase.include?(a.first_weapon_name.downcase))
