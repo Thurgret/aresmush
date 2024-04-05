@@ -472,7 +472,7 @@ module AresMUSH
 
             if (results.successful == true)
                 if (results.feat_dice[0] >= piercing_threshold)
-                    message = pc_name " attacks " +  target_adversary + " with a " + weapon_name + " and achieves a piercing blow, and now " + target_adversary
+                    message = pc_name + " attacks " +  target_adversary + " with a " + weapon_name + " and achieves a piercing blow, and now " + target_adversary
                     + " must make a protection roll against an injury rating of " + injury.to_s + ". Further, the attack also causes " + damage.to_s + 
                     " endurance damage."
                 
