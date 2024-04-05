@@ -19,6 +19,7 @@ module AresMUSH
     attribute :second_weapon_damage
     attribute :second_weapon_injury
     attribute :fell_abilities
+    attribute :engaged
   end
 
 

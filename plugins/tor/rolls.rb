@@ -454,7 +454,6 @@ module AresMUSH
                 :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name,
                 :degrees => results.degrees.to_s)            
             elsif (results.eye_of_mordor && results.miserable == true)
-
                 message = t('tor.miserable_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
                 :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
             else     
