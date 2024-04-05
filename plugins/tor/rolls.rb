@@ -466,14 +466,15 @@ module AresMUSH
           
              
              
-              if (results.successful == false)
+            
+        
+        if (results.successful == false)
                 message = t('tor.attack_success', :char => pc_name, :target_adversary => target_adversary, :injury => injury.to_s, :damage => damage.to_s,
                 :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name,
                 :degrees => result.degrees.to_s)
-                  end
+            end
               
                 
-                end
            
             
             
