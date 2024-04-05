@@ -426,9 +426,9 @@ module AresMUSH
         else
 
 
-            tn = tn_rating(char, "Strength") + rollmodifier              
+            tn = tn_rating(enactor, "Strength") + rollmodifier              
             piercing_threshold = 10
-            char.tor_weapons.each do |a|
+            enactor.tor_weapons.each do |a|
               if (a.wielded == "in hand")
                   skill_name = a.proficiency
                   weapon_name = a.weapon
