@@ -474,19 +474,16 @@ module AresMUSH
 
             if (results.successful == true)
                 if (results.feat_dice[0] >= piercing_threshold)
-                    message = pc_name + " attacks " +  target_adversary + " with a " + weapon_name + " and achieves a piercing blow, and now " + target_adversary
-                    + " must make a protection roll against an injury rating of " + injury.to_s + ". Further, the attack also causes " + damage.to_s + 
-                    " endurance damage."
+                    message = t('tor.attack_piercing_blow', :char => pc_name, :target_adversary => target_adversary, :injury => injury.to_s, :damage => damage.to_s,
+                    :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name)
                 
                 elsif (results.eye_of_mordor && results.miserable == true)
                         message = t('tor.miserable_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
                         :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
-                  
-                
                     end
                 else
-                    message = pc_name + " attacks " +  target_adversary + " with a " + weapon_name + " and hits. The attack causes " + damage.to_s + 
-                    " endurance damage."
+                    message = t('tor.attack_success', :char => pc_name, :target_adversary => target_adversary, :injury => injury.to_s, :damage => damage.to_s,
+                    :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s)
                 end
           
                 
