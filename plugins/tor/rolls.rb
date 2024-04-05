@@ -402,6 +402,7 @@ module AresMUSH
               char.tor_weapons.each do |a|
                 if (a.wielded == "in hand")
                     skill_name = a.proficiency.titlecase
+                    weapon_name = a.name
                     damage = a.damage
                     injury = a.injury
                     if (a.rewards.downcase.include?("keen"))
