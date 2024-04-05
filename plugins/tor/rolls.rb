@@ -369,7 +369,7 @@ module AresMUSH
             
             Adversary.all.each do |a|
                 if (a.name.downcase == target_adversary.downcase)
-                    rollmodifier = rollmodifier.to_i + a.parry.to_i
+                    rollmodifier = a.parry.to_i
                     adversary_armour = a.armour
                 end
             end
@@ -475,7 +475,7 @@ module AresMUSH
                         message = t('tor.miserable_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
                         :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
                     else
-                        message = t('tor.roll_eye_of_mordor_success', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                        message = t('tor.eye_of_mordor_success', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
                         :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
                     end
                 else
