@@ -381,6 +381,8 @@ module AresMUSH
             skill_name = "Unarmed"
             weapon_name = ""
             piercing_threshold = 10
+            damage = 0
+            injury = 0
 
       
             # ------------------
