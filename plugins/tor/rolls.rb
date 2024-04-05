@@ -433,7 +433,7 @@ module AresMUSH
                 Global.logger.debug a.proficiency
               if (a.wielded == "in hand")
                 Global.logger.debug "doing stuff here"
-                  skill_name = a.proficiency
+                  skill_name = a.proficiency.titlecase
                   weapon_name = a.name
                   damage = a.damage
                   injury = a.injury
