@@ -15,8 +15,8 @@ module AresMUSH
       
         tor_adversary_attacks_array = ["-"]
         Adversary.all.each do |a|
-          tor_adversary_attacks_array << a.name + " - " a.first_weapon_name
-          tor_adversary_attacks_array << a.name + " - " a.second_weapon_name
+          tor_adversary_attacks_array << a.name + " - " + a.first_weapon_name
+          tor_adversary_attacks_array << a.name + " - " + a.second_weapon_name
         end
       
       
