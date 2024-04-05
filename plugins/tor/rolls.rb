@@ -552,7 +552,13 @@ module AresMUSH
                             roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
                         elsif (adversary_attack_string.downcase.include?("protection"))
                             proficiency = a.armour
-                            roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
+                            results = roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
+                            if (results.successful)
+                                message = t('tor.adversary_protection_success', :adversary => a.name, :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                                :TN => results.target_number.to_s)
+                       
+                            else message = t('tor.adversary_protection_failure', :adversary => a.name, :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
+                                :TN => results.target_number.to_s)
                         end
                     end
             
