@@ -523,6 +523,7 @@ module AresMUSH
                 tn = alternative_tn
             end
 
+            message = ""
 
             if (adversary_attack_string != "-" && adversary_attack_string)
                
