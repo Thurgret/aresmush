@@ -56,12 +56,9 @@ module AresMUSH
                 modifier = 0
             end
 
-            Global.logger.debug char.favoured_skills.downcase
-            Global.logger.debug skill_name.downcase
 
             
             if char.favoured_skills.downcase.include?(skill_name.downcase)
-                Global.logger.debug "thing"
                 favoured_roll = "F"
             end
 
@@ -435,10 +432,7 @@ module AresMUSH
             tn = tn_rating(enactor, "Strength") + rollmodifier              
             piercing_threshold = 10
             enactor.tor_weapons.each do |a|
-                Global.logger.debug a.name
-                Global.logger.debug a.proficiency
               if (a.wielded == "in hand")
-                Global.logger.debug "doing stuff here"
                   skill_name = a.proficiency.titlecase
                   weapon_name = a.name
                   damage = a.damage
@@ -449,10 +443,6 @@ module AresMUSH
               end
          
             end
-
-            Global.logger.debug "skill name"
-            Global.logger.debug skill_name
-
             
 
            
