@@ -525,30 +525,36 @@ module AresMUSH
 
 
             if (adversary_attack_string != "-" && adversary_attack_string)
+               
                 Adversary.all.each do |a|
-                if (adversary_attack_string.downcase.include?(a.name.downcase))
-                    if (adversary_attack_string.downcase.include?(a.first_weapon_name.downcase))
-                        proficiency = a.first_weapon_proficiency
-                        damage = a.first_weapon_damage
-                        injury = a.first_weapon_injury
-                        results = roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
-                        if (results.successful)
-                        message = t('adversary_attack_success', advsarary => a.name, :target_pc => char.name, :injury => injury.to_s, :damage => damage.to_s,
-                        :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name,
-                        :degrees => results.degrees.to_s)
-                        else essage = t('adversary_attack_failure', advsarary => a.name, :target_pc => char.name, :injury => injury.to_s, :damage => damage.to_s,
-                            :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name,
-                            :degrees => results.degrees.to_s)
+                
+                    if (adversary_attack_string.downcase.include?(a.name.downcase))
+                        if (adversary_attack_string.downcase.include?(a.first_weapon_name.downcase))
+                            proficiency = a.first_weapon_proficiency
+                            damage = a.first_weapon_damage
+                            injury = a.first_weapon_injury
+                            results = roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
+                       
+                            if (results.successful)
+                                message = t('adversary_attack_success', advsarary => a.name, :target_pc => char.name, :injury => injury.to_s, :damage => damage.to_s,
+                                :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name,
+                                :degrees => results.degrees.to_s)
+                       
+                            else essage = t('adversary_attack_failure', advsarary => a.name, :target_pc => char.name, :injury => injury.to_s, :damage => damage.to_s,
+                                :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name,
+                                :degrees => results.degrees.to_s)
+                            end
+                        elsif (adversary_attack_string.downcase.include?(a.first_weapon_name.downcase))
+                            proficiency = a.first_weapon_proficiency
+                            damage = a.first_weapon_damage
+                            injury = a.first_weapon_injury
+                            roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
+                        elsif (adversary_attack_string.downcase.include?("protection"))
+                            proficiency = a.armour
+                            roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
                         end
-                    elsif (adversary_attack_string.downcase.include?(a.first_weapon_name.downcase))
-                        proficiency = a.first_weapon_proficiency
-                        damage = a.first_weapon_damage
-                        injury = a.first_weapon_injury
-                        roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
-                    elsif (adversary_attack_string.downcase.include?("protection"))
-                        proficiency = a.armour
-                        roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
                     end
+            
                 end
             end
 
