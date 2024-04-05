@@ -469,11 +469,14 @@ module AresMUSH
                 
                 elsif (results.eye_of_mordor && results.miserable == true)
                         message = t('tor.miserable_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
-                        :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
+                        :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )        
                     end
                 else
+                    
                     message = t('tor.attack_success', :char => pc_name, :target_adversary => target_adversary, :injury => injury.to_s, :damage => damage.to_s,
                     :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name)
+                    Global.logger.debug message
+                    Global.logger.debug "test"
                 end
           
                 
