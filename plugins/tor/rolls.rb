@@ -503,22 +503,177 @@ module AresMUSH
           end
 
 
+          
           def self.determine_web_adversary_result(request, enactor)
+            adversary_attack_string = request.args[:adversary_attack_string]
+            pc_target_name = request.args[:pc_target_name] || ""
+            favoured = request.args[:favoured_string]
+            rollmodifier = request.args[:modifier_string].to_i
+            alternative_tn = request.args[:alternative_tn_string].to_i
+            weary = request.args[:weary_string]
+            miserable = request.args[:miserable_string]
 
-            adversary_name, adversary_proficiency, modifier, favoured, alternative_tn, weary, miserable)
+            proficiency = 0
 
-            attackingadversary = request.args[:adversary_attack_string]
 
-            if (attackingadversary != "-" && attackingadversary)
+            char = Character.find_one_by_name(pc_target_name)
+            tn = char.tor_parry
+
+            if (alternative_tn > 0)
+                tn = alternative_tn
+            end
+
+
+            if (attacking_adversary_string != "-" && attacking_adversary_string)
                 Adversary.all.each.do |a|
-                if (attackingadversary.downcase.include?(a.name.downcase))
-                    if (attackingadversary.downcase.include?(a.first_weapon_name.downcase))
+                if (adversary_attack_string.downcase.include?(a.name.downcase))
+                    if (adversary_attack_string.downcase.include?(a.first_weapon_name.downcase))
+                        proficiency = a.first_weapon_proficiency
+                        damage = a.first_weapon_damage
+                        injury = a.first_weapon_injury
+                        results = roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
+                        if (results.successful)
+                        message = t('adversary_attack_success', advsarary => a.name, :target_pc => char.name, :injury => injury.to_s, :damage => damage.to_s,
+                        :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name,
+                        :degrees => results.degrees.to_s)
+                        else essage = t('adversary_attack_failure', advsarary => a.name, :target_pc => char.name, :injury => injury.to_s, :damage => damage.to_s,
+                            :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name,
+                            :degrees => results.degrees.to_s)
+                        end
+                    elsif (adversary_attack_string.downcase.include?(a.first_weapon_name.downcase))
+                        proficiency = a.first_weapon_proficiency
+                        damage = a.first_weapon_damage
+                        injury = a.first_weapon_injury
+                        roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
+                    elsif (adversary_attack_string.downcase.include?("protection"))
+                        proficiency = a.armour
+                        roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
                     end
                 end
             end
 
+            return {message: message}
 
-          end
+          
+        end
+
+        def self.roll_adversary_dice(proficiency, modifier, favoured, alternative_tn, weary, miserable)
+                #params = Tor.parse_roll_string(roll_str)
+    
+                if !modifier
+                    modifier = 0
+                end
+    
+                if (favoured.downcase == "n")
+                    favoured_roll = nil
+                elsif (favoured.downcase == "f")
+                    favoured_roll = "F"
+                elsif (favoured.downcase == "i")
+                    favoured_roll = "I"
+                end
+                
+    
+                
+    
+    
+                dice = []
+                feat_dice = []
+               
+
+                skill_dice = proficiency.to_i + modifier.to_i
+    
+                results = TorRollResults.new
+
+                target_number = alternative_tn
+                results.target_number = alternative_tn
+    
+    
+                if (weary.downcase  == "no")
+                    results.weary= nil
+                elsif (weary.downcase == "yes")
+                    results.weary = true
+                else
+                    results.weary = nil
+                end
+    
+                if (miserable == "miserable")
+                    results.miserable = true
+                end
+    
+    
+                skill_dice.times.each do |d|
+                    dice << Tor.roll_success_die
+                end
+                results.dice = dice.sort.reverse
+    
+                if !favoured_roll
+                    feat_dice[0] = Tor.roll_feat_die
+                    results.feat_dice = feat_dice
+                elsif (favoured_roll == "F")
+                    feat_dice[0] = Tor.roll_feat_die
+                    feat_dice[1] = Tor.roll_feat_die
+                    if feat_dice[0] < feat_dice[1]
+                        feat_dice = feat_dice.reverse
+                    end
+                elsif (favoured_roll == "I")   
+                    feat_dice[0] = Tor.roll_feat_die
+                        feat_dice[1] = Tor.roll_feat_die
+                    if feat_dice[0] > feat_dice[1]
+                        feat_dice = feat_dice.reverse
+                    end
+    
+                end
+    
+                results.feat_dice = feat_dice
+    
+    
+    
+                    
+                current_number = 0
+                degrees = 0
+    
+    
+                dice.each do |result|
+                    if (results.weary)
+                        if (result >= 4)
+                            current_number += result
+                            
+                        end
+                    else
+                        current_number += result
+                        
+                    end
+                    if result == 6
+                        degrees += 1
+                    end
+                end
+    
+                    
+    
+                results.successful = false
+    
+                if feat_dice.first == 0
+                    results.eye_of_mordor = true
+                elsif feat_dice.first == 11
+                    results.successful = true
+                    results.gandalf_rune = true
+                else
+                    current_number += feat_dice.first
+                    results.feat_dice = feat_dice
+                end
+    
+                if current_number >= target_number
+                    results.successful = true
+                end 
+    
+                results.degrees = degrees
+    
+               
+                return results
+    
+    
+                   
+            end
 
 
   
