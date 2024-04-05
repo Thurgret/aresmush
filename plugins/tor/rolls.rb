@@ -380,6 +380,7 @@ module AresMUSH
 
             skill_name = "Unarmed"
             weapon_name = ""
+            piercing_threshold = 10
 
       
             # ------------------
@@ -398,7 +399,7 @@ module AresMUSH
 
               tn = tn_rating(char, "Strength").to_i + rollmodifier              
 
-              piercing_threshold = 10
+              
               char.tor_weapons.each do |a|
                 if (a.wielded == "in hand")
                     skill_name = a.proficiency
@@ -470,20 +471,19 @@ module AresMUSH
 
 
             if (results.successful == true)
-                if (results.gandalf_rune)
-                    message = t('tor.gandalf_rune', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
-                    :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string ) + "using a" + weapon_name
-                elsif (results.eye_of_mordor)
-                    if (results.miserable == true)
+
+
+                if (results.feat_dice[0] >= piercing_threshold)
+                    message = pc_name " attacks " +  target_adversary + " with a " + weapon_name + " and achieves a piercing blow, and now " + target_adversary
+                    + " must make a protection roll against an injury rating of " + injury.to_s ". Further, the attack also causes " + damage.to_s + 
+                    " endurance damage."
+                elsif (results.eye_of_mordor && results.miserable == true)
                         message = t('tor.miserable_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
-                        :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
-                    else
-                        message = t('tor.eye_of_mordor_success', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
                         :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
                     end
                 else
-                    message = t('tor.roll_successful', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :roll => skill_name, 
-                    :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )       + "using a" + weapon_name
+                    message = pc_name " attacks " +  target_adversary + " with a " + weapon_name + " and hits. The attack causes " + damage.to_s + 
+                    " endurance damage."
                 end
           
             end
