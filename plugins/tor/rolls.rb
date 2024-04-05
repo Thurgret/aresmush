@@ -430,6 +430,7 @@ module AresMUSH
             piercing_threshold = 10
             enactor.tor_weapons.each do |a|
                 Global.logger.debug a.name
+                Global.logger.debug a.proficiency
               if (a.wielded == "in hand")
                 Global.logger.debug "doing stuff here"
                   skill_name = a.proficiency
