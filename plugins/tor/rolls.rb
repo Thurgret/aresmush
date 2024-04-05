@@ -471,6 +471,7 @@ module AresMUSH
                         message = t('tor.miserable_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
                         :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )        
                     end
+                    Global.logger.debug "Thing 2"
                 else
                     
                     message = t('tor.attack_success', :char => pc_name, :target_adversary => target_adversary, :injury => injury.to_s, :damage => damage.to_s,
@@ -479,6 +480,8 @@ module AresMUSH
                     Global.logger.debug "test"
                 end
           
+
+                Global.logger.debug "blah"
                 
              
              
