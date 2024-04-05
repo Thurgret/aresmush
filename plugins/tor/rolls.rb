@@ -397,11 +397,10 @@ module AresMUSH
 
 
               tn = tn_rating(char, "Strength").to_i + rollmodifier              
-
-              
+              piercing_threshold = 10              
               char.tor_weapons.each do |a|
                 if (a.wielded == "in hand")
-                    skill_name = a.proficiency
+                    skill_name = a.proficiency.titlecase
                     damage = a.damage
                     injury = a.injury
                     if (a.rewards.downcase.include?("keen"))
@@ -424,12 +423,8 @@ module AresMUSH
             # ------------------
             
 
-
-            
         
         else
-
-
             tn = tn_rating(enactor, "Strength") + rollmodifier              
             piercing_threshold = 10
             enactor.tor_weapons.each do |a|
@@ -442,25 +437,12 @@ module AresMUSH
                       piercing_threshold = piercing_threshold - 1
                   end
               end
-         
-            end
-            
-
-           
+            end           
                 results = roll_skill(enactor, skill_name, rollmodifier, favoured, tn, weary, miserable)
                 if results.weary
                     weary_string = " but because of being weary, results of 1, 2 and 3 were discarded"
                 end
-
-
-            pc_name = enactor.name
-
-
-
-
-         
-      
-           
+            pc_name = enactor.name      
         end
 
 
@@ -469,26 +451,25 @@ module AresMUSH
              
             if (results.feat_dice[0] >= piercing_threshold) 
                 message = t('tor.attack_piercing_blow', :char => pc_name, :target_adversary => target_adversary, :injury => injury.to_s, :damage => damage.to_s,      
-                :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name)            
+                :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name,
+                :degrees => result.degrees.to_s)            
             elsif (results.eye_of_mordor && results.miserable == true)
 
                 message = t('tor.miserable_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),
                 :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
             else     
                 message = t('tor.attack_success', :char => pc_name, :target_adversary => target_adversary, :injury => injury.to_s, :damage => damage.to_s,
-                :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name)
+                :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name,
+                :degrees => result.degrees.to_s)
             end
         end
           
              
              
               if (results.successful == false)
-                  if (results.eye_of_mordor)
-                    message = t('tor.eye_of_mordor_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), 
-                    :roll => skill_name, :char => pc_name, :TN => results.target_number.to_s, :weary => weary_string )
-                  else
-                    message = t('tor.roll_failure', :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "),  :roll => skill_name, :char => pc_name,
-                    :TN => results.target_number.to_s, :weary => weary_string )
+                message = t('tor.attack_success', :char => pc_name, :target_adversary => target_adversary, :injury => injury.to_s, :damage => damage.to_s,
+                :dice => results.dice.join(" "), :feat_dice => results.feat_dice.join(" "), :TN => results.target_number.to_s, :weapon_name => weapon_name,
+                :degrees => result.degrees.to_s)
                   end
               
                 
