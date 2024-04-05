@@ -552,7 +552,7 @@ module AresMUSH
                             damage = a.first_weapon_damage
                             injury = a.first_weapon_injury
                             roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
-                        elsif (adversary_attack_string.downcase.include?("protection"))
+                        elsif (adversary_attack_string.downcase.include?("armour"))
                             proficiency = a.armour
                             results = roll_adversary_dice(proficiency, rollmodifier, favoured, tn, weary, miserable)
                             if (results.successful)
