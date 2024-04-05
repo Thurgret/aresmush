@@ -355,7 +355,7 @@ module AresMUSH
           end
 
 
-          def determine_web_combat_result(request, enactor)
+          def self.determine_web_combat_result(request, enactor)
             target_adversary = request.args[:target_adversary]
             pc_name = request.args[:pc_name] || ""
             pc_skill = request.args[:pc_skill] || ""
