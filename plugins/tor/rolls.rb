@@ -369,7 +369,7 @@ module AresMUSH
             
             Adversary.all.each do |a|
                 if (a.name.downcase == target_adversary.downcase)
-                    rollmodifier = rollmodifier + a.parrymodifier
+                    rollmodifier = rollmodifier + a.parry
                     adversary_armour = a.armour
                 end
             end
