@@ -377,6 +377,7 @@ module AresMUSH
             
 
             skill_name = "Unarmed"
+            weapon_name = ""
 
       
             # ------------------
