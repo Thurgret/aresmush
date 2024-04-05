@@ -365,6 +365,7 @@ module AresMUSH
             miserable = request.args[:miserable_string]
 
 
+
             
             Adversary.all.each do |a|
                 if (a.name.downcase == target_adversary.downcase)
@@ -499,6 +500,24 @@ module AresMUSH
               
             end
             Global.logger.info "FS3 roll results: #{message}"
+          end
+
+
+          def self.determine_web_adversary_result(request, enactor)
+
+            adversary_name, adversary_proficiency, modifier, favoured, alternative_tn, weary, miserable)
+
+            attackingadversary = request.args[:adversary_attack_string]
+
+            if (attackingadversary != "-" && attackingadversary)
+                Adversary.all.each.do |a|
+                if (attackingadversary.downcase.include?(a.name.downcase))
+                    if (attackingadversary.downcase.include?(a.first_weapon_name.downcase))
+                    end
+                end
+            end
+
+
           end
 
 
