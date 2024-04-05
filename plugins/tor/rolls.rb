@@ -171,6 +171,8 @@ module AresMUSH
             end
 
             if (alternative_tn > 0)
+                Global.logger.debug "alternative target number"
+                Global.logger.debug alternative_tn
                 target_number = alternative_tn
                 results.target_number = alternative_tn
             end
