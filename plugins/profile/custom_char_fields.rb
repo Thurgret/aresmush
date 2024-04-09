@@ -100,6 +100,9 @@ module AresMUSH
             weary_string = "Not weary"
           end
 
+          adventure_points_string = "Adventure Points: " + charmodel.tor_adventure_points
+          skill_points_string = "Skill Points: " + charmodel.tor_skill_points
+
 
 
         
@@ -126,7 +129,9 @@ shadow: Website.format_markdown_for_html(shadow_string),
 shadow_scars: Website.format_markdown_for_html(shadow_scars_string),
 total_shadow: Website.format_markdown_for_html(total_shadow_string),
 miserable: Website.format_markdown_for_html(miserable_string),
-treasure: Website.format_markdown_for_html(treasure_string)}
+treasure: Website.format_markdown_for_html(treasure_string),
+skill_points: Website.format_markdown_for_html(skill_points_string),
+adventure_points: Website.format_markdown_for_html(adventure_points_string)}
   end
     
       # Gets custom fields for the character profile editor.
