@@ -100,8 +100,8 @@ module AresMUSH
             weary_string = "Not weary"
           end
 
-          adventure_points_string = "Adventure Points: " + charmodel.tor_adventure_points
-          skill_points_string = "Skill Points: " + charmodel.tor_skill_points
+          adventure_points_string = "Adventure Points: " + charmodel.tor_adventure_points.to_s
+          skill_points_string = "Skill Points: " + charmodel.tor_skill_points.to_s
 
 
 
