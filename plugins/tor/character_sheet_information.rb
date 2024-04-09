@@ -35,7 +35,7 @@ module AresMUSH
         def self.armour_list(char)
             list = char.tor_armour.to_a.each.map do |a|
                 if a.equipped == "Equipped"
-                  if a.rewards
+                  if (a.rewards && a.rewards != "")
                     if a.origin
                       "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - worn
                       Rewards: #{a.rewards}
@@ -50,7 +50,7 @@ module AresMUSH
                     "
                   end
                 elsif a.equipped == "Dropped"
-                  if a.rewards
+                  if (a.rewards && a.rewards != "")
                     if a.origin
                       "#{a.name}: Protection: #{a.protection} Load: #{a.gearload} Origin: #{a.origin} - dropped
                       Rewards: #{a.rewards}
@@ -112,7 +112,7 @@ module AresMUSH
           list = char.tor_shields.to_a.each.map do |a|
                     if (a.equipped == "Equipped")
                       if (a.wielded == "in hand")
-                        if a.rewards
+                        if (a.rewards && a.rewards != "")
                           if a.origin
                             "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} Origin: #{a.origin} - in hand\nRewards: #{a.rewards}\n"
                           else
@@ -122,7 +122,7 @@ module AresMUSH
                           "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} - in hand\n"
                         end
                       else
-                        if a.rewards
+                        if (a.rewards && a.rewards != "")
                           if a.origin
                             "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} Origin: #{a.origin} - worn\nRewards: #{a.rewards}\n"
                           else
@@ -133,7 +133,7 @@ module AresMUSH
                         end
                       end
                     elsif a.equipped == "Dropped"
-                      if a.rewards
+                      if (a.rewards && a.rewards != "")
                         if a.origin
                           "#{a.name}: Parry Modifier: #{a.parrymodifier} Load: #{a.gearload} Origin: #{a.origin} - dropped\nRewards: #{a.rewards}\n"
                         else
