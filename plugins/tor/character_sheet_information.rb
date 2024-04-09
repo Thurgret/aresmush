@@ -7,23 +7,23 @@ module AresMUSH
         def self.cultural_characteristics(char)
             culture = char.group("Culture").to_s.downcase
             if (culture == "bardings")
-                return "Stout-hearted: Your VALOUR rolls are Favoured."
+                return "Stout-hearted: Your valour rolls are favoured."
             elsif (culture == "bree-folk")
-                return "Bree-blood: Each of the Bree-folk in the Company increases the Fellowship Rating by 1 point."
+                return "Bree-blood: Each Bree-folk hero in the Company increases its fellowship rating by 1."
             elsif (culture == "dwarves of durin's folk")
-                return "Redoubtable: You halve the Load rating of any armour you're wearing (rounding fractions up), including helms (but not shields).
-                Naugrim: Dwarven adventurers cannot use the following pieces of war gear: great bow, great spear, and great shield."
+                return "Redoubtable: You halve the load rating of any armour you're wearing.
+                Naugrim: Dwarven adventurers cannot use certain wargear."
             elsif (culture == "elves of lindon")
-                return "Elven-skill: If you are not Miserable, you can spend 1 point of Hope to achieve a Magical success on a roll when using a Skill in which you possess at least one rank."    
+                return "Elven-skill: If you are not miserable, you can spend 1 point of hope to achieve a magical success on a roll, provided you have at least one point in the skill being rolled."    
             elsif (culture == "elves of rivendell")
-                return "Elven-wise: Add 1 point to one Attribute of your choice. Additionally, if you are not Miserable, you can spend 1 point of Hope to achieve a Magical success on a skill roll.
-                Beset by Woe: You can remove accumulated Shadow points exclusively during a Yule Fellowship Phase."
+                return "Elven-wise: Add 1 point to one attribute. If you are not miserable, you can spend 1 point of hope to achieve a magical success on a skill roll.
+                Beset by Woe: You can remove accumulated Shadow points exclusively during a Yule fellowship phase."
             elsif (culture == "hobbits of the shire")
-                return "Hobbit-sense: Your WISDOM rolls are Favoured, and you gain (1d) on all Shadow Tests made to resist the effects of Greed.
-                Halflings:  Due to their reduced size, Hobbits cannot use larger weapons effectively. The weapons available to Hobbits are: axe, bow, club, cudgel, dagger, short sword, short spear, spear. Additionally, Hobbits cannot use a great shield."    
+                return "Hobbit-sense: Your wisdom rolls are Favoured, and you gain 1 extra success die on all Shadow tests made to resist the effects of greed.
+                Halflings: Hobbits cannot use larger weapons effectively and have access to limited amounts of wargear."    
             elsif (culture == "rangers of the north")
-                return "Kings of Men: Add 1 point to one Attribute of your choice.
-                Allegiance of the Dúnedain: During the Fellow ship phase (not Yule) you recover a maximum number of Hope points equal to half your HEART score (rounding fractions up)."
+                return "Kings of Men: Add 1 point to one attribute.
+                Allegiance of the Dúnedain: During the fellowship phase, you recover a maximum number of hope points equal to half your heart."
             end
         end
 

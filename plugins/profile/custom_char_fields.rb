@@ -76,15 +76,15 @@ module AresMUSH
           total_shadow_string = "Total: " + charmodel.tor_shadowtotal.to_s
 
         if charmodel.treasure < 30
-          treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a frugal standard of living."
+          treasure_string = "Treasure: " + charmodel.treasure.to_s + ", which provides for a frugal standard of living."
         elsif charmodel.treasure < 90
-          treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a common standard of living."
+          treasure_string = "Treasure: " + charmodel.treasure.to_s + ", which provides for a common standard of living."
         elsif charmodel.treasure < 180
-          treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a prosperous standard of living."
+          treasure_string = "Treasure: " + charmodel.treasure.to_s + ", which provides for a prosperous standard of living."
         elsif charmodel.treasure < 300
-          treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a rich standard of living."
+          treasure_string = "Treasure: " + charmodel.treasure.to_s + ", which provides for a rich standard of living."
         else
-          treasure_string = "Treasure: " + charmodel.treasure.to_s + " which provides for a very rich standard of living."
+          treasure_string = "Treasure: " + charmodel.treasure.to_s + ", which provides for a very rich standard of living."
         end
 
 
