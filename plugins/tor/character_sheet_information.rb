@@ -14,7 +14,8 @@ module AresMUSH
                 return "Redoubtable: You halve the load rating of any armour you're wearing.
                 Naugrim: Dwarven adventurers cannot use certain wargear."
             elsif (culture == "elves of lindon")
-                return "Elven-skill: If you are not miserable, you can spend 1 point of hope to achieve a magical success on a roll, provided you have at least one point in the skill being rolled."    
+                return "Elven-skill: If you are not miserable, you can spend 1 point of hope to achieve a magical success on a roll, provided you have at least one point in the skill being rolled.
+                The Long Defeat: You may only remove a maximum of 1 point of Shadow during the fellowship phase."    
             elsif (culture == "elves of rivendell")
                 return "Elven-wise: Add 1 point to one attribute. If you are not miserable, you can spend 1 point of hope to achieve a magical success on a skill roll.
                 Beset by Woe: You can remove accumulated Shadow points exclusively during a Yule fellowship phase."
