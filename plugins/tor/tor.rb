@@ -113,6 +113,14 @@ module AresMUSH
       return GenerateAdversaryCmd
     when "deleteadversaries"
       return DeleteAdversariesCmd
+    when "skillpoints"
+      if (cmd.switch_is?("set"))
+        return SkillPointsSetCmd
+      end
+    when "adventurepoints"
+      if (cmd.switch_is?("set"))
+        return AdventurePointsSetCmd
+      end
 
       
       
