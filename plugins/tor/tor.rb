@@ -121,6 +121,10 @@ module AresMUSH
       if (cmd.switch_is?("set"))
         return AdventurePointsSetCmd
       end
+    when "fatigue"
+      if (cmd.switch_is("set"))
+        return FatigueSetCmd
+      end
 
       
       
