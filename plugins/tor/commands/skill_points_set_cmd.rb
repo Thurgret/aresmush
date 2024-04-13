@@ -15,7 +15,7 @@ module AresMUSH
         end
         
         def required_args
-          [self.target_name, self.ponts]
+          [self.target_name, self.points]
         end
         
         
