@@ -125,6 +125,10 @@ module AresMUSH
       if (cmd.switch_is?("set"))
         return FatigueSetCmd
       end
+    when "treasure"
+      if (cmd.switch_is?("set"))
+        return TreasureSetCmd
+      end
 
       
       
