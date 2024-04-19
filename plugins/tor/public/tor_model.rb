@@ -33,6 +33,8 @@ module AresMUSH
         
         attribute :favoured_skills
         attribute :distinctive_features
+
+        attribute :wounded
         
         
         collection :tor_attributes, "AresMUSH::TorAttributes"
