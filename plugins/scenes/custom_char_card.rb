@@ -54,6 +54,13 @@ module AresMUSH
 
           favoured_skills_string = charmodel.favoured_skills
 
+          valour_string = "Valour: " + charmodel.tor_valour.to_s
+          wisdom_string = "Wisdom: " + charmodel.tor_wisdom.to_s
+          if (charmodel.wounded.to_s.downcase == "wounded")
+            wounded_string = "Wounded"
+          else
+            wounded_string = "Not wounded"
+          end
           
        
           distinctive_features_string = charmodel.distinctive_features
@@ -123,7 +130,10 @@ shadow: Website.format_markdown_for_html(shadow_string),
 shadow_scars: Website.format_markdown_for_html(shadow_scars_string),
 total_shadow: Website.format_markdown_for_html(total_shadow_string),
 miserable: Website.format_markdown_for_html(miserable_string),
-treasure: Website.format_markdown_for_html(treasure_string)}
+treasure: Website.format_markdown_for_html(treasure_string)
+valour: Website.format_markdown_for_html(valour_string),
+wisdom: Website.format_markdown_for_html(wisdom_string),
+wounded: Website.format_markdown_for_html(wounded_string),}
     end
   end
 end
