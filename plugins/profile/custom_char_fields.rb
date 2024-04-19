@@ -59,7 +59,7 @@ module AresMUSH
 
           valour_string = "Valour: " + charmodel.tor_valour.to_s
           wisdom_string = "Wisdom: " + charmodel.tor_wisdom.to_s
-          if (charmodel.wounded.downcase == "wounded")
+          if (charmodel.wounded.to_s.downcase == "wounded")
             wounded_string = "Wounded"
           else
             wounded_string = "Not wounded"
